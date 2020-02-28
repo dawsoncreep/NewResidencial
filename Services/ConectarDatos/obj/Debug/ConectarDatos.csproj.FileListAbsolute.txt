@@ -1,0 +1,12 @@
+C:\Users\user\source\repos\Services\ConectarDatos\bin\Debug\ConectarDatos.dll.config
+C:\Users\user\source\repos\Services\ConectarDatos\bin\Debug\ConectarDatos.dll
+C:\Users\user\source\repos\Services\ConectarDatos\bin\Debug\ConectarDatos.pdb
+C:\Users\user\source\repos\Services\ConectarDatos\bin\Debug\EntityFramework.dll
+C:\Users\user\source\repos\Services\ConectarDatos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\user\source\repos\Services\ConectarDatos\bin\Debug\EntityFramework.xml
+C:\Users\user\source\repos\Services\ConectarDatos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\user\source\repos\Services\ConectarDatos\obj\Debug\ConectarDatos.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\Services\ConectarDatos\obj\Debug\ConectarDatos.csproj.CopyComplete
+C:\Users\user\source\repos\Services\ConectarDatos\obj\Debug\ConectarDatos.dll
+C:\Users\user\source\repos\Services\ConectarDatos\obj\Debug\ConectarDatos.pdb
+C:\Users\user\source\repos\Services\ConectarDatos\obj\Debug\ConectarDatos.csprojAssemblyReference.cache
