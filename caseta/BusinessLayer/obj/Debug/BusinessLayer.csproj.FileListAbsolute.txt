@@ -1,0 +1,17 @@
+D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\bin\Debug\BusinessLayer.dll.config
+D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\bin\Debug\BusinessLayer.dll
+D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\bin\Debug\BusinessLayer.pdb
+D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\bin\Debug\DataLayer.dll
+D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\bin\Debug\EntityFramework.dll
+D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\bin\Debug\SecureGateTypes.dll
+D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\bin\Debug\DataLayer.pdb
+D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\bin\Debug\DataLayer.dll.config
+D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\bin\Debug\SecureGateTypes.pdb
+D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\bin\Debug\EntityFramework.xml
+D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\bin\Debug\EntityFramework.SqlServer.xml
+D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\obj\Debug\BusinessLayer.csprojAssemblyReference.cache
+D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
+D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\obj\Debug\BusinessLayer.dll
+D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\obj\Debug\BusinessLayer.pdb
