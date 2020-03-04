@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>AppResidencial</id>
+    <version>1.0.0</version>
+    <authors>AppResidencial</authors>
+    <owners>AppResidencial</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="XLabs.Forms" version="2.0.5782" exclude="Build,Analyzers" />
+        <dependency id="Xam.Plugins.Notifier" version="3.0.1" exclude="Build,Analyzers" />
+        <dependency id="Xamarin.Forms" version="3.4.0.1029999" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\eduar\OneDrive\Documents\Mobile\AppResidencial\AppResidencial\AppResidencial\bin\Debug\netstandard2.0\AppResidencial.dll" target="lib\netstandard2.0\AppResidencial.dll" />
+  </files>
+</package>
