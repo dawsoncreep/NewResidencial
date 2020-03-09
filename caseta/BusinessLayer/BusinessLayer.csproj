@@ -53,19 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dispositivos\DevicesProcessor.cs" />
-    <Compile Include="Eventos\EventProcessor.cs" />
-    <Compile Include="Externos\ExternalProcessor.cs" />
-    <Compile Include="Notificaciones\NotificationProcessor.cs" />
-    <Compile Include="Ubicaciones\LocationProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Usuario\AspNetUserProcessor.cs" />
+    <Compile Include="Visita\VisitaProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
-      <Project>{DFB28F6F-6246-4E31-95C8-8F06956F42BC}</Project>
-      <Name>DataLayer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SecureGateTypes\SecureGateTypes.csproj">
       <Project>{95fcf6aa-b0f4-46b9-bf25-088e8b224f3e}</Project>
       <Name>SecureGateTypes</Name>
