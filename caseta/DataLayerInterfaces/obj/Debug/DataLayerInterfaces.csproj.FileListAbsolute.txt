@@ -1,0 +1,15 @@
+D:\OTROS\NewResidencial\caseta\DataLayerInterfaces\bin\Debug\DataLayerInterfaces.dll.config
+D:\OTROS\NewResidencial\caseta\DataLayerInterfaces\bin\Debug\DataLayerInterfaces.dll
+D:\OTROS\NewResidencial\caseta\DataLayerInterfaces\bin\Debug\DataLayerInterfaces.pdb
+D:\OTROS\NewResidencial\caseta\DataLayerInterfaces\bin\Debug\DataLayer.dll
+D:\OTROS\NewResidencial\caseta\DataLayerInterfaces\bin\Debug\EntityFramework.dll
+D:\OTROS\NewResidencial\caseta\DataLayerInterfaces\bin\Debug\EntityFramework.SqlServer.dll
+D:\OTROS\NewResidencial\caseta\DataLayerInterfaces\bin\Debug\DataLayer.pdb
+D:\OTROS\NewResidencial\caseta\DataLayerInterfaces\bin\Debug\DataLayer.dll.config
+D:\OTROS\NewResidencial\caseta\DataLayerInterfaces\bin\Debug\EntityFramework.xml
+D:\OTROS\NewResidencial\caseta\DataLayerInterfaces\bin\Debug\EntityFramework.SqlServer.xml
+D:\OTROS\NewResidencial\caseta\DataLayerInterfaces\obj\Debug\DataLayerInterfaces.csprojAssemblyReference.cache
+D:\OTROS\NewResidencial\caseta\DataLayerInterfaces\obj\Debug\DataLayerInterfaces.csproj.CoreCompileInputs.cache
+D:\OTROS\NewResidencial\caseta\DataLayerInterfaces\obj\Debug\DataLayerInterfaces.csproj.CopyComplete
+D:\OTROS\NewResidencial\caseta\DataLayerInterfaces\obj\Debug\DataLayerInterfaces.dll
+D:\OTROS\NewResidencial\caseta\DataLayerInterfaces\obj\Debug\DataLayerInterfaces.pdb

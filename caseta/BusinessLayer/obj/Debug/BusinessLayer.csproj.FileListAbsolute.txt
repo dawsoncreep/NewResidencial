@@ -15,3 +15,5 @@ D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCom
 D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
 D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\obj\Debug\BusinessLayer.dll
 D:\OTROS\RESIDENCIAL\caseta\BusinessLayer\obj\Debug\BusinessLayer.pdb
+D:\OTROS\NewResidencial\caseta\BusinessLayer\obj\Debug\BusinessLayer.csprojAssemblyReference.cache
+D:\OTROS\NewResidencial\caseta\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
