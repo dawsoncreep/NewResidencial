@@ -476,7 +476,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_PAcceso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_PAcceso.Location = new System.Drawing.Point(67, 144);
+            this.Btn_PAcceso.Location = new System.Drawing.Point(123, 144);
             this.Btn_PAcceso.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_PAcceso.Name = "Btn_PAcceso";
             this.Btn_PAcceso.Size = new System.Drawing.Size(319, 51);

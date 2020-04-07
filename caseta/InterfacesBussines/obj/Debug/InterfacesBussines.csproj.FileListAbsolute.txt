@@ -1,0 +1,8 @@
+D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\InterfacesBussines.dll
+D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\InterfacesBussines.pdb
+D:\OTROS\NewResidencial\caseta\InterfacesBussines\obj\Debug\InterfacesBussines.csprojAssemblyReference.cache
+D:\OTROS\NewResidencial\caseta\InterfacesBussines\obj\Debug\InterfacesBussines.dll
+D:\OTROS\NewResidencial\caseta\InterfacesBussines\obj\Debug\InterfacesBussines.pdb
+D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\SecureGateTypes.dll
+D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\SecureGateTypes.pdb
+D:\OTROS\NewResidencial\caseta\InterfacesBussines\obj\Debug\InterfacesBussines.csproj.CopyComplete
