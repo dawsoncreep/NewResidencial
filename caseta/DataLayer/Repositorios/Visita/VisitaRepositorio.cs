@@ -41,7 +41,7 @@ namespace DataLayer
             using (GeneralContext context = new GeneralContext(ConnString))
             {
                 context.Visitas.Add(visita);
-                context.SaveChangesAsync();
+                context.SaveChanges();
                 return visita.IdVisita;
             }
         }
@@ -52,7 +52,7 @@ namespace DataLayer
             {
                 var visita = context.Visitas.Where(w => w.IdVisita == id).First();
                 visita.FotoUrl = urlfoto;
-                context.SaveChangesAsync();
+                context.SaveChanges();
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace DataLayer
     [Table("ingresoSalidaVisita")]
     public class SIngresoSalidaVisita
     {
+        [Key]
+        public int Id { get; set; }
         public int idVisita { get; set; }
         public DateTime fechaIngreso { get; set; }
         public string fotoPlacaDelantera { get; set; }

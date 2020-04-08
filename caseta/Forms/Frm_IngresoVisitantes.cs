@@ -25,7 +25,7 @@ namespace caseta
             InitializeComponent();
             visitaProcessor = Factoria.Instancia.CreateVisitaProcessor();
             ubicacionProcessor = Factoria.Instancia.UbicacionProcessor();
-            Cbbx_RType.Items.AddRange(visitaProcessor.TiposDeVisita().ToArray());
+            Cbbx_RType.DataSource = visitaProcessor.TiposDeVisita().ToArray();
             Cbbx_RType.ValueMember = "ID";
             Cbbx_RType.DisplayMember = "Nombre";
         }
@@ -37,7 +37,7 @@ namespace caseta
             SPC_Rostro.StartPlay(new Uri(ConfigurationManager.AppSettings["Rostro"]));
             SPC_Credencial.StartPlay(new Uri(ConfigurationManager.AppSettings["Credencial"]));
             var ubicaciones = ubicacionProcessor.UbicacionesValidas();
-            Cbbx_Domicilio.Items.AddRange(ubicaciones.ToArray());            
+            Cbbx_Domicilio.DataSource = ubicaciones.ToArray();            
             Cbbx_Domicilio.ValueMember = "ID";
             Cbbx_Domicilio.DisplayMember = "Nombre";
             AutoCompleteStringCollection Collection = new AutoCompleteStringCollection();
@@ -61,9 +61,9 @@ namespace caseta
                     visitaProcessor.RegistrarVisita(rostro, placaT, placaD, credencial, (int)Cbbx_RType.SelectedValue, Tbx_Nombre.Text,
                         Tbx_Apellidos.Text, Tbx_Desc.Text, Tbx_PLacas.Text, (int)Cbbx_Domicilio.SelectedValue);
                 }
-                catch (InvalidOperationException)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Error al Tomar las fotografias, revise sus camaras y vuelva a intentarlo", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
