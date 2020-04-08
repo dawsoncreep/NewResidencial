@@ -55,5 +55,23 @@ namespace DataLayer
                 context.SaveChanges();
             }
         }
+
+        public IEnumerable<DGVVisitaActual> GetDGVVisitasActuales()
+        {
+            IEnumerable<DGVVisitaActual> dGVVisitas;
+            using (IVisitaDbContext context = new GeneralContext(ConnString))
+            {
+                dGVVisitas = context.IngresoSalidaVisitas.Where(w => w.fechaSalida == null).Select(s => new DGVVisitaActual()
+                {
+                    Domicilio = context.Ubicaciones.FirstOrDefault(f => f.idUbicacion == context.Visitas.FirstOrDefault(x => x.IdVisita == s.idVisita).idUbicacion).Nombre,
+                    FechaIngreso = s.fechaIngreso,
+                    IdVisita = s.idVisita,
+                    NombreCompleto = context.Visitas.Where(x => x.IdVisita == s.idVisita).Select(y => y.Nombre + " " + y.Apellidos).FirstOrDefault(),
+                    Placas = context.Visitas.FirstOrDefault(x => x.IdVisita == s.idVisita).Placas,
+                    FotoRostro = s.fotoCabina
+                }).ToList();
+            }
+            return dGVVisitas;
+        }
     }
 }

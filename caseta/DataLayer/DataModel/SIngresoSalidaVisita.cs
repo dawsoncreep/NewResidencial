@@ -19,7 +19,7 @@ namespace DataLayer
         public string fotoPlacaTrasera { get; set; }
         public string fotoCabina { get; set; }
         public string fotoIdentificacion { get; set; }
-        public DateTime fechaSalida { get; set; }
+        public DateTime? fechaSalida { get; set; }
         public string fotoSalidaUrl { get; set; }
     }
 }

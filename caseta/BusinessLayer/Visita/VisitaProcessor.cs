@@ -13,18 +13,26 @@ namespace BusinessLayer
     public class VisitaProcessor : IVisitaProcessor
     {
         private readonly ITipoVisitaRepositorio TipoVisitaRepositorio;
-        private IIngresoProcessor ingresoProcessor;
-        public VisitaProcessor(ITipoVisitaRepositorio _tipovisitaRepositorio)
+        private readonly IVisitaRepositorio visitaRepositorio;
+        private IIngresoProcessor ingresoProcessor; // interfaz que implementa la funcion de la visita al ingresar dependiento el tipo
+        public VisitaProcessor(ITipoVisitaRepositorio _tipovisitaRepositorio, IVisitaRepositorio _visitaRepositorio)
         {
             TipoVisitaRepositorio = _tipovisitaRepositorio;
+            visitaRepositorio = _visitaRepositorio;
         }
 
-        public void RegistrarVisita(Bitmap rostro, Bitmap placaTrasera, Bitmap placaDelantera, Bitmap credencial, int tipoVisita, 
+        public IEnumerable<DGVVisitaActual> GetVisitasActuales()
+        {
+            var dgvVisitas = visitaRepositorio.GetDGVVisitasActuales();
+            return dgvVisitas;
+        }
+
+        public int RegistrarVisita(Bitmap rostro, Bitmap placaTrasera, Bitmap placaDelantera, Bitmap credencial, int tipoVisita, 
             string nombre, string apellidos, string descripcion, string placas, int ubicacion)
         {
-            ingresoProcessor = FactoriaNegocio.Instancia.CreateIngresoProcessor(tipoVisita);            
+            ingresoProcessor = FactoriaNegocio.Instancia.CreateIngresoProcessor(tipoVisita);   // se crea la instancia del ingreso segun el tipo de visita         
             int id = ingresoProcessor.RegistrarIngreso(nombre, apellidos, placas, ubicacion);
-            ingresoProcessor.GuardarCapturas(rostro, placaTrasera, placaDelantera, credencial, id);
+            return ingresoProcessor.GuardarCapturas(rostro, placaTrasera, placaDelantera, credencial, id);
         }
 
         public IEnumerable<TipoVisita> TiposDeVisita()

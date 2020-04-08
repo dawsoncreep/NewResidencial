@@ -11,6 +11,6 @@ namespace BusinessInterfaces
     public interface IIngresoProcessor
     {
         int RegistrarIngreso(string nombre, string apellidos, string placas, int idUbicacion);
-        void GuardarCapturas(Bitmap rostro, Bitmap placaTrasera, Bitmap placaDelantera, Bitmap credencial, int id);
+        int GuardarCapturas(Bitmap rostro, Bitmap placaTrasera, Bitmap placaDelantera, Bitmap credencial, int id);
     }
 }

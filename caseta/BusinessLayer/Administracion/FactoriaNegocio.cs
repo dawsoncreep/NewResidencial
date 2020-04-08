@@ -32,7 +32,7 @@ namespace BusinessLayer
         {
             if (tipoVisita == (int)TiposDeVisita.Preregistro)
             {
-                return new PreregistroProcessor(new VisitaRepositorio());
+                return new PreregistroProcessor(new VisitaRepositorio(), new IngresoSalidaVisitaRepositorio());
             }
             else if (tipoVisita == (int)TiposDeVisita.Habitual)
             {

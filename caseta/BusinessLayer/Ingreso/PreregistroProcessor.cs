@@ -15,18 +15,26 @@ namespace BusinessLayer
     {
         private readonly int tipoVisita = (int)TiposDeVisita.Habitual;
         private readonly IVisitaRepositorio visitaRepositorio;
+        private readonly IIngresoSalidaVisitaRepositorio ingresoSalidaVisitaRepositorio;
 
-        public PreregistroProcessor(IVisitaRepositorio _visitaRepositorio)
+        public PreregistroProcessor(IVisitaRepositorio _visitaRepositorio, IIngresoSalidaVisitaRepositorio _ingresoSalidaVisitaRepositorio)
         {
             visitaRepositorio = _visitaRepositorio;
+            ingresoSalidaVisitaRepositorio = _ingresoSalidaVisitaRepositorio;
         }
-        public void GuardarCapturas(Bitmap rostro, Bitmap placaTrasera, Bitmap placaDelantera, Bitmap credencial, int id)
+        public int GuardarCapturas(Bitmap rostro, Bitmap placaTrasera, Bitmap placaDelantera, Bitmap credencial, int id)
         {
             var urlFotos = ConfigurationManager.AppSettings["PicturePath"];
-            visitaRepositorio.UpdateFotoVisita(urlFotos, id);
             System.IO.Directory.CreateDirectory(urlFotos);
-            rostro.Save(urlFotos + "Rostro" + id + ".jpg");
-            credencial.Save(urlFotos + "Credencial" + id + ".jpg");
+            var urlRostro = urlFotos + "Rostro" + id + ".jpg";
+            var urlCredencial = urlFotos + "Credencial" + id + ".jpg";
+            var urlPlacaDelantera = urlFotos + "PlacaDelantera" + id + ".jpg";
+            var urlPlacaTrasera = urlFotos + "PlacaTrasera" + id + ".jpg";
+            rostro.Save(urlRostro);
+            credencial.Save(urlCredencial);
+            placaDelantera.Save(urlPlacaDelantera);
+            placaTrasera.Save(urlPlacaTrasera);
+            return ingresoSalidaVisitaRepositorio.SetIngreso(id,urlPlacaDelantera,urlPlacaTrasera,urlRostro,urlCredencial);
         }
 
         public int RegistrarIngreso(string nombre, string apellidos, string placas, int idUbicacion)

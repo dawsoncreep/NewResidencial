@@ -28,6 +28,7 @@ namespace caseta
             Cbbx_RType.DataSource = visitaProcessor.TiposDeVisita().ToArray();
             Cbbx_RType.ValueMember = "ID";
             Cbbx_RType.DisplayMember = "Nombre";
+            DGV_VisitantesActuales.DataSource = visitaProcessor.GetVisitasActuales();
         }
 
         private void Frm_IngresoVisita_Load(object sender, EventArgs e)
@@ -50,6 +51,7 @@ namespace caseta
 
         private void Btn_PAcceso_Click(object sender, EventArgs e)
         {
+            CausesValidationComponents(true);
             if (ValidateChildren())
             {
                 try
@@ -58,14 +60,20 @@ namespace caseta
                     Bitmap placaT = SPC_PLacaT.GetCurrentFrame();
                     Bitmap placaD = SPC_PlacaDelantera.GetCurrentFrame();
                     Bitmap credencial = SPC_Credencial.GetCurrentFrame();
-                    visitaProcessor.RegistrarVisita(rostro, placaT, placaD, credencial, (int)Cbbx_RType.SelectedValue, Tbx_Nombre.Text,
+                    var i = visitaProcessor.RegistrarVisita(rostro, placaT, placaD, credencial, (int)Cbbx_RType.SelectedValue, Tbx_Nombre.Text,
                         Tbx_Apellidos.Text, Tbx_Desc.Text, Tbx_PLacas.Text, (int)Cbbx_Domicilio.SelectedValue);
+                    if (i > 0)
+                    {
+                        MessageBox.Show("Visita Ingresada", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Clean();
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            CausesValidationComponents(false);
         }
 
         private void Tbx_PLacas_Validating(object sender, CancelEventArgs e)
@@ -111,6 +119,22 @@ namespace caseta
                 MessageBox.Show("Seleccione un Tipo de Registro", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 e.Cancel = true;
             }
+        }
+
+        private void CausesValidationComponents(bool v)
+        {
+            Tbx_Apellidos.CausesValidation = v;
+            Tbx_Desc.CausesValidation = v;
+            Tbx_Nombre.CausesValidation = v;
+            Tbx_PLacas.CausesValidation = v;
+        }
+
+        private void Clean()
+        {
+            Tbx_Apellidos.Text = string.Empty;
+            Tbx_Desc.Text = string.Empty;
+            Tbx_Nombre.Text = string.Empty;
+            Tbx_PLacas.Text = string.Empty;
         }
     }
 }

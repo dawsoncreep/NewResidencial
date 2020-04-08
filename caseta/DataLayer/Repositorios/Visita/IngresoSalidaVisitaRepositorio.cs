@@ -16,7 +16,7 @@ namespace DataLayer
         {
             ConnString = ConfigurationManager.ConnectionStrings["SecureGateEntities"].ConnectionString;
         }
-        public void SetIngreso(int id, string placaDelantera, string placaTrasera, string cabina, string identificacion)
+        public int SetIngreso(int id, string placaDelantera, string placaTrasera, string cabina, string identificacion)
         {
             using (var context = new GeneralContext(ConnString))
             {
@@ -24,24 +24,25 @@ namespace DataLayer
                 {
                     idVisita = id,
                     fechaIngreso = DateTime.Now,
+                    fechaSalida = null,
                     fotoCabina = cabina,
-                    fotoIdentificacion = identificacion,
+                    fotoIdentificacion = identificacion, 
                     fotoPlacaDelantera = placaDelantera,
                     fotoPlacaTrasera = placaDelantera
                 };
                 context.IngresoSalidaVisitas.Add(ingreso);
-                context.SaveChangesAsync();
+                return context.SaveChanges();
             }            
         }
 
-        public void SetSalida(int idVisita, string fotoSalida)
+        public int SetSalida(int idVisita, string fotoSalida)
         {
             using (var context = new GeneralContext(ConnString))
             {
                 var ingreso = context.IngresoSalidaVisitas.Where(w => w.fechaSalida == null && w.idVisita == idVisita).FirstOrDefault();
                 ingreso.fotoSalidaUrl = fotoSalida;
                 ingreso.fechaSalida = DateTime.Now;
-                context.SaveChangesAsync();
+                return context.SaveChanges();
             }
         }
     }

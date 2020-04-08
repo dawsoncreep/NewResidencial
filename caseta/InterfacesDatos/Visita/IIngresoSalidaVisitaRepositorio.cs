@@ -8,7 +8,7 @@ namespace DataInterfaces
 {
     public interface IIngresoSalidaVisitaRepositorio
     {
-        void SetIngreso(int id, string placaDelantera, string placaTrasera, string cabina, string identificacion);
-        void SetSalida(int idVisita, string fotoSalida);
+        int SetIngreso(int id, string placaDelantera, string placaTrasera, string cabina, string identificacion);
+        int SetSalida(int idVisita, string fotoSalida);
     }
 }
