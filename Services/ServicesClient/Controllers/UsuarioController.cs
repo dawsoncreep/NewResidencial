@@ -10,7 +10,7 @@ namespace ServicesClient.Controllers
 {
     public class UsuarioController : ApiController
     {
-        private ResidencialEntities contexto = new       ResidencialEntities();
+        private ResidencialEntities contexto = new ResidencialEntities();
 
         [HttpGet]
         public IEnumerable<Usuario> Get()
@@ -30,15 +30,14 @@ namespace ServicesClient.Controllers
         }
 
 
-
-
-
         [HttpGet]
         public Usuario Get(int idUser)
         {
             using (ResidencialEntities residencialEntities = new ResidencialEntities())
             {
-                return residencialEntities.Usuario.FirstOrDefault(s => s.idUsuario == idUser);
+                residencialEntities.Configuration.LazyLoadingEnabled = false;
+                var user = residencialEntities.Usuario.FirstOrDefault(s => s.idUsuario == idUser);
+                return user;
 
             }
         }

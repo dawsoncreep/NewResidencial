@@ -14,18 +14,12 @@ namespace ConectarDatos
     
     public partial class Huella
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Huella()
-        {
-            this.Personal = new HashSet<Personal>();
-        }
-    
         public int idHuella { get; set; }
         public byte[] huella1 { get; set; }
         public bool activo { get; set; }
         public System.DateTime fechaRegistro { get; set; }
+        public int idPersonal { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Personal> Personal { get; set; }
+        public virtual Personal Personal { get; set; }
     }
 }

@@ -32,6 +32,7 @@ namespace ConectarDatos
         public string QR { get; set; }
     
         public virtual TipoVisita TipoVisita { get; set; }
+        public virtual Ubicacion Ubicacion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ingresoSalidaVisita> ingresoSalidaVisita { get; set; }
         public virtual SolicitudAcceso SolicitudAcceso { get; set; }

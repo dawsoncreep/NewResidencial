@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="idBoletin" />
           </Key>
-          <Property Name="idBoletin" Type="int" Nullable="false" />
+          <Property Name="idBoletin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="mensaje" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="activo" Type="bit" />
           <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
@@ -20,7 +20,7 @@
           <Key>
             <PropertyRef Name="idDispositivo" />
           </Key>
-          <Property Name="idDispositivo" Type="int" Nullable="false" />
+          <Property Name="idDispositivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Ip" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="usuario" Type="nvarchar" MaxLength="50" />
           <Property Name="password" Type="nvarchar" MaxLength="50" />
@@ -34,16 +34,17 @@
           <Key>
             <PropertyRef Name="idEvento" />
           </Key>
-          <Property Name="idEvento" Type="int" Nullable="false" />
+          <Property Name="idEvento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="incio" Type="datetime" Nullable="false" />
           <Property Name="fin" Type="datetime" Nullable="false" />
           <Property Name="QR" Type="nvarchar" MaxLength="1239" Nullable="false" />
           <Property Name="idUbicacion" Type="int" Nullable="false" />
           <Property Name="activo" Type="int" Nullable="false" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Residencial.dbo.FotoEventoEntrada' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'RESIDENCIAL.dbo.FotoEventoEntrada' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="FotoEventoEntrada">
           <Key>
             <PropertyRef Name="idFotoEvento" />
@@ -51,7 +52,7 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.FotoEventoEntrada' no tiene 
             <PropertyRef Name="fotoPlacaDelantera" />
             <PropertyRef Name="fechaIngreso" />
           </Key>
-          <Property Name="idFotoEvento" Type="int" Nullable="false" />
+          <Property Name="idFotoEvento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idEvento" Type="int" Nullable="false" />
           <Property Name="fotoPlacaDelantera" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="fotoPlacaTrasera" Type="nvarchar" MaxLength="200" />
@@ -61,13 +62,13 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.FotoEventoEntrada' no tiene 
           <Property Name="placa" Type="nchar" MaxLength="10" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Residencial.dbo.FotoEventoSalida' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'RESIDENCIAL.dbo.FotoEventoSalida' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="FotoEventoSalida">
           <Key>
             <PropertyRef Name="idFotoEventoSalida" />
             <PropertyRef Name="idEvento" />
           </Key>
-          <Property Name="idFotoEventoSalida" Type="int" Nullable="false" />
+          <Property Name="idFotoEventoSalida" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idEvento" Type="int" Nullable="false" />
           <Property Name="placa" Type="nchar" MaxLength="10" />
           <Property Name="fotoSalida" Type="nvarchar" MaxLength="200" />
@@ -76,25 +77,26 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.FotoEventoSalida' no tiene d
           <Key>
             <PropertyRef Name="idHuella" />
           </Key>
-          <Property Name="idHuella" Type="int" Nullable="false" />
+          <Property Name="idHuella" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="huella" Type="varbinary" MaxLength="1632" Nullable="false" />
           <Property Name="activo" Type="bit" Nullable="false" />
           <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="idPersonal" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Residencial.dbo.IngresoSalidaPersonal' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'RESIDENCIAL.dbo.IngresoSalidaPersonal' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="IngresoSalidaPersonal">
           <Key>
             <PropertyRef Name="idPersonal" />
           </Key>
-          <Property Name="idPersonal" Type="int" Nullable="false" />
+          <Property Name="idPersonal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="fechaIngreso" Type="datetime" />
           <Property Name="fechaSalida" Type="datetime" />
           <Property Name="fotoEntrada" Type="nvarchar" MaxLength="200" />
           <Property Name="fotoSalida" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Residencial.dbo.ingresoSalidaVisita' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'RESIDENCIAL.dbo.ingresoSalidaVisita' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="ingresoSalidaVisita">
           <Key>
             <PropertyRef Name="idVisita" />
@@ -103,7 +105,7 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.ingresoSalidaVisita' no tien
             <PropertyRef Name="fotoPlacaTrasera" />
             <PropertyRef Name="fotoCabina" />
           </Key>
-          <Property Name="idVisita" Type="int" Nullable="false" />
+          <Property Name="idVisita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="fechaIngreso" Type="datetime" Nullable="false" />
           <Property Name="fotoPlacaDelantera" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="fotoPlacaTrasera" Type="nvarchar" MaxLength="200" Nullable="false" />
@@ -126,7 +128,7 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.ingresoSalidaVisita' no tien
           <Key>
             <PropertyRef Name="idPermiso" />
           </Key>
-          <Property Name="idPermiso" Type="int" Nullable="false" />
+          <Property Name="idPermiso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="activo" Type="bit" />
         </EntityType>
@@ -134,7 +136,7 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.ingresoSalidaVisita' no tien
           <Key>
             <PropertyRef Name="idPersonal" />
           </Key>
-          <Property Name="idPersonal" Type="int" Nullable="false" />
+          <Property Name="idPersonal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="ApPaterno" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="ApMaterno" Type="nvarchar" MaxLength="500" />
@@ -142,24 +144,14 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.ingresoSalidaVisita' no tien
           <Property Name="fotoPersonal" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Residencial.dbo.PersonalHuella' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="PersonalHuella">
-          <Key>
-            <PropertyRef Name="idHuella" />
-            <PropertyRef Name="idPersonal" />
-          </Key>
-          <Property Name="idHuella" Type="int" Nullable="false" />
-          <Property Name="idPersonal" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Residencial.dbo.PersonalUbicacion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'RESIDENCIAL.dbo.PersonalUbicacion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="PersonalUbicacion">
           <Key>
             <PropertyRef Name="idPersonal" />
             <PropertyRef Name="idUbicacion" />
             <PropertyRef Name="fechaRegistro" />
           </Key>
-          <Property Name="idPersonal" Type="int" Nullable="false" />
+          <Property Name="idPersonal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idUbicacion" Type="int" Nullable="false" />
           <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
           <Property Name="activo" Type="bit" />
@@ -168,24 +160,21 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.PersonalUbicacion' no tiene 
           <Key>
             <PropertyRef Name="idRol" />
           </Key>
-          <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="idRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="activo" Type="bit" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Residencial.dbo.RolPermiso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="RolPermiso">
           <Key>
             <PropertyRef Name="idRol" />
             <PropertyRef Name="idPermiso" />
-            <PropertyRef Name="activo" />
           </Key>
           <Property Name="idRol" Type="int" Nullable="false" />
           <Property Name="idPermiso" Type="int" Nullable="false" />
           <Property Name="activo" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Residencial.dbo.SolicitudAcceso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'RESIDENCIAL.dbo.SolicitudAcceso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="SolicitudAcceso">
           <Key>
             <PropertyRef Name="idVisita" />
@@ -210,14 +199,14 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.SolicitudAcceso' no tiene de
           <Key>
             <PropertyRef Name="idTipoUbicacion" />
           </Key>
-          <Property Name="idTipoUbicacion" Type="int" Nullable="false" />
+          <Property Name="idTipoUbicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="TipoVisita">
           <Key>
             <PropertyRef Name="idTipoVisita" />
           </Key>
-          <Property Name="idTipoVisita" Type="int" Nullable="false" />
+          <Property Name="idTipoVisita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="activo" Type="bit" />
         </EntityType>
@@ -225,7 +214,7 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.SolicitudAcceso' no tiene de
           <Key>
             <PropertyRef Name="idUbicacion" />
           </Key>
-          <Property Name="idUbicacion" Type="int" Nullable="false" />
+          <Property Name="idUbicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="nvarchar" MaxLength="50" />
           <Property Name="idTipoUbicacion" Type="int" Nullable="false" />
           <Property Name="activo" Type="bit" Nullable="false" />
@@ -234,48 +223,35 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.SolicitudAcceso' no tiene de
           <Key>
             <PropertyRef Name="idUsuario" />
           </Key>
-          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="500" />
+          <Property Name="Correo" Type="varchar" MaxLength="200" />
+          <Property Name="Celular" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="usuario" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="contraseña" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="activo" Type="bit" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Residencial.dbo.usuarioEvento' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="usuarioEvento">
-          <Key>
-            <PropertyRef Name="idUsuario" />
-            <PropertyRef Name="idEvento" />
-          </Key>
-          <Property Name="idUsuario" Type="int" Nullable="false" />
-          <Property Name="idEvento" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Residencial.dbo.UsuarioRol' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="UsuarioRol">
           <Key>
             <PropertyRef Name="idUsuario" />
             <PropertyRef Name="idRol" />
-            <PropertyRef Name="activo" />
           </Key>
           <Property Name="idUsuario" Type="int" Nullable="false" />
           <Property Name="idRol" Type="int" Nullable="false" />
           <Property Name="activo" Type="bit" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Residencial.dbo.usuarioUbicacion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="usuarioUbicacion">
           <Key>
             <PropertyRef Name="idUbicacion" />
             <PropertyRef Name="idUsuario" />
-            <PropertyRef Name="activo" />
           </Key>
           <Property Name="idUbicacion" Type="int" Nullable="false" />
           <Property Name="idUsuario" Type="int" Nullable="false" />
           <Property Name="activo" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Residencial.dbo.UsuarioVisita' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'RESIDENCIAL.dbo.UsuarioVisita' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="UsuarioVisita">
           <Key>
             <PropertyRef Name="idUsuario" />
@@ -292,14 +268,12 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.UsuarioVisita' no tiene defi
           <Key>
             <PropertyRef Name="idVehiculo" />
           </Key>
-          <Property Name="idVehiculo" Type="int" Nullable="false" />
+          <Property Name="idVehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descripcion" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="placas" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="activo" Type="bit" />
           <Property Name="tag" Type="nvarchar" MaxLength="24" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="VehiculoUbicacion">
           <Key>
             <PropertyRef Name="idVehiculo" />
@@ -314,7 +288,7 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <Key>
             <PropertyRef Name="idVisita" />
           </Key>
-          <Property Name="idVisita" Type="int" Nullable="false" />
+          <Property Name="idVisita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idTipoVisita" Type="int" Nullable="false" />
           <Property Name="nombre" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="apellidos" Type="nvarchar" MaxLength="200" Nullable="false" />
@@ -324,6 +298,18 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <Property Name="activo" Type="bit" />
           <Property Name="QR" Type="nvarchar" MaxLength="1239" />
         </EntityType>
+        <Association Name="FK__Visita__idUbicac__4D94879B">
+          <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
+          <End Role="Visita" Type="Self.Visita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion">
+              <PropertyRef Name="idUbicacion" />
+            </Principal>
+            <Dependent Role="Visita">
+              <PropertyRef Name="idUbicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Dispositivo_Ubicacion">
           <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
           <End Role="Dispositivo" Type="Self.Dispositivo" Multiplicity="*" />
@@ -372,6 +358,18 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_HuellaPersonal">
+          <End Role="Personal" Type="Self.Personal" Multiplicity="1" />
+          <End Role="Huella" Type="Self.Huella" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="Huella">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_IngresoSalidaPersonal_Personal">
           <End Role="Personal" Type="Self.Personal" Multiplicity="1" />
           <End Role="IngresoSalidaPersonal" Type="Self.IngresoSalidaPersonal" Multiplicity="0..1" />
@@ -393,30 +391,6 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
             </Principal>
             <Dependent Role="ingresoSalidaVisita">
               <PropertyRef Name="idVisita" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PersonalHuella_Huella">
-          <End Role="Huella" Type="Self.Huella" Multiplicity="1" />
-          <End Role="PersonalHuella" Type="Self.PersonalHuella" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Huella">
-              <PropertyRef Name="idHuella" />
-            </Principal>
-            <Dependent Role="PersonalHuella">
-              <PropertyRef Name="idHuella" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PersonalHuella_Personal">
-          <End Role="Personal" Type="Self.Personal" Multiplicity="1" />
-          <End Role="PersonalHuella" Type="Self.PersonalHuella" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Personal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="PersonalHuella">
-              <PropertyRef Name="idPersonal" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -504,26 +478,14 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_usuarioEvento_Evento">
-          <End Role="Evento" Type="Self.Evento" Multiplicity="1" />
-          <End Role="usuarioEvento" Type="Self.usuarioEvento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Evento">
-              <PropertyRef Name="idEvento" />
-            </Principal>
-            <Dependent Role="usuarioEvento">
-              <PropertyRef Name="idEvento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_usuarioEvento_Usuario">
+        <Association Name="FK_UsuarioEvento">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
-          <End Role="usuarioEvento" Type="Self.usuarioEvento" Multiplicity="*" />
+          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
               <PropertyRef Name="idUsuario" />
             </Principal>
-            <Dependent Role="usuarioEvento">
+            <Dependent Role="Evento">
               <PropertyRef Name="idUsuario" />
             </Dependent>
           </ReferentialConstraint>
@@ -645,12 +607,16 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <EntitySet Name="Permiso" EntityType="Self.Permiso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personal" EntityType="Self.Personal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RolPermiso" EntityType="Self.RolPermiso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipoUbicacion" EntityType="Self.tipoUbicacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoVisita" EntityType="Self.TipoVisita" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ubicacion" EntityType="Self.Ubicacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuarioRol" EntityType="Self.UsuarioRol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuarioUbicacion" EntityType="Self.usuarioUbicacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehiculoUbicacion" EntityType="Self.VehiculoUbicacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Visita" EntityType="Self.Visita" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FotoEventoEntrada" EntityType="Self.FotoEventoEntrada" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -693,12 +659,6 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
     [ingresoSalidaVisita].[fotoSalidaUrl] AS [fotoSalidaUrl]
     FROM [dbo].[ingresoSalidaVisita] AS [ingresoSalidaVisita]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="PersonalHuella" EntityType="Self.PersonalHuella" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [PersonalHuella].[idHuella] AS [idHuella], 
-    [PersonalHuella].[idPersonal] AS [idPersonal]
-    FROM [dbo].[PersonalHuella] AS [PersonalHuella]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="PersonalUbicacion" EntityType="Self.PersonalUbicacion" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [PersonalUbicacion].[idPersonal] AS [idPersonal], 
@@ -706,13 +666,6 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
     [PersonalUbicacion].[fechaRegistro] AS [fechaRegistro], 
     [PersonalUbicacion].[activo] AS [activo]
     FROM [dbo].[PersonalUbicacion] AS [PersonalUbicacion]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="RolPermiso" EntityType="Self.RolPermiso" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [RolPermiso].[idRol] AS [idRol], 
-    [RolPermiso].[idPermiso] AS [idPermiso], 
-    [RolPermiso].[activo] AS [activo]
-    FROM [dbo].[RolPermiso] AS [RolPermiso]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="SolicitudAcceso" EntityType="Self.SolicitudAcceso" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -723,26 +676,6 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
     [SolicitudAcceso].[fechaRespuesta] AS [fechaRespuesta]
     FROM [dbo].[SolicitudAcceso] AS [SolicitudAcceso]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="usuarioEvento" EntityType="Self.usuarioEvento" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [usuarioEvento].[idUsuario] AS [idUsuario], 
-    [usuarioEvento].[idEvento] AS [idEvento]
-    FROM [dbo].[usuarioEvento] AS [usuarioEvento]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="UsuarioRol" EntityType="Self.UsuarioRol" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [UsuarioRol].[idUsuario] AS [idUsuario], 
-    [UsuarioRol].[idRol] AS [idRol], 
-    [UsuarioRol].[activo] AS [activo]
-    FROM [dbo].[UsuarioRol] AS [UsuarioRol]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="usuarioUbicacion" EntityType="Self.usuarioUbicacion" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [usuarioUbicacion].[idUbicacion] AS [idUbicacion], 
-    [usuarioUbicacion].[idUsuario] AS [idUsuario], 
-    [usuarioUbicacion].[activo] AS [activo]
-    FROM [dbo].[usuarioUbicacion] AS [usuarioUbicacion]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="UsuarioVisita" EntityType="Self.UsuarioVisita" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [UsuarioVisita].[idUsuario] AS [idUsuario], 
@@ -751,14 +684,10 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
     [UsuarioVisita].[activo] AS [activo]
     FROM [dbo].[UsuarioVisita] AS [UsuarioVisita]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="VehiculoUbicacion" EntityType="Self.VehiculoUbicacion" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [VehiculoUbicacion].[idVehiculo] AS [idVehiculo], 
-    [VehiculoUbicacion].[idUbicacion] AS [idUbicacion], 
-    [VehiculoUbicacion].[activo] AS [activo], 
-    [VehiculoUbicacion].[fechaRegistro] AS [fechaRegistro]
-    FROM [dbo].[VehiculoUbicacion] AS [VehiculoUbicacion]</DefiningQuery>
-          </EntitySet>
+          <AssociationSet Name="FK__Visita__idUbicac__4D94879B" Association="Self.FK__Visita__idUbicac__4D94879B">
+            <End Role="Ubicacion" EntitySet="Ubicacion" />
+            <End Role="Visita" EntitySet="Visita" />
+          </AssociationSet>
           <AssociationSet Name="FK_Dispositivo_Ubicacion" Association="Self.FK_Dispositivo_Ubicacion">
             <End Role="Ubicacion" EntitySet="Ubicacion" />
             <End Role="Dispositivo" EntitySet="Dispositivo" />
@@ -775,6 +704,10 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
             <End Role="Evento" EntitySet="Evento" />
             <End Role="FotoEventoSalida" EntitySet="FotoEventoSalida" />
           </AssociationSet>
+          <AssociationSet Name="FK_HuellaPersonal" Association="Self.FK_HuellaPersonal">
+            <End Role="Personal" EntitySet="Personal" />
+            <End Role="Huella" EntitySet="Huella" />
+          </AssociationSet>
           <AssociationSet Name="FK_IngresoSalidaPersonal_Personal" Association="Self.FK_IngresoSalidaPersonal_Personal">
             <End Role="Personal" EntitySet="Personal" />
             <End Role="IngresoSalidaPersonal" EntitySet="IngresoSalidaPersonal" />
@@ -782,14 +715,6 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <AssociationSet Name="FK_ingresoSalidaVisita_Visita" Association="Self.FK_ingresoSalidaVisita_Visita">
             <End Role="Visita" EntitySet="Visita" />
             <End Role="ingresoSalidaVisita" EntitySet="ingresoSalidaVisita" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonalHuella_Huella" Association="Self.FK_PersonalHuella_Huella">
-            <End Role="Huella" EntitySet="Huella" />
-            <End Role="PersonalHuella" EntitySet="PersonalHuella" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonalHuella_Personal" Association="Self.FK_PersonalHuella_Personal">
-            <End Role="Personal" EntitySet="Personal" />
-            <End Role="PersonalHuella" EntitySet="PersonalHuella" />
           </AssociationSet>
           <AssociationSet Name="FK_PersonalUbicacion_Personal" Association="Self.FK_PersonalUbicacion_Personal">
             <End Role="Personal" EntitySet="Personal" />
@@ -819,13 +744,9 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
             <End Role="tipoUbicacion" EntitySet="tipoUbicacion" />
             <End Role="Ubicacion" EntitySet="Ubicacion" />
           </AssociationSet>
-          <AssociationSet Name="FK_usuarioEvento_Evento" Association="Self.FK_usuarioEvento_Evento">
-            <End Role="Evento" EntitySet="Evento" />
-            <End Role="usuarioEvento" EntitySet="usuarioEvento" />
-          </AssociationSet>
-          <AssociationSet Name="FK_usuarioEvento_Usuario" Association="Self.FK_usuarioEvento_Usuario">
+          <AssociationSet Name="FK_UsuarioEvento" Association="Self.FK_UsuarioEvento">
             <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="usuarioEvento" EntitySet="usuarioEvento" />
+            <End Role="Evento" EntitySet="Evento" />
           </AssociationSet>
           <AssociationSet Name="FK_UsuarioRol_Rol" Association="Self.FK_UsuarioRol_Rol">
             <End Role="Rol" EntitySet="Rol" />
@@ -877,24 +798,24 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <EntitySet Name="Permiso" EntityType="ResidencialModel.Permiso" />
           <EntitySet Name="Personal" EntityType="ResidencialModel.Personal" />
           <EntitySet Name="Rol" EntityType="ResidencialModel.Rol" />
+          <EntitySet Name="RolPermiso" EntityType="ResidencialModel.RolPermiso" />
           <EntitySet Name="sysdiagrams" EntityType="ResidencialModel.sysdiagrams" />
           <EntitySet Name="tipoUbicacion" EntityType="ResidencialModel.tipoUbicacion" />
           <EntitySet Name="TipoVisita" EntityType="ResidencialModel.TipoVisita" />
           <EntitySet Name="Ubicacion" EntityType="ResidencialModel.Ubicacion" />
           <EntitySet Name="Usuario" EntityType="ResidencialModel.Usuario" />
+          <EntitySet Name="UsuarioRol" EntityType="ResidencialModel.UsuarioRol" />
+          <EntitySet Name="usuarioUbicacion" EntityType="ResidencialModel.usuarioUbicacion" />
           <EntitySet Name="Vehiculo" EntityType="ResidencialModel.Vehiculo" />
+          <EntitySet Name="VehiculoUbicacion" EntityType="ResidencialModel.VehiculoUbicacion" />
           <EntitySet Name="Visita" EntityType="ResidencialModel.Visita" />
           <EntitySet Name="FotoEventoEntrada" EntityType="ResidencialModel.FotoEventoEntrada" />
           <EntitySet Name="FotoEventoSalida" EntityType="ResidencialModel.FotoEventoSalida" />
           <EntitySet Name="IngresoSalidaPersonal" EntityType="ResidencialModel.IngresoSalidaPersonal" />
           <EntitySet Name="ingresoSalidaVisita" EntityType="ResidencialModel.ingresoSalidaVisita" />
           <EntitySet Name="PersonalUbicacion" EntityType="ResidencialModel.PersonalUbicacion" />
-          <EntitySet Name="RolPermiso" EntityType="ResidencialModel.RolPermiso" />
           <EntitySet Name="SolicitudAcceso" EntityType="ResidencialModel.SolicitudAcceso" />
-          <EntitySet Name="UsuarioRol" EntityType="ResidencialModel.UsuarioRol" />
-          <EntitySet Name="usuarioUbicacion" EntityType="ResidencialModel.usuarioUbicacion" />
           <EntitySet Name="UsuarioVisita" EntityType="ResidencialModel.UsuarioVisita" />
-          <EntitySet Name="VehiculoUbicacion" EntityType="ResidencialModel.VehiculoUbicacion" />
           <AssociationSet Name="FK_Dispositivo_Ubicacion" Association="ResidencialModel.FK_Dispositivo_Ubicacion">
             <End Role="Ubicacion" EntitySet="Ubicacion" />
             <End Role="Dispositivo" EntitySet="Dispositivo" />
@@ -910,6 +831,14 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <AssociationSet Name="FK_FotoEventoSalida_Evento" Association="ResidencialModel.FK_FotoEventoSalida_Evento">
             <End Role="Evento" EntitySet="Evento" />
             <End Role="FotoEventoSalida" EntitySet="FotoEventoSalida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioEvento" Association="ResidencialModel.FK_UsuarioEvento">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HuellaPersonal" Association="ResidencialModel.FK_HuellaPersonal">
+            <End Role="Personal" EntitySet="Personal" />
+            <End Role="Huella" EntitySet="Huella" />
           </AssociationSet>
           <AssociationSet Name="FK_RolPermiso_Permiso" Association="ResidencialModel.FK_RolPermiso_Permiso">
             <End Role="Permiso" EntitySet="Permiso" />
@@ -937,6 +866,10 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           </AssociationSet>
           <AssociationSet Name="FK_Visita_TipoVisita" Association="ResidencialModel.FK_Visita_TipoVisita">
             <End Role="TipoVisita" EntitySet="TipoVisita" />
+            <End Role="Visita" EntitySet="Visita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Visita__idUbicac__4D94879B" Association="ResidencialModel.FK__Visita__idUbicac__4D94879B">
+            <End Role="Ubicacion" EntitySet="Ubicacion" />
             <End Role="Visita" EntitySet="Visita" />
           </AssociationSet>
           <AssociationSet Name="FK_PersonalUbicacion_Ubicacion" Association="ResidencialModel.FK_PersonalUbicacion_Ubicacion">
@@ -983,20 +916,12 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
             <End Role="Visita" EntitySet="Visita" />
             <End Role="UsuarioVisita" EntitySet="UsuarioVisita" />
           </AssociationSet>
-          <AssociationSet Name="PersonalHuella" Association="ResidencialModel.PersonalHuella">
-            <End Role="Huella" EntitySet="Huella" />
-            <End Role="Personal" EntitySet="Personal" />
-          </AssociationSet>
-          <AssociationSet Name="usuarioEvento" Association="ResidencialModel.usuarioEvento">
-            <End Role="Evento" EntitySet="Evento" />
-            <End Role="Usuario" EntitySet="Usuario" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Boletin">
           <Key>
             <PropertyRef Name="idBoletin" />
           </Key>
-          <Property Name="idBoletin" Type="Int32" Nullable="false" />
+          <Property Name="idBoletin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="mensaje" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="activo" Type="Boolean" />
           <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
@@ -1007,7 +932,7 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <Key>
             <PropertyRef Name="idDispositivo" />
           </Key>
-          <Property Name="idDispositivo" Type="Int32" Nullable="false" />
+          <Property Name="idDispositivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Ip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1022,27 +947,29 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <Key>
             <PropertyRef Name="idEvento" />
           </Key>
-          <Property Name="idEvento" Type="Int32" Nullable="false" />
+          <Property Name="idEvento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="incio" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="fin" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="QR" Type="String" Nullable="false" MaxLength="1239" FixedLength="false" Unicode="true" />
           <Property Name="idUbicacion" Type="Int32" Nullable="false" />
           <Property Name="activo" Type="Int32" Nullable="false" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Ubicacion" Relationship="ResidencialModel.FK_Evento_Ubicacion" FromRole="Evento" ToRole="Ubicacion" />
           <NavigationProperty Name="FotoEventoEntrada" Relationship="ResidencialModel.FK_FotoEvento_Evento" FromRole="Evento" ToRole="FotoEventoEntrada" />
           <NavigationProperty Name="FotoEventoSalida" Relationship="ResidencialModel.FK_FotoEventoSalida_Evento" FromRole="Evento" ToRole="FotoEventoSalida" />
-          <NavigationProperty Name="Usuario" Relationship="ResidencialModel.usuarioEvento" FromRole="Evento" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario" Relationship="ResidencialModel.FK_UsuarioEvento" FromRole="Evento" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Huella">
           <Key>
             <PropertyRef Name="idHuella" />
           </Key>
-          <Property Name="idHuella" Type="Int32" Nullable="false" />
+          <Property Name="idHuella" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="huella1" Type="Binary" Nullable="false" MaxLength="1632" FixedLength="false" />
           <Property Name="activo" Type="Boolean" Nullable="false" />
           <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Personal" Relationship="ResidencialModel.PersonalHuella" FromRole="Huella" ToRole="Personal" />
+          <Property Name="idPersonal" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Personal" Relationship="ResidencialModel.FK_HuellaPersonal" FromRole="Huella" ToRole="Personal" />
         </EntityType>
         <EntityType Name="Parametro">
           <Key>
@@ -1058,7 +985,7 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <Key>
             <PropertyRef Name="idPermiso" />
           </Key>
-          <Property Name="idPermiso" Type="Int32" Nullable="false" />
+          <Property Name="idPermiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="activo" Type="Boolean" />
           <NavigationProperty Name="RolPermiso" Relationship="ResidencialModel.FK_RolPermiso_Permiso" FromRole="Permiso" ToRole="RolPermiso" />
@@ -1067,25 +994,36 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <Key>
             <PropertyRef Name="idPersonal" />
           </Key>
-          <Property Name="idPersonal" Type="Int32" Nullable="false" />
+          <Property Name="idPersonal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="ApPaterno" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="ApMaterno" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="activo" Type="Boolean" Nullable="false" />
           <Property Name="fotoPersonal" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Huella" Relationship="ResidencialModel.FK_HuellaPersonal" FromRole="Personal" ToRole="Huella" />
           <NavigationProperty Name="IngresoSalidaPersonal" Relationship="ResidencialModel.FK_IngresoSalidaPersonal_Personal" FromRole="Personal" ToRole="IngresoSalidaPersonal" />
           <NavigationProperty Name="PersonalUbicacion" Relationship="ResidencialModel.FK_PersonalUbicacion_Personal" FromRole="Personal" ToRole="PersonalUbicacion" />
-          <NavigationProperty Name="Huella" Relationship="ResidencialModel.PersonalHuella" FromRole="Personal" ToRole="Huella" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
             <PropertyRef Name="idRol" />
           </Key>
-          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="activo" Type="Boolean" />
           <NavigationProperty Name="RolPermiso" Relationship="ResidencialModel.FK_RolPermiso_Rol" FromRole="Rol" ToRole="RolPermiso" />
           <NavigationProperty Name="UsuarioRol" Relationship="ResidencialModel.FK_UsuarioRol_Rol" FromRole="Rol" ToRole="UsuarioRol" />
+        </EntityType>
+        <EntityType Name="RolPermiso">
+          <Key>
+            <PropertyRef Name="idRol" />
+            <PropertyRef Name="idPermiso" />
+          </Key>
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="idPermiso" Type="Int32" Nullable="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Permiso" Relationship="ResidencialModel.FK_RolPermiso_Permiso" FromRole="RolPermiso" ToRole="Permiso" />
+          <NavigationProperty Name="Rol" Relationship="ResidencialModel.FK_RolPermiso_Rol" FromRole="RolPermiso" ToRole="Rol" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -1101,7 +1039,7 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <Key>
             <PropertyRef Name="idTipoUbicacion" />
           </Key>
-          <Property Name="idTipoUbicacion" Type="Int32" Nullable="false" />
+          <Property Name="idTipoUbicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Ubicacion" Relationship="ResidencialModel.FK_Ubicacion_tipoUbicacion" FromRole="tipoUbicacion" ToRole="Ubicacion" />
         </EntityType>
@@ -1109,7 +1047,7 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <Key>
             <PropertyRef Name="idTipoVisita" />
           </Key>
-          <Property Name="idTipoVisita" Type="Int32" Nullable="false" />
+          <Property Name="idTipoVisita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="activo" Type="Boolean" />
           <NavigationProperty Name="Visita" Relationship="ResidencialModel.FK_Visita_TipoVisita" FromRole="TipoVisita" ToRole="Visita" />
@@ -1118,13 +1056,14 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <Key>
             <PropertyRef Name="idUbicacion" />
           </Key>
-          <Property Name="idUbicacion" Type="Int32" Nullable="false" />
+          <Property Name="idUbicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="idTipoUbicacion" Type="Int32" Nullable="false" />
           <Property Name="activo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Dispositivo" Relationship="ResidencialModel.FK_Dispositivo_Ubicacion" FromRole="Ubicacion" ToRole="Dispositivo" />
           <NavigationProperty Name="Evento" Relationship="ResidencialModel.FK_Evento_Ubicacion" FromRole="Ubicacion" ToRole="Evento" />
           <NavigationProperty Name="tipoUbicacion" Relationship="ResidencialModel.FK_Ubicacion_tipoUbicacion" FromRole="Ubicacion" ToRole="tipoUbicacion" />
+          <NavigationProperty Name="Visita" Relationship="ResidencialModel.FK__Visita__idUbicac__4D94879B" FromRole="Ubicacion" ToRole="Visita" />
           <NavigationProperty Name="PersonalUbicacion" Relationship="ResidencialModel.FK_PersonalUbicacion_Ubicacion" FromRole="Ubicacion" ToRole="PersonalUbicacion" />
           <NavigationProperty Name="SolicitudAcceso" Relationship="ResidencialModel.FK_SolicitudAcceso_Ubicacion" FromRole="Ubicacion" ToRole="SolicitudAcceso" />
           <NavigationProperty Name="usuarioUbicacion" Relationship="ResidencialModel.FK_usuarioUbicacion_Ubicacion" FromRole="Ubicacion" ToRole="usuarioUbicacion" />
@@ -1134,32 +1073,69 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <Key>
             <PropertyRef Name="idUsuario" />
           </Key>
-          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Celular" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="usuario1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="contraseña" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Evento" Relationship="ResidencialModel.FK_UsuarioEvento" FromRole="Usuario" ToRole="Evento" />
           <NavigationProperty Name="UsuarioRol" Relationship="ResidencialModel.FK_UsuarioRol_Usuario" FromRole="Usuario" ToRole="UsuarioRol" />
           <NavigationProperty Name="usuarioUbicacion" Relationship="ResidencialModel.FK_usuarioUbicacion_Usuario" FromRole="Usuario" ToRole="usuarioUbicacion" />
           <NavigationProperty Name="UsuarioVisita" Relationship="ResidencialModel.FK_UsuarioVisita_Usuario" FromRole="Usuario" ToRole="UsuarioVisita" />
-          <NavigationProperty Name="Evento" Relationship="ResidencialModel.usuarioEvento" FromRole="Usuario" ToRole="Evento" />
+        </EntityType>
+        <EntityType Name="UsuarioRol">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Rol" Relationship="ResidencialModel.FK_UsuarioRol_Rol" FromRole="UsuarioRol" ToRole="Rol" />
+          <NavigationProperty Name="Usuario" Relationship="ResidencialModel.FK_UsuarioRol_Usuario" FromRole="UsuarioRol" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="usuarioUbicacion">
+          <Key>
+            <PropertyRef Name="idUbicacion" />
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUbicacion" Type="Int32" Nullable="false" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ubicacion" Relationship="ResidencialModel.FK_usuarioUbicacion_Ubicacion" FromRole="usuarioUbicacion" ToRole="Ubicacion" />
+          <NavigationProperty Name="Usuario" Relationship="ResidencialModel.FK_usuarioUbicacion_Usuario" FromRole="usuarioUbicacion" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Vehiculo">
           <Key>
             <PropertyRef Name="idVehiculo" />
           </Key>
-          <Property Name="idVehiculo" Type="Int32" Nullable="false" />
+          <Property Name="idVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="placas" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="activo" Type="Boolean" />
           <Property Name="tag" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="VehiculoUbicacion" Relationship="ResidencialModel.FK_VehiculoUbicacion_Vehiculo" FromRole="Vehiculo" ToRole="VehiculoUbicacion" />
         </EntityType>
+        <EntityType Name="VehiculoUbicacion">
+          <Key>
+            <PropertyRef Name="idVehiculo" />
+            <PropertyRef Name="idUbicacion" />
+          </Key>
+          <Property Name="idVehiculo" Type="Int32" Nullable="false" />
+          <Property Name="idUbicacion" Type="Int32" Nullable="false" />
+          <Property Name="activo" Type="Boolean" />
+          <Property Name="fechaRegistro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Ubicacion" Relationship="ResidencialModel.FK_VehiculoUbicacion_Ubicacion" FromRole="VehiculoUbicacion" ToRole="Ubicacion" />
+          <NavigationProperty Name="Vehiculo" Relationship="ResidencialModel.FK_VehiculoUbicacion_Vehiculo" FromRole="VehiculoUbicacion" ToRole="Vehiculo" />
+        </EntityType>
         <EntityType Name="Visita">
           <Key>
             <PropertyRef Name="idVisita" />
           </Key>
-          <Property Name="idVisita" Type="Int32" Nullable="false" />
+          <Property Name="idVisita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idTipoVisita" Type="Int32" Nullable="false" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="apellidos" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -1169,6 +1145,7 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <Property Name="activo" Type="Boolean" />
           <Property Name="QR" Type="String" MaxLength="1239" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TipoVisita" Relationship="ResidencialModel.FK_Visita_TipoVisita" FromRole="Visita" ToRole="TipoVisita" />
+          <NavigationProperty Name="Ubicacion" Relationship="ResidencialModel.FK__Visita__idUbicac__4D94879B" FromRole="Visita" ToRole="Ubicacion" />
           <NavigationProperty Name="ingresoSalidaVisita" Relationship="ResidencialModel.FK_ingresoSalidaVisita_Visita" FromRole="Visita" ToRole="ingresoSalidaVisita" />
           <NavigationProperty Name="SolicitudAcceso" Relationship="ResidencialModel.FK_SolicitudAcceso_Visita" FromRole="Visita" ToRole="SolicitudAcceso" />
           <NavigationProperty Name="UsuarioVisita" Relationship="ResidencialModel.FK_UsuarioVisita_Visita" FromRole="Visita" ToRole="UsuarioVisita" />
@@ -1180,7 +1157,7 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
             <PropertyRef Name="fotoPlacaDelantera" />
             <PropertyRef Name="fechaIngreso" />
           </Key>
-          <Property Name="idFotoEvento" Type="Int32" Nullable="false" />
+          <Property Name="idFotoEvento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idEvento" Type="Int32" Nullable="false" />
           <Property Name="fotoPlacaDelantera" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="fotoPlacaTrasera" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -1195,7 +1172,7 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
             <PropertyRef Name="idFotoEventoSalida" />
             <PropertyRef Name="idEvento" />
           </Key>
-          <Property Name="idFotoEventoSalida" Type="Int32" Nullable="false" />
+          <Property Name="idFotoEventoSalida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idEvento" Type="Int32" Nullable="false" />
           <Property Name="placa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="fotoSalida" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -1205,7 +1182,7 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <Key>
             <PropertyRef Name="idPersonal" />
           </Key>
-          <Property Name="idPersonal" Type="Int32" Nullable="false" />
+          <Property Name="idPersonal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="fechaIngreso" Type="DateTime" Precision="3" />
           <Property Name="fechaSalida" Type="DateTime" Precision="3" />
           <Property Name="fotoEntrada" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -1220,7 +1197,7 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
             <PropertyRef Name="fotoPlacaTrasera" />
             <PropertyRef Name="fotoCabina" />
           </Key>
-          <Property Name="idVisita" Type="Int32" Nullable="false" />
+          <Property Name="idVisita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="fechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="fotoPlacaDelantera" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="fotoPlacaTrasera" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -1236,24 +1213,12 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
             <PropertyRef Name="idUbicacion" />
             <PropertyRef Name="fechaRegistro" />
           </Key>
-          <Property Name="idPersonal" Type="Int32" Nullable="false" />
+          <Property Name="idPersonal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idUbicacion" Type="Int32" Nullable="false" />
           <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="activo" Type="Boolean" />
           <NavigationProperty Name="Personal" Relationship="ResidencialModel.FK_PersonalUbicacion_Personal" FromRole="PersonalUbicacion" ToRole="Personal" />
           <NavigationProperty Name="Ubicacion" Relationship="ResidencialModel.FK_PersonalUbicacion_Ubicacion" FromRole="PersonalUbicacion" ToRole="Ubicacion" />
-        </EntityType>
-        <EntityType Name="RolPermiso">
-          <Key>
-            <PropertyRef Name="idRol" />
-            <PropertyRef Name="idPermiso" />
-            <PropertyRef Name="activo" />
-          </Key>
-          <Property Name="idRol" Type="Int32" Nullable="false" />
-          <Property Name="idPermiso" Type="Int32" Nullable="false" />
-          <Property Name="activo" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Permiso" Relationship="ResidencialModel.FK_RolPermiso_Permiso" FromRole="RolPermiso" ToRole="Permiso" />
-          <NavigationProperty Name="Rol" Relationship="ResidencialModel.FK_RolPermiso_Rol" FromRole="RolPermiso" ToRole="Rol" />
         </EntityType>
         <EntityType Name="SolicitudAcceso">
           <Key>
@@ -1266,30 +1231,6 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <Property Name="fechaRespuesta" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Ubicacion" Relationship="ResidencialModel.FK_SolicitudAcceso_Ubicacion" FromRole="SolicitudAcceso" ToRole="Ubicacion" />
           <NavigationProperty Name="Visita" Relationship="ResidencialModel.FK_SolicitudAcceso_Visita" FromRole="SolicitudAcceso" ToRole="Visita" />
-        </EntityType>
-        <EntityType Name="UsuarioRol">
-          <Key>
-            <PropertyRef Name="idUsuario" />
-            <PropertyRef Name="idRol" />
-            <PropertyRef Name="activo" />
-          </Key>
-          <Property Name="idUsuario" Type="Int32" Nullable="false" />
-          <Property Name="idRol" Type="Int32" Nullable="false" />
-          <Property Name="activo" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Rol" Relationship="ResidencialModel.FK_UsuarioRol_Rol" FromRole="UsuarioRol" ToRole="Rol" />
-          <NavigationProperty Name="Usuario" Relationship="ResidencialModel.FK_UsuarioRol_Usuario" FromRole="UsuarioRol" ToRole="Usuario" />
-        </EntityType>
-        <EntityType Name="usuarioUbicacion">
-          <Key>
-            <PropertyRef Name="idUbicacion" />
-            <PropertyRef Name="idUsuario" />
-            <PropertyRef Name="activo" />
-          </Key>
-          <Property Name="idUbicacion" Type="Int32" Nullable="false" />
-          <Property Name="idUsuario" Type="Int32" Nullable="false" />
-          <Property Name="activo" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Ubicacion" Relationship="ResidencialModel.FK_usuarioUbicacion_Ubicacion" FromRole="usuarioUbicacion" ToRole="Ubicacion" />
-          <NavigationProperty Name="Usuario" Relationship="ResidencialModel.FK_usuarioUbicacion_Usuario" FromRole="usuarioUbicacion" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="UsuarioVisita">
           <Key>
@@ -1304,18 +1245,6 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <Property Name="activo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Usuario" Relationship="ResidencialModel.FK_UsuarioVisita_Usuario" FromRole="UsuarioVisita" ToRole="Usuario" />
           <NavigationProperty Name="Visita" Relationship="ResidencialModel.FK_UsuarioVisita_Visita" FromRole="UsuarioVisita" ToRole="Visita" />
-        </EntityType>
-        <EntityType Name="VehiculoUbicacion">
-          <Key>
-            <PropertyRef Name="idVehiculo" />
-            <PropertyRef Name="idUbicacion" />
-          </Key>
-          <Property Name="idVehiculo" Type="Int32" Nullable="false" />
-          <Property Name="idUbicacion" Type="Int32" Nullable="false" />
-          <Property Name="activo" Type="Boolean" />
-          <Property Name="fechaRegistro" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Ubicacion" Relationship="ResidencialModel.FK_VehiculoUbicacion_Ubicacion" FromRole="VehiculoUbicacion" ToRole="Ubicacion" />
-          <NavigationProperty Name="Vehiculo" Relationship="ResidencialModel.FK_VehiculoUbicacion_Vehiculo" FromRole="VehiculoUbicacion" ToRole="Vehiculo" />
         </EntityType>
         <Association Name="FK_Dispositivo_Ubicacion">
           <End Type="ResidencialModel.Ubicacion" Role="Ubicacion" Multiplicity="1" />
@@ -1362,6 +1291,30 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
             </Principal>
             <Dependent Role="FotoEventoSalida">
               <PropertyRef Name="idEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioEvento">
+          <End Type="ResidencialModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="ResidencialModel.Evento" Role="Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HuellaPersonal">
+          <End Type="ResidencialModel.Personal" Role="Personal" Multiplicity="1" />
+          <End Type="ResidencialModel.Huella" Role="Huella" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="Huella">
+              <PropertyRef Name="idPersonal" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1446,6 +1399,18 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
             </Principal>
             <Dependent Role="Visita">
               <PropertyRef Name="idTipoVisita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Visita__idUbicac__4D94879B">
+          <End Type="ResidencialModel.Ubicacion" Role="Ubicacion" Multiplicity="1" />
+          <End Type="ResidencialModel.Visita" Role="Visita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion">
+              <PropertyRef Name="idUbicacion" />
+            </Principal>
+            <Dependent Role="Visita">
+              <PropertyRef Name="idUbicacion" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1581,15 +1546,7 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="PersonalHuella">
-          <End Type="ResidencialModel.Huella" Role="Huella" Multiplicity="*" />
-          <End Type="ResidencialModel.Personal" Role="Personal" Multiplicity="*" />
-        </Association>
-        <Association Name="usuarioEvento">
-          <End Type="ResidencialModel.Evento" Role="Evento" Multiplicity="*" />
-          <End Type="ResidencialModel.Usuario" Role="Usuario" Multiplicity="*" />
-        </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1625,6 +1582,7 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <EntitySetMapping Name="Evento">
             <EntityTypeMapping TypeName="ResidencialModel.Evento">
               <MappingFragment StoreEntitySet="Evento">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
                 <ScalarProperty Name="activo" ColumnName="activo" />
                 <ScalarProperty Name="idUbicacion" ColumnName="idUbicacion" />
                 <ScalarProperty Name="QR" ColumnName="QR" />
@@ -1638,6 +1596,7 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
           <EntitySetMapping Name="Huella">
             <EntityTypeMapping TypeName="ResidencialModel.Huella">
               <MappingFragment StoreEntitySet="Huella">
+                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
                 <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
                 <ScalarProperty Name="activo" ColumnName="activo" />
                 <ScalarProperty Name="huella1" ColumnName="huella" />
@@ -1686,6 +1645,15 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="RolPermiso">
+            <EntityTypeMapping TypeName="ResidencialModel.RolPermiso">
+              <MappingFragment StoreEntitySet="RolPermiso">
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="idPermiso" ColumnName="idPermiso" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="ResidencialModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -1730,8 +1698,29 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
                 <ScalarProperty Name="activo" ColumnName="activo" />
                 <ScalarProperty Name="contraseña" ColumnName="contraseña" />
                 <ScalarProperty Name="usuario1" ColumnName="usuario" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsuarioRol">
+            <EntityTypeMapping TypeName="ResidencialModel.UsuarioRol">
+              <MappingFragment StoreEntitySet="UsuarioRol">
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarioUbicacion">
+            <EntityTypeMapping TypeName="ResidencialModel.usuarioUbicacion">
+              <MappingFragment StoreEntitySet="usuarioUbicacion">
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idUbicacion" ColumnName="idUbicacion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1742,6 +1731,16 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
                 <ScalarProperty Name="activo" ColumnName="activo" />
                 <ScalarProperty Name="placas" ColumnName="placas" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idVehiculo" ColumnName="idVehiculo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehiculoUbicacion">
+            <EntityTypeMapping TypeName="ResidencialModel.VehiculoUbicacion">
+              <MappingFragment StoreEntitySet="VehiculoUbicacion">
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="idUbicacion" ColumnName="idUbicacion" />
                 <ScalarProperty Name="idVehiculo" ColumnName="idVehiculo" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1820,15 +1819,6 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RolPermiso">
-            <EntityTypeMapping TypeName="ResidencialModel.RolPermiso">
-              <MappingFragment StoreEntitySet="RolPermiso">
-                <ScalarProperty Name="activo" ColumnName="activo" />
-                <ScalarProperty Name="idPermiso" ColumnName="idPermiso" />
-                <ScalarProperty Name="idRol" ColumnName="idRol" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SolicitudAcceso">
             <EntityTypeMapping TypeName="ResidencialModel.SolicitudAcceso">
               <MappingFragment StoreEntitySet="SolicitudAcceso">
@@ -1837,24 +1827,6 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
                 <ScalarProperty Name="idUsuarioConcedeAcceso" ColumnName="idUsuarioConcedeAcceso" />
                 <ScalarProperty Name="idUbicacion" ColumnName="idUbicacion" />
                 <ScalarProperty Name="idVisita" ColumnName="idVisita" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UsuarioRol">
-            <EntityTypeMapping TypeName="ResidencialModel.UsuarioRol">
-              <MappingFragment StoreEntitySet="UsuarioRol">
-                <ScalarProperty Name="activo" ColumnName="activo" />
-                <ScalarProperty Name="idRol" ColumnName="idRol" />
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="usuarioUbicacion">
-            <EntityTypeMapping TypeName="ResidencialModel.usuarioUbicacion">
-              <MappingFragment StoreEntitySet="usuarioUbicacion">
-                <ScalarProperty Name="activo" ColumnName="activo" />
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-                <ScalarProperty Name="idUbicacion" ColumnName="idUbicacion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1868,32 +1840,6 @@ advertencia 6002: La tabla o vista 'Residencial.dbo.VehiculoUbicacion' no tiene 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VehiculoUbicacion">
-            <EntityTypeMapping TypeName="ResidencialModel.VehiculoUbicacion">
-              <MappingFragment StoreEntitySet="VehiculoUbicacion">
-                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
-                <ScalarProperty Name="activo" ColumnName="activo" />
-                <ScalarProperty Name="idUbicacion" ColumnName="idUbicacion" />
-                <ScalarProperty Name="idVehiculo" ColumnName="idVehiculo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="PersonalHuella" TypeName="ResidencialModel.PersonalHuella" StoreEntitySet="PersonalHuella">
-            <EndProperty Name="Personal">
-              <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
-            </EndProperty>
-            <EndProperty Name="Huella">
-              <ScalarProperty Name="idHuella" ColumnName="idHuella" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="usuarioEvento" TypeName="ResidencialModel.usuarioEvento" StoreEntitySet="usuarioEvento">
-            <EndProperty Name="Usuario">
-              <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-            </EndProperty>
-            <EndProperty Name="Evento">
-              <ScalarProperty Name="idEvento" ColumnName="idEvento" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

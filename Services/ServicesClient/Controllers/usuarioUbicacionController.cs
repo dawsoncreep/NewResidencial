@@ -14,120 +14,81 @@ namespace ServicesClient.Controllers
 {
     public class usuarioUbicacionController : ApiController
     {
-        private ResidencialEntities db = new ResidencialEntities();
+        private ResidencialEntities contexto = new ResidencialEntities();
 
-        // GET: api/usuarioUbicacion
-        public IQueryable<usuarioUbicacion> GetusuarioUbicacion()
+        [HttpGet]
+        public IEnumerable<usuarioUbicacion> Get()
         {
-            return db.usuarioUbicacion;
-        }
 
-        // GET: api/usuarioUbicacion/5
-        [ResponseType(typeof(usuarioUbicacion))]
-        public IHttpActionResult GetusuarioUbicacion(int id)
-        {
-            usuarioUbicacion usuarioUbicacion = db.usuarioUbicacion.Find(id);
-            if (usuarioUbicacion == null)
+            using (ResidencialEntities residencialEntities = new ResidencialEntities())
             {
-                return NotFound();
+                residencialEntities.Configuration.LazyLoadingEnabled = false;
+                List<usuarioUbicacion> lista = residencialEntities.usuarioUbicacion.ToList<usuarioUbicacion>();
+                return lista;
             }
-
-            return Ok(usuarioUbicacion);
         }
 
-        // PUT: api/usuarioUbicacion/5
+        [HttpGet]
+        public IEnumerable<usuarioUbicacion> Get(int id)
+        {
+            using (ResidencialEntities residencialEntities = new ResidencialEntities())
+            {
+                residencialEntities.Configuration.LazyLoadingEnabled = false;
+                List<usuarioUbicacion> lista = residencialEntities.usuarioUbicacion.ToList<usuarioUbicacion>().Where(s => s.idUbicacion == id).ToList();
+                return lista;
+
+            }
+        }
+
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutusuarioUbicacion(int id, usuarioUbicacion usuarioUbicacion)
+        [HttpPost]
+        public IHttpActionResult Agregar([FromBody]usuarioUbicacion model)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            if (id != usuarioUbicacion.idUbicacion)
+            using (ResidencialEntities residencialEntities = new ResidencialEntities())
+            {
+                if (ModelState.IsValid)
+                {
+
+                    contexto.usuarioUbicacion.Add(model);
+                    contexto.SaveChanges();
+                    return Ok(model);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+        }
+
+        [HttpDelete]
+        public IHttpActionResult Eliminar(usuarioUbicacion model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                using (ResidencialEntities residencialEntities = new ResidencialEntities())
+                {
+                    int existe;
+                    existe = contexto.usuarioUbicacion.Count(s => s.idUbicacion == model.idUbicacion && s.idUsuario == model.idUsuario);
+                    usuarioUbicacion ubicacion = contexto.usuarioUbicacion.FirstOrDefault(s => s.idUbicacion == model.idUbicacion && s.idUsuario == model.idUsuario);
+                    if (existe == 0)
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        contexto.usuarioUbicacion.Remove(ubicacion);
+                        contexto.SaveChanges();
+                        return Ok();
+                    }
+                }
+            }
+            else
             {
                 return BadRequest();
             }
 
-            db.Entry(usuarioUbicacion).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!usuarioUbicacionExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/usuarioUbicacion
-        [ResponseType(typeof(usuarioUbicacion))]
-        public IHttpActionResult PostusuarioUbicacion(usuarioUbicacion usuarioUbicacion)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.usuarioUbicacion.Add(usuarioUbicacion);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (usuarioUbicacionExists(usuarioUbicacion.idUbicacion))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = usuarioUbicacion.idUbicacion }, usuarioUbicacion);
-        }
-
-        // DELETE: api/usuarioUbicacion/5
-        [ResponseType(typeof(usuarioUbicacion))]
-        public IHttpActionResult DeleteusuarioUbicacion(int id)
-        {
-            usuarioUbicacion usuarioUbicacion = db.usuarioUbicacion.Find(id);
-            if (usuarioUbicacion == null)
-            {
-                return NotFound();
-            }
-
-            db.usuarioUbicacion.Remove(usuarioUbicacion);
-            db.SaveChanges();
-
-            return Ok(usuarioUbicacion);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool usuarioUbicacionExists(int id)
-        {
-            return db.usuarioUbicacion.Count(e => e.idUbicacion == id) > 0;
         }
     }
 }
