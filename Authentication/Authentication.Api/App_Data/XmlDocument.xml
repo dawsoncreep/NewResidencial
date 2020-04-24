@@ -1,0 +1,1790 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Authentication.Api</name>
+    </assembly>
+    <members>
+        <member name="T:Authentication.Api.BundleConfig">
+            <summary>
+            The bundle config.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.BundleConfig.RegisterBundles(System.Web.Optimization.BundleCollection)">
+            <summary>
+            Register application bundles.
+            </summary>
+            <param name="bundles">
+            The bundles to be registered.
+            </param>
+        </member>
+        <member name="T:Authentication.Api.FilterConfig">
+            <summary>
+            The filter config.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.FilterConfig.RegisterGlobalFilters(System.Web.Mvc.GlobalFilterCollection)">
+            <summary>
+            Register application global filters.
+            </summary>
+            <param name="filters">
+            The filters.
+            </param>
+        </member>
+        <member name="T:Authentication.Api.RouteConfig">
+            <summary>
+            The route config.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.RouteConfig.RegisterRoutes(System.Web.Routing.RouteCollection)">
+            <summary>
+            Register controller's routes.
+            </summary>
+            <param name="routes">
+            The routes.
+            </param>
+        </member>
+        <member name="T:Authentication.Api.WebApiConfig">
+            <summary>
+            The web api config.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.WebApiConfig.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Register application basic transport configurations.
+            </summary>
+            <param name="config">
+            The configurations.
+            </param>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.ApiDescriptionExtensions">
+            <summary>
+            The api description extensions.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.App_Start.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.App_Start.HelpPageConfig.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            The register.
+            </summary>
+            <param name="config">
+            The config.
+            </param>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.Areas.HelpPage.Controllers.HelpController.ErrorViewName">
+            <summary>
+            The error view name.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.Controllers.HelpController.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Authentication.Api.Areas.HelpPage.Controllers.HelpController"/> class.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.Controllers.HelpController.#ctor(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Authentication.Api.Areas.HelpPage.Controllers.HelpController"/> class.
+            </summary>
+            <param name="config">
+            The config.
+            </param>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.Controllers.HelpController.Configuration">
+            <summary>
+            Gets the configuration.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.Controllers.HelpController.Index">
+            <summary>
+            Represents the API root view.
+            </summary>
+            <returns>
+            The <see cref="T:System.Web.Mvc.ActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.Controllers.HelpController.Api(System.String)">
+            <summary>
+            Represents the API detail view.
+            </summary>
+            <param name="apiId">
+            The api id.
+            </param>
+            <returns>
+            The <see cref="T:System.Web.Mvc.ActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.Controllers.HelpController.ResourceModel(System.String)">
+            <summary>
+            The resource model.
+            </summary>
+            <param name="modelName">
+            The model name.
+            </param>
+            <returns>
+            The <see cref="T:System.Web.Mvc.ActionResult"/>.
+            </returns>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.HelpPageAreaRegistration">
+            <summary>
+            The help page area registration.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.HelpPageAreaRegistration.AreaName">
+            <summary>
+            Gets the area name.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.HelpPageAreaRegistration.RegisterArea(System.Web.Mvc.AreaRegistrationContext)">
+            <summary>
+            Register this area.
+            </summary>
+            <param name="context">
+            The context.
+            </param>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.HelpPageConfigurationExtensions">
+            <summary>
+            The help page configuration extensions.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.Areas.HelpPage.HelpPageConfigurationExtensions.ApiModelPrefix">
+            <summary>
+            The api model prefix.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.HelpPageConfigurationExtensions.GenerateApiModel(System.Web.Http.Description.ApiDescription,System.Web.Http.HttpConfiguration)">
+            <summary>
+            Generates the api model.
+            </summary>
+            <param name="apiDescription">
+            The api description.
+            </param>
+            <param name="config">
+            The config.
+            </param>
+            <returns>
+            The <see cref="T:Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.HelpPageConfigurationExtensions.GenerateUriParameters(Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel,Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator)">
+            <summary>
+            Generates the uri parameters.
+            </summary>
+            <param name="apiModel">
+            The api model.
+            </param>
+            <param name="modelGenerator">
+            The model generator.
+            </param>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.HelpPageConfigurationExtensions.IsBindableWithTypeConverter(System.Type)">
+            <summary>
+            Gets a value indicating if input <see cref="T:System.Type"/> object is bindable with type converter.
+            </summary>
+            <param name="parameterType">
+            The parameter type.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.HelpPageConfigurationExtensions.AddParameterDescription(Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel,System.Web.Http.Description.ApiParameterDescription,Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescription)">
+            <summary>
+            Adds a parameter description into documentation.
+            </summary>
+            <param name="apiModel">
+            The api model.
+            </param>
+            <param name="apiParameter">
+            The api parameter.
+            </param>
+            <param name="typeDescription">
+            The type description.
+            </param>
+            <returns>
+            The <see cref="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ParameterDescription"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.HelpPageConfigurationExtensions.GenerateRequestModelDescription(Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel,Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator,Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator)">
+            <summary>
+            Generates the request model description.
+            </summary>
+            <param name="apiModel">
+            The api model.
+            </param>
+            <param name="modelGenerator">
+            The model generator.
+            </param>
+            <param name="sampleGenerator">
+            The sample generator.
+            </param>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.HelpPageConfigurationExtensions.GenerateResourceDescription(Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel,Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator)">
+            <summary>
+            Generates the resource description.
+            </summary>
+            <param name="apiModel">
+            The api model.
+            </param>
+            <param name="modelGenerator">
+            The model generator.
+            </param>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.HelpPageConfigurationExtensions.GenerateSamples(Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel,Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator)">
+            <summary>
+            Generates the documentation samples.
+            </summary>
+            <param name="apiModel">
+            The api model.
+            </param>
+            <param name="sampleGenerator">
+            The sample generator.
+            </param>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.HelpPageConfigurationExtensions.TryGetResourceParameter(System.Web.Http.Description.ApiDescription,System.Web.Http.HttpConfiguration,System.Web.Http.Description.ApiParameterDescription@,System.Type@)">
+            <summary>
+            Gets a value indicating if resource parameter was successfully retrieve from a <see cref="T:System.Web.Http.Description.ApiDescription"/> object using the current <see cref="T:System.Web.Http.HttpConfiguration"/>.
+            </summary>
+            <param name="apiDescription">
+            The api description.
+            </param>
+            <param name="config">
+            The config.
+            </param>
+            <param name="parameterDescription">
+            The parameter description.
+            </param>
+            <param name="resourceType">
+            The resource type.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.HelpPageConfigurationExtensions.InitializeModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Initialize the model description generator.
+            </summary>
+            <param name="config">
+            The config.
+            </param>
+            <returns>
+            The <see cref="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.HelpPageConfigurationExtensions.LogInvalidSampleAsError(Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel,System.Object)">
+            <summary>
+            Logs an invalid sample as error.
+            </summary>
+            <param name="apiModel">
+            The api model.
+            </param>
+            <param name="sample">
+            The sample.
+            </param>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the model description generator.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>The <see cref="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.CollectionModelDescription">
+            <summary>
+            The collection model description.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.CollectionModelDescription.ElementDescription">
+            <summary>
+            Gets or sets the element description.
+            </summary>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ComplexTypeModelDescription">
+            <summary>
+            The complex type model description.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ModelDescriptions.ComplexTypeModelDescription.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ComplexTypeModelDescription"/> class.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.ComplexTypeModelDescription.Properties">
+            <summary>
+            Gets the properties.
+            </summary>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.DictionaryModelDescription">
+            <summary>
+            The dictionary model description.
+            </summary>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.EnumTypeModelDescription">
+            <summary>
+            The enum type model description.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ModelDescriptions.EnumTypeModelDescription.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.EnumTypeModelDescription"/> class.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.EnumTypeModelDescription.Values">
+            <summary>
+            Gets the values.
+            </summary>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.EnumValueDescription">
+            <summary>
+            The enum value description.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.EnumValueDescription.Documentation">
+            <summary>
+            Gets or sets the documentation.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.EnumValueDescription.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.EnumValueDescription.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.IModelDocumentationProvider">
+            <summary>
+            The ModelDocumentationProvider interface.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ModelDescriptions.IModelDocumentationProvider.GetDocumentation(System.Reflection.MemberInfo)">
+            <summary>
+            The get documentation.
+            </summary>
+            <param name="member">
+            The member.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ModelDescriptions.IModelDocumentationProvider.GetDocumentation(System.Type)">
+            <summary>
+            The get documentation.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.KeyValuePairModelDescription">
+            <summary>
+            The key value pair model description.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.KeyValuePairModelDescription.KeyModelDescription">
+            <summary>
+            Gets or sets the key model description.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.KeyValuePairModelDescription.ValueModelDescription">
+            <summary>
+            Gets or sets the value model description.
+            </summary>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+            Describes a type model.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescription.Documentation">
+            <summary>
+            Gets or sets the documentation.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescription.ModelType">
+            <summary>
+            Gets or sets the model type.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescription.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+            Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.annotationTextGenerator">
+            <summary>
+            The annotation text generator.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.defaultTypeDocumentation">
+            <summary>
+            The default type documentation.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.documentationProvider">
+            <summary>
+            The documentation provider.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.#ctor(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/> class.
+            </summary>
+            <param name="config">
+            The config.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when passed configuration is null 
+            </exception>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GeneratedModels">
+            <summary>
+            Gets the generated models.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.DocumentationProvider">
+            <summary>
+            Gets the documentation provider.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GetOrCreateModelDescription(System.Type)">
+            <summary>
+            The get or create model description.
+            </summary>
+            <param name="modelType">
+            The model type.
+            </param>
+            <returns>
+            The <see cref="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescription"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GetMemberName(System.Reflection.MemberInfo,System.Boolean)">
+            <summary>
+            The get member name.
+            </summary>
+            <param name="member">
+            The member.
+            </param>
+            <param name="hasDataContractAttribute">
+            The has data contract attribute.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.ShouldDisplayMember(System.Reflection.MemberInfo,System.Boolean)">
+            <summary>
+            The should display member.
+            </summary>
+            <param name="member">
+            The member.
+            </param>
+            <param name="hasDataContractAttribute">
+            The has data contract attribute.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.CreateDefaultDocumentation(System.Type)">
+            <summary>
+            The create default documentation.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GenerateAnnotations(System.Reflection.MemberInfo,Authentication.Api.Areas.HelpPage.ModelDescriptions.ParameterDescription)">
+            <summary>
+            The generate annotations.
+            </summary>
+            <param name="property">
+            The property.
+            </param>
+            <param name="propertyModel">
+            The property model.
+            </param>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GenerateCollectionModelDescription(System.Type,System.Type)">
+            <summary>
+            The generate collection model description.
+            </summary>
+            <param name="modelType">
+            The model type.
+            </param>
+            <param name="elementType">
+            The element type.
+            </param>
+            <returns>
+            The <see cref="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.CollectionModelDescription"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GenerateComplexTypeModelDescription(System.Type)">
+            <summary>
+            The generate complex type model description.
+            </summary>
+            <param name="modelType">
+            The model type.
+            </param>
+            <returns>
+            The <see cref="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescription"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GenerateDictionaryModelDescription(System.Type,System.Type,System.Type)">
+            <summary>
+            The generate dictionary model description.
+            </summary>
+            <param name="modelType">
+            The model type.
+            </param>
+            <param name="keyType">
+            The key type.
+            </param>
+            <param name="valueType">
+            The value type.
+            </param>
+            <returns>
+            The <see cref="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.DictionaryModelDescription"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GenerateEnumTypeModelDescription(System.Type)">
+            <summary>
+            The generate enum type model description.
+            </summary>
+            <param name="modelType">
+            The model type.
+            </param>
+            <returns>
+            The <see cref="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.EnumTypeModelDescription"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GenerateKeyValuePairModelDescription(System.Type,System.Type,System.Type)">
+            <summary>
+            The generate key value pair model description.
+            </summary>
+            <param name="modelType">
+            The model type.
+            </param>
+            <param name="keyType">
+            The key type.
+            </param>
+            <param name="valueType">
+            The value type.
+            </param>
+            <returns>
+            The <see cref="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.KeyValuePairModelDescription"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GenerateSimpleTypeModelDescription(System.Type)">
+            <summary>
+            The generate simple type model description.
+            </summary>
+            <param name="modelType">
+            The model type.
+            </param>
+            <returns>
+            The <see cref="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescription"/>.
+            </returns>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+            Use this attribute to change the name of the <see cref="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelNameAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelNameAttribute"/> class.
+            </summary>
+            <param name="name">
+            The name.
+            </param>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelNameAttribute.Name">
+            <summary>
+            Gets the name.
+            </summary>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelNameHelper">
+            <summary>
+            The model name helper.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelNameHelper.GetModelName(System.Type)">
+            <summary>
+            The get model name.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ParameterAnnotation">
+            <summary>
+            The parameter annotation.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.ParameterAnnotation.AnnotationAttribute">
+            <summary>
+            Gets or sets the annotation attribute.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.ParameterAnnotation.Documentation">
+            <summary>
+            Gets or sets the documentation.
+            </summary>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ParameterDescription">
+            <summary>
+            The parameter description.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.ModelDescriptions.ParameterDescription.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> class.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.ParameterDescription.Annotations">
+            <summary>
+            Gets the annotations.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.ParameterDescription.Documentation">
+            <summary>
+            Gets or sets the documentation.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.ParameterDescription.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.ModelDescriptions.ParameterDescription.TypeDescription">
+            <summary>
+            Gets or sets the type description.
+            </summary>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.SimpleTypeModelDescription">
+            <summary>
+            The simple type model description.
+            </summary>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+            Gets the <see cref="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+            Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+            Gets or sets the <see cref="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+            Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+            Gets or sets the <see cref="T:Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+            Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.Models.HelpPageApiModel.GetParameterDescriptions(Authentication.Api.Areas.HelpPage.ModelDescriptions.ModelDescription)">
+            <summary>
+            The get parameter descriptions.
+            </summary>
+            <param name="modelDescription">
+            The model description.
+            </param>
+            <returns>
+            The <see cref="T:System.Collections.Generic.IList`1"/>.
+            </returns>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+            Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+            stopping when the factory successfully returns a non-<see langref="null"/> object.
+            </summary>
+            <remarks>
+            Collection includes just <see cref="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+            <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,Authentication.Api.Areas.HelpPage.SampleGeneration.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,Authentication.Api.Areas.HelpPage.SampleGeneration.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.DefaultSampleObjectFactory(Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator"/>) and other
+            factories in <see cref="P:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},Authentication.Api.Areas.HelpPage.SampleGeneration.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">
+            The api.
+            </param>
+            <param name="controllerName">
+            The controller name.
+            </param>
+            <param name="actionName">
+            The action name.
+            </param>
+            <param name="parameterNames">
+            The parameter names.
+            </param>
+            <param name="sampleDirection">
+            The sample direction.
+            </param>
+            <param name="formatters">
+            The formatters.
+            </param>
+            <returns>
+            The <see cref="T:System.Type"/>.
+            </returns>
+            <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+            Thrown when unknown sample direction is passed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when api is null.
+            </exception>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">
+            The formatter.
+            </param>
+            <param name="value">
+            The value.
+            </param>
+            <param name="type">
+            The type.
+            </param>
+            <param name="mediaType">
+            The media type.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when passed formatter or media type is null.
+            </exception>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.UnwrapException(System.Exception)">
+            <summary>
+            The unwrap exception.
+            </summary>
+            <param name="exception">
+            The exception.
+            </param>
+            <returns>
+            The <see cref="T:System.Exception"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.DefaultSampleObjectFactory(Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator,System.Type)">
+            <summary>
+            The default sample object factory.
+            </summary>
+            <param name="sampleGenerator">
+            The sample generator.
+            </param>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.TryFormatJson(System.String)">
+            <summary>
+            The try format json.
+            </summary>
+            <param name="str">
+            The str.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.TryFormatXml(System.String)">
+            <summary>
+            The try format xml.
+            </summary>
+            <param name="str">
+            The str.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.IsFormatSupported(Authentication.Api.Areas.HelpPage.SampleGeneration.SampleDirection,System.Net.Http.Formatting.MediaTypeFormatter,System.Type)">
+            <summary>
+            Indicates if the format is supported.
+            </summary>
+            <param name="sampleDirection">
+            The sample direction.
+            </param>
+            <param name="formatter">
+            The formatter.
+            </param>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            Thrown when unknown sample direction is passed.
+            </exception>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.WrapSampleIfString(System.Object)">
+            <summary>
+            The wrap sample if string.
+            </summary>
+            <param name="sample">
+            The sample.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetAllActionSamples(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},Authentication.Api.Areas.HelpPage.SampleGeneration.SampleDirection)">
+            <summary>
+            Gets all action samples.
+            </summary>
+            <param name="controllerName">
+            The controller name.
+            </param>
+            <param name="actionName">
+            The action name.
+            </param>
+            <param name="parameterNames">
+            The parameter names.
+            </param>
+            <param name="sampleDirection">
+            The sample direction.
+            </param>
+            <returns>
+            The <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </returns>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Creates a new <see cref="T:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey"/> based on media type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when input type object is null.
+            </exception>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.#ctor(Authentication.Api.Areas.HelpPage.SampleGeneration.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey"/> based on <see cref="P:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,Authentication.Api.Areas.HelpPage.SampleGeneration.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey"/> based on media type, <see cref="P:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.ParameterType">
+            <summary>
+            Gets the parameter type.
+            </summary>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.SampleGeneration.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Authentication.Api.Areas.HelpPage.SampleGeneration.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.SampleGeneration.ImageSample.Src">
+            <summary>
+            Gets the image source path.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ImageSample.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ImageSample.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ImageSample.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.SampleGeneration.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.InvalidSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Authentication.Api.Areas.HelpPage.SampleGeneration.InvalidSample"/> class.
+            </summary>
+            <param name="errorMessage">
+            The error message.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when the input error message is null or empty.
+            </exception>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.SampleGeneration.InvalidSample.ErrorMessage">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.InvalidSample.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.InvalidSample.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.InvalidSample.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator.simpleObjectGenerator">
+            <summary>
+            The simple object generator.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator.DefaultCollectionSize">
+            <summary>
+            The default collection size.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator.GenerateGenericType(System.Type,System.Int32,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            The generate generic type.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <param name="collectionSize">
+            The collection size.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator.GenerateTuple(System.Type,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            Generates the documentation object tuple.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator.IsTuple(System.Type)">
+            <summary>
+            Indicates if the documentation object is a tuple.
+            </summary>
+            <param name="genericTypeDefinition">
+            The generic type definition.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator.GenerateKeyValuePair(System.Type,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            Generates the documentation object key-value pair.
+            </summary>
+            <param name="keyValuePairType">
+            The key value pair type.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator.GenerateArray(System.Type,System.Int32,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            Generates the documentation object array.
+            </summary>
+            <param name="arrayType">
+            The array type.
+            </param>
+            <param name="size">
+            The size.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator.GenerateDictionary(System.Type,System.Int32,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            Generates the documentation object dictionary.
+            </summary>
+            <param name="dictionaryType">
+            The dictionary type.
+            </param>
+            <param name="size">
+            The size.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator.GenerateEnum(System.Type)">
+            <summary>
+            Generates the documentation object enumeration.
+            </summary>
+            <param name="enumType">
+            The enum type.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator.GenerateQueryable(System.Type,System.Int32,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            Generates the documentation queryable object .
+            </summary>
+            <param name="queryableType">
+            The queryable type.
+            </param>
+            <param name="size">
+            The size.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator.GenerateCollection(System.Type,System.Int32,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            Generates the documentation object collection.
+            </summary>
+            <param name="collectionType">
+            The collection type.
+            </param>
+            <param name="size">
+            The size.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator.GenerateNullable(System.Type,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            Generates the documentation nullable object.
+            </summary>
+            <param name="nullableType">
+            The nullable type.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator.GenerateComplexObject(System.Type,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            Generates the documentation complex object.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator.SetPublicProperties(System.Type,System.Object,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            Sets the documentation public properties.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <param name="obj">
+            The obj.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator.SetPublicFields(System.Type,System.Object,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            Sets the documentation public fields.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <param name="obj">
+            The obj.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.ObjectGenerator.GenerateObject(System.Type,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            Generates the documentation object.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.SampleGeneration.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.Areas.HelpPage.SampleGeneration.SampleDirection.Request">
+            <summary>
+            The request.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.Areas.HelpPage.SampleGeneration.SampleDirection.Response">
+            <summary>
+            The response.
+            </summary>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.SampleGeneration.SimpleTypeObjectGenerator">
+            <summary>
+            The simple type object generator.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.Areas.HelpPage.SampleGeneration.SimpleTypeObjectGenerator.DefaultGenerators">
+            <summary>
+            The default generators.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.Areas.HelpPage.SampleGeneration.SimpleTypeObjectGenerator.index">
+            <summary>
+            The index.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.SimpleTypeObjectGenerator.InitializeGenerators">
+            <summary>
+            The initialize generators.
+            </summary>
+            <returns>
+            The <see cref="T:System.Collections.Generic.Dictionary`2"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.SimpleTypeObjectGenerator.CanGenerateObject(System.Type)">
+            <summary>
+            The can generate object.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.SimpleTypeObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            The generate object.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.SampleGeneration.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.TextSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Authentication.Api.Areas.HelpPage.SampleGeneration.TextSample"/> class.
+            </summary>
+            <param name="text">
+            The text.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when input text is null or empty
+            </exception>
+        </member>
+        <member name="P:Authentication.Api.Areas.HelpPage.SampleGeneration.TextSample.Text">
+            <summary>
+            Gets the text.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.TextSample.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.TextSample.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.SampleGeneration.TextSample.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider.TypeExpression">
+            <summary>
+            The type expression.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider.MethodExpression">
+            <summary>
+            The method expression.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider.PropertyExpression">
+            <summary>
+            The property expression.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider.FieldExpression">
+            <summary>
+            The field expression.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider.ParameterExpression">
+            <summary>
+            The parameter expression.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider.documentNavigator">
+            <summary>
+            The document navigator.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">
+            The document path.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when the documentation file is not present.
+            </exception>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider.GetMemberName(System.Reflection.MethodInfo)">
+            <summary>
+            Gets the member name.
+            </summary>
+            <param name="method">
+            The method.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider.GetTagValue(System.Xml.XPath.XPathNavigator,System.String)">
+            <summary>
+            Gets the tag value.
+            </summary>
+            <param name="parentNode">
+            The parent node.
+            </param>
+            <param name="tagName">
+            The tag name.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider.GetTypeName(System.Type)">
+            <summary>
+            Gets the type name.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider.GetMethodNode(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>
+            Gets the method node.
+            </summary>
+            <param name="actionDescriptor">
+            The action descriptor.
+            </param>
+            <returns>
+            The <see cref="T:System.Xml.XPath.XPathNavigator"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider.GetTypeNode(System.Type)">
+            <summary>
+            Gets type node.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.Xml.XPath.XPathNavigator"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpControllerDescriptor)">
+            <summary>
+            Gets the documentation information using a <see cref="T:System.Web.Http.Controllers.HttpControllerDescriptor"/> object.
+            </summary>
+            <param name="controllerDescriptor">
+            The controller descriptor.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>
+            Gets the documentation information using a <see cref="T:System.Web.Http.Controllers.HttpActionDescriptor"/> object.
+            </summary>
+            <param name="actionDescriptor">
+            The action descriptor.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpParameterDescriptor)">
+            <summary>
+            Gets the documentation information using a <see cref="T:System.Web.Http.Controllers.HttpParameterDescriptor"/> object.
+            </summary>
+            <param name="parameterDescriptor">
+            The parameter descriptor.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Reflection.MemberInfo)">
+            <summary>
+            Gets the documentation information using a <see cref="T:System.Reflection.MemberInfo"/> object.
+            </summary>
+            <param name="member">
+            The member.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Type)">
+            <summary>
+            Gets the documentation information using a <see cref="T:System.Type"/> object.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Areas.HelpPage.XmlDocumentationProvider.GetResponseDocumentation(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>
+            Gets the response documentation.
+            </summary>
+            <param name="actionDescriptor">
+            The action descriptor.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:Authentication.Api.Controllers.BaseApiController">
+            <summary>
+            The base api controller.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Controllers.BaseApiController.ExecuteProcess``1(System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Execute the corresponding business logic.
+            </summary>
+            <typeparam name="T">
+            Return type for the execution process.
+            </typeparam>
+            <param name="action">
+            The action to be executed.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="T:Authentication.Api.Controllers.ErrorController">
+            <summary>
+            The error controller.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Controllers.ErrorController.NotFound">
+            <summary>
+            Shows a custom page When http error is 404 (Page not found).
+            </summary>
+            <returns>
+            The <see cref="T:System.Web.Mvc.ActionResult"/>.
+            </returns>
+        </member>
+        <member name="T:Authentication.Api.Controllers.HomeController">
+            <summary>
+            The home controller.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Controllers.HomeController.Index">
+            <summary>
+            Represents the API root view.
+            </summary>
+            <returns>
+            The <see cref="T:System.Web.Mvc.ActionResult"/>.
+            </returns>
+        </member>
+        <member name="T:Authentication.Api.Controllers.ValuesController">
+            <summary>
+            The values controller.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Controllers.ValuesController.Get">
+            <summary>
+            Gets a list of values.
+            </summary>
+            <returns>
+            The <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Controllers.ValuesController.Get(System.Int32)">
+            <summary>
+            Returns a specific value
+            </summary>
+            <param name="id">
+            The id.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Controllers.ValuesController.Post(System.String)">
+            <summary>
+            Creates a new value.
+            </summary>
+            <param name="value">
+            The value.
+            </param>
+        </member>
+        <member name="M:Authentication.Api.Controllers.ValuesController.Put(System.Int32,System.String)">
+            <summary>
+            Updates a specific value.
+            </summary>
+            <param name="id">
+            The id.
+            </param>
+            <param name="value">
+            The value.
+            </param>
+        </member>
+        <member name="M:Authentication.Api.Controllers.ValuesController.Delete(System.Int32)">
+            <summary>
+            Deletes a value.
+            </summary>
+            <param name="id">
+            The id.
+            </param>
+        </member>
+        <member name="T:Authentication.Api.WebApiApplication">
+            <summary>
+            The web api application main startup point.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.WebApiApplication.Application_Start">
+            <summary>
+            Starts the application.
+            </summary>
+        </member>
+    </members>
+</doc>
