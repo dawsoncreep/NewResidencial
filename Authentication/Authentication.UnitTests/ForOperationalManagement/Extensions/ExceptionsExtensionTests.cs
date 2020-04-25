@@ -19,15 +19,9 @@ namespace Authentication.UnitTests.ForOperationalManagement.Extensions
     /// The exceptions extension tests.
     /// </summary>
     [TestClass]
+    [TestCategory("Unit Tests")]
     public class ExceptionsExtensionTests
     {
-        #region Fields
-        #endregion
-
-        #region Tests Life Cycle
-
-        #endregion
-
         #region Test Methods
         /// <summary>
         /// This method should get a human readable text for a non asynchronous exception.

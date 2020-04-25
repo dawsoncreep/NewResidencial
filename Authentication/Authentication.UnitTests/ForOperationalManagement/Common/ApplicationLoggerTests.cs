@@ -25,6 +25,7 @@ namespace Authentication.UnitTests.ForOperationalManagement.Common
     /// The default logger tests.
     /// </summary>
     [TestClass]
+    [TestCategory("Unit Tests")]
     public class ApplicationLoggerTests
     {
         #region Fields

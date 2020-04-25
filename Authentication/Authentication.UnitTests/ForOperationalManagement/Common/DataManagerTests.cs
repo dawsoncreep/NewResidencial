@@ -23,6 +23,7 @@ namespace Authentication.UnitTests.ForOperationalManagement.Common
     /// The application data manager test.
     /// </summary>
     [TestClass]
+    [TestCategory("Unit Tests")]
     public class DataManagerTests
     {
         #region Fields

@@ -13,11 +13,30 @@ namespace Authentication.Api.Controllers
     using System.Threading.Tasks;
     using System.Web.Http;
 
+    using Authentication.OperationalManagement.Interfaces;
+    using Authentication.Types.Exceptions;
+
     /// <summary>
     /// The base api controller.
     /// </summary>
     public class BaseApiController : ApiController
     {
+        /// <summary>
+        /// The logger.
+        /// </summary>
+        private readonly IApplicationLogger logger;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseApiController"/> class.
+        /// </summary>
+        /// <param name="logger">
+        /// The logger.
+        /// </param>
+        protected BaseApiController(IApplicationLogger logger)
+        {
+            this.logger = logger;
+        }
+
         /// <summary>
         /// Execute the corresponding business logic.
         /// </summary>
@@ -35,13 +54,16 @@ namespace Authentication.Api.Controllers
             try
             {
                 var result = await action.Invoke();
-
-                // TODO: Log information
                 return await Task.FromResult(this.Ok(result));
+            }
+            catch (BusinessLayerException exception)
+            {
+                await this.logger.Log(exception);
+                return await Task.FromResult(this.BadRequest(exception.Message));
             }
             catch (Exception exception)
             {
-                // TODO: Log error
+                await this.logger.Log(exception);
                 return await Task.FromResult(this.InternalServerError(exception));
             }
         }

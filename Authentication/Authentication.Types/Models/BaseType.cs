@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Authentication.Types
+namespace Authentication.Types.Models
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;

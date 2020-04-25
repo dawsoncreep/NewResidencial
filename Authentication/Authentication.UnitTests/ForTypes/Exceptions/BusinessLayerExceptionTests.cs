@@ -26,6 +26,7 @@ namespace Authentication.UnitTests.ForTypes.Exceptions
     /// The business layer exception tests.
     /// </summary>
     [TestClass]
+    [TestCategory("Unit Tests")]
     public class BusinessLayerExceptionTests
     {
         #region Fields
