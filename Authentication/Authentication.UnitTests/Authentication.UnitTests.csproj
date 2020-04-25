@@ -102,6 +102,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ForApi\Controllers\AuthenticationControllerTests.cs" />
+    <Compile Include="ForBusinessLayer\Processors\UserProcessorTests.cs" />
+    <Compile Include="ForBusinessLayer\Facades\UserFacadeTests.cs" />
     <Compile Include="ForOperationalManagement\Common\ApplicationLoggerTests.cs" />
     <Compile Include="ForOperationalManagement\Common\DataManagerTests.cs" />
     <Compile Include="ForOperationalManagement\Extensions\ExceptionsExtensionTests.cs" />

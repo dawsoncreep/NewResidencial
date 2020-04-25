@@ -1,30 +1,26 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AuthenticationControllerTests.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
+// <copyright file="UserProcessorTests.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
 //   COPYRIGHT 2020 © Dawsoncreep. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines the AuthenticationControllerTests type.
+//   Defines the UserProcessorTests type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Authentication.IntegrationTests.ForApiControllers
+namespace Authentication.UnitTests.ForBusinessLayer.Processors
 {
-    using System.Threading.Tasks;
-
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
-    /// The authentication controller tests.
+    /// The user processor tests.
     /// </summary>
     [TestClass]
-    [TestCategory("Integration Tests")]
-    public class AuthenticationControllerTests
+    public class UserProcessorTests
     {
         #region Fields
         #endregion
 
         #region Tests Life Cycle
-
         /// <summary>
         /// This method is used to configure the environment before each test.
         /// </summary>
@@ -42,24 +38,7 @@ namespace Authentication.IntegrationTests.ForApiControllers
         }
         #endregion
 
-
         #region Test Methods
-
-        /// <summary>
-        /// This method should:
-        ///     1) Simulate an HTTP POST request to '~/Authentication/ValidateUser' and get HTTP code 200.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="Task"/>.
-        /// </returns>
-        [TestMethod]
-        public async Task ValidateUserShouldSucceed()
-        {
-            // TODO: Finish unit test first.
-            await Task.CompletedTask;
-            Assert.Inconclusive();
-        }
-
         #endregion
     }
 }

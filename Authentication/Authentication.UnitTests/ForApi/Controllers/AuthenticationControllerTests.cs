@@ -115,6 +115,9 @@ namespace Authentication.UnitTests.ForApi.Controllers
         ///  This method should:
         ///    1) Simulate an HTTP POST request and send a <see cref="LoginRequest"/> object to '~/Authentication/Authenticate'
         ///    2) Pre-validate the <see cref="LoginRequest"/> object.
+        ///    3) Successfully verify if user is stored in database.
+        ///    4) Get user's roles
+        ///    5) Return a valid JWT.
         /// </summary>
         /// <returns>
         /// The <see cref="Task"/>.
@@ -200,6 +203,76 @@ namespace Authentication.UnitTests.ForApi.Controllers
                 Request = new HttpRequestMessage(),
                 Configuration = new HttpConfiguration()
             };
+
+            // Act
+            var response = await this.authenticationController.Authenticate(this.loginRequest);
+            if (response is BadRequestErrorMessageResult responseData)
+            {
+                actualMessage = responseData.Message;
+            }
+
+            // Assert
+            this.mockIUserFacade.Verify(method => method.Authenticate(It.IsNotNull<LoginRequest>()), Times.AtLeastOnce);
+            this.mockIApplicationLogger.Verify(method => method.Log(It.IsAny<Exception>(), It.IsAny<object>()), Times.Once);
+            Assert.IsNotNull(response);
+            Assert.IsInstanceOfType(response, typeof(BadRequestErrorMessageResult));
+            Assert.AreEqual(expectedMessage, actualMessage);
+        }
+
+        /// <summary>
+        /// This method should simulate invalid user access.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        [TestMethod]
+        public async Task AuthenticateShouldFailValidatingAccess()
+        {
+            // Arrange
+            var expectedMessage = new InvalidUserAccessException().Message;
+            var actualMessage = string.Empty;
+
+            this.mockIUserFacade.Setup(method => method.Authenticate(this.loginRequest)).ThrowsAsync(new InvalidUserAccessException());
+            this.authenticationController = new AuthenticationController(this.mockIApplicationLogger.Object, this.mockIUserFacade.Object)
+                                                {
+                                                    Request = new HttpRequestMessage(),
+                                                    Configuration = new HttpConfiguration()
+                                                };
+
+            // Act
+            var response = await this.authenticationController.Authenticate(this.loginRequest);
+            if (response is BadRequestErrorMessageResult responseData)
+            {
+                actualMessage = responseData.Message;
+            }
+
+            // Assert
+            this.mockIUserFacade.Verify(method => method.Authenticate(It.IsNotNull<LoginRequest>()), Times.AtLeastOnce);
+            this.mockIApplicationLogger.Verify(method => method.Log(It.IsAny<Exception>(), It.IsAny<object>()), Times.Once);
+            Assert.IsNotNull(response);
+            Assert.IsInstanceOfType(response, typeof(BadRequestErrorMessageResult));
+            Assert.AreEqual(expectedMessage, actualMessage);
+        }
+
+        /// <summary>
+        /// This method should simulate invalid token generation error.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        [TestMethod]
+        public async Task AuthenticateShouldFailGenerationJwT()
+        {
+            // Arrange
+            var expectedMessage = new TokenGenerationException().Message;
+            var actualMessage = string.Empty;
+
+            this.mockIUserFacade.Setup(method => method.Authenticate(this.loginRequest)).ThrowsAsync(new TokenGenerationException());
+            this.authenticationController = new AuthenticationController(this.mockIApplicationLogger.Object, this.mockIUserFacade.Object)
+                                                {
+                                                    Request = new HttpRequestMessage(),
+                                                    Configuration = new HttpConfiguration()
+                                                };
 
             // Act
             var response = await this.authenticationController.Authenticate(this.loginRequest);

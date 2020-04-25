@@ -1,13 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IUserFacade.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
+// <copyright file="IUserProcessor.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
 //   COPYRIGHT 2020 © Dawsoncreep. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines the IUserFacade type.
+//   Defines the IUserProcessor type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Authentication.BusinessLayer.Interfaces.Facade
+namespace Authentication.BusinessLayer.Processors
 {
     using System.Threading.Tasks;
 
@@ -15,28 +15,22 @@ namespace Authentication.BusinessLayer.Interfaces.Facade
     using Authentication.Types.Models;
 
     /// <summary>
-    /// The UserFacade interface.
+    /// The IUserProcessor interface.
     /// </summary>
-    public interface IUserFacade
+    public interface IUserProcessor
     {
         /// <summary>
-        /// Generates a JWT for a valid <see cref="LoginRequest"/> object.
+        /// Retrieves <see cref="User"/> information using the nickname(userName).
         /// </summary>
-        /// <param name="request">
-        /// The request.
+        /// <param name="userName">
+        /// The user name.
         /// </param>
         /// <returns>
         /// The <see cref="Task"/>.
         /// </returns>
-        /// <exception cref="TypeValidationException">
-        /// Thrown when input <see cref="LoginRequest"/> has validation errors.
-        /// </exception>
         /// <exception cref="InvalidUserAccessException">
         /// Thrown whe <see cref="LoginRequest"/> data is not valid into system.
         /// </exception>
-        /// <exception cref="TokenGenerationException">
-        /// Thrown whe the system cannot generate a new JWT for the user.
-        /// </exception>
-        Task<string> Authenticate(LoginRequest request);
+        Task<User> GetUserByUserName(string userName);
     }
 }

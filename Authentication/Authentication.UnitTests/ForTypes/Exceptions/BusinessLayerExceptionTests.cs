@@ -168,16 +168,16 @@ namespace Authentication.UnitTests.ForTypes.Exceptions
 
             var comparer = new CompareLogic();
 
-            var buffer = new byte[4096];
-            var ms1 = new MemoryStream(buffer);
-            var ms2 = new MemoryStream(buffer);
-
             // Serialization simple example
             var formatter = new BinaryFormatter();
 
             foreach (var definition in this.exceptionDefinitions)
             {
                 // Act
+                var buffer = new byte[4096];
+                var ms1 = new MemoryStream(buffer);
+                var ms2 = new MemoryStream(buffer);
+
                 var exception = Activator.CreateInstance(definition, errors) as Exception;
                 Assert.IsNotNull(exception);
                 formatter.Serialize(ms1, exception);
