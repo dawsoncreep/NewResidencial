@@ -68,7 +68,8 @@
             this.Cmn_Domicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cmn_FechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cmn_Placas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cmn_Foto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cmn_Foto = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Cmn_UrlFoto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gbx_Busqueda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Busqueda)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -274,7 +275,8 @@
             this.Cmn_Domicilio,
             this.Cmn_FechaIngreso,
             this.Cmn_Placas,
-            this.Cmn_Foto});
+            this.Cmn_Foto,
+            this.Cmn_UrlFoto});
             this.DGV_VisitantesActuales.Location = new System.Drawing.Point(5, 48);
             this.DGV_VisitantesActuales.Name = "DGV_VisitantesActuales";
             this.DGV_VisitantesActuales.ReadOnly = true;
@@ -580,10 +582,19 @@
             // Cmn_Foto
             // 
             this.Cmn_Foto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Cmn_Foto.DataPropertyName = "FotoRostro";
             this.Cmn_Foto.HeaderText = "Foto";
             this.Cmn_Foto.Name = "Cmn_Foto";
             this.Cmn_Foto.ReadOnly = true;
+            this.Cmn_Foto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Cmn_Foto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Cmn_UrlFoto
+            // 
+            this.Cmn_UrlFoto.DataPropertyName = "FotoRostro";
+            this.Cmn_UrlFoto.HeaderText = "UrlFoto";
+            this.Cmn_UrlFoto.Name = "Cmn_UrlFoto";
+            this.Cmn_UrlFoto.ReadOnly = true;
+            this.Cmn_UrlFoto.Visible = false;
             // 
             // Frm_IngresoVisita
             // 
@@ -654,6 +665,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cmn_Domicilio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cmn_FechaIngreso;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cmn_Placas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cmn_Foto;
+        private System.Windows.Forms.DataGridViewImageColumn Cmn_Foto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cmn_UrlFoto;
     }
 }

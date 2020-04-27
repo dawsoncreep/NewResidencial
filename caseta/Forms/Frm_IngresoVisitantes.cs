@@ -28,7 +28,7 @@ namespace caseta
             Cbbx_RType.DataSource = visitaProcessor.TiposDeVisita().ToArray();
             Cbbx_RType.ValueMember = "ID";
             Cbbx_RType.DisplayMember = "Nombre";
-            DGV_VisitantesActuales.DataSource = visitaProcessor.GetVisitasActuales();
+            SetDgvData(visitaProcessor.GetVisitasActuales());            
         }
 
         private void Frm_IngresoVisita_Load(object sender, EventArgs e)
@@ -47,6 +47,7 @@ namespace caseta
             Cbbx_Domicilio.AutoCompleteMode = AutoCompleteMode.Suggest;
             Cbbx_Domicilio.AutoCompleteSource = AutoCompleteSource.CustomSource;            
             Cbbx_Domicilio.AutoCompleteCustomSource = Collection;
+            DGV_VisitantesActuales.Refresh();
         }
 
         private void Btn_PAcceso_Click(object sender, EventArgs e)
@@ -135,6 +136,15 @@ namespace caseta
             Tbx_Desc.Text = string.Empty;
             Tbx_Nombre.Text = string.Empty;
             Tbx_PLacas.Text = string.Empty;
+        }
+
+        private void SetDgvData(IEnumerable<DGVVisitaActual> dGVVisitas)
+        {
+            DGV_VisitantesActuales.DataSource = dGVVisitas;
+            foreach (DataGridViewRow row in DGV_VisitantesActuales.Rows)
+            {
+                row.Cells["Cmn_Foto"].Value = Image.FromFile(@"C:\\Pictures\\Rostro7.jpg");
+            }
         }
     }
 }

@@ -51,6 +51,7 @@
     <Compile Include="Visita\IngresoSalidaVisita.cs" />
     <Compile Include="Visita\TipoVisita.cs" />
     <Compile Include="Visita\Visita.cs" />
+    <Compile Include="Visita\DGVVisitaActual.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="IngresoSalidaVisita\" />
