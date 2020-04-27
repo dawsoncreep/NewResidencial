@@ -1,26 +1,26 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IUserProcessor.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
+// <copyright file="IUserRepository.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
 //   COPYRIGHT 2020 © Dawsoncreep. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines the IUserProcessor type.
+//   Defines the IUserRepository type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Authentication.BusinessLayer.Processors
+namespace Authentication.DataLayer.Interfaces
 {
     using System.Threading.Tasks;
 
-    using Authentication.Types.Exceptions;
     using Authentication.Types.Models;
+    using Authentication.Types.Models.Persistence;
 
     /// <summary>
-    /// The IUserProcessor interface.
+    /// The UserRepository interface.
     /// </summary>
-    public interface IUserProcessor
+    public interface IUserRepository : IRepository<SUser>
     {
         /// <summary>
-        /// Retrieves <see cref="User"/> information using the nickname(userName).
+        /// The find by user name.
         /// </summary>
         /// <param name="userName">
         /// The user name.
@@ -28,9 +28,6 @@ namespace Authentication.BusinessLayer.Processors
         /// <returns>
         /// The <see cref="Task"/>.
         /// </returns>
-        /// <exception cref="InvalidUserAccessException">
-        /// Thrown whe <see cref="LoginRequest"/> data is not valid into system.
-        /// </exception>
-        Task<User> GetUserByUserName(string userName);
+        Task<User> FindByUserName(string userName);
     }
 }

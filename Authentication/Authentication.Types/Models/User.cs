@@ -24,6 +24,9 @@ namespace Authentication.Types.Models
         /// </summary>
         public string UserName { get; set; }
 
-        // TODO: Add more properties
+        /// <summary>
+        /// Gets or sets the password.
+        /// </summary>
+        public string Password { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Authentication.BusinessLayer.Processors
+namespace Authentication.BusinessLayer.Interfaces.Processor
 {
     using System.Threading.Tasks;
 

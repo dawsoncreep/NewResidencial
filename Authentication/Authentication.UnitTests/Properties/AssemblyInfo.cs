@@ -1,5 +1,13 @@
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="AssemblyInfo.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
+//   COPYRIGHT 2020 © Dawsoncreep. All rights reserved.
+// </copyright>
+// <summary>
+//   AssemblyInfo.cs
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Authentication.UnitTests")]

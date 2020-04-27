@@ -13,7 +13,7 @@ namespace Authentication.UnitTests.ForBusinessLayer.Facades
     using System.Threading.Tasks;
 
     using Authentication.BusinessLayer.Facade;
-    using Authentication.BusinessLayer.Processors;
+    using Authentication.BusinessLayer.Interfaces.Processor;
     using Authentication.Types.Exceptions;
     using Authentication.Types.Models;
     using Authentication.UnitTests.Tools;
@@ -26,6 +26,7 @@ namespace Authentication.UnitTests.ForBusinessLayer.Facades
     /// The user facade tests.
     /// </summary>
     [TestClass]
+    [TestCategory("Unit Tests")]
     public class UserFacadeTests
     {
         #region Fields
@@ -123,7 +124,7 @@ namespace Authentication.UnitTests.ForBusinessLayer.Facades
         {
             // Arrange 
             //  Valid user sample
-            this.userUnderTest = new User { Id = 1, UserName = this.loginRequest.UserName };
+            this.userUnderTest = new User { Id = 1, UserName = this.loginRequest.UserName, Password = this.loginRequest.Password };
             
             this.mockIUserProcessor.Setup(method => method.GetUserByUserName(this.loginRequest.UserName)).ReturnsAsync(this.userUnderTest);
             this.mockITokenProcessor.Setup(method => method.GenerateToken(this.userUnderTest)).ReturnsAsync(this.validToken);
@@ -193,7 +194,10 @@ namespace Authentication.UnitTests.ForBusinessLayer.Facades
         public async Task AuthenticateShouldFailValidatingUserAccess()
         {
             // Arrange 
-            this.mockIUserProcessor.Setup(method => method.GetUserByUserName(this.loginRequest.UserName)).ThrowsAsync(new InvalidUserAccessException());
+            //  Bad user sample
+            this.userUnderTest = new User { Id = 1, UserName = this.loginRequest.UserName, Password = "DifferentPassword" };
+
+            this.mockIUserProcessor.Setup(method => method.GetUserByUserName(this.loginRequest.UserName)).ReturnsAsync(this.userUnderTest);
             this.facadeUnderTest = new UserFacade(this.mockIUserProcessor.Object, this.mockITokenProcessor.Object);
 
             try
@@ -223,7 +227,7 @@ namespace Authentication.UnitTests.ForBusinessLayer.Facades
         {
             // Arrange 
             //  Valid user sample
-            this.userUnderTest = new User { Id = 1, UserName = this.loginRequest.UserName };
+            this.userUnderTest = new User { Id = 1, UserName = this.loginRequest.UserName, Password = this.loginRequest.Password };
 
             this.mockIUserProcessor.Setup(method => method.GetUserByUserName(this.loginRequest.UserName)).ReturnsAsync(this.userUnderTest);
             this.mockITokenProcessor.Setup(method => method.GenerateToken(It.IsAny<User>())).ThrowsAsync(new TokenGenerationException());

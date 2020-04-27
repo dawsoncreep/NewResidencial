@@ -12,7 +12,8 @@ namespace Authentication.BusinessLayer.Facade
     using System.Threading.Tasks;
 
     using Authentication.BusinessLayer.Interfaces.Facade;
-    using Authentication.BusinessLayer.Processors;
+    using Authentication.BusinessLayer.Interfaces.Processor;
+    using Authentication.Types.Exceptions;
     using Authentication.Types.Models;
 
     /// <summary>
@@ -50,6 +51,12 @@ namespace Authentication.BusinessLayer.Facade
         {
             request.Validate();
             var user = await this.userProcessor.GetUserByUserName(request.UserName);
+
+            if (user.Password != request.Password)
+            {
+                throw new InvalidUserAccessException();
+            }
+
             return await this.tokenProcessor.GenerateToken(user);
         }
     }
