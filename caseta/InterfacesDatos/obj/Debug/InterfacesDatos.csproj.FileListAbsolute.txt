@@ -1,0 +1,13 @@
+D:\OTROS\NewResidencial\caseta\InterfacesDatos\bin\Debug\InterfacesDatos.dll.config
+D:\OTROS\NewResidencial\caseta\InterfacesDatos\bin\Debug\InterfacesDatos.dll
+D:\OTROS\NewResidencial\caseta\InterfacesDatos\bin\Debug\InterfacesDatos.pdb
+D:\OTROS\NewResidencial\caseta\InterfacesDatos\bin\Debug\EntityFramework.dll
+D:\OTROS\NewResidencial\caseta\InterfacesDatos\bin\Debug\EntityFramework.SqlServer.dll
+D:\OTROS\NewResidencial\caseta\InterfacesDatos\bin\Debug\SecureGateTypes.dll
+D:\OTROS\NewResidencial\caseta\InterfacesDatos\bin\Debug\SecureGateTypes.pdb
+D:\OTROS\NewResidencial\caseta\InterfacesDatos\bin\Debug\EntityFramework.xml
+D:\OTROS\NewResidencial\caseta\InterfacesDatos\bin\Debug\EntityFramework.SqlServer.xml
+D:\OTROS\NewResidencial\caseta\InterfacesDatos\obj\Debug\InterfacesDatos.csprojAssemblyReference.cache
+D:\OTROS\NewResidencial\caseta\InterfacesDatos\obj\Debug\InterfacesDatos.csproj.CopyComplete
+D:\OTROS\NewResidencial\caseta\InterfacesDatos\obj\Debug\InterfacesDatos.dll
+D:\OTROS\NewResidencial\caseta\InterfacesDatos\obj\Debug\InterfacesDatos.pdb

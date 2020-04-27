@@ -43,6 +43,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
@@ -53,10 +54,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administracion\FactoriaNegocio.cs" />
+    <Compile Include="Evento\EventoProcessor.cs" />
+    <Compile Include="Ingreso\PreregistroProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ubicacion\UbicacionProcessor.cs" />
     <Compile Include="Visita\VisitaProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{A1DC0040-62D5-4DCB-B4D1-92620CD1603A}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterfacesBussines\BusinessInterfaces.csproj">
+      <Project>{297A773A-D84D-40D0-A060-AC098F01BA8B}</Project>
+      <Name>BusinessInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterfacesDatos\DataInterfaces.csproj">
+      <Project>{D5E36796-77BC-423A-8A58-45CCA022BA87}</Project>
+      <Name>DataInterfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SecureGateTypes\SecureGateTypes.csproj">
       <Project>{95fcf6aa-b0f4-46b9-bf25-088e8b224f3e}</Project>
       <Name>SecureGateTypes</Name>

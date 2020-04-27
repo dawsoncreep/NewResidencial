@@ -1,11 +1,16 @@
 D:\OTROS\NewResidencial\caseta\DataLayer\bin\Debug\DataLayer.dll.config
 D:\OTROS\NewResidencial\caseta\DataLayer\bin\Debug\DataLayer.dll
 D:\OTROS\NewResidencial\caseta\DataLayer\bin\Debug\DataLayer.pdb
+D:\OTROS\NewResidencial\caseta\DataLayer\bin\Debug\DataInterfaces.dll
 D:\OTROS\NewResidencial\caseta\DataLayer\bin\Debug\EntityFramework.dll
 D:\OTROS\NewResidencial\caseta\DataLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\OTROS\NewResidencial\caseta\DataLayer\bin\Debug\SecureGateTypes.dll
+D:\OTROS\NewResidencial\caseta\DataLayer\bin\Debug\DataInterfaces.pdb
+D:\OTROS\NewResidencial\caseta\DataLayer\bin\Debug\DataInterfaces.dll.config
+D:\OTROS\NewResidencial\caseta\DataLayer\bin\Debug\SecureGateTypes.pdb
 D:\OTROS\NewResidencial\caseta\DataLayer\bin\Debug\EntityFramework.xml
 D:\OTROS\NewResidencial\caseta\DataLayer\bin\Debug\EntityFramework.SqlServer.xml
-D:\OTROS\NewResidencial\caseta\DataLayer\obj\Debug\DataLayer.csproj.CoreCompileInputs.cache
+D:\OTROS\NewResidencial\caseta\DataLayer\obj\Debug\DataLayer.csprojAssemblyReference.cache
 D:\OTROS\NewResidencial\caseta\DataLayer\obj\Debug\DataLayer.csproj.CopyComplete
 D:\OTROS\NewResidencial\caseta\DataLayer\obj\Debug\DataLayer.dll
 D:\OTROS\NewResidencial\caseta\DataLayer\obj\Debug\DataLayer.pdb

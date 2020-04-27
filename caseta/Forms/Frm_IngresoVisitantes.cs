@@ -11,23 +11,24 @@ using System.Windows.Forms;
 using WebEye.Controls.WinForms.StreamPlayerControl;
 using BusinessLayer;
 using SecureGateTypes;
+using BusinessInterfaces;
 
 namespace caseta
 {
     public partial class Frm_IngresoVisita : Form
     {
-        ExternalProcessor externalProcessor;
-        LocationProcessor locationProcessor;
-        EventProcessor eventProcessor;
+        private readonly IVisitaProcessor visitaProcessor;
+        private readonly IUbicacionProcessor ubicacionProcessor;
+
         public Frm_IngresoVisita()
         {
             InitializeComponent();
-            externalProcessor = new ExternalProcessor();
-            locationProcessor = new LocationProcessor();
-            eventProcessor = new EventProcessor();
-            Cbbx_RType.Items.AddRange(eventProcessor.GetEventTypes());
-            Cbbx_RType.ValueMember = "Id";
-            Cbbx_RType.DisplayMember = "Descripcion";
+            visitaProcessor = Factoria.Instancia.CreateVisitaProcessor();
+            ubicacionProcessor = Factoria.Instancia.UbicacionProcessor();
+            Cbbx_RType.DataSource = visitaProcessor.TiposDeVisita().ToArray();
+            Cbbx_RType.ValueMember = "ID";
+            Cbbx_RType.DisplayMember = "Nombre";
+            SetDgvData(visitaProcessor.GetVisitasActuales());            
         }
 
         private void Frm_IngresoVisita_Load(object sender, EventArgs e)
@@ -35,20 +36,23 @@ namespace caseta
             SPC_PLacaT.StartPlay(new Uri(ConfigurationManager.AppSettings["PlacaTrasera"]));
             SPC_PlacaDelantera.StartPlay(new Uri(ConfigurationManager.AppSettings["PlacaDelantera"]));
             SPC_Rostro.StartPlay(new Uri(ConfigurationManager.AppSettings["Rostro"]));
-            SPC_Credencial.StartPlay(new Uri(ConfigurationManager.AppSettings["Credencial"]));            
-            Cbbx_Domicilio.Items.AddRange(locationProcessor.GetLocations());            
+            SPC_Credencial.StartPlay(new Uri(ConfigurationManager.AppSettings["Credencial"]));
+            var ubicaciones = ubicacionProcessor.UbicacionesValidas();
+            Cbbx_Domicilio.DataSource = ubicaciones.ToArray();            
             Cbbx_Domicilio.ValueMember = "ID";
-            Cbbx_Domicilio.DisplayMember = "LocationStr";
+            Cbbx_Domicilio.DisplayMember = "Nombre";
             AutoCompleteStringCollection Collection = new AutoCompleteStringCollection();
-            Collection.AddRange(locationProcessor.GetLocationsString());            
+            Collection.AddRange(ubicaciones.Select(s => s.Nombre).ToArray());            
             Cbbx_Domicilio.AutoCompleteCustomSource = Collection;
             Cbbx_Domicilio.AutoCompleteMode = AutoCompleteMode.Suggest;
             Cbbx_Domicilio.AutoCompleteSource = AutoCompleteSource.CustomSource;            
             Cbbx_Domicilio.AutoCompleteCustomSource = Collection;
+            DGV_VisitantesActuales.Refresh();
         }
 
         private void Btn_PAcceso_Click(object sender, EventArgs e)
         {
+            CausesValidationComponents(true);
             if (ValidateChildren())
             {
                 try
@@ -57,24 +61,20 @@ namespace caseta
                     Bitmap placaT = SPC_PLacaT.GetCurrentFrame();
                     Bitmap placaD = SPC_PlacaDelantera.GetCurrentFrame();
                     Bitmap credencial = SPC_Credencial.GetCurrentFrame();
-                    if (Cbbx_RType.Text == "Preregistro")
+                    var i = visitaProcessor.RegistrarVisita(rostro, placaT, placaD, credencial, (int)Cbbx_RType.SelectedValue, Tbx_Nombre.Text,
+                        Tbx_Apellidos.Text, Tbx_Desc.Text, Tbx_PLacas.Text, (int)Cbbx_Domicilio.SelectedValue);
+                    if (i > 0)
                     {
-                        if (eventProcessor.SolicitarAcceso(rostro, placaT, placaD, credencial, (Location)Cbbx_Domicilio.SelectedItem,
-                            Tbx_Nombre.Text, Tbx_Apellidos.Text, (EventType)Cbbx_RType.SelectedItem))
-                        {
-                            MessageBox.Show("Chido", "test", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Nel", "test", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        MessageBox.Show("Visita Ingresada", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Clean();
                     }
                 }
-                catch (InvalidOperationException)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Error al Tomar las fotografias, revise sus camaras y vuelva a intentarlo","ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                }                
+                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+            CausesValidationComponents(false);
         }
 
         private void Tbx_PLacas_Validating(object sender, CancelEventArgs e)
@@ -119,6 +119,31 @@ namespace caseta
             {
                 MessageBox.Show("Seleccione un Tipo de Registro", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 e.Cancel = true;
+            }
+        }
+
+        private void CausesValidationComponents(bool v)
+        {
+            Tbx_Apellidos.CausesValidation = v;
+            Tbx_Desc.CausesValidation = v;
+            Tbx_Nombre.CausesValidation = v;
+            Tbx_PLacas.CausesValidation = v;
+        }
+
+        private void Clean()
+        {
+            Tbx_Apellidos.Text = string.Empty;
+            Tbx_Desc.Text = string.Empty;
+            Tbx_Nombre.Text = string.Empty;
+            Tbx_PLacas.Text = string.Empty;
+        }
+
+        private void SetDgvData(IEnumerable<DGVVisitaActual> dGVVisitas)
+        {
+            DGV_VisitantesActuales.DataSource = dGVVisitas;
+            foreach (DataGridViewRow row in DGV_VisitantesActuales.Rows)
+            {
+                row.Cells["Cmn_Foto"].Value = Image.FromFile(@"C:\\Pictures\\Rostro7.jpg");
             }
         }
     }
