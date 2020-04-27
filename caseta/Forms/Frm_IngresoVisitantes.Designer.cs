@@ -63,13 +63,6 @@
             this.Btn_PAcceso = new System.Windows.Forms.Button();
             this.Lbl_Placas = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.Cmn_IdVisita = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cmn_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cmn_Domicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cmn_FechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cmn_Placas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cmn_Foto = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Cmn_UrlFoto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gbx_Busqueda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Busqueda)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -263,24 +256,12 @@
             // 
             // DGV_VisitantesActuales
             // 
-            this.DGV_VisitantesActuales.AllowUserToAddRows = false;
-            this.DGV_VisitantesActuales.AllowUserToDeleteRows = false;
             this.DGV_VisitantesActuales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DGV_VisitantesActuales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_VisitantesActuales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Cmn_IdVisita,
-            this.Cmn_Nombre,
-            this.Cmn_Domicilio,
-            this.Cmn_FechaIngreso,
-            this.Cmn_Placas,
-            this.Cmn_Foto,
-            this.Cmn_UrlFoto});
             this.DGV_VisitantesActuales.Location = new System.Drawing.Point(5, 48);
             this.DGV_VisitantesActuales.Name = "DGV_VisitantesActuales";
-            this.DGV_VisitantesActuales.ReadOnly = true;
-            this.DGV_VisitantesActuales.RowHeadersVisible = false;
             this.DGV_VisitantesActuales.Size = new System.Drawing.Size(464, 453);
             this.DGV_VisitantesActuales.TabIndex = 25;
             // 
@@ -372,7 +353,6 @@
             // 
             this.Tbx_Apellidos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Tbx_Apellidos.CausesValidation = false;
             this.Tbx_Apellidos.Location = new System.Drawing.Point(152, 96);
             this.Tbx_Apellidos.Margin = new System.Windows.Forms.Padding(2);
             this.Tbx_Apellidos.Name = "Tbx_Apellidos";
@@ -397,7 +377,6 @@
             // 
             this.Tbx_Nombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Tbx_Nombre.CausesValidation = false;
             this.Tbx_Nombre.Location = new System.Drawing.Point(152, 73);
             this.Tbx_Nombre.Margin = new System.Windows.Forms.Padding(2);
             this.Tbx_Nombre.Name = "Tbx_Nombre";
@@ -460,7 +439,6 @@
             // 
             this.Tbx_Desc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Tbx_Desc.CausesValidation = false;
             this.Tbx_Desc.Location = new System.Drawing.Point(152, 120);
             this.Tbx_Desc.Margin = new System.Windows.Forms.Padding(2);
             this.Tbx_Desc.Name = "Tbx_Desc";
@@ -471,7 +449,6 @@
             // 
             this.Tbx_PLacas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Tbx_PLacas.CausesValidation = false;
             this.Tbx_PLacas.Location = new System.Drawing.Point(152, 50);
             this.Tbx_PLacas.Margin = new System.Windows.Forms.Padding(2);
             this.Tbx_PLacas.MaxLength = 7;
@@ -499,7 +476,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_PAcceso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_PAcceso.Location = new System.Drawing.Point(123, 144);
+            this.Btn_PAcceso.Location = new System.Drawing.Point(67, 144);
             this.Btn_PAcceso.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_PAcceso.Name = "Btn_PAcceso";
             this.Btn_PAcceso.Size = new System.Drawing.Size(319, 51);
@@ -536,65 +513,6 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(1201, 708);
             this.tableLayoutPanel4.TabIndex = 31;
-            // 
-            // Cmn_IdVisita
-            // 
-            this.Cmn_IdVisita.DataPropertyName = "IdVisita";
-            this.Cmn_IdVisita.HeaderText = "ID";
-            this.Cmn_IdVisita.Name = "Cmn_IdVisita";
-            this.Cmn_IdVisita.ReadOnly = true;
-            this.Cmn_IdVisita.Visible = false;
-            // 
-            // Cmn_Nombre
-            // 
-            this.Cmn_Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Cmn_Nombre.DataPropertyName = "NombreCompleto";
-            this.Cmn_Nombre.HeaderText = "Nombre";
-            this.Cmn_Nombre.Name = "Cmn_Nombre";
-            this.Cmn_Nombre.ReadOnly = true;
-            // 
-            // Cmn_Domicilio
-            // 
-            this.Cmn_Domicilio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Cmn_Domicilio.DataPropertyName = "Domicilio";
-            this.Cmn_Domicilio.HeaderText = "Domicilio";
-            this.Cmn_Domicilio.Name = "Cmn_Domicilio";
-            this.Cmn_Domicilio.ReadOnly = true;
-            // 
-            // Cmn_FechaIngreso
-            // 
-            this.Cmn_FechaIngreso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Cmn_FechaIngreso.DataPropertyName = "FechaIngreso";
-            this.Cmn_FechaIngreso.HeaderText = "Ingreso";
-            this.Cmn_FechaIngreso.Name = "Cmn_FechaIngreso";
-            this.Cmn_FechaIngreso.ReadOnly = true;
-            this.Cmn_FechaIngreso.Width = 67;
-            // 
-            // Cmn_Placas
-            // 
-            this.Cmn_Placas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Cmn_Placas.DataPropertyName = "Placas";
-            this.Cmn_Placas.HeaderText = "Placas";
-            this.Cmn_Placas.Name = "Cmn_Placas";
-            this.Cmn_Placas.ReadOnly = true;
-            this.Cmn_Placas.Width = 64;
-            // 
-            // Cmn_Foto
-            // 
-            this.Cmn_Foto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Cmn_Foto.HeaderText = "Foto";
-            this.Cmn_Foto.Name = "Cmn_Foto";
-            this.Cmn_Foto.ReadOnly = true;
-            this.Cmn_Foto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Cmn_Foto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Cmn_UrlFoto
-            // 
-            this.Cmn_UrlFoto.DataPropertyName = "FotoRostro";
-            this.Cmn_UrlFoto.HeaderText = "UrlFoto";
-            this.Cmn_UrlFoto.Name = "Cmn_UrlFoto";
-            this.Cmn_UrlFoto.ReadOnly = true;
-            this.Cmn_UrlFoto.Visible = false;
             // 
             // Frm_IngresoVisita
             // 
@@ -660,12 +578,5 @@
         private System.Windows.Forms.Label Lbl_Nombre;
         private System.Windows.Forms.Label Lbl_Domicilio;
         private System.Windows.Forms.ComboBox Cbbx_Domicilio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cmn_IdVisita;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cmn_Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cmn_Domicilio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cmn_FechaIngreso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cmn_Placas;
-        private System.Windows.Forms.DataGridViewImageColumn Cmn_Foto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cmn_UrlFoto;
     }
 }

@@ -1,8 +1,0 @@
-D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\BusinessInterfaces.dll
-D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\BusinessInterfaces.pdb
-D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\SecureGateTypes.dll
-D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\SecureGateTypes.pdb
-D:\OTROS\NewResidencial\caseta\InterfacesBussines\obj\Debug\BusinessInterfaces.csproj.CopyComplete
-D:\OTROS\NewResidencial\caseta\InterfacesBussines\obj\Debug\BusinessInterfaces.dll
-D:\OTROS\NewResidencial\caseta\InterfacesBussines\obj\Debug\BusinessInterfaces.pdb
-D:\OTROS\NewResidencial\caseta\InterfacesBussines\obj\Debug\BusinessInterfaces.csprojAssemblyReference.cache

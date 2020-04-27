@@ -42,9 +42,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,41 +51,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataModel\SEvento.cs" />
-    <Compile Include="DataModel\SIngresoSalidaVisita.cs" />
-    <Compile Include="DataModel\STipoUbicacion.cs" />
-    <Compile Include="DataModel\STipoVisita.cs" />
-    <Compile Include="DataModel\SUbicacion.cs" />
-    <Compile Include="DataModel\SUsuario.cs" />
-    <Compile Include="DataModel\SVisita.cs" />
+    <Compile Include="DataModel\Evento.cs" />
+    <Compile Include="DataModel\TipoUbicacion.cs" />
+    <Compile Include="DataModel\TipoVisita.cs" />
+    <Compile Include="DataModel\Ubicacion.cs" />
+    <Compile Include="DataModel\Visita.cs" />
     <Compile Include="DBContext\GeneralContext.cs" />
-    <Compile Include="InterfacesDbContext\IUbicacionesDBContext.cs" />
-    <Compile Include="InterfacesDbContext\IUsuarioDBContext.cs" />
-    <Compile Include="InterfacesDbContext\IVisitaDbContext.cs" />
+    <Compile Include="DBContext\IVisitaDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositorios\Eventos\EventoRepositorio.cs" />
-    <Compile Include="Repositorios\Ubicaciones\TipoUbicacionRepositorio.cs" />
-    <Compile Include="Repositorios\Ubicaciones\UbicacionRepositorio.cs" />
-    <Compile Include="Repositorios\Visita\IngresoSalidaVisitaRepositorio.cs" />
-    <Compile Include="Repositorios\Visita\TipoVisitaRepositorio.cs" />
-    <Compile Include="Repositorios\Visita\VisitaRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\InterfacesDatos\DataInterfaces.csproj">
-      <Project>{d5e36796-77bc-423a-8a58-45cca022ba87}</Project>
-      <Name>DataInterfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SecureGateTypes\SecureGateTypes.csproj">
-      <Project>{95FCF6AA-B0F4-46B9-BF25-088E8B224F3E}</Project>
-      <Name>SecureGateTypes</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositorios\Fotos\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

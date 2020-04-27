@@ -11,10 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecureGateTypes", "SecureGa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{A1DC0040-62D5-4DCB-B4D1-92620CD1603A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataInterfaces", "InterfacesDatos\DataInterfaces.csproj", "{D5E36796-77BC-423A-8A58-45CCA022BA87}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessInterfaces", "InterfacesBussines\BusinessInterfaces.csproj", "{297A773A-D84D-40D0-A060-AC098F01BA8B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,14 +33,6 @@ Global
 		{A1DC0040-62D5-4DCB-B4D1-92620CD1603A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1DC0040-62D5-4DCB-B4D1-92620CD1603A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1DC0040-62D5-4DCB-B4D1-92620CD1603A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D5E36796-77BC-423A-8A58-45CCA022BA87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5E36796-77BC-423A-8A58-45CCA022BA87}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D5E36796-77BC-423A-8A58-45CCA022BA87}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5E36796-77BC-423A-8A58-45CCA022BA87}.Release|Any CPU.Build.0 = Release|Any CPU
-		{297A773A-D84D-40D0-A060-AC098F01BA8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{297A773A-D84D-40D0-A060-AC098F01BA8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{297A773A-D84D-40D0-A060-AC098F01BA8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{297A773A-D84D-40D0-A060-AC098F01BA8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

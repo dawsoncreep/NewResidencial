@@ -41,20 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AspNetUser\Usuario.cs" />
-    <Compile Include="Event\Evento.cs" />
+    <Compile Include="AspNetUser\AspNetUser.cs" />
+    <Compile Include="Event\Event.cs" />
+    <Compile Include="Event\EventType.cs" />
     <Compile Include="External\ExternalTypeCbbx.cs" />
-    <Compile Include="Ubicacion\Ubicacion.cs" />
-    <Compile Include="Ubicacion\TipoUbicacion.cs" />
+    <Compile Include="Locations\Location.cs" />
+    <Compile Include="Locations\LocationUser.cs" />
+    <Compile Include="Notification\LocationUserNotiofication.cs" />
+    <Compile Include="Notification\Notification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Enums\TiposDeVisita.cs" />
-    <Compile Include="Visita\IngresoSalidaVisita.cs" />
-    <Compile Include="Visita\TipoVisita.cs" />
-    <Compile Include="Visita\Visita.cs" />
-    <Compile Include="Visita\DGVVisitaActual.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="IngresoSalidaVisita\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
