@@ -1,133 +1,131 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Description;
 using ConectarDatos;
 
 namespace ServicesClient.Controllers
 {
     public class EventoController : ApiController
     {
-        private ResidencialEntities db = new ResidencialEntities();
+        private ResidencialEntities contexto = new ResidencialEntities();
 
-        // GET: api/Evento
-        public IQueryable<Evento> GetEvento()
+        [HttpGet]
+        public IEnumerable<Evento> Get()
         {
-            return db.Evento;
+            using (ResidencialEntities residencialEntities = new ResidencialEntities())
+            {
+                residencialEntities.Configuration.LazyLoadingEnabled = false;
+                List<Evento> lista = residencialEntities.Evento.ToList<Evento>();
+
+                return lista;
+            }
         }
 
-        // GET: api/Evento/5
-        [ResponseType(typeof(Evento))]
-        public IHttpActionResult GetEvento(int id)
+        [HttpGet]
+        public IEnumerable<Evento> GetEventoByUser(int idUser)
         {
-            Evento evento = db.Evento.Find(id);
-            if (evento == null)
+            using (ResidencialEntities residencialEntities = new ResidencialEntities())
             {
-                return NotFound();
-            }
+                residencialEntities.Configuration.LazyLoadingEnabled = false;
+                var Eventos = residencialEntities.Evento.ToList().Where(x => x.idUsuario == idUser);
+                return Eventos;
 
-            return Ok(evento);
+            }
         }
 
-        // PUT: api/Evento/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutEvento(int id, Evento evento)
+        [HttpGet]
+        public Evento GetEvento(int idEvento)
         {
-            if (!ModelState.IsValid)
+            using (ResidencialEntities residencialEntities = new ResidencialEntities())
             {
-                return BadRequest(ModelState);
-            }
+                residencialEntities.Configuration.LazyLoadingEnabled = false;
+                var Eventos = residencialEntities.Evento.FirstOrDefault(x => x.idEvento == idEvento);
+                return Eventos;
 
-            if (id != evento.idEvento)
+            }
+        }
+
+        [HttpPost]
+        public IHttpActionResult Agregar([FromBody]Evento evento)
+        {
+
+            using (ResidencialEntities residencialEntities = new ResidencialEntities())
+            {
+                if (ModelState.IsValid)
+                {
+
+                    contexto.Evento.Add(evento);
+                    contexto.SaveChanges();
+                    return Ok(evento);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+        }
+
+        [HttpPut]
+        public IHttpActionResult Actualizar([FromBody]Evento evento)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+                using (ResidencialEntities residencialEntities = new ResidencialEntities())
+                {
+                    int eventoExiste;
+                    eventoExiste = contexto.Evento.Count(s => s.idEvento == evento.idEvento);
+                    if (eventoExiste == 0)
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        contexto.Entry(evento).State = System.Data.Entity.EntityState.Modified;
+                        contexto.SaveChanges();
+                        return Ok();
+                    }
+                }
+            }
+            else
             {
                 return BadRequest();
             }
 
-            db.Entry(evento).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EventoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Evento
-        [ResponseType(typeof(Evento))]
-        public IHttpActionResult PostEvento(Evento evento)
+        [HttpDelete]
+        public IHttpActionResult Eliminar(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            db.Evento.Add(evento);
-
-            try
+            if (ModelState.IsValid)
             {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (EventoExists(evento.idEvento))
+                using (ResidencialEntities residencialEntities = new ResidencialEntities())
                 {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
+                    int eventoExiste;
+                    eventoExiste = contexto.Evento.Count(s => s.idEvento == id);
+                    if (eventoExiste == 0)
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        Evento evento = contexto.Evento.FirstOrDefault(s => s.idEvento == id);
+                        contexto.Evento.Remove(evento);
+                        contexto.SaveChanges();
+                        return Ok();
+                    }
                 }
             }
-
-            return CreatedAtRoute("DefaultApi", new { id = evento.idEvento }, evento);
-        }
-
-        // DELETE: api/Evento/5
-        [ResponseType(typeof(Evento))]
-        public IHttpActionResult DeleteEvento(int id)
-        {
-            Evento evento = db.Evento.Find(id);
-            if (evento == null)
+            else
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            db.Evento.Remove(evento);
-            db.SaveChanges();
-
-            return Ok(evento);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool EventoExists(int id)
-        {
-            return db.Evento.Count(e => e.idEvento == id) > 0;
         }
     }
 }
