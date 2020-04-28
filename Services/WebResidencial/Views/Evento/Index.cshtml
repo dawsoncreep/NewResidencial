@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebResidencial.Models.Evento>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdEvento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Inicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdEvento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Inicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fin)
+        </td>
+        <td>
+            <img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=@item.QR" alt="Sample Photo" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BoolActivo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdEvento  }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.IdEvento })
+        </td>
+    </tr>
+}
+
+</table>

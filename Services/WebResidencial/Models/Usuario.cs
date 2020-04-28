@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -13,10 +15,31 @@ namespace WebResidencial.Models
         private string contraseña;
         private bool activo;
 
+        [Required(ErrorMessage = "El campo apellido es obligatorio.")]
+        public string Apellido { get; set; }
+
+        [Required(ErrorMessage = "El campo correo electrónico es obligatorio.")]
+        [EmailAddress(ErrorMessage = "El campo de correo electrónico no es una dirección de correo electrónico válido.")]
+        public string Correo { get; set; }
+
+        [DisplayName("Télefono celular")]
+        [Required(ErrorMessage = "El campo de télefono celular es obligatorio.")]
+        public string Celular { get; set; }
+
+
         public int IdUsuario { get => idUsuario; set => idUsuario = value; }
+
+        [Required(ErrorMessage = "El campo nombre es obligatorio.")]
         public string Nombre { get => nombre; set => nombre = value; }
-        public string nUsuario { get => usuario; set => usuario = value; }
+
+        [DisplayName("Usuario")]
+        [Required(ErrorMessage = "El campo de usuario es obligatorio.")]
+        public string Usuario1 { get => usuario; set => usuario = value; }
+
+        [Required(ErrorMessage = "El campo contraseña es obligatorio.")]
+        [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}", MinimumLength = 6)]
         public string Contraseña { get => contraseña; set => contraseña = value; }
+
         public bool Activo { get => activo; set => activo = value; }
     }
 }

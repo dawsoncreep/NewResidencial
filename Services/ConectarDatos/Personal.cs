@@ -17,8 +17,8 @@ namespace ConectarDatos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Personal()
         {
-            this.PersonalUbicacion = new HashSet<PersonalUbicacion>();
             this.Huella = new HashSet<Huella>();
+            this.PersonalUbicacion = new HashSet<PersonalUbicacion>();
         }
     
         public int idPersonal { get; set; }
@@ -28,10 +28,10 @@ namespace ConectarDatos
         public bool activo { get; set; }
         public string fotoPersonal { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Huella> Huella { get; set; }
         public virtual IngresoSalidaPersonal IngresoSalidaPersonal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PersonalUbicacion> PersonalUbicacion { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Huella> Huella { get; set; }
     }
 }

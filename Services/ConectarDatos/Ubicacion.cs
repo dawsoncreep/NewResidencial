@@ -19,6 +19,7 @@ namespace ConectarDatos
         {
             this.Dispositivo = new HashSet<Dispositivo>();
             this.Evento = new HashSet<Evento>();
+            this.Visita = new HashSet<Visita>();
             this.PersonalUbicacion = new HashSet<PersonalUbicacion>();
             this.SolicitudAcceso = new HashSet<SolicitudAcceso>();
             this.usuarioUbicacion = new HashSet<usuarioUbicacion>();
@@ -35,6 +36,8 @@ namespace ConectarDatos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Evento> Evento { get; set; }
         public virtual tipoUbicacion tipoUbicacion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Visita> Visita { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PersonalUbicacion> PersonalUbicacion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

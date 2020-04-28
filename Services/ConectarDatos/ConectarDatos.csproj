@@ -97,11 +97,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResidencialDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ResidencialDataModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ResidencialDataModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Rol.cs">
       <DependentUpon>ResidencialDataModel.tt</DependentUpon>
     </Compile>
@@ -146,10 +141,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="ResidencialDataModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ResidencialDataModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <EntityDeploy Include="ResidencialDataModel.edmx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

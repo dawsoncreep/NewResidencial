@@ -19,7 +19,6 @@ namespace ConectarDatos
         {
             this.FotoEventoEntrada = new HashSet<FotoEventoEntrada>();
             this.FotoEventoSalida = new HashSet<FotoEventoSalida>();
-            this.Usuario = new HashSet<Usuario>();
         }
     
         public int idEvento { get; set; }
@@ -29,13 +28,13 @@ namespace ConectarDatos
         public string QR { get; set; }
         public int idUbicacion { get; set; }
         public int activo { get; set; }
+        public int idUsuario { get; set; }
     
         public virtual Ubicacion Ubicacion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FotoEventoEntrada> FotoEventoEntrada { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FotoEventoSalida> FotoEventoSalida { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Usuario> Usuario { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }

@@ -17,9 +17,16 @@ namespace ServicesClient.Controllers
         private ResidencialEntities db = new ResidencialEntities();
 
         // GET: api/tipoUbicacion
-        public IQueryable<tipoUbicacion> GettipoUbicacion()
+        [HttpGet]
+        public IEnumerable<tipoUbicacion> Get()
         {
-            return db.tipoUbicacion;
+
+            using (ResidencialEntities residencialEntities = new ResidencialEntities())
+            {
+                residencialEntities.Configuration.LazyLoadingEnabled = false;
+                List<tipoUbicacion> lista = residencialEntities.tipoUbicacion.ToList<tipoUbicacion>();
+                return lista;
+            }
         }
 
         // GET: api/tipoUbicacion/5

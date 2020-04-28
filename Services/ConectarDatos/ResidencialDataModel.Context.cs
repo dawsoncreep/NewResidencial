@@ -33,23 +33,23 @@ namespace ConectarDatos
         public virtual DbSet<Permiso> Permiso { get; set; }
         public virtual DbSet<Personal> Personal { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
+        public virtual DbSet<RolPermiso> RolPermiso { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tipoUbicacion> tipoUbicacion { get; set; }
         public virtual DbSet<TipoVisita> TipoVisita { get; set; }
         public virtual DbSet<Ubicacion> Ubicacion { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<UsuarioRol> UsuarioRol { get; set; }
+        public virtual DbSet<usuarioUbicacion> usuarioUbicacion { get; set; }
         public virtual DbSet<Vehiculo> Vehiculo { get; set; }
+        public virtual DbSet<VehiculoUbicacion> VehiculoUbicacion { get; set; }
         public virtual DbSet<Visita> Visita { get; set; }
         public virtual DbSet<FotoEventoEntrada> FotoEventoEntrada { get; set; }
         public virtual DbSet<FotoEventoSalida> FotoEventoSalida { get; set; }
         public virtual DbSet<IngresoSalidaPersonal> IngresoSalidaPersonal { get; set; }
         public virtual DbSet<ingresoSalidaVisita> ingresoSalidaVisita { get; set; }
         public virtual DbSet<PersonalUbicacion> PersonalUbicacion { get; set; }
-        public virtual DbSet<RolPermiso> RolPermiso { get; set; }
         public virtual DbSet<SolicitudAcceso> SolicitudAcceso { get; set; }
-        public virtual DbSet<UsuarioRol> UsuarioRol { get; set; }
-        public virtual DbSet<usuarioUbicacion> usuarioUbicacion { get; set; }
         public virtual DbSet<UsuarioVisita> UsuarioVisita { get; set; }
-        public virtual DbSet<VehiculoUbicacion> VehiculoUbicacion { get; set; }
     }
 }

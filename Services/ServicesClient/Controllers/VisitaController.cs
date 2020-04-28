@@ -15,120 +15,122 @@ namespace ServicesClient.Controllers
 {
     public class VisitaController : ApiController
     {
-        private ResidencialEntities db = new ResidencialEntities();
+        private ResidencialEntities contexto = new ResidencialEntities();
 
-        // GET: api/Visita
-        public IQueryable<Visita> GetVisita()
+        [HttpGet]
+        public IEnumerable<Visita> Get()
         {
-            return db.Visita;
+            using (ResidencialEntities residencialEntities = new ResidencialEntities())
+            {
+                residencialEntities.Configuration.LazyLoadingEnabled = false;
+                List<Visita> lista = residencialEntities.Visita.ToList<Visita>();
+
+                return lista;
+            }
         }
 
-        // GET: api/Visita/5
-        [ResponseType(typeof(Visita))]
-        public async Task<IHttpActionResult> GetVisita(int id)
+        [HttpGet]
+        public IEnumerable<Visita> GetVisitaByUbication(int idUbicacion)
         {
-            Visita visita = await db.Visita.FindAsync(id);
-            if (visita == null)
+            using (ResidencialEntities residencialEntities = new ResidencialEntities())
             {
-                return NotFound();
-            }
+                residencialEntities.Configuration.LazyLoadingEnabled = false;
+                var Visitas = residencialEntities.Visita.ToList().Where(x => x.idUbicacion == idUbicacion);
+                return Visitas;
 
-            return Ok(visita);
+            }
         }
 
-        // PUT: api/Visita/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutVisita(int id, Visita visita)
+        [HttpGet]
+        public Visita GetVisita(int idVisita)
         {
-            if (!ModelState.IsValid)
+            using (ResidencialEntities residencialEntities = new ResidencialEntities())
             {
-                return BadRequest(ModelState);
-            }
+                residencialEntities.Configuration.LazyLoadingEnabled = false;
+                var Visita = residencialEntities.Visita.FirstOrDefault(x => x.idVisita == idVisita);
+                return Visita;
 
-            if (id != visita.idVisita)
+            }
+        }
+
+        [HttpPost]
+        public IHttpActionResult Agregar([FromBody]Visita visita)
+        {
+
+            using (ResidencialEntities residencialEntities = new ResidencialEntities())
+            {
+                if (ModelState.IsValid)
+                {
+
+                    contexto.Visita
+.Add(visita);
+                    contexto.SaveChanges();
+                    return Ok(visita);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+        }
+
+        [HttpPut]
+        public IHttpActionResult Actualizar([FromBody]Visita visita)
+        {
+
+            if (ModelState.IsValid)
+            {
+                using (ResidencialEntities residencialEntities = new ResidencialEntities())
+                {
+                    int visitaExiste;
+                    visitaExiste = contexto.Visita.Count(s => s.idVisita == visita.idVisita);
+                    if (visitaExiste == 0)
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        contexto.Entry(visita).State = System.Data.Entity.EntityState.Modified;
+                        contexto.SaveChanges();
+                        return Ok();
+                    }
+                }
+            }
+            else
             {
                 return BadRequest();
             }
 
-            db.Entry(visita).State = EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!VisitaExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Visita
-        [ResponseType(typeof(Visita))]
-        public async Task<IHttpActionResult> PostVisita(Visita visita)
+        [HttpDelete]
+        public IHttpActionResult Eliminar(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            db.Visita.Add(visita);
-
-            try
+            if (ModelState.IsValid)
             {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (VisitaExists(visita.idVisita))
+                using (ResidencialEntities residencialEntities = new ResidencialEntities())
                 {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
+                    int eventoExiste;
+                    eventoExiste = contexto.Visita.Count(s => s.idVisita == id);
+                    if (eventoExiste == 0)
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        Visita visita = contexto.Visita.FirstOrDefault(s => s.idVisita == id);
+                        contexto.Visita.Remove(visita);
+                        contexto.SaveChanges();
+                        return Ok();
+                    }
                 }
             }
-
-            return CreatedAtRoute("DefaultApi", new { id = visita.idVisita }, visita);
-        }
-
-        // DELETE: api/Visita/5
-        [ResponseType(typeof(Visita))]
-        public async Task<IHttpActionResult> DeleteVisita(int id)
-        {
-            Visita visita = await db.Visita.FindAsync(id);
-            if (visita == null)
+            else
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            db.Visita.Remove(visita);
-            await db.SaveChangesAsync();
-
-            return Ok(visita);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool VisitaExists(int id)
-        {
-            return db.Visita.Count(e => e.idVisita == id) > 0;
         }
     }
 }
