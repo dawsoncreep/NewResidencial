@@ -1,0 +1,1871 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SecureGateModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApplicationParameters">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Key" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="EventLocation_Id" Type="int" />
+    <Property Name="PermissionUser_Id" Type="int" />
+    <Property Name="UserBinnacle_Id" Type="int" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="MotherSurname" Type="nvarchar(max)" />
+    <Property Name="LastName" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Audiences">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Base64Secret" Type="nvarchar(max)" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Deleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="UpdatedAt" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="DeletedAt" Type="datetime" />
+    <Property Name="DeletedBy" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="BinnaclePhotoes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="UpdatedAt" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="DeletedAt" Type="datetime" />
+    <Property Name="DeletedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="Image" Type="nvarchar(max)" />
+    <Property Name="Binnacle_Id" Type="int" />
+    <Property Name="BinnaclePhotoType_Id" Type="int" />
+    <Property Name="ExternalBinnacle_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="BinnaclePhotoTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Binnacles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Deleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="UpdatedAt" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="DeletedAt" Type="datetime" />
+    <Property Name="DeletedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="UserBinnacle_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="BinnacleTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Binnacle_Id" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Bulletins">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Deleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="UpdatedAt" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="DeletedAt" Type="datetime" />
+    <Property Name="DeletedBy" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="EventLocations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Deleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="UpdatedAt" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="DeletedAt" Type="datetime" />
+    <Property Name="DeletedBy" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="Events">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="UpdatedAt" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="DeletedAt" Type="datetime" />
+    <Property Name="DeletedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="Binnacle_Id" Type="int" />
+    <Property Name="EventLocation_Id" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateStart" Type="datetime" Nullable="false" />
+    <Property Name="DateEnd" Type="datetime" Nullable="false" />
+    <Property Name="EventType_Id" Type="int" />
+    <Property Name="External_Id" Type="int" />
+    <Property Name="Location_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="EventTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsTiedToExternalUser" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ExternalBinnaclePhotoes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Image" Type="nvarchar" MaxLength="200" />
+    <Property Name="ExternalBinnacle_Id" Type="int" />
+    <Property Name="BinnaclePhotoType_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="ExternalBinnacles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="UpdatedAt" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="DeletedAt" Type="datetime" />
+    <Property Name="DeletedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="EntryDate" Type="datetime" Nullable="false" />
+    <Property Name="ExitDate" Type="datetime" />
+    <Property Name="ExternalName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ColonialName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="LicensePlateText" Type="nvarchar" MaxLength="50" />
+    <Property Name="LocationText" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ExternalTypeText" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="SessionId" Type="uniqueidentifier" />
+    <Property Name="BinnacleType_Id" Type="int" />
+    <Property Name="External_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="ExternalPhotoes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Deleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="UpdatedAt" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="DeletedAt" Type="datetime" />
+    <Property Name="DeletedBy" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="Externals">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="LicensePlate" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="UpdatedAt" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="DeletedAt" Type="datetime" />
+    <Property Name="DeletedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="ExternalType_Id" Type="int" />
+    <Property Name="Image" Type="nvarchar" MaxLength="200" />
+    <Property Name="Location_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="ExternalTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Locations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="UpdatedAt" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="DeletedAt" Type="datetime" />
+    <Property Name="DeletedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="EventLocation_Id" Type="int" />
+    <Property Name="LocationTelephone_Id" Type="int" />
+    <Property Name="LocationVehicle_Id" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="OutNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="InNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="LocationType_Id" Type="int" />
+    <Property Name="Street" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LocationTelephones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Deleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="UpdatedAt" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="DeletedAt" Type="datetime" />
+    <Property Name="DeletedBy" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="LocationTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LocationUserNotifications">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Deleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="UpdatedAt" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="DeletedAt" Type="datetime" />
+    <Property Name="DeletedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="Permision" Type="bit" Nullable="false" />
+    <Property Name="ApplicationUser_Id" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="LocationUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplicationUser_Id" Type="nvarchar" MaxLength="128" />
+    <Property Name="Location_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="LocationVehicles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tag" Type="nvarchar(max)" />
+    <Property Name="Deleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="UpdatedAt" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="DeletedAt" Type="datetime" />
+    <Property Name="DeletedBy" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="Notifications">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Deleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="UpdatedAt" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="DeletedAt" Type="datetime" />
+    <Property Name="DeletedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="LocationUserNotification_Id" Type="int" />
+    <Property Name="Message" Type="nvarchar(max)" />
+    <Property Name="Authorization" Type="bit" Nullable="false" />
+    <Property Name="AwnserDate" Type="datetime" />
+    <Property Name="ApplicationUser_Id" Type="nvarchar" MaxLength="128" />
+    <Property Name="ExternalBinnaclePhoto_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="PermissionRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplicationRole_Id" Type="nvarchar" MaxLength="128" />
+    <Property Name="Permission_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Permissions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PermissionUser_Id" Type="int" />
+    <Property Name="ResourceCode" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Action" Type="nvarchar" MaxLength="100" />
+    <Property Name="Controller" Type="nvarchar" MaxLength="100" />
+    <Property Name="Area" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="PermissionUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplicationUser_Id" Type="nvarchar" MaxLength="128" />
+    <Property Name="Permission_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhotoTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TagCode" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="VehicleBrand" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VehicleModel" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VehicleYear" Type="nvarchar" MaxLength="50" />
+    <Property Name="Observations" Type="nvarchar" MaxLength="255" />
+    <Property Name="ApplicationUser_Id" Type="nvarchar" MaxLength="128" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="UpdatedAt" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="DeletedAt" Type="datetime" />
+    <Property Name="DeletedBy" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="UserBinnacles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Deleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="UpdatedAt" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="DeletedAt" Type="datetime" />
+    <Property Name="DeletedBy" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUsers_dbo_EventLocations_EventLocation_Id">
+    <End Role="EventLocations" Type="Self.EventLocations" Multiplicity="0..1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventLocations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="EventLocation_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUsers_dbo_PermissionUsers_PermissionUser_Id">
+    <End Role="PermissionUsers" Type="Self.PermissionUsers" Multiplicity="0..1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermissionUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="PermissionUser_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUsers_dbo_UserBinnacles_UserBinnacle_Id">
+    <End Role="UserBinnacles" Type="Self.UserBinnacles" Multiplicity="0..1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserBinnacles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="UserBinnacle_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Audiences_dbo_AspNetUsers_CreatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Audiences" Type="Self.Audiences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Audiences">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Audiences_dbo_AspNetUsers_DeletedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Audiences" Type="Self.Audiences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Audiences">
+        <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Audiences_dbo_AspNetUsers_UpdatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Audiences" Type="Self.Audiences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Audiences">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_BinnaclePhotoes_dbo_AspNetUsers_CreatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="BinnaclePhotoes" Type="Self.BinnaclePhotoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BinnaclePhotoes">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_BinnaclePhotoes_dbo_AspNetUsers_DeletedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="BinnaclePhotoes" Type="Self.BinnaclePhotoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BinnaclePhotoes">
+        <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_BinnaclePhotoes_dbo_AspNetUsers_UpdatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="BinnaclePhotoes" Type="Self.BinnaclePhotoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BinnaclePhotoes">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_BinnaclePhotoes_dbo_BinnaclePhotoTypes_BinnaclePhotoType_Id">
+    <End Role="BinnaclePhotoTypes" Type="Self.BinnaclePhotoTypes" Multiplicity="0..1" />
+    <End Role="BinnaclePhotoes" Type="Self.BinnaclePhotoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BinnaclePhotoTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BinnaclePhotoes">
+        <PropertyRef Name="BinnaclePhotoType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_BinnaclePhotoes_dbo_Binnacles_Binnacle_Id">
+    <End Role="Binnacles" Type="Self.Binnacles" Multiplicity="0..1" />
+    <End Role="BinnaclePhotoes" Type="Self.BinnaclePhotoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Binnacles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BinnaclePhotoes">
+        <PropertyRef Name="Binnacle_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_BinnaclePhotoes_dbo_ExternalBinnacles_ExternalBinnacle_Id">
+    <End Role="ExternalBinnacles" Type="Self.ExternalBinnacles" Multiplicity="0..1" />
+    <End Role="BinnaclePhotoes" Type="Self.BinnaclePhotoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExternalBinnacles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BinnaclePhotoes">
+        <PropertyRef Name="ExternalBinnacle_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Binnacles_dbo_AspNetUsers_CreatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Binnacles" Type="Self.Binnacles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Binnacles">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Binnacles_dbo_AspNetUsers_DeletedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Binnacles" Type="Self.Binnacles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Binnacles">
+        <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Binnacles_dbo_AspNetUsers_UpdatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Binnacles" Type="Self.Binnacles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Binnacles">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Binnacles_dbo_UserBinnacles_UserBinnacle_Id">
+    <End Role="UserBinnacles" Type="Self.UserBinnacles" Multiplicity="0..1" />
+    <End Role="Binnacles" Type="Self.Binnacles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserBinnacles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Binnacles">
+        <PropertyRef Name="UserBinnacle_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_BinnacleTypes_dbo_Binnacles_Binnacle_Id">
+    <End Role="Binnacles" Type="Self.Binnacles" Multiplicity="0..1" />
+    <End Role="BinnacleTypes" Type="Self.BinnacleTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Binnacles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BinnacleTypes">
+        <PropertyRef Name="Binnacle_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Bulletins_dbo_AspNetUsers_CreatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Bulletins" Type="Self.Bulletins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bulletins">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Bulletins_dbo_AspNetUsers_DeletedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Bulletins" Type="Self.Bulletins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bulletins">
+        <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Bulletins_dbo_AspNetUsers_UpdatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Bulletins" Type="Self.Bulletins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bulletins">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CustomerBinnacles_dbo_AspNetUsers_CreatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="ExternalBinnacles" Type="Self.ExternalBinnacles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExternalBinnacles">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CustomerBinnacles_dbo_AspNetUsers_DeletedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="ExternalBinnacles" Type="Self.ExternalBinnacles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExternalBinnacles">
+        <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CustomerBinnacles_dbo_AspNetUsers_UpdatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="ExternalBinnacles" Type="Self.ExternalBinnacles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExternalBinnacles">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CustomerPhotoes_dbo_AspNetUsers_CreatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="ExternalPhotoes" Type="Self.ExternalPhotoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExternalPhotoes">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CustomerPhotoes_dbo_AspNetUsers_DeletedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="ExternalPhotoes" Type="Self.ExternalPhotoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExternalPhotoes">
+        <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CustomerPhotoes_dbo_AspNetUsers_UpdatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="ExternalPhotoes" Type="Self.ExternalPhotoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExternalPhotoes">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_EventLocations_dbo_AspNetUsers_CreatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="EventLocations" Type="Self.EventLocations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EventLocations">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_EventLocations_dbo_AspNetUsers_DeletedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="EventLocations" Type="Self.EventLocations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EventLocations">
+        <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_EventLocations_dbo_AspNetUsers_UpdatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="EventLocations" Type="Self.EventLocations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EventLocations">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Events_dbo_AspNetUsers_CreatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Events" Type="Self.Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Events">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Events_dbo_AspNetUsers_DeletedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Events" Type="Self.Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Events">
+        <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Events_dbo_AspNetUsers_UpdatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Events" Type="Self.Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Events">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Events_dbo_Binnacles_Binnacle_Id">
+    <End Role="Binnacles" Type="Self.Binnacles" Multiplicity="0..1" />
+    <End Role="Events" Type="Self.Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Binnacles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Events">
+        <PropertyRef Name="Binnacle_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Events_dbo_EventLocations_EventLocation_Id">
+    <End Role="EventLocations" Type="Self.EventLocations" Multiplicity="0..1" />
+    <End Role="Events" Type="Self.Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventLocations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Events">
+        <PropertyRef Name="EventLocation_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Events_dbo_EventTypes_EventType_Id">
+    <End Role="EventTypes" Type="Self.EventTypes" Multiplicity="0..1" />
+    <End Role="Events" Type="Self.Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Events">
+        <PropertyRef Name="EventType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Events_dbo_Externals_External_Id">
+    <End Role="Externals" Type="Self.Externals" Multiplicity="0..1" />
+    <End Role="Events" Type="Self.Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Externals">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Events">
+        <PropertyRef Name="External_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Events_dbo_Locations_Location_Id">
+    <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
+    <End Role="Events" Type="Self.Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Events">
+        <PropertyRef Name="Location_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ExternalBinnaclePhotoes_dbo_BinnaclePhotoTypes_BinnaclePhotoType_Id">
+    <End Role="BinnaclePhotoTypes" Type="Self.BinnaclePhotoTypes" Multiplicity="0..1" />
+    <End Role="ExternalBinnaclePhotoes" Type="Self.ExternalBinnaclePhotoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BinnaclePhotoTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExternalBinnaclePhotoes">
+        <PropertyRef Name="BinnaclePhotoType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ExternalBinnaclePhotoes_dbo_ExternalBinnacles_ExternalBinnacle_Id">
+    <End Role="ExternalBinnacles" Type="Self.ExternalBinnacles" Multiplicity="0..1" />
+    <End Role="ExternalBinnaclePhotoes" Type="Self.ExternalBinnaclePhotoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExternalBinnacles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExternalBinnaclePhotoes">
+        <PropertyRef Name="ExternalBinnacle_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ExternalBinnacles_dbo_BinnacleTypes_BinnacleType_Id">
+    <End Role="BinnacleTypes" Type="Self.BinnacleTypes" Multiplicity="0..1" />
+    <End Role="ExternalBinnacles" Type="Self.ExternalBinnacles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BinnacleTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExternalBinnacles">
+        <PropertyRef Name="BinnacleType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ExternalBinnacles_dbo_Externals_External_Id">
+    <End Role="Externals" Type="Self.Externals" Multiplicity="0..1" />
+    <End Role="ExternalBinnacles" Type="Self.ExternalBinnacles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Externals">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExternalBinnacles">
+        <PropertyRef Name="External_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Externals_dbo_AspNetUsers_CreatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Externals" Type="Self.Externals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Externals">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Externals_dbo_AspNetUsers_DeletedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Externals" Type="Self.Externals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Externals">
+        <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Externals_dbo_AspNetUsers_UpdatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Externals" Type="Self.Externals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Externals">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Externals_dbo_ExternalTypes_ExternalType_Id">
+    <End Role="ExternalTypes" Type="Self.ExternalTypes" Multiplicity="0..1" />
+    <End Role="Externals" Type="Self.Externals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExternalTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Externals">
+        <PropertyRef Name="ExternalType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Externals_dbo_Locations_Location_Id">
+    <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
+    <End Role="Externals" Type="Self.Externals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Externals">
+        <PropertyRef Name="Location_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Locations_dbo_AspNetUsers_CreatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Locations" Type="Self.Locations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Locations">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Locations_dbo_AspNetUsers_DeletedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Locations" Type="Self.Locations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Locations">
+        <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Locations_dbo_AspNetUsers_UpdatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Locations" Type="Self.Locations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Locations">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Locations_dbo_EventLocations_EventLocation_Id">
+    <End Role="EventLocations" Type="Self.EventLocations" Multiplicity="0..1" />
+    <End Role="Locations" Type="Self.Locations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventLocations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Locations">
+        <PropertyRef Name="EventLocation_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Locations_dbo_LocationTelephones_LocationTelephone_Id">
+    <End Role="LocationTelephones" Type="Self.LocationTelephones" Multiplicity="0..1" />
+    <End Role="Locations" Type="Self.Locations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LocationTelephones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Locations">
+        <PropertyRef Name="LocationTelephone_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Locations_dbo_LocationTypes_LocationType_Id">
+    <End Role="LocationTypes" Type="Self.LocationTypes" Multiplicity="0..1" />
+    <End Role="Locations" Type="Self.Locations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LocationTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Locations">
+        <PropertyRef Name="LocationType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Locations_dbo_LocationVehicles_LocationVehicle_Id">
+    <End Role="LocationVehicles" Type="Self.LocationVehicles" Multiplicity="0..1" />
+    <End Role="Locations" Type="Self.Locations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LocationVehicles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Locations">
+        <PropertyRef Name="LocationVehicle_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_LocationTelephones_dbo_AspNetUsers_CreatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="LocationTelephones" Type="Self.LocationTelephones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LocationTelephones">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_LocationTelephones_dbo_AspNetUsers_DeletedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="LocationTelephones" Type="Self.LocationTelephones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LocationTelephones">
+        <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_LocationTelephones_dbo_AspNetUsers_UpdatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="LocationTelephones" Type="Self.LocationTelephones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LocationTelephones">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_LocationUserNotifications_dbo_AspNetUsers_ApplicationUser_Id">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="LocationUserNotifications" Type="Self.LocationUserNotifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LocationUserNotifications">
+        <PropertyRef Name="ApplicationUser_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_LocationUserNotifications_dbo_AspNetUsers_CreatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="LocationUserNotifications" Type="Self.LocationUserNotifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LocationUserNotifications">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_LocationUserNotifications_dbo_AspNetUsers_DeletedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="LocationUserNotifications" Type="Self.LocationUserNotifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LocationUserNotifications">
+        <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_LocationUserNotifications_dbo_AspNetUsers_UpdatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="LocationUserNotifications" Type="Self.LocationUserNotifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LocationUserNotifications">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_LocationUsers_dbo_AspNetUsers_ApplicationUser_Id">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="LocationUsers" Type="Self.LocationUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LocationUsers">
+        <PropertyRef Name="ApplicationUser_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_LocationUsers_dbo_Locations_Location_Id">
+    <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
+    <End Role="LocationUsers" Type="Self.LocationUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LocationUsers">
+        <PropertyRef Name="Location_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_LocationVehicles_dbo_AspNetUsers_CreatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="LocationVehicles" Type="Self.LocationVehicles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LocationVehicles">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_LocationVehicles_dbo_AspNetUsers_DeletedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="LocationVehicles" Type="Self.LocationVehicles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LocationVehicles">
+        <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_LocationVehicles_dbo_AspNetUsers_UpdatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="LocationVehicles" Type="Self.LocationVehicles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LocationVehicles">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Notifications_dbo_AspNetUsers_ApplicationUser_Id">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="ApplicationUser_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Notifications_dbo_AspNetUsers_CreatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Notifications_dbo_AspNetUsers_DeletedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Notifications_dbo_AspNetUsers_UpdatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Notifications_dbo_ExternalBinnaclePhotoes_ExternalBinnaclePhoto_Id">
+    <End Role="ExternalBinnaclePhotoes" Type="Self.ExternalBinnaclePhotoes" Multiplicity="0..1" />
+    <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExternalBinnaclePhotoes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="ExternalBinnaclePhoto_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Notifications_dbo_LocationUserNotifications_LocationUserNotification_Id">
+    <End Role="LocationUserNotifications" Type="Self.LocationUserNotifications" Multiplicity="0..1" />
+    <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LocationUserNotifications">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="LocationUserNotification_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PermissionRoles_dbo_AspNetRoles_ApplicationRole_Id">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="0..1" />
+    <End Role="PermissionRoles" Type="Self.PermissionRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PermissionRoles">
+        <PropertyRef Name="ApplicationRole_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PermissionRoles_dbo_Permissions_Permission_Id1">
+    <End Role="Permissions" Type="Self.Permissions" Multiplicity="0..1" />
+    <End Role="PermissionRoles" Type="Self.PermissionRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permissions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PermissionRoles">
+        <PropertyRef Name="Permission_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Permissions_dbo_PermissionUsers_PermissionUser_Id">
+    <End Role="PermissionUsers" Type="Self.PermissionUsers" Multiplicity="0..1" />
+    <End Role="Permissions" Type="Self.Permissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermissionUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Permissions">
+        <PropertyRef Name="PermissionUser_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PermissionUsers_dbo_AspNetUsers_ApplicationUser_Id">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="PermissionUsers" Type="Self.PermissionUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PermissionUsers">
+        <PropertyRef Name="ApplicationUser_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PermissionUsers_dbo_Permissions_Permission_Id">
+    <End Role="Permissions" Type="Self.Permissions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PermissionUsers" Type="Self.PermissionUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permissions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PermissionUsers">
+        <PropertyRef Name="Permission_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Tags_dbo_AspNetUsers_ApplicationUser_Id">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tags">
+        <PropertyRef Name="ApplicationUser_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Tags_dbo_AspNetUsers_CreatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tags">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Tags_dbo_AspNetUsers_DeletedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tags">
+        <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Tags_dbo_AspNetUsers_UpdatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tags">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_UserBinnacles_dbo_AspNetUsers_CreatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="UserBinnacles" Type="Self.UserBinnacles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserBinnacles">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_UserBinnacles_dbo_AspNetUsers_DeletedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="UserBinnacles" Type="Self.UserBinnacles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserBinnacles">
+        <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_UserBinnacles_dbo_AspNetUsers_UpdatedBy">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="UserBinnacles" Type="Self.UserBinnacles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserBinnacles">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SecureGateModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApplicationParameters" EntityType="Self.ApplicationParameters" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Audiences" EntityType="Self.Audiences" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BinnaclePhotoes" EntityType="Self.BinnaclePhotoes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BinnaclePhotoTypes" EntityType="Self.BinnaclePhotoTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Binnacles" EntityType="Self.Binnacles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BinnacleTypes" EntityType="Self.BinnacleTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bulletins" EntityType="Self.Bulletins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventLocations" EntityType="Self.EventLocations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventTypes" EntityType="Self.EventTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExternalBinnaclePhotoes" EntityType="Self.ExternalBinnaclePhotoes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExternalBinnacles" EntityType="Self.ExternalBinnacles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExternalPhotoes" EntityType="Self.ExternalPhotoes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Externals" EntityType="Self.Externals" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExternalTypes" EntityType="Self.ExternalTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LocationTelephones" EntityType="Self.LocationTelephones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LocationTypes" EntityType="Self.LocationTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LocationUserNotifications" EntityType="Self.LocationUserNotifications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LocationUsers" EntityType="Self.LocationUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LocationVehicles" EntityType="Self.LocationVehicles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PermissionRoles" EntityType="Self.PermissionRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permissions" EntityType="Self.Permissions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PermissionUsers" EntityType="Self.PermissionUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhotoTypes" EntityType="Self.PhotoTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserBinnacles" EntityType="Self.UserBinnacles" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUsers_dbo_EventLocations_EventLocation_Id" Association="Self.FK_dbo_AspNetUsers_dbo_EventLocations_EventLocation_Id">
+      <End Role="EventLocations" EntitySet="EventLocations" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUsers_dbo_PermissionUsers_PermissionUser_Id" Association="Self.FK_dbo_AspNetUsers_dbo_PermissionUsers_PermissionUser_Id">
+      <End Role="PermissionUsers" EntitySet="PermissionUsers" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUsers_dbo_UserBinnacles_UserBinnacle_Id" Association="Self.FK_dbo_AspNetUsers_dbo_UserBinnacles_UserBinnacle_Id">
+      <End Role="UserBinnacles" EntitySet="UserBinnacles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Audiences_dbo_AspNetUsers_CreatedBy" Association="Self.FK_dbo_Audiences_dbo_AspNetUsers_CreatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Audiences" EntitySet="Audiences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Audiences_dbo_AspNetUsers_DeletedBy" Association="Self.FK_dbo_Audiences_dbo_AspNetUsers_DeletedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Audiences" EntitySet="Audiences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Audiences_dbo_AspNetUsers_UpdatedBy" Association="Self.FK_dbo_Audiences_dbo_AspNetUsers_UpdatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Audiences" EntitySet="Audiences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_BinnaclePhotoes_dbo_AspNetUsers_CreatedBy" Association="Self.FK_dbo_BinnaclePhotoes_dbo_AspNetUsers_CreatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="BinnaclePhotoes" EntitySet="BinnaclePhotoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_BinnaclePhotoes_dbo_AspNetUsers_DeletedBy" Association="Self.FK_dbo_BinnaclePhotoes_dbo_AspNetUsers_DeletedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="BinnaclePhotoes" EntitySet="BinnaclePhotoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_BinnaclePhotoes_dbo_AspNetUsers_UpdatedBy" Association="Self.FK_dbo_BinnaclePhotoes_dbo_AspNetUsers_UpdatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="BinnaclePhotoes" EntitySet="BinnaclePhotoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_BinnaclePhotoes_dbo_BinnaclePhotoTypes_BinnaclePhotoType_Id" Association="Self.FK_dbo_BinnaclePhotoes_dbo_BinnaclePhotoTypes_BinnaclePhotoType_Id">
+      <End Role="BinnaclePhotoTypes" EntitySet="BinnaclePhotoTypes" />
+      <End Role="BinnaclePhotoes" EntitySet="BinnaclePhotoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_BinnaclePhotoes_dbo_Binnacles_Binnacle_Id" Association="Self.FK_dbo_BinnaclePhotoes_dbo_Binnacles_Binnacle_Id">
+      <End Role="Binnacles" EntitySet="Binnacles" />
+      <End Role="BinnaclePhotoes" EntitySet="BinnaclePhotoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_BinnaclePhotoes_dbo_ExternalBinnacles_ExternalBinnacle_Id" Association="Self.FK_dbo_BinnaclePhotoes_dbo_ExternalBinnacles_ExternalBinnacle_Id">
+      <End Role="ExternalBinnacles" EntitySet="ExternalBinnacles" />
+      <End Role="BinnaclePhotoes" EntitySet="BinnaclePhotoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Binnacles_dbo_AspNetUsers_CreatedBy" Association="Self.FK_dbo_Binnacles_dbo_AspNetUsers_CreatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Binnacles" EntitySet="Binnacles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Binnacles_dbo_AspNetUsers_DeletedBy" Association="Self.FK_dbo_Binnacles_dbo_AspNetUsers_DeletedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Binnacles" EntitySet="Binnacles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Binnacles_dbo_AspNetUsers_UpdatedBy" Association="Self.FK_dbo_Binnacles_dbo_AspNetUsers_UpdatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Binnacles" EntitySet="Binnacles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Binnacles_dbo_UserBinnacles_UserBinnacle_Id" Association="Self.FK_dbo_Binnacles_dbo_UserBinnacles_UserBinnacle_Id">
+      <End Role="UserBinnacles" EntitySet="UserBinnacles" />
+      <End Role="Binnacles" EntitySet="Binnacles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_BinnacleTypes_dbo_Binnacles_Binnacle_Id" Association="Self.FK_dbo_BinnacleTypes_dbo_Binnacles_Binnacle_Id">
+      <End Role="Binnacles" EntitySet="Binnacles" />
+      <End Role="BinnacleTypes" EntitySet="BinnacleTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Bulletins_dbo_AspNetUsers_CreatedBy" Association="Self.FK_dbo_Bulletins_dbo_AspNetUsers_CreatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Bulletins" EntitySet="Bulletins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Bulletins_dbo_AspNetUsers_DeletedBy" Association="Self.FK_dbo_Bulletins_dbo_AspNetUsers_DeletedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Bulletins" EntitySet="Bulletins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Bulletins_dbo_AspNetUsers_UpdatedBy" Association="Self.FK_dbo_Bulletins_dbo_AspNetUsers_UpdatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Bulletins" EntitySet="Bulletins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CustomerBinnacles_dbo_AspNetUsers_CreatedBy" Association="Self.FK_dbo_CustomerBinnacles_dbo_AspNetUsers_CreatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="ExternalBinnacles" EntitySet="ExternalBinnacles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CustomerBinnacles_dbo_AspNetUsers_DeletedBy" Association="Self.FK_dbo_CustomerBinnacles_dbo_AspNetUsers_DeletedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="ExternalBinnacles" EntitySet="ExternalBinnacles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CustomerBinnacles_dbo_AspNetUsers_UpdatedBy" Association="Self.FK_dbo_CustomerBinnacles_dbo_AspNetUsers_UpdatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="ExternalBinnacles" EntitySet="ExternalBinnacles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CustomerPhotoes_dbo_AspNetUsers_CreatedBy" Association="Self.FK_dbo_CustomerPhotoes_dbo_AspNetUsers_CreatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="ExternalPhotoes" EntitySet="ExternalPhotoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CustomerPhotoes_dbo_AspNetUsers_DeletedBy" Association="Self.FK_dbo_CustomerPhotoes_dbo_AspNetUsers_DeletedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="ExternalPhotoes" EntitySet="ExternalPhotoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CustomerPhotoes_dbo_AspNetUsers_UpdatedBy" Association="Self.FK_dbo_CustomerPhotoes_dbo_AspNetUsers_UpdatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="ExternalPhotoes" EntitySet="ExternalPhotoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_EventLocations_dbo_AspNetUsers_CreatedBy" Association="Self.FK_dbo_EventLocations_dbo_AspNetUsers_CreatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="EventLocations" EntitySet="EventLocations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_EventLocations_dbo_AspNetUsers_DeletedBy" Association="Self.FK_dbo_EventLocations_dbo_AspNetUsers_DeletedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="EventLocations" EntitySet="EventLocations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_EventLocations_dbo_AspNetUsers_UpdatedBy" Association="Self.FK_dbo_EventLocations_dbo_AspNetUsers_UpdatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="EventLocations" EntitySet="EventLocations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Events_dbo_AspNetUsers_CreatedBy" Association="Self.FK_dbo_Events_dbo_AspNetUsers_CreatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Events" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Events_dbo_AspNetUsers_DeletedBy" Association="Self.FK_dbo_Events_dbo_AspNetUsers_DeletedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Events" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Events_dbo_AspNetUsers_UpdatedBy" Association="Self.FK_dbo_Events_dbo_AspNetUsers_UpdatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Events" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Events_dbo_Binnacles_Binnacle_Id" Association="Self.FK_dbo_Events_dbo_Binnacles_Binnacle_Id">
+      <End Role="Binnacles" EntitySet="Binnacles" />
+      <End Role="Events" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Events_dbo_EventLocations_EventLocation_Id" Association="Self.FK_dbo_Events_dbo_EventLocations_EventLocation_Id">
+      <End Role="EventLocations" EntitySet="EventLocations" />
+      <End Role="Events" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Events_dbo_EventTypes_EventType_Id" Association="Self.FK_dbo_Events_dbo_EventTypes_EventType_Id">
+      <End Role="EventTypes" EntitySet="EventTypes" />
+      <End Role="Events" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Events_dbo_Externals_External_Id" Association="Self.FK_dbo_Events_dbo_Externals_External_Id">
+      <End Role="Externals" EntitySet="Externals" />
+      <End Role="Events" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Events_dbo_Locations_Location_Id" Association="Self.FK_dbo_Events_dbo_Locations_Location_Id">
+      <End Role="Locations" EntitySet="Locations" />
+      <End Role="Events" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ExternalBinnaclePhotoes_dbo_BinnaclePhotoTypes_BinnaclePhotoType_Id" Association="Self.FK_dbo_ExternalBinnaclePhotoes_dbo_BinnaclePhotoTypes_BinnaclePhotoType_Id">
+      <End Role="BinnaclePhotoTypes" EntitySet="BinnaclePhotoTypes" />
+      <End Role="ExternalBinnaclePhotoes" EntitySet="ExternalBinnaclePhotoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ExternalBinnaclePhotoes_dbo_ExternalBinnacles_ExternalBinnacle_Id" Association="Self.FK_dbo_ExternalBinnaclePhotoes_dbo_ExternalBinnacles_ExternalBinnacle_Id">
+      <End Role="ExternalBinnacles" EntitySet="ExternalBinnacles" />
+      <End Role="ExternalBinnaclePhotoes" EntitySet="ExternalBinnaclePhotoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ExternalBinnacles_dbo_BinnacleTypes_BinnacleType_Id" Association="Self.FK_dbo_ExternalBinnacles_dbo_BinnacleTypes_BinnacleType_Id">
+      <End Role="BinnacleTypes" EntitySet="BinnacleTypes" />
+      <End Role="ExternalBinnacles" EntitySet="ExternalBinnacles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ExternalBinnacles_dbo_Externals_External_Id" Association="Self.FK_dbo_ExternalBinnacles_dbo_Externals_External_Id">
+      <End Role="Externals" EntitySet="Externals" />
+      <End Role="ExternalBinnacles" EntitySet="ExternalBinnacles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Externals_dbo_AspNetUsers_CreatedBy" Association="Self.FK_dbo_Externals_dbo_AspNetUsers_CreatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Externals" EntitySet="Externals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Externals_dbo_AspNetUsers_DeletedBy" Association="Self.FK_dbo_Externals_dbo_AspNetUsers_DeletedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Externals" EntitySet="Externals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Externals_dbo_AspNetUsers_UpdatedBy" Association="Self.FK_dbo_Externals_dbo_AspNetUsers_UpdatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Externals" EntitySet="Externals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Externals_dbo_ExternalTypes_ExternalType_Id" Association="Self.FK_dbo_Externals_dbo_ExternalTypes_ExternalType_Id">
+      <End Role="ExternalTypes" EntitySet="ExternalTypes" />
+      <End Role="Externals" EntitySet="Externals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Externals_dbo_Locations_Location_Id" Association="Self.FK_dbo_Externals_dbo_Locations_Location_Id">
+      <End Role="Locations" EntitySet="Locations" />
+      <End Role="Externals" EntitySet="Externals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Locations_dbo_AspNetUsers_CreatedBy" Association="Self.FK_dbo_Locations_dbo_AspNetUsers_CreatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Locations" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Locations_dbo_AspNetUsers_DeletedBy" Association="Self.FK_dbo_Locations_dbo_AspNetUsers_DeletedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Locations" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Locations_dbo_AspNetUsers_UpdatedBy" Association="Self.FK_dbo_Locations_dbo_AspNetUsers_UpdatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Locations" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Locations_dbo_EventLocations_EventLocation_Id" Association="Self.FK_dbo_Locations_dbo_EventLocations_EventLocation_Id">
+      <End Role="EventLocations" EntitySet="EventLocations" />
+      <End Role="Locations" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Locations_dbo_LocationTelephones_LocationTelephone_Id" Association="Self.FK_dbo_Locations_dbo_LocationTelephones_LocationTelephone_Id">
+      <End Role="LocationTelephones" EntitySet="LocationTelephones" />
+      <End Role="Locations" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Locations_dbo_LocationTypes_LocationType_Id" Association="Self.FK_dbo_Locations_dbo_LocationTypes_LocationType_Id">
+      <End Role="LocationTypes" EntitySet="LocationTypes" />
+      <End Role="Locations" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Locations_dbo_LocationVehicles_LocationVehicle_Id" Association="Self.FK_dbo_Locations_dbo_LocationVehicles_LocationVehicle_Id">
+      <End Role="LocationVehicles" EntitySet="LocationVehicles" />
+      <End Role="Locations" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_LocationTelephones_dbo_AspNetUsers_CreatedBy" Association="Self.FK_dbo_LocationTelephones_dbo_AspNetUsers_CreatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="LocationTelephones" EntitySet="LocationTelephones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_LocationTelephones_dbo_AspNetUsers_DeletedBy" Association="Self.FK_dbo_LocationTelephones_dbo_AspNetUsers_DeletedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="LocationTelephones" EntitySet="LocationTelephones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_LocationTelephones_dbo_AspNetUsers_UpdatedBy" Association="Self.FK_dbo_LocationTelephones_dbo_AspNetUsers_UpdatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="LocationTelephones" EntitySet="LocationTelephones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_LocationUserNotifications_dbo_AspNetUsers_ApplicationUser_Id" Association="Self.FK_dbo_LocationUserNotifications_dbo_AspNetUsers_ApplicationUser_Id">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="LocationUserNotifications" EntitySet="LocationUserNotifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_LocationUserNotifications_dbo_AspNetUsers_CreatedBy" Association="Self.FK_dbo_LocationUserNotifications_dbo_AspNetUsers_CreatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="LocationUserNotifications" EntitySet="LocationUserNotifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_LocationUserNotifications_dbo_AspNetUsers_DeletedBy" Association="Self.FK_dbo_LocationUserNotifications_dbo_AspNetUsers_DeletedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="LocationUserNotifications" EntitySet="LocationUserNotifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_LocationUserNotifications_dbo_AspNetUsers_UpdatedBy" Association="Self.FK_dbo_LocationUserNotifications_dbo_AspNetUsers_UpdatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="LocationUserNotifications" EntitySet="LocationUserNotifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_LocationUsers_dbo_AspNetUsers_ApplicationUser_Id" Association="Self.FK_dbo_LocationUsers_dbo_AspNetUsers_ApplicationUser_Id">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="LocationUsers" EntitySet="LocationUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_LocationUsers_dbo_Locations_Location_Id" Association="Self.FK_dbo_LocationUsers_dbo_Locations_Location_Id">
+      <End Role="Locations" EntitySet="Locations" />
+      <End Role="LocationUsers" EntitySet="LocationUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_LocationVehicles_dbo_AspNetUsers_CreatedBy" Association="Self.FK_dbo_LocationVehicles_dbo_AspNetUsers_CreatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="LocationVehicles" EntitySet="LocationVehicles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_LocationVehicles_dbo_AspNetUsers_DeletedBy" Association="Self.FK_dbo_LocationVehicles_dbo_AspNetUsers_DeletedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="LocationVehicles" EntitySet="LocationVehicles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_LocationVehicles_dbo_AspNetUsers_UpdatedBy" Association="Self.FK_dbo_LocationVehicles_dbo_AspNetUsers_UpdatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="LocationVehicles" EntitySet="LocationVehicles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Notifications_dbo_AspNetUsers_ApplicationUser_Id" Association="Self.FK_dbo_Notifications_dbo_AspNetUsers_ApplicationUser_Id">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Notifications_dbo_AspNetUsers_CreatedBy" Association="Self.FK_dbo_Notifications_dbo_AspNetUsers_CreatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Notifications_dbo_AspNetUsers_DeletedBy" Association="Self.FK_dbo_Notifications_dbo_AspNetUsers_DeletedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Notifications_dbo_AspNetUsers_UpdatedBy" Association="Self.FK_dbo_Notifications_dbo_AspNetUsers_UpdatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Notifications_dbo_ExternalBinnaclePhotoes_ExternalBinnaclePhoto_Id" Association="Self.FK_dbo_Notifications_dbo_ExternalBinnaclePhotoes_ExternalBinnaclePhoto_Id">
+      <End Role="ExternalBinnaclePhotoes" EntitySet="ExternalBinnaclePhotoes" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Notifications_dbo_LocationUserNotifications_LocationUserNotification_Id" Association="Self.FK_dbo_Notifications_dbo_LocationUserNotifications_LocationUserNotification_Id">
+      <End Role="LocationUserNotifications" EntitySet="LocationUserNotifications" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PermissionRoles_dbo_AspNetRoles_ApplicationRole_Id" Association="Self.FK_dbo_PermissionRoles_dbo_AspNetRoles_ApplicationRole_Id">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="PermissionRoles" EntitySet="PermissionRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PermissionRoles_dbo_Permissions_Permission_Id1" Association="Self.FK_dbo_PermissionRoles_dbo_Permissions_Permission_Id1">
+      <End Role="Permissions" EntitySet="Permissions" />
+      <End Role="PermissionRoles" EntitySet="PermissionRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Permissions_dbo_PermissionUsers_PermissionUser_Id" Association="Self.FK_dbo_Permissions_dbo_PermissionUsers_PermissionUser_Id">
+      <End Role="PermissionUsers" EntitySet="PermissionUsers" />
+      <End Role="Permissions" EntitySet="Permissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PermissionUsers_dbo_AspNetUsers_ApplicationUser_Id" Association="Self.FK_dbo_PermissionUsers_dbo_AspNetUsers_ApplicationUser_Id">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="PermissionUsers" EntitySet="PermissionUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PermissionUsers_dbo_Permissions_Permission_Id" Association="Self.FK_dbo_PermissionUsers_dbo_Permissions_Permission_Id">
+      <End Role="Permissions" EntitySet="Permissions" />
+      <End Role="PermissionUsers" EntitySet="PermissionUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Tags_dbo_AspNetUsers_ApplicationUser_Id" Association="Self.FK_dbo_Tags_dbo_AspNetUsers_ApplicationUser_Id">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Tags" EntitySet="Tags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Tags_dbo_AspNetUsers_CreatedBy" Association="Self.FK_dbo_Tags_dbo_AspNetUsers_CreatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Tags" EntitySet="Tags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Tags_dbo_AspNetUsers_DeletedBy" Association="Self.FK_dbo_Tags_dbo_AspNetUsers_DeletedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Tags" EntitySet="Tags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Tags_dbo_AspNetUsers_UpdatedBy" Association="Self.FK_dbo_Tags_dbo_AspNetUsers_UpdatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Tags" EntitySet="Tags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_UserBinnacles_dbo_AspNetUsers_CreatedBy" Association="Self.FK_dbo_UserBinnacles_dbo_AspNetUsers_CreatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="UserBinnacles" EntitySet="UserBinnacles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_UserBinnacles_dbo_AspNetUsers_DeletedBy" Association="Self.FK_dbo_UserBinnacles_dbo_AspNetUsers_DeletedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="UserBinnacles" EntitySet="UserBinnacles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_UserBinnacles_dbo_AspNetUsers_UpdatedBy" Association="Self.FK_dbo_UserBinnacles_dbo_AspNetUsers_UpdatedBy">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="UserBinnacles" EntitySet="UserBinnacles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

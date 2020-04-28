@@ -1,0 +1,10 @@
+D:\OTROS\RESIDENCIAL\caseta\SecureGateTypes\bin\Debug\SecureGateTypes.dll
+D:\OTROS\RESIDENCIAL\caseta\SecureGateTypes\bin\Debug\SecureGateTypes.pdb
+D:\OTROS\RESIDENCIAL\caseta\SecureGateTypes\obj\Debug\SecureGateTypes.csproj.CoreCompileInputs.cache
+D:\OTROS\RESIDENCIAL\caseta\SecureGateTypes\obj\Debug\SecureGateTypes.dll
+D:\OTROS\RESIDENCIAL\caseta\SecureGateTypes\obj\Debug\SecureGateTypes.pdb
+D:\OTROS\NewResidencial\caseta\SecureGateTypes\bin\Debug\SecureGateTypes.dll
+D:\OTROS\NewResidencial\caseta\SecureGateTypes\bin\Debug\SecureGateTypes.pdb
+D:\OTROS\NewResidencial\caseta\SecureGateTypes\obj\Debug\SecureGateTypes.dll
+D:\OTROS\NewResidencial\caseta\SecureGateTypes\obj\Debug\SecureGateTypes.pdb
+D:\OTROS\NewResidencial\caseta\SecureGateTypes\obj\Debug\SecureGateTypes.csprojAssemblyReference.cache
