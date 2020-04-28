@@ -21,5 +21,8 @@ namespace Authentication.OperationalManagement.Abstractions
     {
         /// <inheritdoc />
         public NameValueCollection AppSettings => ConfigurationManager.AppSettings;
+
+        /// <inheritdoc />
+        public ConnectionStringSettingsCollection ConnectionStrings => ConfigurationManager.ConnectionStrings;
     }
 }

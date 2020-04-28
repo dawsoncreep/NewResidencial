@@ -24,11 +24,11 @@ namespace Authentication.Api
         /// </param>
         public static void Register(HttpConfiguration config)
         {
+            // config.MessageHandlers.Add(new TokenValidationHandler());
             config.MapHttpAttributeRoutes();
-
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional });
         }
     }

@@ -9,6 +9,8 @@
 
 namespace Authentication.OperationalManagement.Common
 {
+    using System;
+
     using Authentication.OperationalManagement.Abstractions.Interfaces;
     using Authentication.OperationalManagement.Interfaces;
     using Authentication.Types.Exceptions;
@@ -35,7 +37,7 @@ namespace Authentication.OperationalManagement.Common
         }
 
         /// <inheritdoc />
-        public string GetAppSettingsValue(string key)
+        public string GetSettingsValue(string key)
         {
             if (string.IsNullOrEmpty(key))
             {
@@ -43,6 +45,12 @@ namespace Authentication.OperationalManagement.Common
             }
 
             var value = this.configurationManager.AppSettings[key];
+
+            if (string.IsNullOrEmpty(value))
+            {
+                var data = this.configurationManager.ConnectionStrings[key];
+                value = data != null ? data.ConnectionString : string.Empty;
+            }
             
             if (string.IsNullOrEmpty(value))
             {

@@ -101,8 +101,8 @@ namespace Authentication.UnitTests.ForDataLayer.Repository
         public async Task FindByUserNameShouldSucceed()
         {
             // Arrange
-            const string UserName = "usuario01";
-            var expected = new User { Id = 1, UserName = "usuario01", Password = "S5cr3tP455w0rd1" };
+            const string UserName = "xavier.hernandez@contoso.com";
+            var expected = new User { Id = 3, UserName = "xavier.hernandez@contoso.com", Password = "S5cr3tP455w0rd3" };
             var objectUt = new UserRepository(this.applicationContext);
 
             // Act
@@ -124,7 +124,7 @@ namespace Authentication.UnitTests.ForDataLayer.Repository
         public async Task FindByUserNameShouldFailGettingActiveUser()
         {
             // Arrange
-            const string UserName = "usuario02";
+            const string UserName = "susana.distancia@contoso.com";
             var objectUt = new UserRepository(this.applicationContext);
 
             // Act
@@ -145,7 +145,7 @@ namespace Authentication.UnitTests.ForDataLayer.Repository
         public async Task FindByUserNameShouldFailFindingUser()
         {
             // Arrange
-            const string UserName = "unknownUser";
+            const string UserName = "unknownUser@contoso.com";
             var objectUt = new UserRepository(this.applicationContext);
 
             // Act

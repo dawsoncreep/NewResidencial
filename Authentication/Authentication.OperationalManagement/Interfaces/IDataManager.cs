@@ -17,7 +17,7 @@ namespace Authentication.OperationalManagement.Interfaces
     public interface IDataManager
     {
         /// <summary>
-        /// Gets an 'AppSettings' value inside the configuration file.
+        /// Gets an 'AppSettings' or 'ConnectionString' value inside the configuration file.
         /// </summary>
         /// <param name="key">
         /// The target key.
@@ -28,6 +28,6 @@ namespace Authentication.OperationalManagement.Interfaces
         /// <exception cref="NullConfigurationException">
         /// Thrown when key is not present or its value is incorrect.
         /// </exception>        
-        string GetAppSettingsValue(string key);
+        string GetSettingsValue(string key);
     }
 }

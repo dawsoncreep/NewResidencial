@@ -14,9 +14,9 @@ namespace Authentication.UnitTests.ForBusinessLayer.Facades
 
     using Authentication.BusinessLayer.Facade;
     using Authentication.BusinessLayer.Interfaces.Processor;
+    using Authentication.TestingTools;
     using Authentication.Types.Exceptions;
     using Authentication.Types.Models;
-    using Authentication.UnitTests.Tools;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 

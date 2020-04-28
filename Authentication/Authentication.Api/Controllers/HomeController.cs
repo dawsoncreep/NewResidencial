@@ -14,7 +14,6 @@ namespace Authentication.Api.Controllers
     /// <summary>
     /// The home controller.
     /// </summary>
-    [HandleError]
     public class HomeController : Controller
     {
         /// <summary>
@@ -25,8 +24,7 @@ namespace Authentication.Api.Controllers
         /// </returns>
         public ActionResult Index()
         {
-            this.ViewBag.Title = $"{this.GetType().Name.Replace("Controller", string.Empty)}";
-            return this.RedirectToAction("index", "Help");
+            return this.View();
         }
     }
 }

@@ -38,7 +38,7 @@ namespace Authentication.DataLayer.Repositories
         /// <inheritdoc />
         public async Task<User> FindByUserName(string userName)
         {
-            var results = await this.FindAsync(item => item.Usuario == userName && item.Activo);
+            var results = await this.FindAsync(item => item.Correo == userName && item.Activo);
 
             if (results == null || !results.Any())
             {
@@ -47,6 +47,5 @@ namespace Authentication.DataLayer.Repositories
 
             return results.First().MapTo<User>();
         }
-
     }
 }

@@ -42,6 +42,19 @@ namespace Authentication.Api.Controllers
         }
 
         /// <summary>
+        /// The sample.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        [HttpGet]
+        [ActionName("Sample")]
+        public async Task<IHttpActionResult> Sample()
+        {
+            return await Task.FromResult(this.Ok("Sample"));
+        }
+
+        /// <summary>
         /// The authenticate.
         /// </summary>
         /// <param name="userRequest">
@@ -50,6 +63,7 @@ namespace Authentication.Api.Controllers
         /// <returns>
         /// The <see cref="Task"/>.
         /// </returns>
+        [HttpPost]
         [ActionName("Authenticate")]
         public async Task<IHttpActionResult> Authenticate([FromBody] LoginRequest userRequest)
         {

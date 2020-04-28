@@ -55,11 +55,13 @@ namespace Authentication.DataLayer.Repositories
         /// <inheritdoc />
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
+            if (optionsBuilder.IsConfigured)
             {
-                var connectionString = this.dataManager.GetAppSettingsValue("SqlServer.Default");
-                optionsBuilder.UseSqlServer(connectionString);
+                return;
             }
+
+            var connectionString = this.dataManager.GetSettingsValue("SqlServer.Default");
+            optionsBuilder.UseSqlServer(connectionString);
         }
     }
 }

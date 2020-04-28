@@ -10,6 +10,7 @@
 namespace Authentication.OperationalManagement.Abstractions.Interfaces
 {
     using System.Collections.Specialized;
+    using System.Configuration;
 
     /// <summary>
     /// A super basic interface abstraction of the famous 'ConfigurationManager' class.
@@ -20,5 +21,10 @@ namespace Authentication.OperationalManagement.Abstractions.Interfaces
         /// Gets the app settings.
         /// </summary>
         NameValueCollection AppSettings { get; }   
+
+        /// <summary>
+        /// Gets the connection string settings.
+        /// </summary>
+        ConnectionStringSettingsCollection ConnectionStrings { get; }
     }
 }

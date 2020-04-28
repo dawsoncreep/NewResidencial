@@ -55,7 +55,7 @@ namespace Authentication.Types
         {
             config.CreateMap<SUser, User>()
                 .ForMember(dest => dest.Id, worker => worker.MapFrom(source => source.IdUsuario))
-                .ForMember(dest => dest.UserName, worker => worker.MapFrom(source => source.Usuario))
+                .ForMember(dest => dest.UserName, worker => worker.MapFrom(source => source.Correo))
                 .ForMember(dest => dest.Password, worker => worker.MapFrom(source => source.Contraseña));
         }
         #endregion

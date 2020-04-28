@@ -18,9 +18,9 @@ namespace Authentication.UnitTests.ForApi.Controllers
     using Authentication.Api.Controllers;
     using Authentication.BusinessLayer.Interfaces.Facade;
     using Authentication.OperationalManagement.Interfaces;
+    using Authentication.TestingTools;
     using Authentication.Types.Exceptions;
     using Authentication.Types.Models;
-    using Authentication.UnitTests.Tools;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -34,21 +34,6 @@ namespace Authentication.UnitTests.ForApi.Controllers
     public class AuthenticationControllerTests
     {
         #region Fields
-
-        /// <summary>
-        /// The JWT secret key.
-        /// </summary>
-        private const string SecretKey = "0d549739-4532-42cf-b3ce-0077008241fe";
-
-        /// <summary>
-        /// The JWT issuer.
-        /// </summary>
-        private const string IssuerKey = "3bd96eff-9a3e-40fc-97df-92484b51fa89";
-
-        /// <summary>
-        /// The audience key.
-        /// </summary>
-        private const string AudienceKey = "eafdac93-3432-406c-89ef-eb8ce63b9daa";
 
         /// <summary>
         /// The json web token under test.
@@ -126,7 +111,8 @@ namespace Authentication.UnitTests.ForApi.Controllers
         public async Task AuthenticateShouldSucceed()
         {
             // Arrange
-            this.mockIUserFacade.Setup(method => method.Authenticate(this.loginRequest)).ReturnsAsync(TestingTokenTool.GenerateToken(this.loginRequest.UserName, SecretKey, IssuerKey, AudienceKey));
+            var expectedToken = TestingTokenTool.GenerateToken(this.loginRequest.UserName, TestingTokenTool.SecretKey, TestingTokenTool.IssuerKey, TestingTokenTool.AudienceKey);
+            this.mockIUserFacade.Setup(method => method.Authenticate(this.loginRequest)).ReturnsAsync(expectedToken);
             this.authenticationController = new AuthenticationController(this.mockIApplicationLogger.Object, this.mockIUserFacade.Object)
             {
                 Request = new HttpRequestMessage(),
@@ -144,7 +130,7 @@ namespace Authentication.UnitTests.ForApi.Controllers
             this.mockIUserFacade.Verify(method => method.Authenticate(It.IsNotNull<LoginRequest>()), Times.AtLeastOnce);
             this.mockIUserFacade.Verify(method => method.Authenticate(It.IsAny<LoginRequest>()), Times.Once);
             Assert.IsNotNull(response);
-            Assert.IsTrue(TestingTokenTool.IsTokenValid(this.token, SecretKey, IssuerKey, AudienceKey));
+            Assert.IsTrue(TestingTokenTool.IsTokenValid(this.token, TestingTokenTool.SecretKey, TestingTokenTool.IssuerKey, TestingTokenTool.AudienceKey));
         }
 
         /// <summary>
@@ -234,10 +220,10 @@ namespace Authentication.UnitTests.ForApi.Controllers
 
             this.mockIUserFacade.Setup(method => method.Authenticate(this.loginRequest)).ThrowsAsync(new InvalidUserAccessException());
             this.authenticationController = new AuthenticationController(this.mockIApplicationLogger.Object, this.mockIUserFacade.Object)
-                                                {
-                                                    Request = new HttpRequestMessage(),
-                                                    Configuration = new HttpConfiguration()
-                                                };
+            {
+                Request = new HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
 
             // Act
             var response = await this.authenticationController.Authenticate(this.loginRequest);
@@ -269,10 +255,10 @@ namespace Authentication.UnitTests.ForApi.Controllers
 
             this.mockIUserFacade.Setup(method => method.Authenticate(this.loginRequest)).ThrowsAsync(new TokenGenerationException());
             this.authenticationController = new AuthenticationController(this.mockIApplicationLogger.Object, this.mockIUserFacade.Object)
-                                                {
-                                                    Request = new HttpRequestMessage(),
-                                                    Configuration = new HttpConfiguration()
-                                                };
+            {
+                Request = new HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
 
             // Act
             var response = await this.authenticationController.Authenticate(this.loginRequest);
@@ -301,15 +287,15 @@ namespace Authentication.UnitTests.ForApi.Controllers
             // Arrange
             this.mockIUserFacade.Setup(method => method.Authenticate(this.loginRequest)).ThrowsAsync(new Exception());
             this.authenticationController = new AuthenticationController(this.mockIApplicationLogger.Object, this.mockIUserFacade.Object)
-                                                {
-                                                    Request = new HttpRequestMessage(),
-                                                    Configuration = new HttpConfiguration()
-                                                };
+            {
+                Request = new HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
 
             // Act
             var response = await this.authenticationController.Authenticate(this.loginRequest);
             var responseData = response as ExceptionResult;
-            
+
             // Assert
             this.mockIUserFacade.Verify(method => method.Authenticate(It.IsNotNull<LoginRequest>()), Times.AtLeastOnce);
             this.mockIApplicationLogger.Verify(method => method.Log(It.IsAny<Exception>(), It.IsAny<object>()), Times.Once);

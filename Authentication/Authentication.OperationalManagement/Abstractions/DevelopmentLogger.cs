@@ -10,8 +10,11 @@
 namespace Authentication.OperationalManagement.Abstractions
 {
     using System;
+    using System.Diagnostics;
+    using System.Runtime.InteropServices;
     using System.Threading.Tasks;
 
+    using Authentication.OperationalManagement.Extensions;
     using Authentication.OperationalManagement.Interfaces;
     using Authentication.Types.Exceptions;
 
@@ -24,33 +27,92 @@ namespace Authentication.OperationalManagement.Abstractions
         public int Category => 1;
 
         /// <inheritdoc />
-        public Task InfoAsync(string message, int category, object extra = null)
+        public async Task InfoAsync(string message, int category, object extra = null)
         {
-            throw new NotImplementedException();
+            await this.WriteSimpleMessage(message, category, extra);
         }
 
         /// <inheritdoc />
-        public Task WarningAsync(string message, int category, object extra = null)
+        public async Task WarningAsync(string message, int category, object extra = null)
         {
-            throw new NotImplementedException();
+            await this.WriteSimpleMessage(message, category, extra);
         }
 
         /// <inheritdoc />
-        public Task WarningAsync(BusinessLayerException exception, int category, object extra = null)
+        public async Task WarningAsync(BusinessLayerException exception, int category, object extra = null)
         {
-            throw new NotImplementedException();
+            await this.WriteExceptionMessage(exception, category, extra);
         }
 
         /// <inheritdoc />
-        public Task ErrorAsync(string message, int category, object extra = null)
+        public async Task ErrorAsync(string message, int category, object extra = null)
         {
-            throw new NotImplementedException();
+            await this.WriteSimpleMessage(message, category, extra);
         }
 
         /// <inheritdoc />
-        public Task ErrorAsync(Exception exception, int category, object extra = null)
+        public async Task ErrorAsync(Exception exception, int category, object extra = null)
         {
-            throw new NotImplementedException();
+            await this.WriteExceptionMessage(exception, category, extra);
         }
+
+        #region Private Methods
+
+        /// <summary>
+        /// The write simple message.
+        /// </summary>
+        /// <param name="message">
+        /// The message.
+        /// </param>
+        /// <param name="category">
+        /// The category.
+        /// </param>
+        /// <param name="extra">
+        /// The extra.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        private async Task WriteSimpleMessage(string message, int category, object extra)
+        {
+            await Task.Run(() =>
+                {
+                    Trace.Write(message, category.ToString());
+
+                    if (extra != null)
+                    {
+                        Trace.Write(extra.ToString());
+                    }
+                });
+        }
+
+        /// <summary>
+        /// The write exception message.
+        /// </summary>
+        /// <param name="exception">
+        /// The exception.
+        /// </param>
+        /// <param name="category">
+        /// The category.
+        /// </param>
+        /// <param name="extra">
+        /// The extra.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        private async Task WriteExceptionMessage(Exception exception, int category, object extra)
+        {
+            await Task.Run(() =>
+                {
+                    Trace.Write(exception.Handle(), category.ToString());
+
+                    if (extra != null)
+                    {
+                        Trace.Write(extra.ToString());
+                    }
+                });
+        }
+        #endregion
     }
 }

@@ -1701,6 +1701,14 @@
             The user facade.
             </param>
         </member>
+        <member name="M:Authentication.Api.Controllers.AuthenticationController.Sample">
+            <summary>
+            The sample.
+            </summary>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
         <member name="M:Authentication.Api.Controllers.AuthenticationController.Authenticate(Authentication.Types.Models.LoginRequest)">
             <summary>
             The authenticate.
@@ -1775,10 +1783,109 @@
             The web api application main startup point.
             </summary>
         </member>
+        <member name="F:Authentication.Api.WebApiApplication.InstanceResolver">
+            <summary>
+            The dependency instance resolver.
+            </summary>
+        </member>
         <member name="M:Authentication.Api.WebApiApplication.Application_Start">
             <summary>
             Starts the application.
             </summary>
+        </member>
+        <member name="T:Authentication.Api.IoC.DependencyInjectionResolver">
+            <summary>
+            The dependency resolver.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.IoC.DependencyInjectionResolver.disposed">
+            <summary>
+            The disposed flag.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.IoC.DependencyInjectionResolver.container">
+            <summary>
+            The DI container.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.IoC.DependencyInjectionResolver.builder">
+            <summary>
+            The DI builder.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.IoC.DependencyInjectionResolver.Initialize">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Api.IoC.DependencyInjectionResolver.GetApiResolver">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Api.IoC.DependencyInjectionResolver.Resolve``1">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Api.IoC.DependencyInjectionResolver.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Authentication.Api.IoC.DependencyInjectionResolver.Dispose(System.Boolean)">
+            <summary>
+            Disposed pattern implementation.
+            </summary>
+            <param name="disposing">
+            The disposing.
+            </param>
+        </member>
+        <member name="M:Authentication.Api.IoC.DependencyInjectionResolver.RegisterToBuilder">
+            <summary>
+            Registers dependencies to container builder.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.IoC.DependencyInjectionResolver.RegisterWebApiControllers">
+            <summary>
+            Registers all web api controllers.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.IoC.DependencyInjectionResolver.RegisterCommonLayerObjects">
+            <summary>
+            Registers all common objects.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.IoC.DependencyInjectionResolver.RegisterBusinessLayerObjects">
+            <summary>
+            Registers all business layer objects.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.IoC.DependencyInjectionResolver.RegisterDataLayerObjects">
+            <summary>
+            Registers all data layer objects.
+            </summary>
+        </member>
+        <member name="T:Authentication.Api.IoC.IDependencyInjectionResolver">
+            <summary>
+            The Dependency Resolver interface.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.IoC.IDependencyInjectionResolver.Initialize">
+            <summary>
+            Initialize the DI module with a specific hardware instance.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.IoC.IDependencyInjectionResolver.GetApiResolver">
+            <summary>
+            Gets the <see cref="T:System.Web.Http.Dependencies.IDependencyResolver"/> from 'Autofac' IoC engine.
+            </summary>
+            <returns>
+            The <see cref="T:System.Web.Http.Dependencies.IDependencyResolver"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.IoC.IDependencyInjectionResolver.Resolve``1">
+            <summary>
+            Resolves an instance.
+            </summary>
+            <typeparam name="TInstance">
+            Instance to be resolve.
+            </typeparam>
+            <returns>
+            Specific instance to be resolved.
+            </returns>
         </member>
     </members>
 </doc>

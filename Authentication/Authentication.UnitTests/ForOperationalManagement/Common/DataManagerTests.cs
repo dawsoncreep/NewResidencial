@@ -10,6 +10,7 @@
 namespace Authentication.UnitTests.ForOperationalManagement.Common
 {
     using System.Collections.Specialized;
+    using System.Configuration;
 
     using Authentication.OperationalManagement.Abstractions.Interfaces;
     using Authentication.OperationalManagement.Common;
@@ -34,6 +35,11 @@ namespace Authentication.UnitTests.ForOperationalManagement.Common
         private NameValueCollection testAppSettings;
 
         /// <summary>
+        /// Dummy 'ConnectionStrings' for testing.
+        /// </summary>
+        private ConnectionStringSettingsCollection testConnectionsSettings;
+
+        /// <summary>
         /// <see cref="IConfigurationManager"/> mock object.
         /// </summary>
         private Mock<IConfigurationManager> mockIConfigurationManager;
@@ -53,10 +59,15 @@ namespace Authentication.UnitTests.ForOperationalManagement.Common
                                            { "TestingKey1", "TestingValue" },
                                            { "TestingKey2", string.Empty }
                                        };
+            this.testConnectionsSettings = new ConnectionStringSettingsCollection
+                                               {
+                                                   new ConnectionStringSettings("SqlServer.Default", "Data Source=(localdb)\\MSSQLLocalDB;Database=Bps;Integrated Security=SSPI;")
+                                               };
 
             // Mocks
             this.mockIConfigurationManager = new Mock<IConfigurationManager>();
             this.mockIConfigurationManager.Setup(property => property.AppSettings).Returns(this.testAppSettings);
+            this.mockIConfigurationManager.Setup(property => property.ConnectionStrings).Returns(this.testConnectionsSettings);
         }
 
         /// <summary>
@@ -87,7 +98,25 @@ namespace Authentication.UnitTests.ForOperationalManagement.Common
             var objectUt = new DataManager(this.mockIConfigurationManager.Object);
 
             // Act
-            var actualValue = objectUt.GetAppSettingsValue(AppSettingKey);
+            var actualValue = objectUt.GetSettingsValue(AppSettingKey);
+
+            // Assert
+            Assert.AreEqual(ExpectedValue, actualValue);
+        }
+
+        /// <summary>
+        /// This method should successfully return a value from configuration file.
+        /// </summary>
+        [TestMethod]
+        public void GetSettingsValueShouldSucceed()
+        {
+            // Arrange
+            const string AppSettingKey = "TestingKey1";
+            const string ExpectedValue = "TestingValue";
+            var objectUt = new DataManager(this.mockIConfigurationManager.Object);
+
+            // Act
+            var actualValue = objectUt.GetSettingsValue(AppSettingKey);
 
             // Assert
             Assert.AreEqual(ExpectedValue, actualValue);
@@ -98,14 +127,14 @@ namespace Authentication.UnitTests.ForOperationalManagement.Common
         /// </summary>
         [TestMethod]
         [ExpectedException(typeof(NullConfigurationException))]
-        public void GetAppSettingsValueShouldThrownNullConfigurationExceptionWhenKeyIsEmpty()
+        public void GetSettingsValueShouldThrownNullConfigurationExceptionWhenKeyIsEmpty()
         {
             // Arrange 
             var appSettingKey = string.Empty;
             var objectUt = new DataManager(this.mockIConfigurationManager.Object);
 
             // Act
-            objectUt.GetAppSettingsValue(appSettingKey);
+            objectUt.GetSettingsValue(appSettingKey);
 
             // Assert
             // Assert.Fail("No exceptions were thrown.");
@@ -116,14 +145,14 @@ namespace Authentication.UnitTests.ForOperationalManagement.Common
         /// </summary>
         [TestMethod]
         [ExpectedException(typeof(NullConfigurationException))]
-        public void GetAppSettingsValueShouldThrownNullConfigurationExceptionWhenKeyIsNotPresent()
+        public void GetSettingsValueShouldThrownNullConfigurationExceptionWhenKeyIsNotPresent()
         {
             // Arrange 
             const string AppSettingKey = "UnknownKey";
             var objectUt = new DataManager(this.mockIConfigurationManager.Object);
 
             // Act
-            objectUt.GetAppSettingsValue(AppSettingKey);
+            objectUt.GetSettingsValue(AppSettingKey);
 
             // Assert
             // Assert.Fail("No exceptions were thrown.");
@@ -134,14 +163,14 @@ namespace Authentication.UnitTests.ForOperationalManagement.Common
         /// </summary>
         [TestMethod]
         [ExpectedException(typeof(NullConfigurationException))]
-        public void GetAppSettingsValueShouldThrownNullConfigurationExceptionWhenKeyIsNull()
+        public void GetSettingsValueShouldThrownNullConfigurationExceptionWhenKeyIsNull()
         {
             // Arrange
             const string AppSettingKey = "TestingKey2";
             var objectUt = new DataManager(this.mockIConfigurationManager.Object);
 
             // Act
-            objectUt.GetAppSettingsValue(AppSettingKey);
+            objectUt.GetSettingsValue(AppSettingKey);
 
             // Assert
             // Assert.Fail("No exceptions were thrown.");
