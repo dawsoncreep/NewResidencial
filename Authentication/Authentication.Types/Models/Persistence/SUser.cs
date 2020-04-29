@@ -13,13 +13,13 @@ namespace Authentication.Types.Models.Persistence
     using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
-    /// The s user.
+    /// The security user.
     /// </summary>
     [Table("Usuario")]
     public class SUser
     {
         /// <summary>
-        /// Gets or sets the id usuario.
+        /// Gets or sets the user id.
         /// </summary>
         [Key]
         public int IdUsuario { get; set; }

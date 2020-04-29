@@ -28,8 +28,8 @@ namespace Authentication.BusinessLayer.Interfaces.Processor
         /// <returns>
         /// The <see cref="Task"/>.
         /// </returns>
-        /// <exception cref="InvalidUserAccessException">
-        /// Thrown whe <see cref="LoginRequest"/> data is not valid into system.
+        /// <exception cref="InvalidUserRolException">
+        /// Thrown when role/permission is empty or incomplete.
         /// </exception>
         Task<User> GetUserByUserName(string userName);
     }

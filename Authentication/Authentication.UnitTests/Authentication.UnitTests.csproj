@@ -206,8 +206,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ForApi\Controllers\AuthenticationControllerTests.cs" />
+    <Compile Include="ForBusinessLayer\Processors\TokenProcessorTests.cs" />
     <Compile Include="ForBusinessLayer\Processors\UserProcessorTests.cs" />
     <Compile Include="ForBusinessLayer\Facades\UserFacadeTests.cs" />
+    <Compile Include="ForDataLayer\Repository\RolRepositoryTests.cs" />
     <Compile Include="ForDataLayer\Repository\UserRepositoryTests.cs" />
     <Compile Include="ForOperationalManagement\Common\ApplicationLoggerTests.cs" />
     <Compile Include="ForOperationalManagement\Common\DataManagerTests.cs" />

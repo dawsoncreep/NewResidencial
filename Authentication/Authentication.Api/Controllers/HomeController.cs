@@ -9,11 +9,13 @@
 
 namespace Authentication.Api.Controllers
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Web.Mvc;
 
     /// <summary>
     /// The home controller.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class HomeController : Controller
     {
         /// <summary>

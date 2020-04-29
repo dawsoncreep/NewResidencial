@@ -9,11 +9,13 @@
 
 namespace Authentication.Api
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Web.Optimization;
 
     /// <summary>
     /// The bundle config.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class BundleConfig
     {
         /// <summary>
@@ -24,10 +26,14 @@ namespace Authentication.Api
         /// </param>
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery-{version}.js"));
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include("~/Scripts/modernizr-*"));
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include("~/Scripts/bootstrap.js"));
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/bootstrap.css", "~/Content/site.css"));
+            bundles.Add(
+                new StyleBundle("~/Content/css").Include("~/Content/css/bootstrap.min.css")
+                    .Include("~/Content/css/site.css"));
+
+            bundles.Add(
+                new ScriptBundle("~/Content/js").Include("~/Content/js/jquery.min.js")
+                    .Include("~/Content/js/bootstrap.min.js").Include("~/Content/js/jquery.easing.min.js")
+                    .Include("~/Content/js/site.js"));
         }
     }
 }

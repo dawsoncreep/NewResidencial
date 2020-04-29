@@ -9,6 +9,7 @@
 
 namespace Authentication.Api
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Web.Http;
     using System.Web.Mvc;
     using System.Web.Optimization;
@@ -19,6 +20,7 @@ namespace Authentication.Api
     /// <summary>
     /// The web api application main startup point.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class WebApiApplication : System.Web.HttpApplication
     {
         /// <summary>

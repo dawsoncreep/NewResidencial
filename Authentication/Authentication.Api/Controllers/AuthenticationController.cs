@@ -14,6 +14,7 @@ namespace Authentication.Api.Controllers
 
     using Authentication.BusinessLayer.Interfaces.Facade;
     using Authentication.OperationalManagement.Interfaces;
+    using Authentication.Types.Enums;
     using Authentication.Types.Models;
 
     /// <summary>
@@ -36,38 +37,28 @@ namespace Authentication.Api.Controllers
         /// <param name="userFacade">
         /// The user facade.
         /// </param>
-        public AuthenticationController(IApplicationLogger logger, IUserFacade userFacade) : base(logger)
+        public AuthenticationController(IApplicationLogger logger, IUserFacade userFacade)
+            : base(logger)
         {
             this.userFacade = userFacade;
         }
 
         /// <summary>
-        /// The sample.
+        /// Authenticates a user, if valid returns a valid Json Web Token.
         /// </summary>
-        /// <returns>
-        /// The <see cref="Task"/>.
-        /// </returns>
-        [HttpGet]
-        [ActionName("Sample")]
-        public async Task<IHttpActionResult> Sample()
-        {
-            return await Task.FromResult(this.Ok("Sample"));
-        }
-
-        /// <summary>
-        /// The authenticate.
-        /// </summary>
-        /// <param name="userRequest">
-        /// The user request.
+        /// <param name="loginRequest">
+        /// The login request.
         /// </param>
         /// <returns>
-        /// The <see cref="Task"/>.
+        /// returns a JWT asynchronously.
         /// </returns>
         [HttpPost]
         [ActionName("Authenticate")]
-        public async Task<IHttpActionResult> Authenticate([FromBody] LoginRequest userRequest)
+        public async Task<IHttpActionResult> Authenticate([FromBody] LoginRequest loginRequest)
         {
-            return await this.ExecuteProcess(async () => await this.userFacade.Authenticate(userRequest));
+            var result = await this.ExecuteProcess(async () => await this.userFacade.Authenticate(loginRequest));
+            await this.Logger.Log(LogType.Information, $"Token successfully generated for user {loginRequest.UserName}");
+            return await Task.FromResult(result);
         }
     }
 }

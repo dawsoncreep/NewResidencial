@@ -37,13 +37,18 @@ namespace Authentication.TestingTools
         public static string AudienceKey => "eafdac93-3432-406c-89ef-eb8ce63b9daa";
 
         /// <summary>
+        /// Gets the expire time in minutes key.
+        /// </summary>
+        public static string ExpireTimeKey => "120";
+
+        /// <summary>
         /// Gets a value indicating whatever a JWT is valid.
         /// </summary>
         /// <param name="token">
         /// The token.
         /// </param>
-        /// <param name="key">
-        /// The secret key.
+        /// <param name="secretKey">
+        /// The secret Key.
         /// </param>
         /// <param name="issuer">
         /// The token issuer.
@@ -54,18 +59,22 @@ namespace Authentication.TestingTools
         /// <returns>
         /// The validation result as <see cref="bool"/>.
         /// </returns>
-        public static bool IsTokenValid(string token, string key, string issuer, string audience)
+        public static bool IsTokenValid(string token, string secretKey = null, string issuer = null, string audience = null)
         {
+            var key1 = secretKey ?? SecretKey;
+            var key2 = audience ?? AudienceKey;
+            var key3 = issuer ?? IssuerKey;
+
             SecurityToken validatedToken;
             var tokenHandler = new JwtSecurityTokenHandler();
-            var bytes = Encoding.UTF8.GetBytes(key);
+            var bytes = Encoding.UTF8.GetBytes(key1);
 
             var validationParameters = new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(bytes),
-                ValidAudience = audience,
-                ValidIssuer = issuer
+                ValidAudience = key2,
+                ValidIssuer = key3
             };
 
             try
@@ -98,20 +107,24 @@ namespace Authentication.TestingTools
         /// <returns>
         /// The JWT as <see cref="string"/>.
         /// </returns>
-        public static string GenerateToken(string username, string secretKey, string issuer, string audience)
+        public static string GenerateToken(string username, string secretKey = null, string issuer = null, string audience = null)
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.Default.GetBytes(secretKey));
+            var key1 = secretKey ?? SecretKey;
+            var key2 = audience ?? AudienceKey;
+            var key3 = issuer ?? IssuerKey;
+
+            var securityKey = new SymmetricSecurityKey(Encoding.Default.GetBytes(key1));
             var signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
 
             var claimsIdentity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, username, ClaimTypes.UserData, "{\"userData\":[{\"role\":\"Administrator\",\"allowTo\":[\"Read\",\"Modify\",\"Add\",\"Delete\"]},{\"role\":\"Mortal\",\"allowTo\":[\"Read\"]}]}") });
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var jwtSecurityToken = tokenHandler.CreateJwtSecurityToken(
-                audience: audience,
-                issuer: issuer,
+                audience: key2,
+                issuer: key3,
                 subject: claimsIdentity,
                 notBefore: DateTime.UtcNow,
-                expires: DateTime.UtcNow.AddMinutes(720),
+                expires: DateTime.UtcNow.AddMinutes(Convert.ToInt32(ExpireTimeKey)),
                 signingCredentials: signingCredentials);
 
             var jwtTokenString = tokenHandler.WriteToken(jwtSecurityToken);

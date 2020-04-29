@@ -41,6 +41,11 @@ namespace Authentication.UnitTests.ForBusinessLayer.Processors
         /// <see cref="IUserRepository"/> mock object.
         /// </summary>
         private Mock<IUserRepository> mockIUserRepository;
+
+        /// <summary>
+        /// <see cref="IRolRepository"/> mock object.
+        /// </summary>
+        private Mock<IRolRepository> mockIRolRepository;
         #endregion
 
         #region Tests Life Cycle
@@ -54,6 +59,7 @@ namespace Authentication.UnitTests.ForBusinessLayer.Processors
 
             // Mock objects
             this.mockIUserRepository = new Mock<IUserRepository>();
+            this.mockIRolRepository = new Mock<IRolRepository>();
         }
 
         /// <summary>
@@ -66,6 +72,7 @@ namespace Authentication.UnitTests.ForBusinessLayer.Processors
 
             // Mock objects
             this.mockIUserRepository = null;
+            this.mockIRolRepository = null;
         }
         #endregion
 
@@ -82,15 +89,20 @@ namespace Authentication.UnitTests.ForBusinessLayer.Processors
         {
             // Arrange
             const string UserName = "GoodUserName";
+            const int UserId = 1;
+
             var expected = new User
             {
                 Id = 1,
-                UserName = "GoodUserName"
+                UserName = "GoodUserName",
+                Password = "GoodPassword",
+                Authorizations = new[] { new Authorization { Role = "Administrador", Permission = new[] { "MODULO 1", "MENU 1", "MENU 2", "MENU 3" } } },
             };
 
             this.mockIUserRepository.Setup(method => method.FindByUserName(UserName)).ReturnsAsync(expected);
+            this.mockIRolRepository.Setup(method => method.GetAuthorizationData(UserId)).ReturnsAsync(expected.Authorizations);
 
-            var objectUt = new UserProcessor(this.mockIUserRepository.Object);
+            var objectUt = new UserProcessor(this.mockIUserRepository.Object, this.mockIRolRepository.Object);
 
             // Act
             var actual = await objectUt.GetUserByUserName(UserName);
@@ -98,6 +110,7 @@ namespace Authentication.UnitTests.ForBusinessLayer.Processors
 
             // Assert
             this.mockIUserRepository.Verify(method => method.FindByUserName(It.IsAny<string>()), Times.Once);
+            this.mockIRolRepository.Verify(method => method.GetAuthorizationData(It.IsAny<int>()), Times.Once);
             Assert.IsTrue(result.AreEqual);
         }
 
@@ -116,7 +129,7 @@ namespace Authentication.UnitTests.ForBusinessLayer.Processors
 
             this.mockIUserRepository.Setup(method => method.FindByUserName(UserName)).Throws(new InvalidUserAccessException());
 
-            var objectUt = new UserProcessor(this.mockIUserRepository.Object);
+            var objectUt = new UserProcessor(this.mockIUserRepository.Object, this.mockIRolRepository.Object);
 
             // Act
             try
@@ -127,6 +140,48 @@ namespace Authentication.UnitTests.ForBusinessLayer.Processors
             {
                 // Assert
                 this.mockIUserRepository.Verify(method => method.FindByUserName(It.IsAny<string>()), Times.Once);
+                throw;
+            }
+
+            // Assert
+            // Assert.Fail("No exception were thrown.");
+        }
+
+        /// <summary>
+        /// This test should thrown <see cref="InvalidUserRolException"/> when some role/permission data is not valid or empty.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        [TestMethod]
+        [ExpectedException(typeof(InvalidUserRolException))]
+        public async Task GetUserByUserNameShouldFailWhenRoleInformationIsWrong()
+        {
+            // Arrange
+            const string UserName = "GoodUserName";
+            const int UserId = 1;
+            var expected = new User
+            {
+                Id = 1,
+                UserName = "GoodUserName",
+                Password = "GoodPassword",
+            };
+
+            this.mockIUserRepository.Setup(method => method.FindByUserName(UserName)).ReturnsAsync(expected);
+            this.mockIRolRepository.Setup(method => method.GetAuthorizationData(UserId)).Throws(new InvalidUserRolException());
+
+            var objectUt = new UserProcessor(this.mockIUserRepository.Object, this.mockIRolRepository.Object);
+
+            // Act
+            try
+            {
+                await objectUt.GetUserByUserName(UserName);
+            }
+            catch (Exception)
+            {
+                // Assert
+                this.mockIUserRepository.Verify(method => method.FindByUserName(It.IsAny<string>()), Times.Once);
+                this.mockIRolRepository.Verify(method => method.GetAuthorizationData(It.IsAny<int>()), Times.Once);
                 throw;
             }
 

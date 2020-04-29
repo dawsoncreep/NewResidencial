@@ -50,6 +50,7 @@ namespace Authentication.Api.IoC
         /// The DI builder.
         /// </summary>
         private ContainerBuilder builder;
+
         #endregion
 
         /// <inheritdoc />
@@ -136,7 +137,8 @@ namespace Authentication.Api.IoC
             this.builder.RegisterType<DummyConfigurationManager>().As<IConfigurationManager>();
             this.builder.RegisterType<DataManager>().As<IDataManager>();
 
-            var isReleaseVersion = Convert.ToBoolean(System.Configuration.ConfigurationManager.AppSettings["IsReleaseVersion"]);
+            var isReleaseVersion =
+                Convert.ToBoolean(System.Configuration.ConfigurationManager.AppSettings["IsReleaseVersion"]);
 
             if (isReleaseVersion)
             {
@@ -167,7 +169,9 @@ namespace Authentication.Api.IoC
         {
             this.builder.RegisterType<ApplicationContext>().As<DbContext>().PreserveExistingDefaults();
             this.builder.RegisterType<UserRepository>().As<IUserRepository>();
+            this.builder.RegisterType<RolRepository>().As<IRolRepository>();
         }
+
         #endregion
     }
 }

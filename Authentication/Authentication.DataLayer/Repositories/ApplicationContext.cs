@@ -51,6 +51,25 @@ namespace Authentication.DataLayer.Repositories
         /// </summary>
         public virtual DbSet<SUser> User { get; set; }
 
+        /// <summary>
+        /// Gets or sets the rol.
+        /// </summary>
+        public virtual DbSet<SRol> Rol { get; set; }
+
+        /// <summary>
+        /// Gets or sets the permission.
+        /// </summary>
+        public virtual DbSet<SPermission> Permission { get; set; }
+
+        /// <summary>
+        /// Gets or sets the user rol.
+        /// </summary>
+        public virtual DbSet<SUserRol> UserRol { get; set; }
+
+        /// <summary>
+        /// Gets or sets the rol permission.
+        /// </summary>
+        public virtual DbSet<SRolPermission> RolPermission { get; set; }
 
         /// <inheritdoc />
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -62,6 +81,13 @@ namespace Authentication.DataLayer.Repositories
 
             var connectionString = this.dataManager.GetSettingsValue("SqlServer.Default");
             optionsBuilder.UseSqlServer(connectionString);
+        }
+
+        /// <inheritdoc />
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<SUserRol>().HasKey(e => new { e.IdUsuario, e.IdRol });
+            modelBuilder.Entity<SRolPermission>().HasKey(e => new { e.IdRol, e.IdPermiso });
         }
     }
 }

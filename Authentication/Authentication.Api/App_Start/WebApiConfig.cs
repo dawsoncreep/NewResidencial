@@ -9,11 +9,13 @@
 
 namespace Authentication.Api
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Web.Http;
 
     /// <summary>
     /// The web api config.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class WebApiConfig
     {
         /// <summary>

@@ -9,8 +9,6 @@
 
 namespace Authentication.OperationalManagement.Common
 {
-    using System;
-
     using Authentication.OperationalManagement.Abstractions.Interfaces;
     using Authentication.OperationalManagement.Interfaces;
     using Authentication.Types.Exceptions;

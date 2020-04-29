@@ -9,23 +9,16 @@
 
 namespace Authentication.IntegrationTests.ForApiControllers
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
     using System.Web.Http.Results;
 
     using Authentication.Api.Controllers;
     using Authentication.Api.IoC;
-    using Authentication.DataLayer.Repositories;
     using Authentication.OperationalManagement.Interfaces;
     using Authentication.TestingTools;
     using Authentication.Types.Models;
-    using Authentication.Types.Models.Persistence;
 
-    using Microsoft.EntityFrameworkCore;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-    using Newtonsoft.Json;
 
     /// <summary>
     /// The authentication controller tests.
@@ -50,6 +43,11 @@ namespace Authentication.IntegrationTests.ForApiControllers
         /// The authentication controller under test.
         /// </summary>
         private AuthenticationController authenticationController;
+
+        /// <summary>
+        /// The data manager.
+        /// </summary>
+        private IDataManager dataManager;
         #endregion
 
         #region Tests Life Cycle
@@ -68,7 +66,7 @@ namespace Authentication.IntegrationTests.ForApiControllers
             this.dependencyResolver.Initialize();
 
             // Data initialization
-            this.PopulateDatabase();
+            this.dataManager = this.dependencyResolver.Resolve<IDataManager>();
         }
 
         /// <summary>
@@ -77,13 +75,11 @@ namespace Authentication.IntegrationTests.ForApiControllers
         [TestCleanup]
         public void RunAfterEachTest()
         {
-            // Data cleanup
-            this.CleanupDatabase();
-
             // Object cleanup
             this.loginRequest = null;
             this.dependencyResolver.Dispose();
             this.dependencyResolver = null;
+            this.dataManager = null;
         }
         #endregion
 
@@ -104,8 +100,12 @@ namespace Authentication.IntegrationTests.ForApiControllers
         public async Task AuthenticateShouldSucceed()
         {
             // Arrange
+            var secretKey = this.dataManager.GetSettingsValue("JWT_SECRET_KEY");
+            var audienceKey = this.dataManager.GetSettingsValue("JWT_AUDIENCE_TOKEN");
+            var issuerKey = this.dataManager.GetSettingsValue("JWT_ISSUER_TOKEN");
+
             var token = string.Empty;
-            this.loginRequest = new LoginRequest { UserName = "xavier.hernandez@contoso.com", Password = "S5cr3tP455w0rd3" };
+            this.loginRequest = new LoginRequest { UserName = "xavier.hernandez@contoso.com", Password = "S5cr3tP455w0rd" };
             this.authenticationController = this.dependencyResolver.Resolve<AuthenticationController>();
 
             // Act
@@ -118,39 +118,8 @@ namespace Authentication.IntegrationTests.ForApiControllers
             // Assert
             Assert.IsNotNull(response);
             Assert.IsInstanceOfType(response, typeof(OkNegotiatedContentResult<string>));
-            Assert.IsTrue(TestingTokenTool.IsTokenValid(token, TestingTokenTool.SecretKey, TestingTokenTool.IssuerKey, TestingTokenTool.AudienceKey));
+            Assert.IsTrue(TestingTokenTool.IsTokenValid(token, secretKey, issuerKey, audienceKey));
         }
-        #endregion
-
-        #region Private Methods
-
-        /// <summary>
-        /// Populates database with some random data.
-        /// </summary>
-        private void PopulateDatabase()
-        {
-            var testData = JsonConvert.DeserializeObject<List<SUser>>("[{\"idUsuario\":\"0\",\"nombre\":\"Carlos\",\"apellido\":\"Fernandez\",\"correo\":\"carlos.fernandez@contoso.com\",\"celular\":\"5500000001\",\"usuario\":\"usuario01\",\"contraseña\":\"S5cr3tP455w0rd1\",\"activo\":\"true\"},{\"idUsuario\":\"0\",\"nombre\":\"Susana\",\"apellido\":\"Distancia\",\"correo\":\"susana.distancia@contoso.com\",\"celular\":\"5500000002\",\"usuario\":\"usuario02\",\"contraseña\":\"S5cr3tP455w0rd2\",\"activo\":\"false\"},{\"idUsuario\":\"0\",\"nombre\":\"Xavier\",\"apellido\":\"Hernandez\",\"correo\":\"xavier.hernandez@contoso.com\",\"celular\":\"5500000003\",\"usuario\":\"usuario03\",\"contraseña\":\"S5cr3tP455w0rd3\",\"activo\":\"true\"}]");
-
-            using (var context = new ApplicationContext(this.dependencyResolver.Resolve<IDataManager>()))
-            {
-                context.User.AddRange(testData);
-                context.SaveChanges();
-            }
-        }
-
-        /// <summary>
-        /// Cleans the database up.
-        /// </summary>
-        private void CleanupDatabase()
-        {
-            using (var context = new ApplicationContext(this.dependencyResolver.Resolve<IDataManager>()))
-            {
-                var data = context.User.ToList();
-                context.User.RemoveRange(data);
-                context.SaveChanges();
-            }
-        }
-
         #endregion
     }
 }

@@ -9,12 +9,14 @@
 
 namespace Authentication.Api
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Web.Mvc;
     using System.Web.Routing;
 
     /// <summary>
     /// The route config.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class RouteConfig
     {
         /// <summary>

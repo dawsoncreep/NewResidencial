@@ -38,6 +38,11 @@ namespace Authentication.Api.Controllers
         }
 
         /// <summary>
+        /// Gets the current logger.
+        /// </summary>
+        public IApplicationLogger Logger => this.logger;
+
+        /// <summary>
         /// Execute the corresponding business logic.
         /// </summary>
         /// <typeparam name="T">

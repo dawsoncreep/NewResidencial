@@ -9,11 +9,13 @@
 
 namespace Authentication.Api
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Web.Mvc;
 
     /// <summary>
     /// The filter config.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class FilterConfig
     {
         /// <summary>

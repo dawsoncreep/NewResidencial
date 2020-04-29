@@ -11,6 +11,7 @@ namespace Authentication.DataLayer.Interfaces
 {
     using System.Threading.Tasks;
 
+    using Authentication.Types.Exceptions;
     using Authentication.Types.Models;
     using Authentication.Types.Models.Persistence;
 
@@ -20,7 +21,7 @@ namespace Authentication.DataLayer.Interfaces
     public interface IUserRepository : IRepository<SUser>
     {
         /// <summary>
-        /// The find by user name.
+        /// Finds a user by its 'username' field.
         /// </summary>
         /// <param name="userName">
         /// The user name.
@@ -28,6 +29,9 @@ namespace Authentication.DataLayer.Interfaces
         /// <returns>
         /// The <see cref="Task"/>.
         /// </returns>
+        /// <exception cref="InvalidUserAccessException">
+        /// Thrown when no user has been found in data base
+        /// </exception>
         Task<User> FindByUserName(string userName);
     }
 }

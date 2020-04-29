@@ -130,7 +130,7 @@ namespace Authentication.UnitTests.ForApi.Controllers
             this.mockIUserFacade.Verify(method => method.Authenticate(It.IsNotNull<LoginRequest>()), Times.AtLeastOnce);
             this.mockIUserFacade.Verify(method => method.Authenticate(It.IsAny<LoginRequest>()), Times.Once);
             Assert.IsNotNull(response);
-            Assert.IsTrue(TestingTokenTool.IsTokenValid(this.token, TestingTokenTool.SecretKey, TestingTokenTool.IssuerKey, TestingTokenTool.AudienceKey));
+            Assert.IsTrue(TestingTokenTool.IsTokenValid(this.token));
         }
 
         /// <summary>

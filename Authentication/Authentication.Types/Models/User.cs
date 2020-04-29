@@ -9,6 +9,8 @@
 
 namespace Authentication.Types.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     /// <summary>
     /// The user.
     /// </summary>
@@ -22,11 +24,19 @@ namespace Authentication.Types.Models
         /// <summary>
         /// Gets or sets the user name.
         /// </summary>
+        [Required]
         public string UserName { get; set; }
 
         /// <summary>
         /// Gets or sets the password.
         /// </summary>
+        [Required]
         public string Password { get; set; }
+
+        /// <summary>
+        /// Gets or sets the user authorizations.
+        /// </summary>
+        [Required]
+        public Authorization[] Authorizations { get; set; }
     }
 }

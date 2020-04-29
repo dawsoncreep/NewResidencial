@@ -36,7 +36,7 @@ namespace Authentication.UnitTests.ForDataLayer.Repository
         /// <summary>
         /// The test data.
         /// </summary>
-        private List<SUser> testData;
+        private List<SUser> userTestData;
 
         /// <summary>
         /// The compare logic.
@@ -59,12 +59,12 @@ namespace Authentication.UnitTests.ForDataLayer.Repository
         [TestInitialize]
         public async Task RunBeforeEachTest()
         {
-            this.testData = JsonConvert.DeserializeObject<List<SUser>>("[{\"idUsuario\":\"1\",\"nombre\":\"Carlos\",\"apellido\":\"Fernandez\",\"correo\":\"carlos.fernandez@contoso.com\",\"celular\":\"5500000001\",\"usuario\":\"usuario01\",\"contraseña\":\"S5cr3tP455w0rd1\",\"activo\":\"true\"},{\"idUsuario\":\"2\",\"nombre\":\"Susana\",\"apellido\":\"Distancia\",\"correo\":\"susana.distancia@contoso.com\",\"celular\":\"5500000002\",\"usuario\":\"usuario02\",\"contraseña\":\"S5cr3tP455w0rd2\",\"activo\":\"false\"},{\"idUsuario\":\"3\",\"nombre\":\"Xavier\",\"apellido\":\"Hernandez\",\"correo\":\"xavier.hernandez@contoso.com\",\"celular\":\"5500000003\",\"usuario\":\"usuario03\",\"contraseña\":\"S5cr3tP455w0rd3\",\"activo\":\"true\"}]");
+            this.userTestData = JsonConvert.DeserializeObject<List<SUser>>("[{\"idUsuario\":\"1\",\"nombre\":\"Carlos\",\"apellido\":\"Fernandez\",\"correo\":\"carlos.fernandez@contoso.com\",\"celular\":\"5500000001\",\"usuario\":\"usuario01\",\"contraseña\":\"S5cr3tP455w0rd1\",\"activo\":\"true\"},{\"idUsuario\":\"2\",\"nombre\":\"Susana\",\"apellido\":\"Distancia\",\"correo\":\"susana.distancia@contoso.com\",\"celular\":\"5500000002\",\"usuario\":\"usuario02\",\"contraseña\":\"S5cr3tP455w0rd2\",\"activo\":\"false\"},{\"idUsuario\":\"3\",\"nombre\":\"Xavier\",\"apellido\":\"Hernandez\",\"correo\":\"xavier.hernandez@contoso.com\",\"celular\":\"5500000003\",\"usuario\":\"usuario03\",\"contraseña\":\"S5cr3tP455w0rd3\",\"activo\":\"true\"}]");
 
             this.compareLogic = new CompareLogic();
-            
+
             var options = new DbContextOptionsBuilder<ApplicationContext>()
-                .UseInMemoryDatabase("UnitTestingDataBase")
+                .UseInMemoryDatabase("UserUnitTestingDataBase")
                 .Options;
             this.applicationContext = new ApplicationContext(options);
 
@@ -80,7 +80,7 @@ namespace Authentication.UnitTests.ForDataLayer.Repository
         [TestCleanup]
         public async Task RunAfterEachTest()
         {
-            this.testData = null;
+            this.userTestData = null;
             this.compareLogic = null;
 
             await this.BanishDataBase();
@@ -112,7 +112,7 @@ namespace Authentication.UnitTests.ForDataLayer.Repository
             // Assert
             Assert.IsTrue(result.AreEqual);
         }
-        
+
         /// <summary>
         /// This method should fail getting an active user from data base.
         /// </summary>
@@ -166,7 +166,7 @@ namespace Authentication.UnitTests.ForDataLayer.Repository
         /// </returns>
         private async Task PopulateDatabase()
         {
-            await this.applicationContext.User.AddRangeAsync(this.testData);
+            await this.applicationContext.User.AddRangeAsync(this.userTestData);
             await this.applicationContext.SaveChangesAsync();
         }
 
