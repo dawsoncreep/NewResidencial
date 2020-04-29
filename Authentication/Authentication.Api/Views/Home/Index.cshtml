@@ -1,0 +1,30 @@
+﻿<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-secondary text-uppercase" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="@Url.Action("Index", "Home")">RESIDENCIAL</a>
+        <button data-toggle="collapse" data-target="#navbarResponsive"
+                class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item mx-0 mx-lg-1" role="presentation"></li>
+                <li class="nav-item mx-0 mx-lg-1" role="presentation">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/swagger/ui/index">VER API</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<header class="masthead bg-primary text-white text-center">
+    <div class="container">
+        <img class="img-fluid d-block mx-auto mb-5" src="@Url.Content("~/Content/img/profile.png")">
+        <h1>WEB API</h1>
+        <hr class="star-light">
+    </div>
+</header>
+<div class="copyright py-4 text-center text-white">
+    <div class="container">
+        <small>Copyright ©&nbsp;<a href="https://github.com/dawsoncreep/">Dawsoncreep</a>. All rights reserved. @DateTime.Now.Year</small>
+    </div>
+</div>
