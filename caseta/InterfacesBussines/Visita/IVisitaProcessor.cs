@@ -15,5 +15,7 @@ namespace BusinessInterfaces
             string nombre, string apellidos, string descripcion, string placas, int ubicacion);
 
         IEnumerable<DGVVisitaActual> GetVisitasActuales();
+
+        IEnumerable<DGVBusqueda> GetDGVBusquedas();
     }
 }

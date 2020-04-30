@@ -14,5 +14,6 @@ namespace DataInterfaces
         void DesactivarVisita(int id);
         void UpdateFotoVisita(string urlfoto, int id);
         IEnumerable<DGVVisitaActual> GetDGVVisitasActuales();
+        IEnumerable<DGVBusqueda> GetPreRegistros();
     }
 }

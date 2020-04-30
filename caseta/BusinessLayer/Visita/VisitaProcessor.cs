@@ -27,6 +27,12 @@ namespace BusinessLayer
             return dgvVisitas;
         }
 
+        public IEnumerable<DGVBusqueda> GetDGVBusquedas()
+        {
+            var dgvBusqueda = visitaRepositorio.GetPreRegistros();
+            return dgvBusqueda;
+        }
+
         public int RegistrarVisita(Bitmap rostro, Bitmap placaTrasera, Bitmap placaDelantera, Bitmap credencial, int tipoVisita, 
             string nombre, string apellidos, string descripcion, string placas, int ubicacion)
         {

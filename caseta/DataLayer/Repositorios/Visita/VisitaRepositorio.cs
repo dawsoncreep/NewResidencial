@@ -73,5 +73,37 @@ namespace DataLayer
             }
             return dGVVisitas;
         }
+
+        public IEnumerable<DGVBusqueda> GetPreRegistros()
+        {
+            IEnumerable<DGVBusqueda> busquedas;
+            using (IVisitaDbContext context = new GeneralContext(ConnString))
+            {
+                var query = from v in context.Visitas
+                            join u in context.Ubicaciones on v.idUbicacion equals u.idUbicacion
+                            join tv in context.TiposVisita on v.idTipoVisita equals tv.IdTipoVisita
+                            join i in context.IngresoSalidaVisitas on v.IdVisita equals i.idVisita
+                            into table
+                            from b in table.DefaultIfEmpty()
+                            where v.Activo == true && tv.IdTipoVisita == 1 || tv.IdTipoVisita == 4
+                            select new 
+                            {
+                                Direccion = u.Nombre,
+                                v.IdVisita,
+                                Nombre = v.Nombre + " " + v.Apellidos,
+                                v.Placas,
+                                TipoDeVisita = tv.Nombre
+                            };
+                busquedas = query.Select(s => new DGVBusqueda()
+                {
+                    Direccion = s.Direccion,
+                    IdVisita = s.IdVisita,
+                    Nombre = s.Nombre,
+                    Placas = s.Placas,
+                    TipoDeVisita = s.TipoDeVisita
+                }).ToList();
+            }
+            return busquedas;
+        }
     }
 }

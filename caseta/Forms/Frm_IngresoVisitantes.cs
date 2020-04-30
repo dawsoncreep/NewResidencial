@@ -28,7 +28,8 @@ namespace caseta
             Cbbx_RType.DataSource = visitaProcessor.TiposDeVisita().ToArray();
             Cbbx_RType.ValueMember = "ID";
             Cbbx_RType.DisplayMember = "Nombre";
-            SetDgvData(visitaProcessor.GetVisitasActuales());            
+            DGV_VisitantesActuales.DataSource = visitaProcessor.GetVisitasActuales();
+            DGV_Busqueda.DataSource = visitaProcessor.GetDGVBusquedas();
         }
 
         private void Frm_IngresoVisita_Load(object sender, EventArgs e)
@@ -138,12 +139,16 @@ namespace caseta
             Tbx_PLacas.Text = string.Empty;
         }
 
-        private void SetDgvData(IEnumerable<DGVVisitaActual> dGVVisitas)
-        {
-            DGV_VisitantesActuales.DataSource = dGVVisitas;
-            foreach (DataGridViewRow row in DGV_VisitantesActuales.Rows)
+        private void DGV_VisitantesActuales_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {            
+            if (DGV_VisitantesActuales.Columns[e.ColumnIndex].Name == "Cmn_Foto")
             {
-                row.Cells["Cmn_Foto"].Value = Image.FromFile(@"C:\\Pictures\\Rostro7.jpg");
+                var image = Image.FromFile(DGV_VisitantesActuales.Rows[e.RowIndex].Cells["Cmn_UrlFoto"].Value.ToString());
+                var escala = new Bitmap(90, 90);
+                Graphics.FromImage(escala).DrawImage(image, 0, 0, 90, 90);
+                DGV_VisitantesActuales.Rows[e.RowIndex].Height = 90;
+                DGV_VisitantesActuales.Columns[e.ColumnIndex].Width = 90;
+                e.Value = new Bitmap(escala);
             }
         }
     }
