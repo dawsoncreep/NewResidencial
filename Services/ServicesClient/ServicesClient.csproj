@@ -55,9 +55,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -79,8 +76,6 @@
     </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.WebRequest">
     </Reference>
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -188,6 +183,99 @@
     <Compile Include="Controllers\VehiculoController.cs" />
     <Compile Include="Controllers\VehiculoUbicacionController.cs" />
     <Compile Include="Controllers\VisitaController.cs" />
+    <Compile Include="Data\Boletin.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Dispositivo.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Evento.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\FotoEventoEntrada.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\FotoEventoSalida.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Huella.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\IngresoSalidaPersonal.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ingresoSalidaVisita.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Parametro.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Permiso.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Personal.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PersonalUbicacion.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ResidencialDataModel.Context.cs">
+      <DependentUpon>ResidencialDataModel.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Data\ResidencialDataModel.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Data\ResidencialDataModel.Designer.cs">
+      <DependentUpon>ResidencialDataModel.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Data\Rol.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RolPermiso.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SolicitudAcceso.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sysdiagrams.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tipoUbicacion.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TipoVisita.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Ubicacion.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Usuario.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UsuarioRol.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usuarioUbicacion.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UsuarioVisita.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Vehiculo.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\VehiculoUbicacion.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Visita.cs">
+      <DependentUpon>ResidencialDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -199,6 +287,16 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Data\ResidencialDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ResidencialDataModel.edmx</DependentUpon>
+      <LastGenOutput>ResidencialDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\ResidencialDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ResidencialDataModel.edmx</DependentUpon>
+      <LastGenOutput>ResidencialDataModel.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -223,7 +321,13 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <EntityDeploy Include="Data\ResidencialDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ResidencialDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Data\ResidencialDataModel.edmx.diagram">
+      <DependentUpon>ResidencialDataModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -247,10 +351,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
   </ItemGroup>
@@ -279,12 +380,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ConectarDatos\ConectarDatos.csproj">
-      <Project>{cb3aa95e-0a9b-456d-89f2-75e17b13eed5}</Project>
-      <Name>ConectarDatos</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
