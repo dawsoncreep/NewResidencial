@@ -53,6 +53,69 @@
             The register.
             </summary>
         </member>
+        <member name="T:Authentication.Api.TokenValidationHandler">
+            <summary>
+            The token validation handler.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.TokenValidationHandler.Authorization">
+            <summary>
+            The authorization.
+            </summary>
+        </member>
+        <member name="F:Authentication.Api.TokenValidationHandler.Bearer">
+            <summary>
+            The bearer.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.TokenValidationHandler.LifetimeValidator(System.Nullable{System.DateTime},System.Nullable{System.DateTime},Microsoft.IdentityModel.Tokens.SecurityToken,Microsoft.IdentityModel.Tokens.TokenValidationParameters)">
+            <summary>
+            The lifetime validator.
+            </summary>
+            <param name="notBefore">
+            The not before.
+            </param>
+            <param name="expires">
+            The expires.
+            </param>
+            <param name="securityToken">
+            The security token.
+            </param>
+            <param name="validationParameters">
+            The validation parameters.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.TokenValidationHandler.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+            <summary>
+            The send async.
+            </summary>
+            <param name="request">
+            The request.
+            </param>
+            <param name="cancellationToken">
+            The cancellation token.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.TokenValidationHandler.TryRetrieveToken(System.Net.Http.HttpRequestMessage,System.String@)">
+            <summary>
+            The try retrieve token.
+            </summary>
+            <param name="request">
+            The request.
+            </param>
+            <param name="token">
+            The token.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
         <member name="T:Authentication.Api.WebApiConfig">
             <summary>
             The web api config.
@@ -146,6 +209,19 @@
             </summary>
             <returns>
             The <see cref="T:System.Web.Mvc.ActionResult"/>.
+            </returns>
+        </member>
+        <member name="T:Authentication.Api.Controllers.TestController">
+            <summary>
+            The test controller.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Controllers.TestController.GetRandomNumber">
+            <summary>
+            Gets a random int value between 1 and 10.
+            </summary>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
             </returns>
         </member>
         <member name="T:Authentication.Api.WebApiApplication">

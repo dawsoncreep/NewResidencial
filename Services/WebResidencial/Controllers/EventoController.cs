@@ -1,8 +1,6 @@
 ﻿using System;
 
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WebResidencial.Models;
 using Newtonsoft.Json;
@@ -11,16 +9,17 @@ using System.Net.Http.Headers;
 
 namespace WebResidencial.Controllers
 {
+    using System.Configuration;
+
     public class EventoController : Controller
     {
-        string Baseurl = "http://localhost:2787/";
         // GET: Evento
         public async System.Threading.Tasks.Task<ActionResult> Index()
         {
             List<Evento> EmpInfo = new List<Evento>();
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(Baseurl);
+                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["WebApiServiceUrl"]);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage res = await client.GetAsync("api/Evento");
@@ -39,7 +38,7 @@ namespace WebResidencial.Controllers
 
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(Baseurl);
+                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["WebApiServiceUrl"]);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage res = client.GetAsync("api/ubicacion").Result;
@@ -65,7 +64,7 @@ namespace WebResidencial.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri(Baseurl);
+                    client.BaseAddress = new Uri(ConfigurationManager.AppSettings["WebApiServiceUrl"]);
                     var postTask = client.PostAsJsonAsync<Evento>("api/Evento/Agregar", evento);
                     postTask.Wait();
                     var result = postTask.Result;
@@ -88,7 +87,7 @@ namespace WebResidencial.Controllers
             Evento evento = new Evento();
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(Baseurl);
+                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["WebApiServiceUrl"]);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage res = await client.GetAsync(string.Format("api/evento/GetEvento?idEvento={0}", id));
@@ -103,7 +102,7 @@ namespace WebResidencial.Controllers
 
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(Baseurl);
+                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["WebApiServiceUrl"]);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage res = client.GetAsync("api/ubicacion").Result;
@@ -132,7 +131,7 @@ namespace WebResidencial.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri(Baseurl);
+                    client.BaseAddress = new Uri(ConfigurationManager.AppSettings["WebApiServiceUrl"]);
 
                     var res = client.PutAsJsonAsync<Evento>("api/evento/Actualizar", evento);
 
@@ -156,7 +155,7 @@ namespace WebResidencial.Controllers
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(Baseurl);
+                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["WebApiServiceUrl"]);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage res = client.DeleteAsync(string.Format("api/Evento/Eliminar?id={0}", id)).Result;
                 if (res.IsSuccessStatusCode)

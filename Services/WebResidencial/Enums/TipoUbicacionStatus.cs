@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace WebResidencial.Enums
+﻿namespace WebResidencial.Enums
 {
     public enum TipoUbicacionStatus
     {

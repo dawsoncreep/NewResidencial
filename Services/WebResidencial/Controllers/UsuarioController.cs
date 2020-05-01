@@ -1,8 +1,6 @@
 ﻿using System;
 
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WebResidencial.Models;
 using Newtonsoft.Json;
@@ -11,16 +9,17 @@ using System.Net.Http.Headers;
 
 namespace WebResidencial.Controllers
 {
+    using System.Configuration;
+
     public class UsuarioController : Controller
     {
-        string Baseurl = "http://localhost:2787/";
         // GET: Usuario
         public async System.Threading.Tasks.Task<ActionResult> Index()
         {
             List<Usuario> EmpInfo = new List<Usuario>();
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(Baseurl);
+                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["WebApiServiceUrl"]);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage res = await client.GetAsync("api/usuario/get");
@@ -47,7 +46,7 @@ namespace WebResidencial.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri(Baseurl);
+                    client.BaseAddress = new Uri(ConfigurationManager.AppSettings["WebApiServiceUrl"]);
                     var postTask = client.PostAsJsonAsync<Usuario>("api/usuario/AgregarUsuario", usuario);
                     postTask.Wait();
                     var result = postTask.Result;
@@ -70,7 +69,7 @@ namespace WebResidencial.Controllers
             Usuario user = new Usuario();
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(Baseurl);
+                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["WebApiServiceUrl"]);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage res = await client.GetAsync(string.Format("api/usuario/get?idUser={0}",id));
@@ -91,7 +90,7 @@ namespace WebResidencial.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri(Baseurl);
+                    client.BaseAddress = new Uri(ConfigurationManager.AppSettings["WebApiServiceUrl"]);
 
                     var res = client.PutAsJsonAsync<Usuario>("api/usuario/ActualizarUsuario", usuario);
                     
@@ -115,7 +114,7 @@ namespace WebResidencial.Controllers
         {
             using(var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(Baseurl);
+                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["WebApiServiceUrl"]);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage res =  client.DeleteAsync(string.Format("api/usuario/EliminarUsuario?id={0}", id)).Result;
                 if (res.IsSuccessStatusCode)
