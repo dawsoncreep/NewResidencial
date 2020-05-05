@@ -26,12 +26,11 @@ namespace Authentication.Api
         /// </param>
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(
-                new StyleBundle("~/Content/css").Include("~/Content/css/bootstrap.min.css")
-                    .Include("~/Content/css/site.css"));
+            bundles.Add(new StyleBundle("~/Content/css")
+                .Include("~/Content/css/bootstrap.min.css")
+                .Include("~/Content/css/site.css"));
 
-            bundles.Add(
-                new ScriptBundle("~/Content/js").Include("~/Content/js/jquery.min.js")
+            bundles.Add(new ScriptBundle("~/Content/js").Include("~/Content/js/jquery.min.js")
                     .Include("~/Content/js/bootstrap.min.js").Include("~/Content/js/jquery.easing.min.js")
                     .Include("~/Content/js/site.js"));
         }

@@ -37,8 +37,7 @@ namespace Authentication.Api.Controllers
         /// <param name="userFacade">
         /// The user facade.
         /// </param>
-        public AuthenticationController(IApplicationLogger logger, IUserFacade userFacade)
-            : base(logger)
+        public AuthenticationController(IApplicationLogger logger, IUserFacade userFacade) : base(logger)
         {
             this.userFacade = userFacade;
         }

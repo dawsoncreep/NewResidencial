@@ -10,9 +10,12 @@
 namespace Authentication.OperationalManagement.Abstractions
 {
     using System;
+    using System.Diagnostics;
+    using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
 
+    using Authentication.OperationalManagement.Extensions;
     using Authentication.OperationalManagement.Interfaces;
     using Authentication.Types.Exceptions;
 
@@ -21,37 +24,99 @@ namespace Authentication.OperationalManagement.Abstractions
     /// </summary>
     public class WindowsEventLogger : ILogger
     {
+        /// <summary>
+        /// The event log name.
+        /// </summary>
+        private const string EventLogName = "Authentication.Api";
+
+        /// <summary>
+        /// The event source name.
+        /// </summary>
+        private const string EventSourceName = "Resicencial";
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WindowsEventLogger"/> class.
+        /// </summary>
+        public WindowsEventLogger()
+        {
+            if (!(EventLog.SourceExists(EventSourceName) && EventLog.Exists(EventLogName)))
+            {
+                EventLog.CreateEventSource(EventSourceName, EventLogName);
+            }
+        }
+
         /// <inheritdoc />
         public int Category => Thread.CurrentThread.ManagedThreadId;
 
         /// <inheritdoc />
-        public Task InfoAsync(string message, int category, object extra = null)
+        public async Task InfoAsync(string message, int category, object extra = null)
         {
-            throw new NotImplementedException();
+            await WriteLog(message, EventLogName, category, EventLogEntryType.Information, extra);
         }
 
         /// <inheritdoc />
-        public Task WarningAsync(string message, int category, object extra = null)
+        public async Task WarningAsync(string message, int category, object extra = null)
         {
-            throw new NotImplementedException();
+            await WriteLog(message, EventLogName, category, EventLogEntryType.Warning, extra);
         }
 
         /// <inheritdoc />
-        public Task WarningAsync(BusinessLayerException exception, int category, object extra = null)
+        public async Task WarningAsync(BusinessLayerException exception, int category, object extra = null)
         {
-            throw new NotImplementedException();
+            await WriteLog(exception.Handle(), EventLogName, category, EventLogEntryType.Warning, extra);
         }
 
         /// <inheritdoc />
-        public Task ErrorAsync(string message, int category, object extra = null)
+        public async Task ErrorAsync(string message, int category, object extra = null)
         {
-            throw new NotImplementedException();
+            await WriteLog(message, EventLogName, category, EventLogEntryType.Error, extra);
         }
 
         /// <inheritdoc />
-        public Task ErrorAsync(Exception exception, int category, object extra = null)
+        public async Task ErrorAsync(Exception exception, int category, object extra = null)
         {
-            throw new NotImplementedException();
+            await WriteLog(exception.Handle(), EventLogName, category, EventLogEntryType.Error, extra);
+        }
+
+        /// <summary>
+        /// Manages insertions on windows event log.
+        /// </summary>
+        /// <param name="message">
+        /// Message to be placed in windows event log.
+        /// </param>
+        /// <param name="logName">
+        /// The log Name.
+        /// </param>
+        /// <param name="category">
+        /// The category.
+        /// </param>
+        /// <param name="entryType">
+        /// Message' type
+        /// </param>
+        /// <param name="extra">
+        /// The extra.
+        /// </param>
+        /// <returns>
+        /// Returns a Task object.
+        /// </returns>
+        private static async Task WriteLog(string message, string logName, int category, EventLogEntryType entryType, object extra)
+        {
+            var messageToLog = new StringBuilder(message);
+
+            if (extra != null)
+            {
+                messageToLog.Append(Environment.NewLine);
+                messageToLog.Append("Extra data has been logged: ");
+                messageToLog.Append(extra.ToJson());
+                messageToLog.Append(Environment.NewLine);
+            }
+
+            using (var log = new EventLog(logName, ".", logName))
+            {
+                log.WriteEntry(messageToLog.ToString(), entryType, category);
+            }
+
+            await Task.CompletedTask;
         }
     }
 }
