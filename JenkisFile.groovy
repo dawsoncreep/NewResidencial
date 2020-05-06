@@ -15,6 +15,13 @@ pipeline
     }
 	stages
     {
+		stage ('Testing')
+		{
+			steps
+			{
+				echo "Source files were downloaded correctly."
+			}
+		}
     }
      post 
     { 
