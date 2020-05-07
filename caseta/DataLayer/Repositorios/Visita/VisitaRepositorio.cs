@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,33 @@ namespace DataLayer
 
         public Visita GetVisitaByID(int id)
         {
-            throw new NotImplementedException();
+            Visita visita;
+            using (IVisitaDbContext context = new GeneralContext(ConnString))
+            {
+                var v = context.Visitas.Single(f => f.IdVisita == id);
+                visita = new Visita()
+                {
+                    Activo = v.Activo,
+                    Apellidos = v.Apellidos,
+                    ID = v.IdVisita,
+                    Nombre = v.Nombre,
+                    Placas = v.Placas,
+                    TipoVisita = context.TiposVisita.Select(s => new TipoVisita()
+                    {
+                        Activo = s.Activo,
+                        Nombre = s.Nombre,
+                        ID = s.IdTipoVisita
+                    }).Single(s => s.ID == v.idTipoVisita),
+                    Ubicacion = context.Ubicaciones.Select(s => new Ubicacion()
+                    {
+                        Activo = s.Activo,
+                        ID = s.idUbicacion,
+                        Nombre = s.Nombre,
+                        TipoUbicacion = new TipoUbicacion() { IdTipoUbicacion = s.idTipoUbicacion }
+                    }).Single(s => s.ID == v.idUbicacion)
+                };
+            }
+            return visita;
         }
 
         public int SetVisita(Visita v)
@@ -74,34 +101,28 @@ namespace DataLayer
             return dGVVisitas;
         }
 
-        public IEnumerable<DGVBusqueda> GetPreRegistros()
+        public IEnumerable<DGVBusqueda> GetPreRegistros(string search )
         {
-            IEnumerable<DGVBusqueda> busquedas;
-            using (IVisitaDbContext context = new GeneralContext(ConnString))
+            List<DGVBusqueda> busquedas = new List<DGVBusqueda>();
+            using (SqlConnection connection = new SqlConnection(ConnString))
             {
-                var query = from v in context.Visitas
-                            join u in context.Ubicaciones on v.idUbicacion equals u.idUbicacion
-                            join tv in context.TiposVisita on v.idTipoVisita equals tv.IdTipoVisita
-                            join i in context.IngresoSalidaVisitas on v.IdVisita equals i.idVisita
-                            into table
-                            from b in table.DefaultIfEmpty()
-                            where v.Activo == true && tv.IdTipoVisita == 1 || tv.IdTipoVisita == 4
-                            select new 
-                            {
-                                Direccion = u.Nombre,
-                                v.IdVisita,
-                                Nombre = v.Nombre + " " + v.Apellidos,
-                                v.Placas,
-                                TipoDeVisita = tv.Nombre
-                            };
-                busquedas = query.Select(s => new DGVBusqueda()
+                connection.Open();
+                SqlCommand command = new SqlCommand("SP_GetPreRegistros", connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter sqlParameter = new SqlParameter("@search", search);
+                command.Parameters.Add(sqlParameter);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    Direccion = s.Direccion,
-                    IdVisita = s.IdVisita,
-                    Nombre = s.Nombre,
-                    Placas = s.Placas,
-                    TipoDeVisita = s.TipoDeVisita
-                }).ToList();
+                    busquedas.Add(new DGVBusqueda() {
+                        Direccion = reader["Direccion"].ToString(),
+                        IdVisita = Convert.ToInt32(reader["idVisita"]),
+                        Nombre = reader["Nombre"].ToString(),
+                        Placas = reader["placas"].ToString(),
+                        TipoDeVisita = reader["TipoDeVisita"].ToString()
+                    });
+                }
+                connection.Close();
             }
             return busquedas;
         }
