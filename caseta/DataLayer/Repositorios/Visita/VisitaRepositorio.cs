@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,33 @@ namespace DataLayer
 
         public Visita GetVisitaByID(int id)
         {
-            throw new NotImplementedException();
+            Visita visita;
+            using (IVisitaDbContext context = new GeneralContext(ConnString))
+            {
+                var v = context.Visitas.Single(f => f.IdVisita == id);
+                visita = new Visita()
+                {
+                    Activo = v.Activo,
+                    Apellidos = v.Apellidos,
+                    ID = v.IdVisita,
+                    Nombre = v.Nombre,
+                    Placas = v.Placas,
+                    TipoVisita = context.TiposVisita.Select(s => new TipoVisita()
+                    {
+                        Activo = s.Activo,
+                        Nombre = s.Nombre,
+                        ID = s.IdTipoVisita
+                    }).Single(s => s.ID == v.idTipoVisita),
+                    Ubicacion = context.Ubicaciones.Select(s => new Ubicacion()
+                    {
+                        Activo = s.Activo,
+                        ID = s.idUbicacion,
+                        Nombre = s.Nombre,
+                        TipoUbicacion = new TipoUbicacion() { IdTipoUbicacion = s.idTipoUbicacion }
+                    }).Single(s => s.ID == v.idUbicacion)
+                };
+            }
+            return visita;
         }
 
         public int SetVisita(Visita v)
@@ -72,6 +99,32 @@ namespace DataLayer
                 }).ToList();
             }
             return dGVVisitas;
+        }
+
+        public IEnumerable<DGVBusqueda> GetPreRegistros(string search )
+        {
+            List<DGVBusqueda> busquedas = new List<DGVBusqueda>();
+            using (SqlConnection connection = new SqlConnection(ConnString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("SP_GetPreRegistros", connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter sqlParameter = new SqlParameter("@search", search);
+                command.Parameters.Add(sqlParameter);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    busquedas.Add(new DGVBusqueda() {
+                        Direccion = reader["Direccion"].ToString(),
+                        IdVisita = Convert.ToInt32(reader["idVisita"]),
+                        Nombre = reader["Nombre"].ToString(),
+                        Placas = reader["placas"].ToString(),
+                        TipoDeVisita = reader["TipoDeVisita"].ToString()
+                    });
+                }
+                connection.Close();
+            }
+            return busquedas;
         }
     }
 }

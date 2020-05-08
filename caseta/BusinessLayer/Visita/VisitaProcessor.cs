@@ -27,18 +27,36 @@ namespace BusinessLayer
             return dgvVisitas;
         }
 
-        public int RegistrarVisita(Bitmap rostro, Bitmap placaTrasera, Bitmap placaDelantera, Bitmap credencial, int tipoVisita, 
-            string nombre, string apellidos, string descripcion, string placas, int ubicacion)
+        public IEnumerable<DGVBusqueda> GetDGVBusquedas(string search = "")
         {
-            ingresoProcessor = FactoriaNegocio.Instancia.CreateIngresoProcessor(tipoVisita);   // se crea la instancia del ingreso segun el tipo de visita         
-            int id = ingresoProcessor.RegistrarIngreso(nombre, apellidos, placas, ubicacion);
-            return ingresoProcessor.GuardarCapturas(rostro, placaTrasera, placaDelantera, credencial, id);
+            var dgvBusqueda = visitaRepositorio.GetPreRegistros(search);
+            return dgvBusqueda;
+        }
+
+        public int RegistrarVisita(Bitmap rostro, Bitmap placaTrasera, Bitmap placaDelantera, Bitmap credencial, int tipoVisita, 
+            string nombre, string apellidos, string descripcion, string placas, int ubicacion, int? idVisita = null)
+        {
+            ingresoProcessor = FactoriaNegocio.Instancia.CreateIngresoProcessor(tipoVisita);   // se crea la instancia del ingreso segun el tipo de visita
+            if (idVisita == null)
+            {
+                int id = ingresoProcessor.RegistrarIngreso(nombre, apellidos, placas, ubicacion);
+                return ingresoProcessor.GuardarCapturas(rostro, placaTrasera, placaDelantera, credencial, id);
+            }
+            else
+            {
+                return ingresoProcessor.GuardarCapturas(rostro, placaTrasera, placaDelantera, credencial, (int)idVisita);
+            }
         }
 
         public IEnumerable<TipoVisita> TiposDeVisita()
         {
             IEnumerable<TipoVisita> tiposVisita = TipoVisitaRepositorio.GetTiposVisita();
             return tiposVisita;
+        }
+
+        public Visita GetPreRegistro(int id)
+        {
+            return visitaRepositorio.GetVisitaByID(id);
         }
     }
 }
