@@ -126,5 +126,26 @@ namespace DataLayer
             }
             return busquedas;
         }
+
+        public IEnumerable<Visita> GetVisitasByType(TiposDeVisita tipoDeVisita)
+        {
+            IEnumerable<Visita> visitas;
+            using (IVisitaDbContext context = new GeneralContext(ConnString))
+            {
+                visitas = context.Visitas.Where(w => w.idTipoVisita == (int)tipoDeVisita).Select(s => 
+                new Visita()
+                {
+                    Activo = s.Activo,
+                    Apellidos = s.Apellidos,
+                    ID = s.IdVisita,
+                    Nombre = s.Nombre,
+                    Placas = s.Placas,
+                    TipoVisita = new TipoVisita() { ID = s.idTipoVisita, Nombre = context.TiposVisita.FirstOrDefault(f => f.IdTipoVisita == s.idTipoVisita).Nombre },
+                    Ubicacion = context.Ubicaciones.Select(x => new Ubicacion() { ID = x.idUbicacion }).FirstOrDefault(f => f.ID == s.idUbicacion),
+                    QR = s.QR
+                }).ToList();
+            }
+            return visitas;
+        }
     }
 }

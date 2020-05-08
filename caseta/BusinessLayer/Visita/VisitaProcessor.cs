@@ -54,9 +54,15 @@ namespace BusinessLayer
             return tiposVisita;
         }
 
-        public Visita GetPreRegistro(int id)
+        public Visita GetVisitaByID(int id)
         {
             return visitaRepositorio.GetVisitaByID(id);
+        }
+
+        public int GetNumVisitas(TiposDeVisita tipoVisita)
+        {
+            int num = visitaRepositorio.GetVisitasByType(tipoVisita).Count();
+            return num;
         }
     }
 }

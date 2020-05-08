@@ -15,6 +15,7 @@ namespace BusinessInterfaces
             string nombre, string apellidos, string descripcion, string placas, int ubicacion, int? idVisita);
         IEnumerable<DGVVisitaActual> GetVisitasActuales();
         IEnumerable<DGVBusqueda> GetDGVBusquedas(string search);
-        Visita GetPreRegistro(int id);
+        Visita GetVisitaByID(int id);
+        int GetNumVisitas(TiposDeVisita tipoVisita);
     }
 }
