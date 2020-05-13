@@ -1,0 +1,332 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GuizzySeguridad.Api</name>
+    </assembly>
+    <members>
+        <member name="T:GuizzySeguridad.Api.BundleConfig">
+            <summary>
+            The bundle config.
+            </summary>
+        </member>
+        <member name="M:GuizzySeguridad.Api.BundleConfig.RegisterBundles(System.Web.Optimization.BundleCollection)">
+            <summary>
+            Register application bundles.
+            </summary>
+            <param name="bundles">
+            The bundles to be registered.
+            </param>
+        </member>
+        <member name="T:GuizzySeguridad.Api.FilterConfig">
+            <summary>
+            The filter config.
+            </summary>
+        </member>
+        <member name="M:GuizzySeguridad.Api.FilterConfig.RegisterGlobalFilters(System.Web.Mvc.GlobalFilterCollection)">
+            <summary>
+            Register application global filters.
+            </summary>
+            <param name="filters">
+            The filters.
+            </param>
+        </member>
+        <member name="T:GuizzySeguridad.Api.RouteConfig">
+            <summary>
+            The route config.
+            </summary>
+        </member>
+        <member name="M:GuizzySeguridad.Api.RouteConfig.RegisterRoutes(System.Web.Routing.RouteCollection)">
+            <summary>
+            Register controller's routes.
+            </summary>
+            <param name="routes">
+            The routes.
+            </param>
+        </member>
+        <member name="T:GuizzySeguridad.Api.SwaggerConfig">
+            <summary>
+            The swagger config.
+            </summary>
+        </member>
+        <member name="M:GuizzySeguridad.Api.SwaggerConfig.Register">
+            <summary>
+            The register.
+            </summary>
+        </member>
+        <member name="T:GuizzySeguridad.Api.TokenValidationHandler">
+            <summary>
+            The token validation handler.
+            </summary>
+        </member>
+        <member name="F:GuizzySeguridad.Api.TokenValidationHandler.Authorization">
+            <summary>
+            The authorization.
+            </summary>
+        </member>
+        <member name="F:GuizzySeguridad.Api.TokenValidationHandler.Bearer">
+            <summary>
+            The bearer.
+            </summary>
+        </member>
+        <member name="M:GuizzySeguridad.Api.TokenValidationHandler.LifetimeValidator(System.Nullable{System.DateTime},System.Nullable{System.DateTime},Microsoft.IdentityModel.Tokens.SecurityToken,Microsoft.IdentityModel.Tokens.TokenValidationParameters)">
+            <summary>
+            The lifetime validator.
+            </summary>
+            <param name="notBefore">
+            The not before.
+            </param>
+            <param name="expires">
+            The expires.
+            </param>
+            <param name="securityToken">
+            The security token.
+            </param>
+            <param name="validationParameters">
+            The validation parameters.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:GuizzySeguridad.Api.TokenValidationHandler.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+            <summary>
+            The send async.
+            </summary>
+            <param name="request">
+            The request.
+            </param>
+            <param name="cancellationToken">
+            The cancellation token.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:GuizzySeguridad.Api.TokenValidationHandler.TryRetrieveToken(System.Net.Http.HttpRequestMessage,System.String@)">
+            <summary>
+            The try retrieve token.
+            </summary>
+            <param name="request">
+            The request.
+            </param>
+            <param name="token">
+            The token.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="T:GuizzySeguridad.Api.WebApiConfig">
+            <summary>
+            The web application program interface configuration.
+            </summary>
+        </member>
+        <member name="M:GuizzySeguridad.Api.WebApiConfig.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Register application basic transport configurations.
+            </summary>
+            <param name="config">
+            The configurations.
+            </param>
+        </member>
+        <member name="T:GuizzySeguridad.Api.Controllers.AuthenticationController">
+            <summary>
+            The authentication controller.
+            </summary>
+        </member>
+        <member name="F:GuizzySeguridad.Api.Controllers.AuthenticationController.userFacade">
+            <summary>
+            The user facade.
+            </summary>
+        </member>
+        <member name="M:GuizzySeguridad.Api.Controllers.AuthenticationController.#ctor(GuizzySeguridad.Common.OperationalManagement.Interfaces.IApplicationLogger,GuizzySeguridad.Common.Server.Interfaces.Facade.IUserFacade)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GuizzySeguridad.Api.Controllers.AuthenticationController"/> class.
+            </summary>
+            <param name="logger">
+            The logger.
+            </param>
+            <param name="userFacade">
+            The user facade.
+            </param>
+        </member>
+        <member name="M:GuizzySeguridad.Api.Controllers.AuthenticationController.Authenticate(GuizzySeguridad.Common.Types.Models.LoginRequest)">
+            <summary>
+            Authenticates a user, if valid returns a valid Json Web Token.
+            </summary>
+            <param name="loginRequest">
+            The login request.
+            </param>
+            <returns>
+            returns a JWT asynchronously.
+            </returns>
+        </member>
+        <member name="T:GuizzySeguridad.Api.Controllers.BaseApiController">
+            <summary>
+            The base controller.
+            </summary>
+        </member>
+        <member name="F:GuizzySeguridad.Api.Controllers.BaseApiController.logger">
+            <summary>
+            The logger.
+            </summary>
+        </member>
+        <member name="M:GuizzySeguridad.Api.Controllers.BaseApiController.#ctor(GuizzySeguridad.Common.OperationalManagement.Interfaces.IApplicationLogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GuizzySeguridad.Api.Controllers.BaseApiController"/> class.
+            </summary>
+            <param name="logger">
+            The logger.
+            </param>
+        </member>
+        <member name="P:GuizzySeguridad.Api.Controllers.BaseApiController.Logger">
+            <summary>
+            Gets the current logger.
+            </summary>
+        </member>
+        <member name="M:GuizzySeguridad.Api.Controllers.BaseApiController.ExecuteProcess``1(System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Execute the corresponding business logic.
+            </summary>
+            <typeparam name="T">
+            Return type for the execution process.
+            </typeparam>
+            <param name="action">
+            The action to be executed.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="T:GuizzySeguridad.Api.Controllers.HomeController">
+            <summary>
+            The home controller.
+            </summary>
+        </member>
+        <member name="M:GuizzySeguridad.Api.Controllers.HomeController.Index">
+            <summary>
+            Represents the API root view.
+            </summary>
+            <returns>
+            The <see cref="T:System.Web.Mvc.ActionResult"/>.
+            </returns>
+        </member>
+        <member name="T:GuizzySeguridad.Api.Controllers.TestController">
+            <summary>
+            The test controller.
+            </summary>
+        </member>
+        <member name="M:GuizzySeguridad.Api.Controllers.TestController.GetRandomNumber">
+            <summary>
+            Gets a random int value between 1 and 10.
+            </summary>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="T:GuizzySeguridad.Api.WebApiApplication">
+            <summary>
+            The web API application main startup point.
+            </summary>
+        </member>
+        <member name="M:GuizzySeguridad.Api.WebApiApplication.Application_Start">
+            <summary>
+            Starts the application.
+            </summary>
+        </member>
+        <member name="T:GuizzySeguridad.Api.IoC.DependencyInjectionResolver">
+            <summary>
+            The dependency resolver.
+            </summary>
+        </member>
+        <member name="F:GuizzySeguridad.Api.IoC.DependencyInjectionResolver.disposed">
+            <summary>
+            The disposed flag.
+            </summary>
+        </member>
+        <member name="F:GuizzySeguridad.Api.IoC.DependencyInjectionResolver.container">
+            <summary>
+            The DI container.
+            </summary>
+        </member>
+        <member name="F:GuizzySeguridad.Api.IoC.DependencyInjectionResolver.builder">
+            <summary>
+            The DI builder.
+            </summary>
+        </member>
+        <member name="M:GuizzySeguridad.Api.IoC.DependencyInjectionResolver.Initialize">
+            <inheritdoc />
+        </member>
+        <member name="M:GuizzySeguridad.Api.IoC.DependencyInjectionResolver.GetApiResolver">
+            <inheritdoc />
+        </member>
+        <member name="M:GuizzySeguridad.Api.IoC.DependencyInjectionResolver.Resolve``1">
+            <inheritdoc />
+        </member>
+        <member name="M:GuizzySeguridad.Api.IoC.DependencyInjectionResolver.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:GuizzySeguridad.Api.IoC.DependencyInjectionResolver.Dispose(System.Boolean)">
+            <summary>
+            Disposed pattern implementation.
+            </summary>
+            <param name="disposing">
+            The disposing.
+            </param>
+        </member>
+        <member name="M:GuizzySeguridad.Api.IoC.DependencyInjectionResolver.RegisterToBuilder">
+            <summary>
+            Registers dependencies to container builder.
+            </summary>
+        </member>
+        <member name="M:GuizzySeguridad.Api.IoC.DependencyInjectionResolver.RegisterWebApiControllers">
+            <summary>
+            Registers all web application program interface controllers.
+            </summary>
+        </member>
+        <member name="M:GuizzySeguridad.Api.IoC.DependencyInjectionResolver.RegisterCommonLayerObjects">
+            <summary>
+            Registers all common objects.
+            </summary>
+        </member>
+        <member name="M:GuizzySeguridad.Api.IoC.DependencyInjectionResolver.RegisterBusinessLayerObjects">
+            <summary>
+            Registers all business layer objects.
+            </summary>
+        </member>
+        <member name="M:GuizzySeguridad.Api.IoC.DependencyInjectionResolver.RegisterDataLayerObjects">
+            <summary>
+            Registers all data layer objects.
+            </summary>
+        </member>
+        <member name="T:GuizzySeguridad.Api.IoC.IDependencyInjectionResolver">
+            <summary>
+            The Dependency Resolver interface.
+            </summary>
+        </member>
+        <member name="M:GuizzySeguridad.Api.IoC.IDependencyInjectionResolver.Initialize">
+            <summary>
+            Initialize the DI module with a specific hardware instance.
+            </summary>
+        </member>
+        <member name="M:GuizzySeguridad.Api.IoC.IDependencyInjectionResolver.GetApiResolver">
+            <summary>
+            Gets the <see cref="T:System.Web.Http.Dependencies.IDependencyResolver"/> from 'AutoFac' IoC engine.
+            </summary>
+            <returns>
+            The <see cref="T:System.Web.Http.Dependencies.IDependencyResolver"/>.
+            </returns>
+        </member>
+        <member name="M:GuizzySeguridad.Api.IoC.IDependencyInjectionResolver.Resolve``1">
+            <summary>
+            Resolves an instance.
+            </summary>
+            <typeparam name="TInstance">
+            Instance to be resolve.
+            </typeparam>
+            <returns>
+            Specific instance to be resolved.
+            </returns>
+        </member>
+    </members>
+</doc>
