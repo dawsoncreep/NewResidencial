@@ -1,11 +1,27 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BundleConfig.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
+//   COPYRIGHT 2020 © Dawsoncreep. All rights reserved.
+// </copyright>
+// <summary>
+//   Defines the BundleConfig type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace GuizzySeguridad.Web
 {
+    using System.Web.Optimization;
+
+    /// <summary>
+    /// The bundle config.
+    /// </summary>
     public class BundleConfig
     {
-        // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
+        /// <summary>
+        /// The register bundles.
+        /// </summary>
+        /// <param name="bundles">
+        /// The bundles.
+        /// </param>
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(

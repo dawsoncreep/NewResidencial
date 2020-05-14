@@ -175,10 +175,10 @@ namespace GuizzySeguridad.Common.UnitTests.Common.Server.ForDataLayer.Repository
         private async Task PopulateDatabase()
         {
             await this.applicationContext.User.AddRangeAsync(this.userTestData);
-            await this.applicationContext.Rol.AddRangeAsync(this.roleTestData);
+            await this.applicationContext.Role.AddRangeAsync(this.roleTestData);
             await this.applicationContext.Permission.AddRangeAsync(this.permissionsTestData);
-            await this.applicationContext.UserRol.AddRangeAsync(this.userRolTestData);
-            await this.applicationContext.RolPermission.AddRangeAsync(this.rolPermissionsTestData);
+            await this.applicationContext.UserRole.AddRangeAsync(this.userRolTestData);
+            await this.applicationContext.RolePermission.AddRangeAsync(this.rolPermissionsTestData);
 
             await this.applicationContext.SaveChangesAsync();
         }
@@ -193,14 +193,14 @@ namespace GuizzySeguridad.Common.UnitTests.Common.Server.ForDataLayer.Repository
         {
             var data1 = await this.applicationContext.User.ToListAsync();
             this.applicationContext.User.RemoveRange(data1);
-            var data2 = await this.applicationContext.Rol.ToListAsync();
-            this.applicationContext.Rol.RemoveRange(data2);
+            var data2 = await this.applicationContext.Role.ToListAsync();
+            this.applicationContext.Role.RemoveRange(data2);
             var data3 = await this.applicationContext.Permission.ToListAsync();
             this.applicationContext.Permission.RemoveRange(data3);
-            var data4 = await this.applicationContext.UserRol.ToListAsync();
-            this.applicationContext.UserRol.RemoveRange(data4);
-            var data5 = await this.applicationContext.RolPermission.ToListAsync();
-            this.applicationContext.RolPermission.RemoveRange(data5);
+            var data4 = await this.applicationContext.UserRole.ToListAsync();
+            this.applicationContext.UserRole.RemoveRange(data4);
+            var data5 = await this.applicationContext.RolePermission.ToListAsync();
+            this.applicationContext.RolePermission.RemoveRange(data5);
 
             await this.applicationContext.SaveChangesAsync();
         }

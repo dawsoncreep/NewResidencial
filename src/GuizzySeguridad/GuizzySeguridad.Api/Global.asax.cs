@@ -15,6 +15,8 @@ namespace GuizzySeguridad.Api
     using System.Web.Optimization;
     using System.Web.Routing;
 
+    using GuizzySeguridad.Api.IoC;
+
     /// <summary>
     /// The web API application main startup point.
     /// </summary>
@@ -26,6 +28,7 @@ namespace GuizzySeguridad.Api
         /// </summary>
         protected void Application_Start()
         {
+            GlobalConfiguration.Configuration.DependencyResolver = DependencyController.GetDependencyResolver();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

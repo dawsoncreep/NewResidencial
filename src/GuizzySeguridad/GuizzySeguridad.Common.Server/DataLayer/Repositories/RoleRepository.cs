@@ -45,8 +45,8 @@ namespace GuizzySeguridad.Common.Server.DataLayer.Repositories
 
             var result = new List<Authorization>();
 
-            var roles = await (from userRol in context.UserRol
-                               join rol in context.Rol on userRol.IdRol equals rol.IdRol
+            var roles = await (from userRol in context.UserRole
+                               join rol in context.Role on userRol.IdRol equals rol.IdRol
                                where userRol.IdUsuario == userId && rol.Activo
                                select new { id = rol.IdRol, name = rol.Nombre }).ToListAsync();
 
@@ -57,7 +57,7 @@ namespace GuizzySeguridad.Common.Server.DataLayer.Repositories
 
             foreach (var rol in roles)
             {
-                var permissions = await (from rolPermission in context.RolPermission
+                var permissions = await (from rolPermission in context.RolePermission
                                          join permission in context.Permission on rolPermission.IdPermiso equals permission.IdPermiso
                                          where rolPermission.IdRol == rol.id && rolPermission.Activo
                                          select permission.Nombre).ToArrayAsync();

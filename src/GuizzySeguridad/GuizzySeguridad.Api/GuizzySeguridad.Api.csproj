@@ -272,8 +272,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="IoC\DependencyInjectionResolver.cs" />
-    <Compile Include="IoC\IDependencyInjectionResolver.cs" />
+    <Compile Include="IoC\DependencyController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -52,9 +52,9 @@ namespace GuizzySeguridad.Common.Server.DataLayer.Repositories
         public virtual DbSet<SUser> User { get; set; }
 
         /// <summary>
-        /// Gets or sets the rol.
+        /// Gets or sets the role.
         /// </summary>
-        public virtual DbSet<SRol> Rol { get; set; }
+        public virtual DbSet<SRol> Role { get; set; }
 
         /// <summary>
         /// Gets or sets the permission.
@@ -62,14 +62,14 @@ namespace GuizzySeguridad.Common.Server.DataLayer.Repositories
         public virtual DbSet<SPermission> Permission { get; set; }
 
         /// <summary>
-        /// Gets or sets the user rol.
+        /// Gets or sets the user role.
         /// </summary>
-        public virtual DbSet<SUserRole> UserRol { get; set; }
+        public virtual DbSet<SUserRole> UserRole { get; set; }
 
         /// <summary>
-        /// Gets or sets the rol permission.
+        /// Gets or sets the role permission.
         /// </summary>
-        public virtual DbSet<SRolePermission> RolPermission { get; set; }
+        public virtual DbSet<SRolePermission> RolePermission { get; set; }
 
         /// <inheritdoc />
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
