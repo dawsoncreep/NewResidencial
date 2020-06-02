@@ -1,1 +1,0 @@
-﻿<%@ Application CodeBehind="Global.asax.cs" Inherits="GuizzySeguridad.Api.WebApiApplication" Language="C#" %>
