@@ -81,14 +81,15 @@ namespace DataLayer
                 visita.FotoUrl = urlfoto;
                 context.SaveChanges();
             }
-        }
+        }        
 
-        public IEnumerable<DGVVisitaActual> GetDGVVisitasActuales()
+        public IEnumerable<DGVVisitaActual> GetDGVVisitasActuales(string busqueda)
         {
             IEnumerable<DGVVisitaActual> dGVVisitas;
             using (IVisitaDbContext context = new GeneralContext(ConnString))
             {
-                dGVVisitas = context.IngresoSalidaVisitas.Where(w => w.fechaSalida == null).Select(s => new DGVVisitaActual()
+                dGVVisitas = context.IngresoSalidaVisitas.Where(w => w.fechaSalida == null)
+                .Select(s => new DGVVisitaActual()
                 {
                     Domicilio = context.Ubicaciones.FirstOrDefault(f => f.idUbicacion == context.Visitas.FirstOrDefault(x => x.IdVisita == s.idVisita).idUbicacion).Nombre,
                     FechaIngreso = s.fechaIngreso,
@@ -96,7 +97,7 @@ namespace DataLayer
                     NombreCompleto = context.Visitas.Where(x => x.IdVisita == s.idVisita).Select(y => y.Nombre + " " + y.Apellidos).FirstOrDefault(),
                     Placas = context.Visitas.FirstOrDefault(x => x.IdVisita == s.idVisita).Placas,
                     FotoRostro = s.fotoCabina
-                }).ToList();
+                }).Where(w => w.Domicilio.Contains(busqueda) || w.NombreCompleto.Contains(busqueda) || w.Placas.Contains(busqueda)).ToList();
             }
             return dGVVisitas;
         }
@@ -146,6 +147,16 @@ namespace DataLayer
                 }).ToList();
             }
             return visitas;
+        }
+
+        public int SetSalida(int idVisita)
+        {
+            using (var context = new GeneralContext(ConnString))
+            {
+                var _visita = context.Visitas.FirstOrDefault(f => f.IdVisita == idVisita);
+                context.IngresoSalidaVisitas.FirstOrDefault(f => f.idVisita == _visita.IdVisita && f.fechaSalida == null).fechaSalida = DateTime.Now;
+                return context.SaveChanges();
+            }
         }
     }
 }

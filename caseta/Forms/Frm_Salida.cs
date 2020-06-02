@@ -1,4 +1,5 @@
 ﻿using BusinessInterfaces;
+using SecureGateTypes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,15 +16,23 @@ namespace caseta.Forms
     public partial class Frm_Salida : Form
     {
         private IVisitaProcessor visitaProcessor;
+        private Visita visita { get; set; }
         public Frm_Salida()
         {
             InitializeComponent();
             visitaProcessor = Factoria.Instancia.CreateVisitaProcessor();            
         }
 
-        private void SetDataSources()
+        private void SetDataSources(IEnumerable<DGVVisitaActual> busqueda = null)
         {
-            DGV_Visitas.DataSource = visitaProcessor.GetVisitasActuales();
+            if (busqueda == null)
+            {
+                DGV_Visitas.DataSource = visitaProcessor.GetVisitasActuales();
+            }
+            else
+            {
+                DGV_Visitas.DataSource = busqueda;
+            }
             DGV_Visitas.Refresh();
         }
 
@@ -32,6 +41,19 @@ namespace caseta.Forms
             SPC_PlacaTrasera.StartPlay(new Uri(ConfigurationManager.AppSettings["PlacaTrasera"]));
             SPC_PlacaDelantera.StartPlay(new Uri(ConfigurationManager.AppSettings["Rostro"]));
             SetDataSources();
+            try
+            {
+                var ultimaVisita = visitaProcessor.GetUltimaVisita();
+                Pbx_PlacaDelantera.ImageLocation = ultimaVisita.FotoSalidaUrl;
+                Pbx_PlacaDelantera.SizeMode = PictureBoxSizeMode.StretchImage;
+                Pbx_PlacaTrasera.ImageLocation = ultimaVisita.FotoCabina;
+                Pbx_PlacaTrasera.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            catch (InvalidOperationException)
+            {
+                
+            }
+            
         }
 
         private void DGV_Visitas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -49,10 +71,44 @@ namespace caseta.Forms
 
         private void DGV_Visitas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var visita = visitaProcessor.GetVisitaByID(Convert.ToInt32(DGV_Visitas.Rows[e.RowIndex].Cells["Cmn_ID"].Value));
+            visita = visitaProcessor.GetVisitaByID(Convert.ToInt32(DGV_Visitas.Rows[e.RowIndex].Cells["Cmn_ID"].Value));
             TxBx_Direccion.Text = visita.Ubicacion.Nombre;
-            TxBx_Nombre.Text = visita.Nombre;
+            TxBx_Nombre.Text = visita.Nombre + " " + visita.Apellidos;
             TxBx_Placas.Text = visita.Placas;
+        }
+
+        private void Btn_Salida_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Bitmap placaT = SPC_PlacaTrasera.GetCurrentFrame();
+                Bitmap placaD = SPC_PlacaDelantera.GetCurrentFrame();                
+                visitaProcessor.DarSalida(visita,placaD);
+                Clean();
+                SetDataSources();
+                Pbx_PlacaDelantera.Image = placaD;
+                Pbx_PlacaDelantera.SizeMode = PictureBoxSizeMode.StretchImage;
+                Pbx_PlacaTrasera.Image = placaT;
+                Pbx_PlacaTrasera.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }            
+        }
+        
+        private void Clean()
+        {
+            TxBx_Descripcion.Text = string.Empty;
+            TxBx_Direccion.Text = string.Empty;
+            TxBx_Nombre.Text = string.Empty;
+            TxBx_Placas.Text = string.Empty;
+            TxtBx_Search.Text = string.Empty;
+        }
+
+        private void TxtBx_Search_TextChanged(object sender, EventArgs e)
+        {
+            SetDataSources(visitaProcessor.GetVisitasActuales(TxtBx_Search.Text.Trim()));
         }
     }
 }

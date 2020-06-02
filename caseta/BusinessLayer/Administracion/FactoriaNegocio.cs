@@ -28,7 +28,7 @@ namespace BusinessLayer
                 return instancia;
             }
         }
-        public IIngresoProcessor CreateIngresoProcessor(int tipoVisita)
+        public IIngresoSalidaProcessor CreateIngresoProcessor(int tipoVisita)
         {
             if (tipoVisita == (int)TiposDeVisita.Preregistro)
             {

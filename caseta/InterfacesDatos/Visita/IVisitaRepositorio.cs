@@ -13,8 +13,10 @@ namespace DataInterfaces
         Visita GetVisitaByID(int id);
         void DesactivarVisita(int id);
         void UpdateFotoVisita(string urlfoto, int id);
-        IEnumerable<DGVVisitaActual> GetDGVVisitasActuales();
+        //IEnumerable<DGVVisitaActual> GetDGVVisitasActuales();
+        IEnumerable<DGVVisitaActual> GetDGVVisitasActuales(string busqueda);
         IEnumerable<DGVBusqueda> GetPreRegistros(string search);
         IEnumerable<Visita> GetVisitasByType(TiposDeVisita tiposDeVisita);
+        int SetSalida(int idVisita);
     }
 }

@@ -32,7 +32,7 @@ namespace caseta
 
         public IVisitaProcessor CreateVisitaProcessor()
         {
-            return new VisitaProcessor(new TipoVisitaRepositorio(), new VisitaRepositorio());
+            return new VisitaProcessor(new TipoVisitaRepositorio(), new VisitaRepositorio(), new IngresoSalidaVisitaRepositorio());
         }
 
         internal IUbicacionProcessor UbicacionProcessor()

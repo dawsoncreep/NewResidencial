@@ -13,9 +13,11 @@ namespace BusinessInterfaces
         IEnumerable<TipoVisita> TiposDeVisita();
         int RegistrarVisita(Bitmap rostro, Bitmap placaTrasera, Bitmap placaDelantera, Bitmap credencial, int tipoVisita, 
             string nombre, string apellidos, string descripcion, string placas, int ubicacion, int? idVisita);
-        IEnumerable<DGVVisitaActual> GetVisitasActuales();
-        IEnumerable<DGVBusqueda> GetDGVBusquedas(string search);
+        IEnumerable<DGVVisitaActual> GetVisitasActuales(string search = "");
+        IEnumerable<DGVBusqueda> GetDGVBusquedas(string search = "");
         Visita GetVisitaByID(int id);
         int GetNumVisitas(TiposDeVisita tipoVisita);
+        bool DarSalida(Visita visita, Bitmap placa);
+        IngresoSalidaVisita GetUltimaVisita();
     }
 }
