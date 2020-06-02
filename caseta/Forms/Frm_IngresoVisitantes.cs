@@ -34,7 +34,7 @@ namespace caseta
             SPC_PlacaDelantera.StartPlay(new Uri(ConfigurationManager.AppSettings["PlacaDelantera"]));
             SPC_Rostro.StartPlay(new Uri(ConfigurationManager.AppSettings["Rostro"]));
             SPC_Credencial.StartPlay(new Uri(ConfigurationManager.AppSettings["Credencial"]));
-            SetDgvSource();
+            SetDataSources();
         }
 
         private void Btn_PAcceso_Click(object sender, EventArgs e)
@@ -54,7 +54,7 @@ namespace caseta
                     {
                         MessageBox.Show("Visita Ingresada", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clean();
-                        SetDgvSource();
+                        SetDataSources();
                     }
                 }
                 catch (Exception ex)
@@ -145,7 +145,7 @@ namespace caseta
 
         private void DGV_Busqueda_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var visita = visitaProcessor.GetPreRegistro(Convert.ToInt32(DGV_Busqueda.Rows[e.RowIndex].Cells["CmnB_ID"].Value));
+            var visita = visitaProcessor.GetVisitaByID(Convert.ToInt32(DGV_Busqueda.Rows[e.RowIndex].Cells["CmnB_ID"].Value));
             Idvisita = visita.ID;
             Tbx_Apellidos.Text = visita.Apellidos;
             Tbx_Desc.Text = string.Empty;
@@ -155,7 +155,7 @@ namespace caseta
             Cbbx_RType.SelectedValue = visita.TipoVisita.ID;
         }
 
-        private void SetDgvSource()
+        private void SetDataSources()
         {
             Cbbx_RType.DataSource = visitaProcessor.TiposDeVisita().ToArray();
             Cbbx_RType.ValueMember = "ID";
@@ -174,6 +174,9 @@ namespace caseta
             Cbbx_Domicilio.AutoCompleteCustomSource = Collection;
             DGV_VisitantesActuales.Refresh();
             DGV_Busqueda.Refresh();
+            Lbl_NumeroVisita.Text = (visitaProcessor.GetNumVisitas(TiposDeVisita.Preregistro) + visitaProcessor.GetNumVisitas(TiposDeVisita.Habitual)).ToString("N0");
+            Lbl_NumeroPreReg.Text = visitaProcessor.GetNumVisitas(TiposDeVisita.Preregistro).ToString("N0");
+            Lbl_NumeroPrefer.Text = visitaProcessor.GetNumVisitas(TiposDeVisita.Habitual).ToString("N0");
         }
 
         private void Tbx_Busqueda_TextChanged(object sender, EventArgs e)

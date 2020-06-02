@@ -11,44 +11,71 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    public class PreregistroProcessor : IIngresoProcessor
+    public class PreregistroProcessor : IIngresoSalidaProcessor
     {
         private readonly int tipoVisita = (int)TiposDeVisita.Habitual;
         private readonly IVisitaRepositorio visitaRepositorio;
         private readonly IIngresoSalidaVisitaRepositorio ingresoSalidaVisitaRepositorio;
+        private string FotosPath { get; set; }
 
         public PreregistroProcessor(IVisitaRepositorio _visitaRepositorio, IIngresoSalidaVisitaRepositorio _ingresoSalidaVisitaRepositorio)
         {
             visitaRepositorio = _visitaRepositorio;
             ingresoSalidaVisitaRepositorio = _ingresoSalidaVisitaRepositorio;
-        }
-        public int GuardarCapturas(Bitmap rostro, Bitmap placaTrasera, Bitmap placaDelantera, Bitmap credencial, int id)
-        {
-            var urlFotos = ConfigurationManager.AppSettings["PicturePath"];
-            System.IO.Directory.CreateDirectory(urlFotos);
-            var urlRostro = urlFotos + "Rostro" + id + ".jpg";
-            var urlCredencial = urlFotos + "Credencial" + id + ".jpg";
-            var urlPlacaDelantera = urlFotos + "PlacaDelantera" + id + ".jpg";
-            var urlPlacaTrasera = urlFotos + "PlacaTrasera" + id + ".jpg";
-            rostro.Save(urlRostro);
-            credencial.Save(urlCredencial);
-            placaDelantera.Save(urlPlacaDelantera);
-            placaTrasera.Save(urlPlacaTrasera);
-            return ingresoSalidaVisitaRepositorio.SetIngreso(id,urlPlacaDelantera,urlPlacaTrasera,urlRostro,urlCredencial);
+            FotosPath = ConfigurationManager.AppSettings["PicturePath"];
         }
 
-        public int RegistrarIngreso(string nombre, string apellidos, string placas, int idUbicacion)
+        public int RegistrarIngreso(string nombre, string apellidos, string placas, int idUbicacion, Bitmap rostro, Bitmap placaTrasera, Bitmap placaDelantera, Bitmap credencial, int? idVisita = null)
         {
-            var visita = new Visita()
+            try
             {
-                Activo = true,
-                Apellidos = apellidos,
-                Nombre = nombre,
-                Placas = placas,
-                TipoVisita = new TipoVisita() { ID = tipoVisita },
-                Ubicacion = new Ubicacion() { ID = idUbicacion }
-            };
-            return visitaRepositorio.SetVisita(visita);
+                var visita = new Visita()
+                {
+                    Activo = true,
+                    Apellidos = apellidos,
+                    Nombre = nombre,
+                    Placas = placas,
+                    TipoVisita = new TipoVisita() { ID = tipoVisita },
+                    Ubicacion = new Ubicacion() { ID = idUbicacion }
+                };
+                int id = visitaRepositorio.SetVisita(visita);
+                System.IO.Directory.CreateDirectory(FotosPath);
+                var urlRostro = FotosPath + "Rostro" + id + ".jpg";
+                var urlCredencial = FotosPath + "Credencial" + id + ".jpg";
+                var urlPlacaDelantera = FotosPath + "PlacaDelantera" + id + ".jpg";
+                var urlPlacaTrasera = FotosPath + "PlacaTrasera" + id + ".jpg";
+                rostro.Save(urlRostro);
+                credencial.Save(urlCredencial);
+                placaDelantera.Save(urlPlacaDelantera);
+                placaTrasera.Save(urlPlacaTrasera);
+                return ingresoSalidaVisitaRepositorio.SetIngreso(id, urlPlacaDelantera, urlPlacaTrasera, urlRostro, urlCredencial);
+            }
+            catch (Exception)
+            {
+                throw;
+            }             
+        }
+        /// <summary>
+        /// Registro de salida
+        /// </summary>
+        /// <param name="idVisita"> id de la visita de la cual se va a registrar la visita</param>
+        /// <param name="placa"> foto de la placa que se registrara en la salida</param>
+        /// <returns>regresa el numero de registros que se ingresaron a la base de datos</returns>
+        public int RegistrarSalida(int idVisita, Bitmap placa)
+        {
+            try
+            {
+                System.IO.Directory.CreateDirectory(FotosPath);
+                var urlSalida = FotosPath + DateTime.Now.ToString("ddMMyy") + "SalidaPlaca" + idVisita + ".jpg";
+                placa.Save(urlSalida);
+                int registros = ingresoSalidaVisitaRepositorio.SetSalida(idVisita, urlSalida);
+                return registros;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            
         }
     }
 }

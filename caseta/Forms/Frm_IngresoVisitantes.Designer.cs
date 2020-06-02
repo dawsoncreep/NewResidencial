@@ -56,9 +56,9 @@
             this.Cmn_Placas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cmn_Foto = new System.Windows.Forms.DataGridViewImageColumn();
             this.Cmn_UrlFoto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.Lbl_Preregistro = new System.Windows.Forms.Label();
+            this.Lbl_Preferentes = new System.Windows.Forms.Label();
+            this.Lbl_Visitantes = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.Gbx_Registro = new System.Windows.Forms.GroupBox();
             this.Cbbx_Domicilio = new System.Windows.Forms.ComboBox();
@@ -75,6 +75,9 @@
             this.Btn_PAcceso = new System.Windows.Forms.Button();
             this.Lbl_Placas = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.Lbl_NumeroVisita = new System.Windows.Forms.Label();
+            this.Lbl_NumeroPreReg = new System.Windows.Forms.Label();
+            this.Lbl_NumeroPrefer = new System.Windows.Forms.Label();
             this.Gbx_Busqueda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Busqueda)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -307,10 +310,13 @@
             // 
             // gbVisitantesActuales
             // 
+            this.gbVisitantesActuales.Controls.Add(this.Lbl_NumeroPrefer);
+            this.gbVisitantesActuales.Controls.Add(this.Lbl_NumeroPreReg);
+            this.gbVisitantesActuales.Controls.Add(this.Lbl_NumeroVisita);
             this.gbVisitantesActuales.Controls.Add(this.DGV_VisitantesActuales);
-            this.gbVisitantesActuales.Controls.Add(this.label11);
-            this.gbVisitantesActuales.Controls.Add(this.label10);
-            this.gbVisitantesActuales.Controls.Add(this.label9);
+            this.gbVisitantesActuales.Controls.Add(this.Lbl_Preregistro);
+            this.gbVisitantesActuales.Controls.Add(this.Lbl_Preferentes);
+            this.gbVisitantesActuales.Controls.Add(this.Lbl_Visitantes);
             this.gbVisitantesActuales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbVisitantesActuales.Location = new System.Drawing.Point(719, 2);
             this.gbVisitantesActuales.Margin = new System.Windows.Forms.Padding(2);
@@ -404,35 +410,35 @@
             this.Cmn_UrlFoto.ReadOnly = true;
             this.Cmn_UrlFoto.Visible = false;
             // 
-            // label11
+            // Lbl_Preregistro
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(201, 15);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(65, 13);
-            this.label11.TabIndex = 24;
-            this.label11.Text = "Pre Registro";
+            this.Lbl_Preregistro.AutoSize = true;
+            this.Lbl_Preregistro.Location = new System.Drawing.Point(201, 15);
+            this.Lbl_Preregistro.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl_Preregistro.Name = "Lbl_Preregistro";
+            this.Lbl_Preregistro.Size = new System.Drawing.Size(65, 13);
+            this.Lbl_Preregistro.TabIndex = 24;
+            this.Lbl_Preregistro.Text = "Pre Registro";
             // 
-            // label10
+            // Lbl_Preferentes
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(7, 32);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(61, 13);
-            this.label10.TabIndex = 23;
-            this.label10.Text = "Preferentes";
+            this.Lbl_Preferentes.AutoSize = true;
+            this.Lbl_Preferentes.Location = new System.Drawing.Point(7, 32);
+            this.Lbl_Preferentes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl_Preferentes.Name = "Lbl_Preferentes";
+            this.Lbl_Preferentes.Size = new System.Drawing.Size(61, 13);
+            this.Lbl_Preferentes.TabIndex = 23;
+            this.Lbl_Preferentes.Text = "Preferentes";
             // 
-            // label9
+            // Lbl_Visitantes
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(4, 15);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(87, 13);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "No. de Visitantes";
+            this.Lbl_Visitantes.AutoSize = true;
+            this.Lbl_Visitantes.Location = new System.Drawing.Point(4, 15);
+            this.Lbl_Visitantes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl_Visitantes.Name = "Lbl_Visitantes";
+            this.Lbl_Visitantes.Size = new System.Drawing.Size(87, 13);
+            this.Lbl_Visitantes.TabIndex = 22;
+            this.Lbl_Visitantes.Text = "No. de Visitantes";
             // 
             // tableLayoutPanel3
             // 
@@ -657,6 +663,33 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(1201, 708);
             this.tableLayoutPanel4.TabIndex = 31;
             // 
+            // Lbl_NumeroVisita
+            // 
+            this.Lbl_NumeroVisita.AutoSize = true;
+            this.Lbl_NumeroVisita.Location = new System.Drawing.Point(107, 15);
+            this.Lbl_NumeroVisita.Name = "Lbl_NumeroVisita";
+            this.Lbl_NumeroVisita.Size = new System.Drawing.Size(14, 13);
+            this.Lbl_NumeroVisita.TabIndex = 26;
+            this.Lbl_NumeroVisita.Text = "X";
+            // 
+            // Lbl_NumeroPreReg
+            // 
+            this.Lbl_NumeroPreReg.AutoSize = true;
+            this.Lbl_NumeroPreReg.Location = new System.Drawing.Point(282, 15);
+            this.Lbl_NumeroPreReg.Name = "Lbl_NumeroPreReg";
+            this.Lbl_NumeroPreReg.Size = new System.Drawing.Size(14, 13);
+            this.Lbl_NumeroPreReg.TabIndex = 27;
+            this.Lbl_NumeroPreReg.Text = "X";
+            // 
+            // Lbl_NumeroPrefer
+            // 
+            this.Lbl_NumeroPrefer.AutoSize = true;
+            this.Lbl_NumeroPrefer.Location = new System.Drawing.Point(107, 32);
+            this.Lbl_NumeroPrefer.Name = "Lbl_NumeroPrefer";
+            this.Lbl_NumeroPrefer.Size = new System.Drawing.Size(14, 13);
+            this.Lbl_NumeroPrefer.TabIndex = 28;
+            this.Lbl_NumeroPrefer.Text = "X";
+            // 
             // Frm_IngresoVisita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -703,9 +736,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.GroupBox gbVisitantesActuales;
         private System.Windows.Forms.DataGridView DGV_VisitantesActuales;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label Lbl_Preregistro;
+        private System.Windows.Forms.Label Lbl_Preferentes;
+        private System.Windows.Forms.Label Lbl_Visitantes;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.GroupBox Gbx_Registro;
         private System.Windows.Forms.Label Lbl_RType;
@@ -733,5 +766,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CmnB_Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn CmnB_Placas;
         private System.Windows.Forms.DataGridViewTextBoxColumn CmnB_Ubicacion;
+        private System.Windows.Forms.Label Lbl_NumeroPrefer;
+        private System.Windows.Forms.Label Lbl_NumeroPreReg;
+        private System.Windows.Forms.Label Lbl_NumeroVisita;
     }
 }

@@ -45,5 +45,30 @@ namespace DataLayer
                 return context.SaveChanges();
             }
         }
+
+        /// <summary>
+        /// Obtiene la ultima salida registrada en base de datos
+        /// </summary>
+        /// <returns></returns>
+        public IngresoSalidaVisita GetUltimaSalida()
+        {
+            IngresoSalidaVisita ISVisita;
+            using (IVisitaDbContext context = new GeneralContext(ConnString))
+            {
+                var last = context.IngresoSalidaVisitas.OrderByDescending(o => o.fechaSalida).FirstOrDefault();
+                ISVisita = new IngresoSalidaVisita()
+                {
+                    FechaIngreso = last.fechaIngreso,
+                    FechaSalida = (DateTime)last.fechaSalida,
+                    FotoCabina = last.fotoCabina,
+                    FotoIdentificacion = last.fotoCabina,
+                    FotoPlacaDelantera = last.fotoPlacaDelantera,
+                    FotoPlacaTrasera = last.fotoPlacaTrasera,
+                    FotoSalidaUrl = last.fotoSalidaUrl,
+                    Visita = new Visita() { ID = last.idVisita }
+                };
+            }
+            return ISVisita;
+        }
     }
 }

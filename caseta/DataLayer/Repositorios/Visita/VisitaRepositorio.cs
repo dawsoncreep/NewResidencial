@@ -81,14 +81,15 @@ namespace DataLayer
                 visita.FotoUrl = urlfoto;
                 context.SaveChanges();
             }
-        }
+        }        
 
-        public IEnumerable<DGVVisitaActual> GetDGVVisitasActuales()
+        public IEnumerable<DGVVisitaActual> GetDGVVisitasActuales(string busqueda)
         {
             IEnumerable<DGVVisitaActual> dGVVisitas;
             using (IVisitaDbContext context = new GeneralContext(ConnString))
             {
-                dGVVisitas = context.IngresoSalidaVisitas.Where(w => w.fechaSalida == null).Select(s => new DGVVisitaActual()
+                dGVVisitas = context.IngresoSalidaVisitas.Where(w => w.fechaSalida == null)
+                .Select(s => new DGVVisitaActual()
                 {
                     Domicilio = context.Ubicaciones.FirstOrDefault(f => f.idUbicacion == context.Visitas.FirstOrDefault(x => x.IdVisita == s.idVisita).idUbicacion).Nombre,
                     FechaIngreso = s.fechaIngreso,
@@ -96,7 +97,7 @@ namespace DataLayer
                     NombreCompleto = context.Visitas.Where(x => x.IdVisita == s.idVisita).Select(y => y.Nombre + " " + y.Apellidos).FirstOrDefault(),
                     Placas = context.Visitas.FirstOrDefault(x => x.IdVisita == s.idVisita).Placas,
                     FotoRostro = s.fotoCabina
-                }).ToList();
+                }).Where(w => w.Domicilio.Contains(busqueda) || w.NombreCompleto.Contains(busqueda) || w.Placas.Contains(busqueda)).ToList();
             }
             return dGVVisitas;
         }
@@ -125,6 +126,37 @@ namespace DataLayer
                 connection.Close();
             }
             return busquedas;
+        }
+
+        public IEnumerable<Visita> GetVisitasByType(TiposDeVisita tipoDeVisita)
+        {
+            IEnumerable<Visita> visitas;
+            using (IVisitaDbContext context = new GeneralContext(ConnString))
+            {
+                visitas = context.Visitas.Where(w => w.idTipoVisita == (int)tipoDeVisita).Select(s => 
+                new Visita()
+                {
+                    Activo = s.Activo,
+                    Apellidos = s.Apellidos,
+                    ID = s.IdVisita,
+                    Nombre = s.Nombre,
+                    Placas = s.Placas,
+                    TipoVisita = new TipoVisita() { ID = s.idTipoVisita, Nombre = context.TiposVisita.FirstOrDefault(f => f.IdTipoVisita == s.idTipoVisita).Nombre },
+                    Ubicacion = context.Ubicaciones.Select(x => new Ubicacion() { ID = x.idUbicacion }).FirstOrDefault(f => f.ID == s.idUbicacion),
+                    QR = s.QR
+                }).ToList();
+            }
+            return visitas;
+        }
+
+        public int SetSalida(int idVisita)
+        {
+            using (var context = new GeneralContext(ConnString))
+            {
+                var _visita = context.Visitas.FirstOrDefault(f => f.IdVisita == idVisita);
+                context.IngresoSalidaVisitas.FirstOrDefault(f => f.idVisita == _visita.IdVisita && f.fechaSalida == null).fechaSalida = DateTime.Now;
+                return context.SaveChanges();
+            }
         }
     }
 }
