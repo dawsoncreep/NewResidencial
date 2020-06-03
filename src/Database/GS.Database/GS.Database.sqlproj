@@ -97,6 +97,9 @@
     <None Include="Scripts\Development\dbo.Permiso.Testdata.sql" />
     <None Include="Scripts\Development\dbo.RolPermiso.Testdata.sql" />
     <None Include="Scripts\Development\dbo.TipoUbicacion.Testdata.sql" />
+    <None Include="Scripts\Development\dbo.Ubicacion.Testdata.sql" />
+    <None Include="Scripts\Development\dbo.TipoVisita.Testdata.sql" />
+    <None Include="Scripts\Development\dbo.UsuarioUbicacion.Testdata.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\PostDeployment.Development.sql" />

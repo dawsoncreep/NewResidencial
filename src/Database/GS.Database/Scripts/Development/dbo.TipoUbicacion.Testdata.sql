@@ -9,7 +9,7 @@ CREATE TABLE #TipoUbicacion
 
 INSERT INTO #TipoUbicacion ([Id], [Descripcion]) VALUES (01, 'Departamento')
 INSERT INTO #TipoUbicacion ([Id], [Descripcion]) VALUES (02, 'Casa Habitacion')
-INSERT INTO #TipoUbicacion ([Id], [Descripcion]) VALUES (03, 'Salon de eventos')
+INSERT INTO #TipoUbicacion ([Id], [Descripcion]) VALUES (03, 'Amenidad')
 
 
 MERGE dbo.TipoUbicacion as T
