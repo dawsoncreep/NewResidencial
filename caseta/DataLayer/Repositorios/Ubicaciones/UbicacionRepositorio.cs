@@ -1,11 +1,8 @@
-﻿using System;
+﻿using DataInterfaces;
+using SecureGateTypes;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataInterfaces;
-using SecureGateTypes;
 
 namespace DataLayer
 {

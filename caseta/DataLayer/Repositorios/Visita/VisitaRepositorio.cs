@@ -3,15 +3,12 @@ using SecureGateTypes;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    public class VisitaRepositorio : IVisitaRepositorio 
+    public class VisitaRepositorio : IVisitaRepositorio
     {
         public string ConnString { get; set; }
         public VisitaRepositorio()
@@ -81,7 +78,7 @@ namespace DataLayer
                 visita.FotoUrl = urlfoto;
                 context.SaveChanges();
             }
-        }        
+        }
 
         public IEnumerable<DGVVisitaActual> GetDGVVisitasActuales(string busqueda)
         {
@@ -102,7 +99,7 @@ namespace DataLayer
             return dGVVisitas;
         }
 
-        public IEnumerable<DGVBusqueda> GetPreRegistros(string search )
+        public IEnumerable<DGVBusqueda> GetPreRegistros(string search)
         {
             List<DGVBusqueda> busquedas = new List<DGVBusqueda>();
             using (SqlConnection connection = new SqlConnection(ConnString))
@@ -115,7 +112,8 @@ namespace DataLayer
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    busquedas.Add(new DGVBusqueda() {
+                    busquedas.Add(new DGVBusqueda()
+                    {
                         Direccion = reader["Direccion"].ToString(),
                         IdVisita = Convert.ToInt32(reader["idVisita"]),
                         Nombre = reader["Nombre"].ToString(),
@@ -133,7 +131,7 @@ namespace DataLayer
             IEnumerable<Visita> visitas;
             using (IVisitaDbContext context = new GeneralContext(ConnString))
             {
-                visitas = context.Visitas.Where(w => w.idTipoVisita == (int)tipoDeVisita).Select(s => 
+                visitas = context.Visitas.Where(w => w.idTipoVisita == (int)tipoDeVisita).Select(s =>
                 new Visita()
                 {
                     Activo = s.Activo,

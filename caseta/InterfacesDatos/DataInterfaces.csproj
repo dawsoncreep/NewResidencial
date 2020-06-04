@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dispositivos\IDispositivoRepositorio.cs" />
     <Compile Include="Eventos\IEventoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ubicaciones\ITipoUbicacionRepositorio.cs" />

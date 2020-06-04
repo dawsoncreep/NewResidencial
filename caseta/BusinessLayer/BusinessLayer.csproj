@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administracion\FactoriaNegocio.cs" />
+    <Compile Include="Dispositivo\DispositivoProcessor.cs" />
     <Compile Include="Evento\EventoProcessor.cs" />
     <Compile Include="Ingreso\PreregistroProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -19,21 +19,23 @@ namespace caseta
     {
         private readonly IVisitaProcessor visitaProcessor;
         private readonly IUbicacionProcessor ubicacionProcessor;
+        private readonly IDispositivoProcessor dispositivoProcessor;
         public int? Idvisita { get; set; }
 
         public Frm_IngresoVisita()
         {
             InitializeComponent();
             visitaProcessor = Factoria.Instancia.CreateVisitaProcessor();
-            ubicacionProcessor = Factoria.Instancia.UbicacionProcessor();                      
+            ubicacionProcessor = Factoria.Instancia.CreateUbicacionProcessor();
+            dispositivoProcessor = Factoria.Instancia.CreateDispositivoProcessor();
         }
 
         private void Frm_IngresoVisita_Load(object sender, EventArgs e)
         {
-            SPC_PLacaT.StartPlay(new Uri(ConfigurationManager.AppSettings["PlacaTrasera"]));
-            SPC_PlacaDelantera.StartPlay(new Uri(ConfigurationManager.AppSettings["PlacaDelantera"]));
-            SPC_Rostro.StartPlay(new Uri(ConfigurationManager.AppSettings["Rostro"]));
-            SPC_Credencial.StartPlay(new Uri(ConfigurationManager.AppSettings["Credencial"]));
+            SPC_PLacaT.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpPlacaTrasera)));
+            SPC_PlacaDelantera.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpPlacaDelantera)));
+            SPC_Rostro.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpRostro)));
+            SPC_Credencial.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpIdentificacion)));
             SetDataSources();
         }
 

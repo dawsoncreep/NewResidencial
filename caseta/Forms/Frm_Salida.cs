@@ -15,12 +15,14 @@ namespace caseta.Forms
 {
     public partial class Frm_Salida : Form
     {
-        private IVisitaProcessor visitaProcessor;
+        private readonly IVisitaProcessor visitaProcessor;
+        private IDispositivoProcessor dispositivoProcessor; 
         private Visita visita { get; set; }
         public Frm_Salida()
         {
             InitializeComponent();
-            visitaProcessor = Factoria.Instancia.CreateVisitaProcessor();            
+            visitaProcessor = Factoria.Instancia.CreateVisitaProcessor();
+            dispositivoProcessor = Factoria.Instancia.CreateDispositivoProcessor();
         }
 
         private void SetDataSources(IEnumerable<DGVVisitaActual> busqueda = null)
@@ -38,8 +40,8 @@ namespace caseta.Forms
 
         private void Frm_Salida_Load(object sender, EventArgs e)
         {
-            SPC_PlacaTrasera.StartPlay(new Uri(ConfigurationManager.AppSettings["PlacaTrasera"]));
-            SPC_PlacaDelantera.StartPlay(new Uri(ConfigurationManager.AppSettings["Rostro"]));
+            SPC_PlacaTrasera.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpPlacaTrasera)));
+            SPC_PlacaDelantera.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpPlacaDelantera)));
             SetDataSources();
             try
             {

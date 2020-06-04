@@ -35,9 +35,14 @@ namespace caseta
             return new VisitaProcessor(new TipoVisitaRepositorio(), new VisitaRepositorio(), new IngresoSalidaVisitaRepositorio());
         }
 
-        internal IUbicacionProcessor UbicacionProcessor()
+        internal IUbicacionProcessor CreateUbicacionProcessor()
         {
             return new UbicacionProcessor(new TipoUbicacionRepositorio(), new UbicacionRepositorio());
+        }
+
+        internal IDispositivoProcessor CreateDispositivoProcessor()
+        {
+            return new DispositivoProcessor(new DispositivoRepositorio());
         }
     }
 }
