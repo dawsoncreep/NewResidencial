@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'web';
+  constructor() {
+        
+  }
 }
