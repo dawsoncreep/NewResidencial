@@ -22,17 +22,17 @@ namespace GS.Api.Types.Models.Persistence
         /// Gets or sets the user id.
         /// </summary>
         [Key]
-        public int IdUsuario { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Gets or sets the user name.
         /// </summary>
-        public string Nombre { get; set; }
+        public string Nombres { get; set; }
 
         /// <summary>
         /// Gets or sets the user last name.
         /// </summary>
-        public string Apellido { get; set; }
+        public string Apellidos { get; set; }
 
         /// <summary>
         /// Gets or sets the email.
@@ -40,14 +40,19 @@ namespace GS.Api.Types.Models.Persistence
         public string Correo { get; set; }
 
         /// <summary>
-        /// Gets or sets the cell phone.
+        /// Gets or sets the phone.
+        /// </summary>
+        public string Telefono { get; set; }
+
+        /// <summary>
+        /// Gets or sets the celular.
         /// </summary>
         public string Celular { get; set; }
 
         /// <summary>
         /// Gets or sets the nickname.
         /// </summary>
-        public string Usuario { get; set; }
+        public string Alias { get; set; }
 
         /// <summary>
         /// Gets or sets the password.

@@ -11,6 +11,7 @@ namespace Authentication.Api
 {
     using System.Diagnostics.CodeAnalysis;
     using System.Web.Http;
+    using System.Web.Http.Cors;
 
     /// <summary>
     /// The web api config.
@@ -26,7 +27,7 @@ namespace Authentication.Api
         /// </param>
         public static void Register(HttpConfiguration config)
         {
-            config.MessageHandlers.Add(new TokenValidationHandler());
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

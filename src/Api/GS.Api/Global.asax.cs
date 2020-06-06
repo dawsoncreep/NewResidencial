@@ -35,7 +35,6 @@ namespace Authentication.Api
         {
             InstanceResolver.Initialize();
             GlobalConfiguration.Configuration.DependencyResolver = InstanceResolver.GetApiResolver();
-
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

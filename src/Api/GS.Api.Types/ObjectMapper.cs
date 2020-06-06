@@ -54,7 +54,7 @@ namespace GS.Api.Types
         private static void MapDataLayerObjects(IProfileExpression config)
         {
             config.CreateMap<SUser, User>()
-                .ForMember(dest => dest.Id, worker => worker.MapFrom(source => source.IdUsuario))
+                .ForMember(dest => dest.Id, worker => worker.MapFrom(source => source.Id))
                 .ForMember(dest => dest.UserName, worker => worker.MapFrom(source => source.Correo))
                 .ForMember(dest => dest.Password, worker => worker.MapFrom(source => source.Contraseña));
         }
