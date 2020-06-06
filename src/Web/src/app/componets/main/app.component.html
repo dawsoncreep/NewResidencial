@@ -1,8 +1,30 @@
 <!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-  <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/">Home</a>
-      <a class="nav-item nav-link" (click)="logout()">Logout</a>
+<nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" *ngIf="currentUser">
+  <div class="container-fluid">
+    <div class="logo-image">
+      <img class="border rounded-circle img-fluid" src="assets/img/guizzy-seguridad-logo.png" >
+    </div>
+    <ul class="nav navbar-nav flex-nowrap ml-auto">
+      <li class="nav-item" role="presentation"><a class="nav-item nav-link" routerLink="/">Home</a></li>
+
+      <li class="nav-item" role="presentation"><a class="nav-link" routerLink="/">Visitas</a></li>
+      <li class="nav-item" role="presentation"><a class="nav-link" routerLink="/">Ubicaciones</a></li>
+      <li class="nav-item" role="presentation"><a class="nav-link" routerLink="/">Usuarios</a></li>
+      <li class="nav-item" role="presentation">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+
+      <div class="d-none d-sm-block topbar-divider"></div>
+
+      <li class="nav-item dropdown no-arrow" role="presentation">
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Jaime Castorena</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem>Ver perfil</button>
+            <button ngbDropdownItem>Configuraciones</button>
+            <button ngbDropdownItem (click)="logout()">Logout</button>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
 </nav>
 

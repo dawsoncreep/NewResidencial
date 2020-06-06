@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,6 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   public loginForm: FormGroup;
   public returnUrl: string;
   public loading = false;
@@ -20,23 +21,24 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService) {
+    private authenticationService: AuthenticationService,
+    private titleService: Title ) {
   }
 
   public ngOnInit(): void {
     const currentUser = this.authenticationService.currentUserValue;
 
     if (currentUser != null) {
-      // users currently logged are redirect to root page
       this.router.navigate(['/']);
     }
     else {
+      this.titleService.setTitle(`${environment.applicationName} - Login`);
+
       this.loginForm = this.formBuilder.group({
         username: ['', Validators.required],
         password: ['', Validators.required]
       });
 
-      // get return url from route parameters or default to '/'
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
     }
 
