@@ -12,10 +12,16 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 
 export class AppComponent {
   public currentUser: User;
+  public nickName: string;
 
   constructor(private router: Router, private authenticationService: AuthenticationService) {
     this.authenticationService.currentUserObservable.subscribe(result => {
       this.currentUser = result
+
+      if (this.currentUser != null) {
+        this.nickName = `${this.currentUser.UserName} - ${this.currentUser.Role}`;
+      }
+
     });
   }
 

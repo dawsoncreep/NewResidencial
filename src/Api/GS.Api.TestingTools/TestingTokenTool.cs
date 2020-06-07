@@ -130,5 +130,21 @@ namespace Authentication.TestingTools
             var jwtTokenString = tokenHandler.WriteToken(jwtSecurityToken);
             return jwtTokenString;
         }
+
+        /// <summary>
+        /// Gets the JWT payload object.
+        /// </summary>
+        /// <param name="token">
+        /// The jwt token.
+        /// </param>
+        /// <returns>
+        /// The <see cref="object"/>.
+        /// </returns>
+        public static JwtPayload GetTokenPayload(string token)
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var result = handler.ReadJwtToken(token);
+            return result.Payload;
+        }
     }
 }

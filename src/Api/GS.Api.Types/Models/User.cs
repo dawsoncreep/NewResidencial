@@ -19,13 +19,26 @@ namespace GS.Api.Types.Models
         /// <summary>
         /// Gets or sets the id.
         /// </summary>
+        [Required]
         public int Id { get; set; }
 
         /// <summary>
         /// Gets or sets the user name.
         /// </summary>
         [Required]
-        public string UserName { get; set; }
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last name.
+        /// </summary>
+        [Required]
+        public string LastName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the email.
+        /// </summary>
+        [Required]
+        public string Email { get; set; }
 
         /// <summary>
         /// Gets or sets the password.
@@ -34,9 +47,20 @@ namespace GS.Api.Types.Models
         public string Password { get; set; }
 
         /// <summary>
-        /// Gets or sets the user authorizations.
+        /// Gets or sets the nick name.
         /// </summary>
         [Required]
-        public Authorization[] Authorizations { get; set; }
+        public string NickName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the user role.
+        /// </summary>
+        [Required]
+        public string Role { get; set; }
+
+        /// <summary>
+        /// Gets or sets the user/role permissions.
+        /// </summary>
+        public string[] Permissions { get; set; }
     }
 }

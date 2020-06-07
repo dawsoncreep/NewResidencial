@@ -88,8 +88,10 @@ namespace GS.Api.BusinessLayer.Processors
             var claimsIdentity = new ClaimsIdentity(
                 new[]
                     {
-                        new Claim(ClaimTypes.Name, user.UserName),
-                        new Claim(ClaimTypes.Role, user.Authorizations.ToJson())
+                        new Claim(ClaimTypes.PrimarySid, user.Id.ToString()),
+                        new Claim(ClaimTypes.Name, user.Name),
+                        new Claim(ClaimTypes.Email, user.Email),
+                        new Claim(ClaimTypes.Role, user.Role),
                     });
 
             var tokenHandler = new JwtSecurityTokenHandler();

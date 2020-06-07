@@ -55,7 +55,10 @@ namespace GS.Api.Types
         {
             config.CreateMap<SUser, User>()
                 .ForMember(dest => dest.Id, worker => worker.MapFrom(source => source.Id))
-                .ForMember(dest => dest.UserName, worker => worker.MapFrom(source => source.Correo))
+                .ForMember(dest => dest.Name, worker => worker.MapFrom(source => source.Nombres))
+                .ForMember(dest => dest.LastName, worker => worker.MapFrom(source => source.Apellidos))
+                .ForMember(dest => dest.Email, worker => worker.MapFrom(source => source.Correo))
+                .ForMember(dest => dest.NickName, worker => worker.MapFrom(source => source.Alias))
                 .ForMember(dest => dest.Password, worker => worker.MapFrom(source => source.Contraseña));
         }
         #endregion

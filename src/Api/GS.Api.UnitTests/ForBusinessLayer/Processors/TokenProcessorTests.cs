@@ -9,6 +9,8 @@
 
 namespace Authentication.UnitTests.ForBusinessLayer.Processors
 {
+    using System.Linq;
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
     using Authentication.TestingTools;
@@ -62,7 +64,7 @@ namespace Authentication.UnitTests.ForBusinessLayer.Processors
         private TokenProcessor tokenProcessor;
         #endregion
 
-         #region Tests Life Cycle
+        #region Tests Life Cycle
         /// <summary>
         /// This method is used to configure the environment before each test.
         /// </summary>
@@ -100,7 +102,20 @@ namespace Authentication.UnitTests.ForBusinessLayer.Processors
         public async Task GenerateTokenShouldSucceed()
         {
             // Arrange
-            var user = new User { Id = 1, UserName = "email@contoso.com", Password = "S3cr3tP455w0rd" };
+            const string ExpectedId = "1";
+            const string ExpectedName = "GoodUserName";
+            const string Expectedemail = "gooduser@email.com";
+            const string ExpectedRole = "Administrador";
+
+            var user = new User
+            {
+                Id = 1,
+                Name = "GoodUserName",
+                Email = "gooduser@email.com",
+                Password = "GoodPassword",
+                Role = "Administrador",
+                Permissions = new[] { "MODULO 1", "MENU 1", "MENU 2", "MENU 3" }
+            };
 
             this.mockIDataManager.Setup(method => method.GetSettingsValue(SecretKey)).Returns(TestingTokenTool.SecretKey);
             this.mockIDataManager.Setup(method => method.GetSettingsValue(AudienceKey)).Returns(TestingTokenTool.AudienceKey);
@@ -111,10 +126,15 @@ namespace Authentication.UnitTests.ForBusinessLayer.Processors
 
             // Act
             var token = await this.tokenProcessor.GenerateToken(user);
+            var payload = TestingTokenTool.GetTokenPayload(token);
 
             // Assert
             this.mockIDataManager.Verify(method => method.GetSettingsValue(It.IsAny<string>()), Times.Exactly(4));
             Assert.IsTrue(TestingTokenTool.IsTokenValid(token));
+            Assert.AreEqual(ExpectedId, payload["primarysid"]);
+            Assert.AreEqual(ExpectedName, payload["unique_name"]);
+            Assert.AreEqual(ExpectedRole, payload["role"]);
+            Assert.AreEqual(Expectedemail, payload["email"]);
         }
 
         /// <summary>
@@ -128,7 +148,7 @@ namespace Authentication.UnitTests.ForBusinessLayer.Processors
         public async Task GenerateTokenShouldFail()
         {
             // Arrange
-            var user = new User { Id = 1, UserName = "email@contoso.com", Password = "S3cr3tP455w0rd" };
+            var user = new User { Id = 1, Name = "email@contoso.com", Password = "S3cr3tP455w0rd" };
             this.mockIDataManager.Setup(method => method.GetSettingsValue(SecretKey)).Returns(TestingTokenTool.SecretKey);
             this.mockIDataManager.Setup(method => method.GetSettingsValue(AudienceKey)).Returns(TestingTokenTool.AudienceKey);
             this.mockIDataManager.Setup(method => method.GetSettingsValue(IssuerKey)).Throws(new TokenGenerationException());

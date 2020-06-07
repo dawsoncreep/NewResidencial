@@ -59,7 +59,7 @@ namespace Authentication.UnitTests.ForDataLayer.Repository
         [TestInitialize]
         public async Task RunBeforeEachTest()
         {
-            this.userTestData = JsonConvert.DeserializeObject<List<SUser>>("[{\"idUsuario\":\"1\",\"nombre\":\"Carlos\",\"apellido\":\"Fernandez\",\"correo\":\"carlos.fernandez@contoso.com\",\"celular\":\"5500000001\",\"usuario\":\"usuario01\",\"contraseña\":\"S5cr3tP455w0rd1\",\"activo\":\"true\"},{\"idUsuario\":\"2\",\"nombre\":\"Susana\",\"apellido\":\"Distancia\",\"correo\":\"susana.distancia@contoso.com\",\"celular\":\"5500000002\",\"usuario\":\"usuario02\",\"contraseña\":\"S5cr3tP455w0rd2\",\"activo\":\"false\"},{\"idUsuario\":\"3\",\"nombre\":\"Xavier\",\"apellido\":\"Hernandez\",\"correo\":\"xavier.hernandez@contoso.com\",\"celular\":\"5500000003\",\"usuario\":\"usuario03\",\"contraseña\":\"S5cr3tP455w0rd3\",\"activo\":\"true\"}]");
+            this.userTestData = JsonConvert.DeserializeObject<List<SUser>>("[{\"Id\":1,\"Nombres\":\"Guizzy\",\"Apellidos\":\"Seguridad\",\"Correo\":\"superadmin@guizzyseguridad.com\",\"Telefono\":\"NULL\",\"Celular\":5215560000000,\"Alias\":\"SuperAdmin\",\"Contraseña\":\"Password\",\"Activo\":0},{\"Id\":2,\"Nombres\":\"Jaime\",\"Apellidos\":\"Castorena Tlatecali\",\"Correo\":\"jaime.castorena@psi.condominio.com\",\"Telefono\":\"NULL\",\"Celular\":5214490000000,\"Alias\":\"Jaime.Castorena\",\"Contraseña\":\"Password\",\"Activo\":1},{\"Id\":3,\"Nombres\":\"Carlos\",\"Apellidos\":\"Avalos García\",\"Correo\":\"carlos.avalos@yahoo.com\",\"Telefono\":\"NULL\",\"Celular\":5214770000000,\"Alias\":\"Carlos.Avalos\",\"Contraseña\":\"Password\",\"Activo\":1},{\"Id\":4,\"Nombres\":\"German\",\"Apellidos\":\"Avalos García\",\"Correo\":\"german.avalos@hotmail.com\",\"Telefono\":\"NULL\",\"Celular\":5214780000000,\"Alias\":\"German.Avalos\",\"Contraseña\":\"Password\",\"Activo\":1},{\"Id\":5,\"Nombres\":\"Xavier\",\"Apellidos\":\"Hernández Reyes\",\"Correo\":\"xavier.hernandez@gmail.com\",\"Telefono\":\"NULL\",\"Celular\":5215550000000,\"Alias\":\"Xavier.Hernandez\",\"Contraseña\":\"Password\",\"Activo\":1},{\"Id\":6,\"Nombres\":\"Jose\",\"Apellidos\":\"Sanchez Martínez\",\"Correo\":\"jose.sanchez@hotmail.com\",\"Telefono\":\"NULL\",\"Celular\":5215580000000,\"Alias\":\"Jose.Sanchez\",\"Contraseña\":\"Password\",\"Activo\":1},{\"Id\":7,\"Nombres\":\"Oscar\",\"Apellidos\":\"Hernández Villegas\",\"Correo\":\"oscar.villegas@outlook.com\",\"Telefono\":\"NULL\",\"Celular\":5215510000000,\"Alias\":\"Oscar.Villegas\",\"Contraseña\":\"Password\",\"Activo\":1}]");
 
             this.compareLogic = new CompareLogic();
 
@@ -101,8 +101,16 @@ namespace Authentication.UnitTests.ForDataLayer.Repository
         public async Task FindByUserNameShouldSucceed()
         {
             // Arrange
-            const string UserName = "xavier.hernandez@contoso.com";
-            var expected = new User { Id = 3, UserName = "xavier.hernandez@contoso.com", Password = "S5cr3tP455w0rd3" };
+            const string UserName = "jaime.castorena@psi.condominio.com";
+            var expected = new User
+            {
+                Id = 2,
+                Name = "Jaime",
+                LastName = "Castorena Tlatecali",
+                Email = "jaime.castorena@psi.condominio.com",
+                NickName = "Jaime.Castorena",
+                Password = "Password"
+            };
             var objectUt = new UserRepository(this.applicationContext);
 
             // Act

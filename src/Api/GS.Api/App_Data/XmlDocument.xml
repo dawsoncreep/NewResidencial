@@ -150,7 +150,7 @@
             The user facade.
             </param>
         </member>
-        <member name="M:Authentication.Api.Controllers.AuthenticationController.Authenticate(GS.Api.Types.Models.LoginRequest)">
+        <member name="M:Authentication.Api.Controllers.AuthenticationController.Login(GS.Api.Types.Models.LoginRequest)">
             <summary>
             Authenticates a user, if valid returns a valid Json Web Token.
             </summary>

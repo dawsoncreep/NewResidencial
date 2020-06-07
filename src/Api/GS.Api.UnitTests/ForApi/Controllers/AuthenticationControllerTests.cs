@@ -99,7 +99,7 @@ namespace Authentication.UnitTests.ForApi.Controllers
 
         /// <summary>
         ///  This method should:
-        ///    1) Simulate an HTTP POST request and send a <see cref="LoginRequest"/> object to '~/Authentication/Authenticate'
+        ///    1) Simulate an HTTP POST request and send a <see cref="LoginRequest"/> object to '~/Authentication/Login'
         ///    2) Pre-validate the <see cref="LoginRequest"/> object.
         ///    3) Successfully verify if user is stored in database.
         ///    4) Get user's roles
@@ -109,7 +109,7 @@ namespace Authentication.UnitTests.ForApi.Controllers
         /// The <see cref="Task"/>.
         /// </returns>
         [TestMethod]
-        public async Task AuthenticateShouldSucceed()
+        public async Task LoginShouldSucceed()
         {
             // Arrange
             var expectedToken = TestingTokenTool.GenerateToken(this.loginRequest.UserName, TestingTokenTool.SecretKey, TestingTokenTool.IssuerKey, TestingTokenTool.AudienceKey);
@@ -121,7 +121,7 @@ namespace Authentication.UnitTests.ForApi.Controllers
             };
 
             // Act
-            var response = await this.authenticationController.Authenticate(this.loginRequest);
+            var response = await this.authenticationController.Login(this.loginRequest);
             if (response is OkNegotiatedContentResult<string> responseData)
             {
                 this.token = responseData.Content;
@@ -141,7 +141,7 @@ namespace Authentication.UnitTests.ForApi.Controllers
         /// The <see cref="Task"/>.
         /// </returns>
         [TestMethod]
-        public async Task AuthenticateShouldFailPreValidatingUserName()
+        public async Task LoginShouldFailPreValidatingUserName()
         {
             // Arrange
             var expectedMessage = new TypeValidationException().Message;
@@ -156,7 +156,7 @@ namespace Authentication.UnitTests.ForApi.Controllers
             };
 
             // Act
-            var response = await this.authenticationController.Authenticate(this.loginRequest);
+            var response = await this.authenticationController.Login(this.loginRequest);
             if (response is BadRequestErrorMessageResult responseData)
             {
                 actualMessage = responseData.Message;
@@ -177,7 +177,7 @@ namespace Authentication.UnitTests.ForApi.Controllers
         /// The <see cref="Task"/>.
         /// </returns>
         [TestMethod]
-        public async Task AuthenticateShouldFailPreValidatingPassword()
+        public async Task LoginShouldFailPreValidatingPassword()
         {
             // Arrange
             var expectedMessage = new TypeValidationException().Message;
@@ -192,7 +192,7 @@ namespace Authentication.UnitTests.ForApi.Controllers
             };
 
             // Act
-            var response = await this.authenticationController.Authenticate(this.loginRequest);
+            var response = await this.authenticationController.Login(this.loginRequest);
             if (response is BadRequestErrorMessageResult responseData)
             {
                 actualMessage = responseData.Message;
@@ -213,7 +213,7 @@ namespace Authentication.UnitTests.ForApi.Controllers
         /// The <see cref="Task"/>.
         /// </returns>
         [TestMethod]
-        public async Task AuthenticateShouldFailValidatingAccess()
+        public async Task LoginShouldFailValidatingAccess()
         {
             // Arrange
             var expectedMessage = new InvalidUserAccessException().Message;
@@ -227,7 +227,7 @@ namespace Authentication.UnitTests.ForApi.Controllers
             };
 
             // Act
-            var response = await this.authenticationController.Authenticate(this.loginRequest);
+            var response = await this.authenticationController.Login(this.loginRequest);
             if (response is BadRequestErrorMessageResult responseData)
             {
                 actualMessage = responseData.Message;
@@ -248,7 +248,7 @@ namespace Authentication.UnitTests.ForApi.Controllers
         /// The <see cref="Task"/>.
         /// </returns>
         [TestMethod]
-        public async Task AuthenticateShouldFailGenerationJwT()
+        public async Task LoginShouldFailGenerationJwT()
         {
             // Arrange
             var expectedMessage = new TokenGenerationException().Message;
@@ -262,7 +262,7 @@ namespace Authentication.UnitTests.ForApi.Controllers
             };
 
             // Act
-            var response = await this.authenticationController.Authenticate(this.loginRequest);
+            var response = await this.authenticationController.Login(this.loginRequest);
             if (response is BadRequestErrorMessageResult responseData)
             {
                 actualMessage = responseData.Message;
@@ -283,7 +283,7 @@ namespace Authentication.UnitTests.ForApi.Controllers
         /// The <see cref="Task"/>.
         /// </returns>
         [TestMethod]
-        public async Task AuthenticateShouldFailUnexpectedly()
+        public async Task LoginShouldFailUnexpectedly()
         {
             // Arrange
             this.mockIUserFacade.Setup(method => method.Authenticate(this.loginRequest)).ThrowsAsync(new Exception());
@@ -294,7 +294,7 @@ namespace Authentication.UnitTests.ForApi.Controllers
             };
 
             // Act
-            var response = await this.authenticationController.Authenticate(this.loginRequest);
+            var response = await this.authenticationController.Login(this.loginRequest);
             var responseData = response as ExceptionResult;
 
             // Assert

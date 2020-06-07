@@ -52,8 +52,8 @@ namespace Authentication.Api.Controllers
         /// returns a JWT asynchronously.
         /// </returns>
         [HttpPost]
-        [ActionName("Authenticate")]
-        public async Task<IHttpActionResult> Authenticate([FromBody] LoginRequest loginRequest)
+        [ActionName("Login")]
+        public async Task<IHttpActionResult> Login([FromBody] LoginRequest loginRequest)
         {
             var result = await this.ExecuteProcess(async () => await this.userFacade.Authenticate(loginRequest));
             await this.Logger.Log(LogType.Information, $"Token successfully generated for user {loginRequest.UserName}");

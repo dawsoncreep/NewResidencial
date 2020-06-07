@@ -94,13 +94,14 @@ namespace Authentication.UnitTests.ForBusinessLayer.Processors
             var expected = new User
             {
                 Id = 1,
-                UserName = "GoodUserName",
+                Name = "GoodUserName",
                 Password = "GoodPassword",
-                Authorizations = new[] { new Authorization { Role = "Administrador", Permission = new[] { "MODULO 1", "MENU 1", "MENU 2", "MENU 3" } } },
+                Role = "Administrador",
+                Permissions = new[] { "MODULO 1", "MENU 1", "MENU 2", "MENU 3" }
             };
 
             this.mockIUserRepository.Setup(method => method.FindByUserName(UserName)).ReturnsAsync(expected);
-            this.mockIRolRepository.Setup(method => method.GetAuthorizationData(UserId)).ReturnsAsync(expected.Authorizations);
+            this.mockIRolRepository.Setup(method => method.GetAuthorizationData(UserId)).ReturnsAsync(new[] { new Authorization { Role = "Administrador", Permission = new[] { "MODULO 1", "MENU 1", "MENU 2", "MENU 3" } } });
 
             var objectUt = new UserProcessor(this.mockIUserRepository.Object, this.mockIRolRepository.Object);
 
@@ -163,7 +164,7 @@ namespace Authentication.UnitTests.ForBusinessLayer.Processors
             var expected = new User
             {
                 Id = 1,
-                UserName = "GoodUserName",
+                Name = "GoodUserName",
                 Password = "GoodPassword",
             };
 

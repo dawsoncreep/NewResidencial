@@ -9,8 +9,10 @@ import { AppComponent } from './componets/main/app.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { InvalidSessionInterceptor } from './helpers/sessionvalidator.interceptor';
+import { TokenInterceptor } from './helpers/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     FontAwesomeModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: InvalidSessionInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

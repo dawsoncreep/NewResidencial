@@ -9,6 +9,7 @@
 
 namespace GS.Api.BusinessLayer.Processors
 {
+    using System.Linq;
     using System.Threading.Tasks;
 
     using GS.Api.BusinessLayer.Interfaces.Processor;
@@ -49,7 +50,13 @@ namespace GS.Api.BusinessLayer.Processors
         public async Task<User> GetUserByUserName(string userName)
         {
             var user = await this.userRepository.FindByUserName(userName);
-            user.Authorizations = await this.rolRepository.GetAuthorizationData(user.Id);
+            var authorizations = await this.rolRepository.GetAuthorizationData(user.Id);
+
+            var unique = authorizations.First();
+
+            user.Role = unique.Role;
+            user.Permissions = unique.Permission;
+
             return await Task.FromResult(user);
         }
     }
