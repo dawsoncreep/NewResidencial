@@ -9,12 +9,17 @@ export class AuthenticationGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const currentUser = this.authenticationService.currentUserValue;
+        
+        if (currentUser) {
+            if (route.data.roles && route.data.roles.indexOf(currentUser.Role) === -1) {
+                this.router.navigate(['/']);
+                return false;
+            }
 
-        if (currentUser == null) {
-            this.router.navigate(['login'], { queryParams: { returnUrl: state.url } });
-            return false;
+            return true;
         }
 
-        return true;
+        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+        return false;
     }
 }

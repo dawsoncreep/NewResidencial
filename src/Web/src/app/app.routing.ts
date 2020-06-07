@@ -1,10 +1,14 @@
-import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './Componets/login/login.component';
 import { HomeComponent } from './componets/home/home.component';
 import { AuthenticationGuard } from './helpers/authentication.guard';
+import { UserManagementSettlerComponent } from './componets/user-management-settler/user-management-settler.component';
+import { UserManagementAdminComponent } from './componets/user-management-admin/user-management-admin.component';
+import { Role } from './Models/role';
+import { NotFoundComponent } from './componets/not-found/not-found.component';
+import { VisitsManagementSettlerComponent } from './componets/visits-management-settler/visits-management-settler.component';
 
-const routes: Routes = [ 
+const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
@@ -19,9 +23,30 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
   },
-  
-  // otherwise redirect to home
-  { path: '**', redirectTo: '' }
+  {
+    path: 'myPartners',
+    component: UserManagementSettlerComponent,
+    canActivate: [AuthenticationGuard],
+    data: { roles: [Role.Representative, Role.Settler] }
+  },
+  {
+    path: 'userManagement',
+    component: UserManagementAdminComponent,
+    canActivate: [AuthenticationGuard],
+    data: { roles: [Role.Ceo, Role.Administrator] }
+  },
+  {
+    path: 'myVisits',
+    component: VisitsManagementSettlerComponent,
+    canActivate: [AuthenticationGuard],
+    data: { roles: [Role.Representative, Role.Settler] }
+  },
+
+  // otherwise redirect to not found
+  {
+    path: '**',
+    component: NotFoundComponent,
+  }
 ];
 
 export const AppRoutingModule = RouterModule.forRoot(routes);
