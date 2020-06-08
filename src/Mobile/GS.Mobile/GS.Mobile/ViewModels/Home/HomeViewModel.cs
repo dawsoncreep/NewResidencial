@@ -12,6 +12,7 @@ namespace GS.Mobile.ViewModels.Home
     using System.Threading.Tasks;
     using System.Windows.Input;
 
+    using GS.Mobile.ViewModels.Attributes;
     using GS.Mobile.ViewModels.Extensions;
 
     using Xamarin.Forms;
@@ -19,6 +20,7 @@ namespace GS.Mobile.ViewModels.Home
     /// <summary>
     /// The home view model.
     /// </summary>
+    [Authorization]
     public class HomeViewModel : BaseViewModel, IHomeViewModel
     {
         /// <inheritdoc />
