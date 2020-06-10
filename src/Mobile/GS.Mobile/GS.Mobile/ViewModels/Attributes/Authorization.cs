@@ -22,7 +22,6 @@ namespace GS.Mobile.ViewModels.Attributes
         /// </summary>
         private string roles;
 
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Authorization"/> class.
         /// The viewmodel only needs a valid user token.

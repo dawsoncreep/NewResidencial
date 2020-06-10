@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<wrappers:MasterWrapper xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:main="clr-namespace:GS.Mobile.Views.Main;assembly=GS.Mobile"
+             xmlns:wrappers="clr-namespace:GS.Mobile.Views.Wrappers;assembly=GS.Mobile"
+             xmlns:behaviorsPack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+             x:Class="GS.Mobile.Views.Main.MasterPage">
+
+
+    <MasterDetailPage.Behaviors>
+        <behaviorsPack:EventToCommandBehavior EventName="Appearing" Command="{Binding OnLoadCommand}"/>
+    </MasterDetailPage.Behaviors>
+
+    <MasterDetailPage.Master>
+        <main:SideMenuPage x:Name="SideMenuPage" />
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <main:ContainerPage/>
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+
+</wrappers:MasterWrapper>

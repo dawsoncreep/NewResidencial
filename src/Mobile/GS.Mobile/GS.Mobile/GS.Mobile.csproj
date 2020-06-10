@@ -31,13 +31,35 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\HomePage.xaml.cs">
+    <ProjectReference Include="..\..\GS.Mobile.BusinessLayer\GS.Mobile.BusinessLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Home\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Main\ContainerPage.xaml.cs">
+      <DependentUpon>ContainerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Main\SideMenuPage.xaml.cs">
+      <DependentUpon>SideMenuPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\HomePage.xaml">
+    <EmbeddedResource Update="Views\Home\HomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Main\MasterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Main\ContainerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Main\SideMenuPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Login\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

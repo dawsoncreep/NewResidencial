@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<wrappers:LoginWrapper xmlns="http://xamarin.com/schemas/2014/forms"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:wrappers="clr-namespace:GS.Mobile.Views.Wrappers;assembly=GS.Mobile"
+                   xmlns:behaviorsPack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+                   mc:Ignorable="d"
+                   x:Class="GS.Mobile.Views.Login.LoginPage">
+
+    <ContentPage.Behaviors>
+        <behaviorsPack:EventToCommandBehavior EventName="Appearing" Command="{Binding OnLoadCommand}"/>
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Login page!!!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Button Text="Login" Command="{Binding LoginCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</wrappers:LoginWrapper>

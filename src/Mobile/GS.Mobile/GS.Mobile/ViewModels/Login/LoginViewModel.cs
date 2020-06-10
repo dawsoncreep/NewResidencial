@@ -1,13 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="HomeViewModel.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
+// <copyright file="LoginViewModel.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
 //   COPYRIGHT 2020 © Dawsoncreep. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines the HomeViewModel type.
+//   Defines the LoginViewModel type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GS.Mobile.ViewModels.Home
+namespace GS.Mobile.ViewModels.Login
 {
     using System.Threading.Tasks;
     using System.Windows.Input;
@@ -15,41 +15,34 @@ namespace GS.Mobile.ViewModels.Home
     using GS.Mobile.BusinessLayer.Interfaces;
     using GS.Mobile.Tools.Routing;
     using GS.Mobile.ViewModels.Attributes;
+    using GS.Mobile.Views.Main;
 
     using Xamarin.Forms;
 
     /// <summary>
-    /// The home view model.
+    /// The login view model.
     /// </summary>
-    [Authorization]
-    public class HomeViewModel : BaseViewModel, IHomeViewModel
+    [AllowAnonymous("Revision here is OK.")]
+    public class LoginViewModel : BaseViewModel, ILoginViewModel
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="HomeViewModel"/> class.
+        /// Initializes a new instance of the <see cref="LoginViewModel"/> class.
         /// </summary>
         /// <param name="routingService">
         /// The routing service.
         /// </param>
         /// <param name="sessionProcessor">
-        /// The session Processor.
+        /// The session processor.
         /// </param>
-        public HomeViewModel(IRoutingService routingService, ISessionProcessor sessionProcessor) : base(routingService, sessionProcessor)
+        public LoginViewModel(IRoutingService routingService, ISessionProcessor sessionProcessor) : base(routingService, sessionProcessor)
         {
         }
 
         /// <inheritdoc />
-        public override ICommand OnLoadCommand => new Command(
+        public ICommand LoginCommand => new Command(
             async () =>
                 {
-                    this.PageTitle = "Welcome my friend!!!";
-                    await Task.CompletedTask;
-                });
-
-        /// <inheritdoc />
-        public ICommand DoSomething => new Command(
-            async () =>
-                {
-                    this.PageTitle = "You clicked the button!!!";
+                    this.RoutingService.SetMaster<MasterPage>();
                     await Task.CompletedTask;
                 });
     }

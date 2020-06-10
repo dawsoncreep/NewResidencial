@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GS.Mobile.ViewModels.Extensions
+namespace GS.Mobile.ViewModels
 {
     using System.ComponentModel;
     using System.Threading.Tasks;

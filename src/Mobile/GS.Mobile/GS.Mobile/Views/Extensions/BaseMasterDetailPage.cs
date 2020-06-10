@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="BaseContentPage.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
+// <copyright file="BaseMasterDetailPage.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
 //   COPYRIGHT 2020 © Dawsoncreep. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines the BaseContentPage type.
+//   The base master detail page.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,17 +15,17 @@ namespace GS.Mobile.Views.Extensions
     using Xamarin.Forms;
 
     /// <summary>
-    /// The base content page.
+    /// The base master detail page.
     /// </summary>
     /// <typeparam name="TViewModel">
     /// Specific view model to work.
     /// </typeparam>
-    public class BaseContentPage<TViewModel> : ContentPage where TViewModel : IViewModel
+    public class BaseMasterDetailPage<TViewModel> : MasterDetailPage where TViewModel : IViewModel
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BaseContentPage{TViewModel}"/> class.
+        /// Initializes a new instance of the <see cref="BaseMasterDetailPage{TViewModel}"/> class.
         /// </summary>
-        public BaseContentPage()
+        protected BaseMasterDetailPage()
         {
             this.ViewModel = App.DependencyResolver.Resolve<TViewModel>();
             this.BindingContext = this.ViewModel;

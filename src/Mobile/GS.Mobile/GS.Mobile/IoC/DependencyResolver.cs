@@ -11,7 +11,12 @@ namespace GS.Mobile.IoC
 {
     using Autofac;
 
+    using GS.Mobile.BusinessLayer.Interfaces;
+    using GS.Mobile.BusinessLayer.Processors;
+    using GS.Mobile.Tools.Routing;
     using GS.Mobile.ViewModels.Home;
+    using GS.Mobile.ViewModels.Login;
+    using GS.Mobile.ViewModels.Master;
 
     /// <summary>
     /// The dependency resolver.
@@ -74,7 +79,7 @@ namespace GS.Mobile.IoC
         /// </returns>
         public TInstance Resolve<TInstance>()
         {
-            return this.container.IsRegistered<TInstance>() ? this.container.Resolve<TInstance>() : default;
+            return this.container.Resolve<TInstance>();
         }
 
         #region Private Methods
@@ -84,16 +89,37 @@ namespace GS.Mobile.IoC
         /// </summary>
         private void RegisterToBuilder()
         {
+            this.RegisterTools();
             this.RegisterViewModels();
+            this.RegisterProcessors();
         }
 
         /// <summary>
-        /// The register own types.
+        /// Register all view models.
         /// </summary>
         private void RegisterViewModels()
         {
+            this.builder.RegisterType<MasterViewModel>().As<IMasterViewModel>().SingleInstance();
             this.builder.RegisterType<HomeViewModel>().As<IHomeViewModel>().SingleInstance();
+            this.builder.RegisterType<LoginViewModel>().As<ILoginViewModel>().SingleInstance();
         }
+
+        /// <summary>
+        /// Register all view model tools.
+        /// </summary>
+        private void RegisterTools()
+        {
+            this.builder.RegisterType<RoutingService>().As<IRoutingService>().SingleInstance();
+        }
+
+        /// <summary>
+        /// Register all processors.
+        /// </summary>
+        private void RegisterProcessors()
+        {
+            this.builder.RegisterType<SessionProcessor>().As<ISessionProcessor>();
+        }
+
         #endregion
     }
 }

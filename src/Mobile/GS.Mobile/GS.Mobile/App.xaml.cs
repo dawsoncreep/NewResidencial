@@ -10,7 +10,7 @@
 namespace GS.Mobile
 {
     using GS.Mobile.IoC;
-    using GS.Mobile.Views;
+    using GS.Mobile.Views.Main;
 
     using Xamarin.Forms;
 
@@ -32,7 +32,7 @@ namespace GS.Mobile
                 DependencyResolver.Initialize();
             }
 
-            this.MainPage = new HomePage();
+            this.MainPage = new MasterPage();
         }
 
         /// <summary>
