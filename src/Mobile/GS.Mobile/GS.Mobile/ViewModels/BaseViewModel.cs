@@ -51,7 +51,6 @@ namespace GS.Mobile.ViewModels
             this.RoutingService = routingService;
             this.SessionProcessor = sessionProcessor;
 
-            // TODO: Manage dependencies thorough constructor.
             this.ValidateAuthorizationRules();
         }
 
@@ -68,22 +67,22 @@ namespace GS.Mobile.ViewModels
         public string PageTitle { get; set; }
 
         /// <inheritdoc />
+        public string ErrorMessage { get; set; }
+
+        /// <inheritdoc />
         public virtual ICommand OnLoadCommand => new Command(async () => await Task.CompletedTask);
 
         /// <inheritdoc />
         public virtual ICommand OnCloseCommand => new Command(async () => await Task.CompletedTask);
-
-        /// <inheritdoc />
-        public async Task CleanUi()
-        {
-            await Task.CompletedTask;
-        }
-
+        
         #region private Methods
 
         /// <summary>
-        /// The validate user roles.
+        /// Validates if current viewmodel hast proper permissions.
         /// </summary>
+        /// <exception cref="Exception">
+        /// Thrown when the viewmodel does not have proper validation attributes.
+        /// </exception>
         private void ValidateAuthorizationRules()
         {
             if (this.IsAnonymousAllowed())
@@ -94,7 +93,7 @@ namespace GS.Mobile.ViewModels
             if (this.IsAuthorizationRequired())
             {
                 var viewModelRoles = this.GetViewModelAuthorizationRoles();
-                var isValid = this.SessionProcessor.ValidateCurrentSession(viewModelRoles);
+                var isValid = this.ValidateCurrentSession(viewModelRoles);
 
                 if (!isValid)
                 {
@@ -105,6 +104,32 @@ namespace GS.Mobile.ViewModels
             {
                 throw new Exception("'AllowAnonymous' or 'Authorization' attribute is missing.");
             }
+        }
+
+        /// <summary>
+        /// Validates current session against viewmodel roles.
+        /// </summary>
+        /// <param name="viewModelRoles">
+        /// The view model roles.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        private bool ValidateCurrentSession(string viewModelRoles)
+        {
+            bool result;
+
+            if (string.IsNullOrEmpty(viewModelRoles))
+            {
+                var token = this.SessionProcessor.GetAccessToken().GetAwaiter().GetResult();
+                result = !string.IsNullOrEmpty(token);
+            }
+            else
+            {
+                result = this.SessionProcessor.ValidateSessionWithRoles(viewModelRoles).GetAwaiter().GetResult();
+            }
+
+            return result;
         }
         #endregion
     }

@@ -107,13 +107,13 @@ namespace GS.Mobile.UnitTests.ForViewModels
         public void HomeViewModelShouldNavigateToLoginViewModelWhenInvalidUserToken()
         {
             // Arrange
-            this.mockISessionProcessor.Setup(method => method.ValidateCurrentSession(It.IsAny<string>())).Returns(false);
+            this.mockISessionProcessor.Setup(method => method.GetAccessToken()).ReturnsAsync(string.Empty);
 
             // Act
             this.homeViewModel = new HomeViewModel(this.mockIRoutingService.Object, this.mockISessionProcessor.Object);
             
             // Assert
-            this.mockISessionProcessor.Verify(method => method.ValidateCurrentSession(It.IsAny<string>()), Times.Once);
+            this.mockISessionProcessor.Verify(method => method.GetAccessToken(), Times.Once);
             this.mockIRoutingService.Verify(method => method.PushAsync<LoginPage>(), Times.Once);
         }
     }

@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ISessionProcessor.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
+// <copyright file="ITokenProcessor.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
 //   COPYRIGHT 2020 © Dawsoncreep. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines the ISessionProcessor type.
+//   Defines the ITokenProcessor type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -11,32 +11,15 @@ namespace GS.Mobile.BusinessLayer.Interfaces
 {
     using System.Threading.Tasks;
 
+    using GS.Mobile.Types.Security;
+
     /// <summary>
-    /// The SessionProcessor interface.
+    /// The TokenProcessor interface.
     /// </summary>
-    public interface ISessionProcessor
+    public interface ITokenProcessor
     {
         /// <summary>
-        /// Gets current access token.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="Task"/>.
-        /// </returns>
-        Task<string> GetAccessToken();
-
-        /// <summary>
-        /// The validate session with roles.
-        /// </summary>
-        /// <param name="allowedRoles">
-        /// The allowed roles.
-        /// </param>
-        /// <returns>
-        /// The <see cref="Task"/>.
-        /// </returns>
-        Task<bool> ValidateSessionWithRoles(string allowedRoles);
-
-        /// <summary>
-        /// Saves a JWT into local storage.
+        /// Decodes a JWT payload into a <see cref="Token"/>.
         /// </summary>
         /// <param name="token">
         /// The token.
@@ -44,6 +27,17 @@ namespace GS.Mobile.BusinessLayer.Interfaces
         /// <returns>
         /// The <see cref="Task"/>.
         /// </returns>
-        Task SaveToken(string token);
+        Task<Token> DecodeTokenString(string token);
+
+        /// <summary>
+        /// The validate token string.
+        /// </summary>
+        /// <param name="token">
+        /// The token.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        bool ValidateTokenString(string token);
     }
 }

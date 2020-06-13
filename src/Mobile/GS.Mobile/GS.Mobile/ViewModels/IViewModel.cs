@@ -10,7 +10,6 @@
 namespace GS.Mobile.ViewModels
 {
     using System.ComponentModel;
-    using System.Threading.Tasks;
     using System.Windows.Input;
 
     /// <inheritdoc />
@@ -27,9 +26,15 @@ namespace GS.Mobile.ViewModels
         bool IsBusy { get; set; }
 
         /// <summary>
-        /// Page tile.
+        /// Gets or sets the page title.
         /// </summary>
         string PageTitle { get; set; }
+
+        /// <summary>
+        /// Gets or sets the error message.
+        /// </summary>
+        string ErrorMessage { get; set; }
+
         #endregion
 
         #region Commands
@@ -43,17 +48,6 @@ namespace GS.Mobile.ViewModels
         /// Gets the on close command.
         /// </summary>
         ICommand OnCloseCommand { get; }
-        #endregion
-
-        #region Methods
-
-        /// <summary>
-        /// The clean ui.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="Task"/>.
-        /// </returns>
-        Task CleanUi();
         #endregion
     }
 }

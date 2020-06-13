@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\GS.Mobile.BusinessLayer\GS.Mobile.BusinessLayer.csproj" />
+    <ProjectReference Include="..\..\GS.Mobile.Types\GS.Mobile.Types.csproj" />
   </ItemGroup>
 
   <ItemGroup>

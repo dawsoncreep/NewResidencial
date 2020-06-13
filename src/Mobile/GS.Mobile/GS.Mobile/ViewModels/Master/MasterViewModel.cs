@@ -39,11 +39,11 @@ namespace GS.Mobile.ViewModels.Master
 
         /// <inheritdoc />
         public override ICommand OnLoadCommand => new Command(
-             () =>
+             async () =>
                 {
-                    var sessionValid = this.SessionProcessor.ValidateCurrentSession(string.Empty);
+                    var accessToken = await this.SessionProcessor.GetAccessToken();
 
-                    if (!sessionValid)
+                    if (string.IsNullOrEmpty(accessToken))
                     {
                         this.RoutingService.SetMaster<LoginPage>();
                     }

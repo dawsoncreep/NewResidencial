@@ -1,18 +1,20 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IMasterViewModel.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
+// <copyright file="ITokenRepository.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
 //   COPYRIGHT 2020 © Dawsoncreep. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines the IMasterViewModel type.
+//   Defines the ITokenRepository type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GS.Mobile.ViewModels.Master
+namespace GS.Mobile.DataLayer.Interfaces.Repository
 {
+    using GS.Mobile.DataLayer.Entities;
+
     /// <summary>
-    /// The MasterViewModel interface.
+    /// The TokenRepository interface.
     /// </summary>
-    public interface IMasterViewModel : IViewModel
+    public interface ITokenRepository : IRepository<SToken>
     {
     }
 }

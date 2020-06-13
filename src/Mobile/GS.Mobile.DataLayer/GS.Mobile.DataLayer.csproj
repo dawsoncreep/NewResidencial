@@ -5,11 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.6.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GS.Mobile.DataLayer\GS.Mobile.DataLayer.csproj" />
     <ProjectReference Include="..\GS.Mobile.Types\GS.Mobile.Types.csproj" />
   </ItemGroup>
 

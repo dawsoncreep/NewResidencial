@@ -11,13 +11,21 @@ namespace GS.Mobile.ViewModels.Login
 {
     using System.Windows.Input;
 
-    using GS.Mobile.ViewModels.Extensions;
-
     /// <summary>
     /// The LoginViewModel interface.
     /// </summary>
     public interface ILoginViewModel : IViewModel
     {
+        /// <summary>
+        /// Gets or sets the user name.
+        /// </summary>
+        string UserName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the password.
+        /// </summary>
+        string Password { get; set; }
+
         /// <summary>
         /// Gets the login command.
         /// </summary>

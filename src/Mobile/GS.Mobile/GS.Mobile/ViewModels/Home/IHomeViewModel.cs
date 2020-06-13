@@ -11,8 +11,6 @@ namespace GS.Mobile.ViewModels.Home
 {
     using System.Windows.Input;
 
-    using GS.Mobile.ViewModels.Extensions;
-
     /// <summary>
     /// The HomeViewModel interface.
     /// </summary>

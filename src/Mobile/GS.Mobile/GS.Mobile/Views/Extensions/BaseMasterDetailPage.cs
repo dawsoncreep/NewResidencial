@@ -10,7 +10,6 @@
 namespace GS.Mobile.Views.Extensions
 {
     using GS.Mobile.ViewModels;
-    using GS.Mobile.ViewModels.Extensions;
 
     using Xamarin.Forms;
 
