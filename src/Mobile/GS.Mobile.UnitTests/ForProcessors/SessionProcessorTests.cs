@@ -16,7 +16,7 @@ namespace GS.Mobile.UnitTests.ForProcessors
     using GS.Mobile.BusinessLayer.Interfaces;
     using GS.Mobile.BusinessLayer.Processors;
     using GS.Mobile.DataLayer.Entities;
-    using GS.Mobile.DataLayer.Interfaces.Repository;
+    using GS.Mobile.DataLayer.Repository.Token;
     using GS.Mobile.Types.Exceptions;
     using GS.Mobile.Types.Security;
 

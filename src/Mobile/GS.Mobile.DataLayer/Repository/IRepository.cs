@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GS.Mobile.DataLayer.Interfaces.Repository
+namespace GS.Mobile.DataLayer.Repository
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

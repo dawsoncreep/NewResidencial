@@ -15,7 +15,7 @@ namespace GS.Mobile.BusinessLayer.Processors
 
     using GS.Mobile.BusinessLayer.Interfaces;
     using GS.Mobile.DataLayer.Entities;
-    using GS.Mobile.DataLayer.Interfaces.Repository;
+    using GS.Mobile.DataLayer.Repository.Token;
     using GS.Mobile.Types.Exceptions;
 
     /// <summary>
