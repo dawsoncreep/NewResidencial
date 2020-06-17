@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GS.Mobile.Tools.Routing
+namespace GS.Mobile.Share.Routing
 {
     using System;
     using System.Linq;

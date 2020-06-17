@@ -13,7 +13,7 @@ namespace GS.Mobile.ViewModels.Home
     using System.Windows.Input;
 
     using GS.Mobile.BusinessLayer.Interfaces;
-    using GS.Mobile.Tools.Routing;
+    using GS.Mobile.Share.Routing;
     using GS.Mobile.ViewModels.Attributes;
 
     using Xamarin.Forms;

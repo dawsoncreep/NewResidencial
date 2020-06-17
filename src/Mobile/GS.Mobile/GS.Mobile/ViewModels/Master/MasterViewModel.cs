@@ -12,7 +12,7 @@ namespace GS.Mobile.ViewModels.Master
     using System.Windows.Input;
 
     using GS.Mobile.BusinessLayer.Interfaces;
-    using GS.Mobile.Tools.Routing;
+    using GS.Mobile.Share.Routing;
     using GS.Mobile.ViewModels.Attributes;
     using GS.Mobile.Views.Login;
 

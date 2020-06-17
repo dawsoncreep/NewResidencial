@@ -27,7 +27,7 @@ namespace GS.Api.OperationalManagement.Abstractions
         /// <summary>
         /// The event log name.
         /// </summary>
-        private const string EventLogName = "Authentication.Api";
+        private const string EventLogName = "WebApi";
 
         /// <summary>
         /// The event source name.

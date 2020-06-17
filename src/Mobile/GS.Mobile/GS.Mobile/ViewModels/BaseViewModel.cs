@@ -15,7 +15,7 @@ namespace GS.Mobile.ViewModels
     using System.Windows.Input;
 
     using GS.Mobile.BusinessLayer.Interfaces;
-    using GS.Mobile.Tools.Routing;
+    using GS.Mobile.Share.Routing;
     using GS.Mobile.ViewModels.Extensions;
     using GS.Mobile.Views.Login;
 

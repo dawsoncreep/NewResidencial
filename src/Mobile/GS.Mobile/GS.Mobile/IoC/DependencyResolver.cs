@@ -13,16 +13,30 @@ namespace GS.Mobile.IoC
 
     using GS.Mobile.BusinessLayer.Interfaces;
     using GS.Mobile.BusinessLayer.Processors;
-    using GS.Mobile.Tools.Routing;
+    using GS.Mobile.DataLayer.Context;
+    using GS.Mobile.DataLayer.Repository.Token;
+    using GS.Mobile.DataLayer.Services;
+    using GS.Mobile.DataLayer.Services.Authentication;
+    using GS.Mobile.Share.FileSystem;
+    using GS.Mobile.Share.Routing;
     using GS.Mobile.ViewModels.Home;
     using GS.Mobile.ViewModels.Login;
     using GS.Mobile.ViewModels.Master;
+
+    using Microsoft.EntityFrameworkCore;
+
+    using Xamarin.Forms;
 
     /// <summary>
     /// The dependency resolver.
     /// </summary>
     public class DependencyResolver
     {
+        /// <summary>
+        /// The context.
+        /// </summary>
+        private readonly DbContext context;
+
         /// <summary>
         /// The DI container.
         /// </summary>
@@ -41,6 +55,13 @@ namespace GS.Mobile.IoC
             if (this.builder == null)
             {
                 this.builder = new ContainerBuilder();
+            }
+
+            if (this.context == null)
+            {
+                var dependency = DependencyService.Get<IFileSystem>();
+                var path = dependency.GetDatabasePath();
+                this.context = new ApplicationContext(path);
             }
         }
 
@@ -92,6 +113,8 @@ namespace GS.Mobile.IoC
             this.RegisterTools();
             this.RegisterViewModels();
             this.RegisterProcessors();
+            this.RegisterRepositories();
+            this.RegisterServices();
         }
 
         /// <summary>
@@ -118,6 +141,25 @@ namespace GS.Mobile.IoC
         private void RegisterProcessors()
         {
             this.builder.RegisterType<SessionProcessor>().As<ISessionProcessor>();
+            this.builder.RegisterType<TokenProcessor>().As<ITokenProcessor>();
+            this.builder.RegisterType<UserProcessor>().As<IUserProcessor>();
+        }
+
+        /// <summary>
+        /// Register all repositories.
+        /// </summary>
+        private void RegisterRepositories()
+        {
+            this.builder.RegisterType<TokenRepository>().As<ITokenRepository>().WithParameter("context", this.context);
+        }
+
+        /// <summary>
+        /// Register all services.
+        /// </summary>
+        private void RegisterServices()
+        {
+            this.builder.RegisterType<ServiceManager>().As<IServiceManager>();
+            this.builder.RegisterType<AuthenticationService>().As<IAuthenticationService>();
         }
 
         #endregion

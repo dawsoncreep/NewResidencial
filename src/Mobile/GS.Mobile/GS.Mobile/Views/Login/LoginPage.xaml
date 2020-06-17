@@ -13,10 +13,9 @@
     </ContentPage.Behaviors>
 
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Login page!!!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <Entry Placeholder="user@email.com" Text="{Binding UserName}"/>
+            <Entry Placeholder="Password" Text="{Binding Password}"/>
             <Button Text="Login" Command="{Binding LoginCommand}"/>
         </StackLayout>
     </ContentPage.Content>

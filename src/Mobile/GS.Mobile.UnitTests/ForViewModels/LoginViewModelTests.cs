@@ -13,7 +13,7 @@ namespace GS.Mobile.UnitTests.ForViewModels
     using System.Linq;
 
     using GS.Mobile.BusinessLayer.Interfaces;
-    using GS.Mobile.Tools.Routing;
+    using GS.Mobile.Share.Routing;
     using GS.Mobile.Types.Exceptions;
     using GS.Mobile.ViewModels.Attributes;
     using GS.Mobile.ViewModels.Login;

@@ -16,7 +16,7 @@ namespace GS.Mobile.DataLayer.Context
     /// <summary>
     /// The application context.
     /// </summary>
-    public class ApplicationContext : DbContext
+    public sealed class ApplicationContext : DbContext
     {
         /// <summary>
         /// The database path.
@@ -32,6 +32,7 @@ namespace GS.Mobile.DataLayer.Context
         public ApplicationContext(string databasePath)
         {
             this.databasePath = databasePath;
+            this.Database.EnsureCreated();
         }
 
         /// <summary>
@@ -48,7 +49,7 @@ namespace GS.Mobile.DataLayer.Context
         /// <summary>
         /// Gets or sets the token.
         /// </summary>
-        public virtual DbSet<SToken> Token { get; set; }
+        public DbSet<SToken> Token { get; set; }
 
         /// <inheritdoc />
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

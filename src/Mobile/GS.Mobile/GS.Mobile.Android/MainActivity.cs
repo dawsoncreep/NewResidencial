@@ -22,6 +22,16 @@ namespace GS.Mobile.Droid
     [Activity(Label = "Guizzy Seguridad", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        /// <summary>
+        /// The permissions.
+        /// </summary>
+        private readonly string[] allowedPermissions =
+            {
+                Android.Manifest.Permission.Internet,
+                Android.Manifest.Permission.ReadExternalStorage,
+                Android.Manifest.Permission.WriteExternalStorage
+            };
+        
         /// <inheritdoc />
         [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1126:PrefixCallsCorrectly", Justification = "Reviewed. Suppression is OK here.")]
         protected override void OnCreate(Bundle savedInstanceState)
@@ -33,6 +43,8 @@ namespace GS.Mobile.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            this.RequestPermissions(this.allowedPermissions, 0);
             this.LoadApplication(new App());
         }
 
