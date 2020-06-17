@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataModel\SDispositivo.cs" />
     <Compile Include="DataModel\SEvento.cs" />
     <Compile Include="DataModel\SIngresoSalidaVisita.cs" />
     <Compile Include="DataModel\STipoUbicacion.cs" />
@@ -61,10 +62,12 @@
     <Compile Include="DataModel\SUsuario.cs" />
     <Compile Include="DataModel\SVisita.cs" />
     <Compile Include="DBContext\GeneralContext.cs" />
+    <Compile Include="InterfacesDbContext\IDispositivoDBContext.cs" />
     <Compile Include="InterfacesDbContext\IUbicacionesDBContext.cs" />
     <Compile Include="InterfacesDbContext\IUsuarioDBContext.cs" />
     <Compile Include="InterfacesDbContext\IVisitaDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\Dispositivos\DispositivoRepositorio.cs" />
     <Compile Include="Repositorios\Eventos\EventoRepositorio.cs" />
     <Compile Include="Repositorios\Ubicaciones\TipoUbicacionRepositorio.cs" />
     <Compile Include="Repositorios\Ubicaciones\UbicacionRepositorio.cs" />
@@ -77,6 +80,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\ResidencialEnums\ResidencialEnums.csproj">
+      <Project>{0768ECFD-BB25-4D0B-A762-56D314AF2EB5}</Project>
+      <Name>ResidencialEnums</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InterfacesDatos\DataInterfaces.csproj">
       <Project>{d5e36796-77bc-423a-8a58-45cca022ba87}</Project>
       <Name>DataInterfaces</Name>

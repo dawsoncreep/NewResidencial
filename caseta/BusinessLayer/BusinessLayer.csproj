@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administracion\FactoriaNegocio.cs" />
+    <Compile Include="Dispositivo\DispositivoProcessor.cs" />
     <Compile Include="Evento\EventoProcessor.cs" />
     <Compile Include="Ingreso\PreregistroProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +63,10 @@
     <Compile Include="Visita\VisitaProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\ResidencialEnums\ResidencialEnums.csproj">
+      <Project>{0768ECFD-BB25-4D0B-A762-56D314AF2EB5}</Project>
+      <Name>ResidencialEnums</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
       <Project>{A1DC0040-62D5-4DCB-B4D1-92620CD1603A}</Project>
       <Name>DataLayer</Name>

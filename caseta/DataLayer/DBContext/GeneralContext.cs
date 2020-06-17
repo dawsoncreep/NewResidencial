@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 
 namespace DataLayer
 {
-    public class GeneralContext : DbContext, IVisitaDbContext, IUbicacionesDBContext, IUsuarioDBContext
+    public class GeneralContext : DbContext, IVisitaDbContext, IUbicacionesDBContext, IUsuarioDBContext, IDispositivoDBContext
     {
         public GeneralContext(string ConnectionString) : base(ConnectionString)
         {
@@ -18,6 +13,7 @@ namespace DataLayer
         public virtual DbSet<STipoUbicacion> TiposUbicacion { get; set; }
         public virtual DbSet<SUbicacion> Ubicaciones { get; set; }
         public virtual DbSet<SUsuario> Usuarios { get; set; }
-        public virtual DbSet<SIngresoSalidaVisita> IngresoSalidaVisitas { get ; set; }
+        public virtual DbSet<SIngresoSalidaVisita> IngresoSalidaVisitas { get; set; }
+        public virtual DbSet<SDispositivo> Dispositivos { get ; set; }
     }
 }

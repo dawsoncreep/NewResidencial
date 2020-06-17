@@ -1,4 +1,5 @@
-﻿using SecureGateTypes;
+﻿using ResidencialEnums;
+using SecureGateTypes;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

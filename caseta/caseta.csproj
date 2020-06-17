@@ -190,6 +190,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ResidencialEnums\ResidencialEnums.csproj">
+      <Project>{0768ECFD-BB25-4D0B-A762-56D314AF2EB5}</Project>
+      <Name>ResidencialEnums</Name>
+    </ProjectReference>
     <ProjectReference Include="BusinessLayer\BusinessLayer.csproj">
       <Project>{2a2c284e-9526-491c-a531-77ae1cba23b0}</Project>
       <Name>BusinessLayer</Name>

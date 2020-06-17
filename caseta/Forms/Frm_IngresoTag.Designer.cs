@@ -40,9 +40,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.TLP_Cams = new System.Windows.Forms.TableLayoutPanel();
-            this.SPC_PlacaDelantera = new WebEye.Controls.WinForms.StreamPlayerControl.StreamPlayerControl();
-            this.SPC_PlacaTrasera = new WebEye.Controls.WinForms.StreamPlayerControl.StreamPlayerControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Lbl_Placas = new System.Windows.Forms.Label();
@@ -52,20 +49,23 @@
             this.TxBx_Nombre = new System.Windows.Forms.TextBox();
             this.TxBx_Direccion = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.Pbx_Rostro = new System.Windows.Forms.PictureBox();
             this.Pbx_Placa = new System.Windows.Forms.PictureBox();
+            this.Pbx_Rostro = new System.Windows.Forms.PictureBox();
+            this.TLP_Cams = new System.Windows.Forms.TableLayoutPanel();
+            this.SPC_PlacaDelantera = new WebEye.Controls.WinForms.StreamPlayerControl.StreamPlayerControl();
+            this.SPC_PlacaTrasera = new WebEye.Controls.WinForms.StreamPlayerControl.StreamPlayerControl();
             this.TLPanel.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.Gbx_Anterior.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.TLP_Cams.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Pbx_Rostro)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pbx_Placa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pbx_Rostro)).BeginInit();
+            this.TLP_Cams.SuspendLayout();
             this.SuspendLayout();
             // 
             // TLPanel
@@ -214,45 +214,6 @@
             this.textBox2.Size = new System.Drawing.Size(460, 26);
             this.textBox2.TabIndex = 55;
             // 
-            // TLP_Cams
-            // 
-            this.TLP_Cams.ColumnCount = 1;
-            this.TLP_Cams.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TLP_Cams.Controls.Add(this.SPC_PlacaDelantera, 0, 1);
-            this.TLP_Cams.Controls.Add(this.SPC_PlacaTrasera, 0, 0);
-            this.TLP_Cams.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TLP_Cams.Location = new System.Drawing.Point(3, 3);
-            this.TLP_Cams.Name = "TLP_Cams";
-            this.TLP_Cams.RowCount = 2;
-            this.TLP_Cams.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TLP_Cams.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TLP_Cams.Size = new System.Drawing.Size(594, 702);
-            this.TLP_Cams.TabIndex = 45;
-            // 
-            // SPC_PlacaDelantera
-            // 
-            this.SPC_PlacaDelantera.AutoScrollMargin = new System.Drawing.Size(2, 2);
-            this.SPC_PlacaDelantera.AutoSize = true;
-            this.SPC_PlacaDelantera.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.SPC_PlacaDelantera.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SPC_PlacaDelantera.Location = new System.Drawing.Point(3, 354);
-            this.SPC_PlacaDelantera.Name = "SPC_PlacaDelantera";
-            this.SPC_PlacaDelantera.Size = new System.Drawing.Size(588, 345);
-            this.SPC_PlacaDelantera.TabIndex = 43;
-            // 
-            // SPC_PlacaTrasera
-            // 
-            this.SPC_PlacaTrasera.AutoScrollMargin = new System.Drawing.Size(2, 2);
-            this.SPC_PlacaTrasera.AutoSize = true;
-            this.SPC_PlacaTrasera.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.SPC_PlacaTrasera.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.SPC_PlacaTrasera.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SPC_PlacaTrasera.Location = new System.Drawing.Point(3, 3);
-            this.SPC_PlacaTrasera.Name = "SPC_PlacaTrasera";
-            this.SPC_PlacaTrasera.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.SPC_PlacaTrasera.Size = new System.Drawing.Size(588, 345);
-            this.SPC_PlacaTrasera.TabIndex = 41;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -361,18 +322,9 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 264F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(583, 264);
             this.tableLayoutPanel4.TabIndex = 60;
-            // 
-            // Pbx_Rostro
-            // 
-            this.Pbx_Rostro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Pbx_Rostro.Location = new System.Drawing.Point(3, 3);
-            this.Pbx_Rostro.Name = "Pbx_Rostro";
-            this.Pbx_Rostro.Size = new System.Drawing.Size(285, 258);
-            this.Pbx_Rostro.TabIndex = 0;
-            this.Pbx_Rostro.TabStop = false;
             // 
             // Pbx_Placa
             // 
@@ -383,6 +335,54 @@
             this.Pbx_Placa.TabIndex = 1;
             this.Pbx_Placa.TabStop = false;
             // 
+            // Pbx_Rostro
+            // 
+            this.Pbx_Rostro.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Pbx_Rostro.Location = new System.Drawing.Point(3, 3);
+            this.Pbx_Rostro.Name = "Pbx_Rostro";
+            this.Pbx_Rostro.Size = new System.Drawing.Size(285, 258);
+            this.Pbx_Rostro.TabIndex = 0;
+            this.Pbx_Rostro.TabStop = false;
+            // 
+            // TLP_Cams
+            // 
+            this.TLP_Cams.ColumnCount = 1;
+            this.TLP_Cams.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TLP_Cams.Controls.Add(this.SPC_PlacaDelantera, 0, 1);
+            this.TLP_Cams.Controls.Add(this.SPC_PlacaTrasera, 0, 0);
+            this.TLP_Cams.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TLP_Cams.Location = new System.Drawing.Point(3, 3);
+            this.TLP_Cams.Name = "TLP_Cams";
+            this.TLP_Cams.RowCount = 2;
+            this.TLP_Cams.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TLP_Cams.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TLP_Cams.Size = new System.Drawing.Size(594, 702);
+            this.TLP_Cams.TabIndex = 45;
+            // 
+            // SPC_PlacaDelantera
+            // 
+            this.SPC_PlacaDelantera.AutoScrollMargin = new System.Drawing.Size(2, 2);
+            this.SPC_PlacaDelantera.AutoSize = true;
+            this.SPC_PlacaDelantera.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.SPC_PlacaDelantera.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SPC_PlacaDelantera.Location = new System.Drawing.Point(3, 354);
+            this.SPC_PlacaDelantera.Name = "SPC_PlacaDelantera";
+            this.SPC_PlacaDelantera.Size = new System.Drawing.Size(588, 345);
+            this.SPC_PlacaDelantera.TabIndex = 43;
+            // 
+            // SPC_PlacaTrasera
+            // 
+            this.SPC_PlacaTrasera.AutoScrollMargin = new System.Drawing.Size(2, 2);
+            this.SPC_PlacaTrasera.AutoSize = true;
+            this.SPC_PlacaTrasera.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.SPC_PlacaTrasera.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.SPC_PlacaTrasera.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SPC_PlacaTrasera.Location = new System.Drawing.Point(3, 3);
+            this.SPC_PlacaTrasera.Name = "SPC_PlacaTrasera";
+            this.SPC_PlacaTrasera.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.SPC_PlacaTrasera.Size = new System.Drawing.Size(588, 345);
+            this.SPC_PlacaTrasera.TabIndex = 41;
+            // 
             // Frm_IngresoTag
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -391,6 +391,7 @@
             this.Controls.Add(this.TLPanel);
             this.Name = "Frm_IngresoTag";
             this.Text = "Ingreso Condóminos";
+            this.Load += new System.EventHandler(this.Frm_IngresoTag_Load);
             this.TLPanel.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.Gbx_Anterior.ResumeLayout(false);
@@ -399,14 +400,14 @@
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.TLP_Cams.ResumeLayout(false);
-            this.TLP_Cams.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Pbx_Rostro)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pbx_Placa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pbx_Rostro)).EndInit();
+            this.TLP_Cams.ResumeLayout(false);
+            this.TLP_Cams.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessInterfaces;
+using ResidencialEnums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -13,11 +15,17 @@ namespace caseta.Forms
 {
     public partial class Frm_IngresoTag : Form
     {
+        private readonly IDispositivoProcessor dispositivoProcessor;
         public Frm_IngresoTag()
         {
             InitializeComponent();
-            SPC_PlacaTrasera.StartPlay(new Uri(ConfigurationManager.AppSettings["PlacaTrasera"]));
-            SPC_PlacaDelantera.StartPlay(new Uri(ConfigurationManager.AppSettings["Rostro"]));
+            dispositivoProcessor = Factoria.Instancia.CreateDispositivoProcessor();
+        }
+
+        private void Frm_IngresoTag_Load(object sender, EventArgs e)
+        {
+            SPC_PlacaTrasera.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpPlacaTrasera)));
+            SPC_PlacaDelantera.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpRostro)));
         }
     }
 }

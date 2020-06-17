@@ -1,11 +1,8 @@
 ﻿using DataInterfaces;
 using SecureGateTypes;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataLayer
 {
@@ -26,13 +23,13 @@ namespace DataLayer
                     fechaIngreso = DateTime.Now,
                     fechaSalida = null,
                     fotoCabina = cabina,
-                    fotoIdentificacion = identificacion, 
+                    fotoIdentificacion = identificacion,
                     fotoPlacaDelantera = placaDelantera,
                     fotoPlacaTrasera = placaDelantera
                 };
                 context.IngresoSalidaVisitas.Add(ingreso);
                 return context.SaveChanges();
-            }            
+            }
         }
 
         public int SetSalida(int idVisita, string fotoSalida)
