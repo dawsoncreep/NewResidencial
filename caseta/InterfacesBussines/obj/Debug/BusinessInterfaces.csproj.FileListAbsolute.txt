@@ -1,12 +1,5 @@
 D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\BusinessInterfaces.dll
 D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\BusinessInterfaces.pdb
-D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\SecureGateTypes.dll
-D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\SecureGateTypes.pdb
-D:\OTROS\NewResidencial\caseta\InterfacesBussines\obj\Debug\BusinessInterfaces.csproj.CopyComplete
-D:\OTROS\NewResidencial\caseta\InterfacesBussines\obj\Debug\BusinessInterfaces.dll
-D:\OTROS\NewResidencial\caseta\InterfacesBussines\obj\Debug\BusinessInterfaces.pdb
-D:\OTROS\NewResidencial\caseta\InterfacesBussines\obj\Debug\BusinessInterfaces.csprojAssemblyReference.cache
-D:\OTROS\NewResidencial\caseta\InterfacesBussines\obj\Debug\BusinessInterfaces.csproj.CoreCompileInputs.cache
 D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\Microsoft.Win32.Primitives.dll
 D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\netstandard.dll
 D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\System.AppContext.dll
@@ -104,4 +97,11 @@ D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\System.Xml.XmlSerial
 D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\System.Xml.XPath.dll
 D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\System.Xml.XPath.XDocument.dll
 D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\ResidencialEnums.dll
+D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\SecureGateTypes.dll
 D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\ResidencialEnums.pdb
+D:\OTROS\NewResidencial\caseta\InterfacesBussines\bin\Debug\SecureGateTypes.pdb
+D:\OTROS\NewResidencial\caseta\InterfacesBussines\obj\Debug\BusinessInterfaces.csprojAssemblyReference.cache
+D:\OTROS\NewResidencial\caseta\InterfacesBussines\obj\Debug\BusinessInterfaces.csproj.CoreCompileInputs.cache
+D:\OTROS\NewResidencial\caseta\InterfacesBussines\obj\Debug\BusinessInterfaces.csproj.CopyComplete
+D:\OTROS\NewResidencial\caseta\InterfacesBussines\obj\Debug\BusinessInterfaces.dll
+D:\OTROS\NewResidencial\caseta\InterfacesBussines\obj\Debug\BusinessInterfaces.pdb
