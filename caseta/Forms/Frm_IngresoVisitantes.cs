@@ -12,6 +12,7 @@ using WebEye.Controls.WinForms.StreamPlayerControl;
 using BusinessLayer;
 using SecureGateTypes;
 using BusinessInterfaces;
+using ResidencialEnums;
 
 namespace caseta
 {

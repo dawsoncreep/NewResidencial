@@ -1,5 +1,6 @@
 ﻿using BusinessInterfaces;
 using DataLayer;
+using ResidencialEnums;
 using SecureGateTypes;
 using System;
 using System.Collections.Generic;

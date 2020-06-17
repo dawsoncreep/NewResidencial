@@ -61,6 +61,10 @@
     <Compile Include="Visita\IVisitaRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\ResidencialEnums\ResidencialEnums.csproj">
+      <Project>{0768ECFD-BB25-4D0B-A762-56D314AF2EB5}</Project>
+      <Name>ResidencialEnums</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SecureGateTypes\SecureGateTypes.csproj">
       <Project>{95FCF6AA-B0F4-46B9-BF25-088E8B224F3E}</Project>
       <Name>SecureGateTypes</Name>

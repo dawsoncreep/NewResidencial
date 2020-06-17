@@ -80,6 +80,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\ResidencialEnums\ResidencialEnums.csproj">
+      <Project>{0768ECFD-BB25-4D0B-A762-56D314AF2EB5}</Project>
+      <Name>ResidencialEnums</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InterfacesDatos\DataInterfaces.csproj">
       <Project>{d5e36796-77bc-423a-8a58-45cca022ba87}</Project>
       <Name>DataInterfaces</Name>
