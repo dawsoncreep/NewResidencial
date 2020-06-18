@@ -46,6 +46,7 @@
     <Compile Include="Ingreso\IIngresoSalidaProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ubicacion\IUbicacionProcessor.cs" />
+    <Compile Include="Usuario\IUsuarioProcessor.cs" />
     <Compile Include="Visita\IVisitaProcessor.cs" />
   </ItemGroup>
   <ItemGroup>

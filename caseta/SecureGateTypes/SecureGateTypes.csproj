@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AspNetUser\Usuario.cs" />
+    <Compile Include="Usuario\Usuario.cs" />
     <Compile Include="Dispositivos\Dispositivo.cs" />
     <Compile Include="Event\Evento.cs" />
     <Compile Include="External\ExternalTypeCbbx.cs" />

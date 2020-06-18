@@ -44,5 +44,10 @@ namespace caseta
         {
             return new DispositivoProcessor(new DispositivoRepositorio());
         }
+
+        internal IUsuarioProcessor CreateUsuarioProcessor()
+        {
+            return new UsuarioProcessor(new UsuarioRepositorio());
+        }
     }
 }

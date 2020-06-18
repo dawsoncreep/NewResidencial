@@ -1,6 +1,6 @@
 ﻿namespace caseta
 {
-    partial class fLogin
+    partial class Frm_Login
     {
         /// <summary>
         /// Required designer variable.
@@ -106,14 +106,14 @@
             this.Tbx_User.Size = new System.Drawing.Size(288, 28);
             this.Tbx_User.TabIndex = 1;
             // 
-            // fLogin
+            // Frm_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(311, 266);
             this.Controls.Add(this.gbLogin);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "fLogin";
+            this.Name = "Frm_Login";
             this.Text = "Login";
             this.gbLogin.ResumeLayout(false);
             this.gbLogin.PerformLayout();

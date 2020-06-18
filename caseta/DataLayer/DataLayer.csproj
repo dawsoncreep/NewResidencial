@@ -71,6 +71,7 @@
     <Compile Include="Repositorios\Eventos\EventoRepositorio.cs" />
     <Compile Include="Repositorios\Ubicaciones\TipoUbicacionRepositorio.cs" />
     <Compile Include="Repositorios\Ubicaciones\UbicacionRepositorio.cs" />
+    <Compile Include="Repositorios\Usuarios\UsuarioRepositorio.cs" />
     <Compile Include="Repositorios\Visita\IngresoSalidaVisitaRepositorio.cs" />
     <Compile Include="Repositorios\Visita\TipoVisitaRepositorio.cs" />
     <Compile Include="Repositorios\Visita\VisitaRepositorio.cs" />
