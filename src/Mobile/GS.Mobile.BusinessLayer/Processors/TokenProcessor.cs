@@ -28,12 +28,7 @@ namespace GS.Mobile.BusinessLayer.Processors
             {
                 return await Task.FromResult(default(Token));
             }
-
-            if (!this.ValidateTokenString(token))
-            {
-                return await Task.FromResult(default(Token));
-            }
-
+            
             try
             {
                 var handler = new JwtSecurityTokenHandler();
@@ -59,7 +54,10 @@ namespace GS.Mobile.BusinessLayer.Processors
             {
                 var handler = new JwtSecurityTokenHandler();
                 var result = handler.ReadJwtToken(token);
-                return result != null;
+                
+                var date = DateTimeOffset.FromUnixTimeSeconds(long.Parse(result.Payload.Exp.ToString()));
+
+                return DateTime.Now <= date;
             }
             catch (Exception)
             {

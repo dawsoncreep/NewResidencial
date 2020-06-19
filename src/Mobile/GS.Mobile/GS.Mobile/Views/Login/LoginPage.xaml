@@ -6,17 +6,26 @@
                    xmlns:wrappers="clr-namespace:GS.Mobile.Views.Wrappers;assembly=GS.Mobile"
                    xmlns:behaviorsPack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
                    mc:Ignorable="d"
-                   x:Class="GS.Mobile.Views.Login.LoginPage">
+                   x:Class="GS.Mobile.Views.Login.LoginPage"
+                   BackgroundColor="White">
 
     <ContentPage.Behaviors>
         <behaviorsPack:EventToCommandBehavior EventName="Appearing" Command="{Binding OnLoadCommand}"/>
     </ContentPage.Behaviors>
 
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-            <Entry Placeholder="user@email.com" Text="{Binding UserName}"/>
-            <Entry Placeholder="Password" Text="{Binding Password}"/>
-            <Button Text="Login" Command="{Binding LoginCommand}"/>
+        <StackLayout VerticalOptions="StartAndExpand" Margin="35">
+            <Image Source="logo.png" HorizontalOptions="Center" HeightRequest="150" WidthRequest="150" Margin="0,0,0,50" Aspect="AspectFit"/>
+
+            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+
+            <Label Text="Usuario" Style="{StaticResource LoginLabel}" />
+            <Entry Placeholder="user@email.com" Text="{Binding UserName}" Style="{StaticResource LoginEntry}" d:Text="usermail20@condominio.com"/>
+
+            <Label Text="Contraseña" Style="{StaticResource LoginLabel}" />
+            <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="True" Style="{StaticResource LoginEntry}" d:Text="Password"/>
+
+            <Button Text="Ingresar" Command="{Binding LoginCommand}" Margin="0,30,0,0" />
         </StackLayout>
     </ContentPage.Content>
 </wrappers:LoginWrapper>

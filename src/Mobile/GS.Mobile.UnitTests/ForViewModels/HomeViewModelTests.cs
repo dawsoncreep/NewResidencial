@@ -12,6 +12,7 @@ namespace GS.Mobile.UnitTests.ForViewModels
     using System.Linq;
 
     using GS.Mobile.BusinessLayer.Interfaces;
+    using GS.Mobile.Share.Messages;
     using GS.Mobile.Share.Routing;
     using GS.Mobile.ViewModels.Attributes;
     using GS.Mobile.ViewModels.Home;
@@ -42,6 +43,11 @@ namespace GS.Mobile.UnitTests.ForViewModels
         /// </summary>
         private Mock<IRoutingService> mockIRoutingService;
 
+        /// <summary>
+        /// <see cref="IMessageService"/> mock object.
+        /// </summary>
+        private Mock<IMessageService> mockIMessageService;
+
         #region Tests Life Cycle
 
         /// <summary>
@@ -52,6 +58,7 @@ namespace GS.Mobile.UnitTests.ForViewModels
         {
             this.mockISessionProcessor = new Mock<ISessionProcessor>();
             this.mockIRoutingService = new Mock<IRoutingService>();
+            this.mockIMessageService = new Mock<IMessageService>();
         }
 
         /// <summary>
@@ -62,6 +69,7 @@ namespace GS.Mobile.UnitTests.ForViewModels
         {
             this.mockISessionProcessor = null;
             this.mockIRoutingService = null;
+            this.mockIMessageService = null;
         }
         #endregion
 
@@ -72,7 +80,7 @@ namespace GS.Mobile.UnitTests.ForViewModels
         public void HomeViewModelShouldBeCreated()
         {
             // Arrange
-            var actual = new HomeViewModel(this.mockIRoutingService.Object, this.mockISessionProcessor.Object);
+            var actual = new HomeViewModel(this.mockIRoutingService.Object, this.mockIMessageService.Object, this.mockISessionProcessor.Object);
 
             // Act
             this.homeViewModel = actual;
@@ -89,7 +97,7 @@ namespace GS.Mobile.UnitTests.ForViewModels
         public void HomeViewModelShouldHaveAuthorizationAttributeWidthNoRoles()
         {
             // Arrange
-            this.homeViewModel = new HomeViewModel(this.mockIRoutingService.Object, this.mockISessionProcessor.Object);
+            this.homeViewModel = new HomeViewModel(this.mockIRoutingService.Object, this.mockIMessageService.Object, this.mockISessionProcessor.Object);
 
             // Act
             var attribute = this.homeViewModel.GetType().CustomAttributes.FirstOrDefault();
@@ -110,8 +118,8 @@ namespace GS.Mobile.UnitTests.ForViewModels
             this.mockISessionProcessor.Setup(method => method.GetAccessToken()).ReturnsAsync(string.Empty);
 
             // Act
-            this.homeViewModel = new HomeViewModel(this.mockIRoutingService.Object, this.mockISessionProcessor.Object);
-            
+            this.homeViewModel = new HomeViewModel(this.mockIRoutingService.Object, this.mockIMessageService.Object, this.mockISessionProcessor.Object);
+
             // Assert
             this.mockISessionProcessor.Verify(method => method.GetAccessToken(), Times.Once);
             this.mockIRoutingService.Verify(method => method.PushAsync<LoginPage>(), Times.Once);

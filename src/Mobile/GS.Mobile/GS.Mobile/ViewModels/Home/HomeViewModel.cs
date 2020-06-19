@@ -13,6 +13,7 @@ namespace GS.Mobile.ViewModels.Home
     using System.Windows.Input;
 
     using GS.Mobile.BusinessLayer.Interfaces;
+    using GS.Mobile.Share.Messages;
     using GS.Mobile.Share.Routing;
     using GS.Mobile.ViewModels.Attributes;
 
@@ -30,10 +31,13 @@ namespace GS.Mobile.ViewModels.Home
         /// <param name="routingService">
         /// The routing service.
         /// </param>
+        /// <param name="messageService">
+        /// The message Service.
+        /// </param>
         /// <param name="sessionProcessor">
         /// The session Processor.
         /// </param>
-        public HomeViewModel(IRoutingService routingService, ISessionProcessor sessionProcessor) : base(routingService, sessionProcessor)
+        public HomeViewModel(IRoutingService routingService, IMessageService messageService, ISessionProcessor sessionProcessor) : base(routingService, messageService, sessionProcessor)
         {
         }
 

@@ -12,6 +12,7 @@ namespace GS.Mobile.ViewModels.Master
     using System.Windows.Input;
 
     using GS.Mobile.BusinessLayer.Interfaces;
+    using GS.Mobile.Share.Messages;
     using GS.Mobile.Share.Routing;
     using GS.Mobile.ViewModels.Attributes;
     using GS.Mobile.Views.Login;
@@ -30,10 +31,13 @@ namespace GS.Mobile.ViewModels.Master
         /// <param name="routingService">
         /// The routing service.
         /// </param>
+        /// <param name="messageService">
+        /// The message Service.
+        /// </param>
         /// <param name="sessionProcessor">
         /// The session processor.
         /// </param>
-        public MasterViewModel(IRoutingService routingService, ISessionProcessor sessionProcessor) : base(routingService, sessionProcessor)
+        public MasterViewModel(IRoutingService routingService, IMessageService messageService, ISessionProcessor sessionProcessor) : base(routingService, messageService, sessionProcessor)
         {
         }
 

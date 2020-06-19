@@ -15,6 +15,7 @@ namespace GS.Mobile.ViewModels
     using System.Windows.Input;
 
     using GS.Mobile.BusinessLayer.Interfaces;
+    using GS.Mobile.Share.Messages;
     using GS.Mobile.Share.Routing;
     using GS.Mobile.ViewModels.Extensions;
     using GS.Mobile.Views.Login;
@@ -33,6 +34,11 @@ namespace GS.Mobile.ViewModels
         protected readonly IRoutingService RoutingService;
 
         /// <summary>
+        /// The message service.
+        /// </summary>
+        protected readonly IMessageService MessageService;
+
+        /// <summary>
         /// The session processor.
         /// </summary>
         protected readonly ISessionProcessor SessionProcessor;
@@ -43,13 +49,17 @@ namespace GS.Mobile.ViewModels
         /// <param name="routingService">
         /// The routing Service.
         /// </param>
+        /// <param name="messageService">
+        /// The message Service.
+        /// </param>
         /// <param name="sessionProcessor">
         /// The session Processor.
         /// </param>
-        protected BaseViewModel(IRoutingService routingService, ISessionProcessor sessionProcessor)
+        protected BaseViewModel(IRoutingService routingService, IMessageService messageService, ISessionProcessor sessionProcessor)
         {
             this.RoutingService = routingService;
             this.SessionProcessor = sessionProcessor;
+            this.MessageService = messageService;
 
             this.ValidateAuthorizationRules();
         }

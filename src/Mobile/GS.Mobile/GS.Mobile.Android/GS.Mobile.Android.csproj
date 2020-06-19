@@ -35,6 +35,7 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <MandroidI18n />
     <AndroidPackageFormat>apk</AndroidPackageFormat>
+    <AndroidSupportedAbis />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -62,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementations\DroidFileSystem.cs" />
+    <Compile Include="Implementations\DroidMessageService.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,6 +94,10 @@
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\GS.Mobile.Types\GS.Mobile.Types.csproj">
+      <Project>{649d684a-aaac-4ef6-968c-b184b2214903}</Project>
+      <Name>GS.Mobile.Types</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GS.Mobile\GS.Mobile.csproj">
       <Project>{846DE31F-BF20-4FB8-A27C-A42C557F2933}</Project>
       <Name>GS.Mobile</Name>
@@ -100,7 +106,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\splash.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\logo.png" />
+  </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\xml\network_security_config.xml" />
   </ItemGroup>

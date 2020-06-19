@@ -87,10 +87,11 @@ namespace GS.Mobile.UnitTests.ForProcessors
         public async Task GetAccessTokenShouldSucceed()
         {
             // Arrange
-            const string Expected = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmltYXJ5c2lkIjoiMiIsInVuaXF1ZV9uYW1lIjoiSmFpbWUiLCJlbWFpbCI6ImphaW1lLmNhc3RvcmVuYUBwc2kuY29uZG9taW5pby5jb20iLCJyb2xlIjoiQWRtaW5pc3RyYWRvciIsIm5iZiI6MTU5MTkwNzAwMywiZXhwIjoxNTkxOTE0MjAzLCJpYXQiOjE1OTE5MDcwMDMsImlzcyI6Ijk1Nzg4MGJlLTdkNmQtNGY4YS1hMzQ1LTdiOWViNzc4ZDVkZCIsImF1ZCI6IjNjMTYyNTVlLTJiYmQtNGE0OC04MjJmLWNmYThmZWEzMWNkOSJ9.IZhNOZ00DtyjuXifXPyeU6D2xnt0SXzcM-g_TP2OnwY";
+            const string Expected = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmltYXJ5c2lkIjoiMSIsInVuaXF1ZV9uYW1lIjoiR29vZFVzZXJOYW1lIiwiZW1haWwiOiJnb29kdXNlckBlbWFpbC5jb20iLCJyb2xlIjoiQWRtaW5pc3RyYWRvciIsIm5iZiI6MTU5MjU0MTU2MywiZXhwIjoxNjY0NTQxNTYzLCJpYXQiOjE1OTI1NDE1NjMsImlzcyI6IjNiZDk2ZWZmLTlhM2UtNDBmYy05N2RmLTkyNDg0YjUxZmE4OSIsImF1ZCI6ImVhZmRhYzkzLTM0MzItNDA2Yy04OWVmLWViOGNlNjNiOWRhYSJ9.Xg52kzRAGsRpdxQrmWI8M07J6NjmUmXWZYs8mqY9gaI";
             var localData = new List<SToken> { new SToken { Id = Guid.NewGuid(), Data = Expected } };
 
             this.mockITokenRepository.Setup(method => method.GetAllByPageAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(localData);
+            this.mockITokenProcessor.Setup(method => method.ValidateTokenString(It.IsAny<string>())).Returns(true);
             this.sessionProcessor = new SessionProcessor(this.mockITokenProcessor.Object, this.mockITokenRepository.Object);
 
             // Act
@@ -189,6 +190,7 @@ namespace GS.Mobile.UnitTests.ForProcessors
 
             var localData = new List<SToken> { new SToken { Id = Guid.NewGuid(), Data = ExpectedToken } };
 
+            this.mockITokenProcessor.Setup(method => method.ValidateTokenString(It.IsAny<string>())).Returns(true);
             this.mockITokenProcessor.Setup(method => method.DecodeTokenString(ExpectedToken)).ReturnsAsync(expectedTokenData);
             this.mockITokenRepository.Setup(method => method.GetAllByPageAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(localData);
 
@@ -220,6 +222,7 @@ namespace GS.Mobile.UnitTests.ForProcessors
 
             var localData = new List<SToken> { new SToken { Id = Guid.NewGuid(), Data = ExpectedToken } };
 
+            this.mockITokenProcessor.Setup(method => method.ValidateTokenString(It.IsAny<string>())).Returns(true);
             this.mockITokenProcessor.Setup(method => method.DecodeTokenString(ExpectedToken)).ReturnsAsync(expectedTokenData);
             this.mockITokenRepository.Setup(method => method.GetAllByPageAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(localData);
 
@@ -250,6 +253,7 @@ namespace GS.Mobile.UnitTests.ForProcessors
 
             var localData = new List<SToken> { new SToken { Id = Guid.NewGuid(), Data = ExpectedToken } };
 
+            this.mockITokenProcessor.Setup(method => method.ValidateTokenString(It.IsAny<string>())).Returns(true);
             this.mockITokenProcessor.Setup(method => method.DecodeTokenString(ExpectedToken)).ReturnsAsync(default(Token));
             this.mockITokenRepository.Setup(method => method.GetAllByPageAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(localData);
 
@@ -261,6 +265,37 @@ namespace GS.Mobile.UnitTests.ForProcessors
             // Assert
             this.mockITokenRepository.Verify(method => method.GetAllByPageAsync(It.IsAny<int>(), It.IsAny<int>()), Times.Once);
             this.mockITokenProcessor.Verify(method => method.DecodeTokenString(ExpectedToken), Times.Once);
+            Assert.IsFalse(actual);
+        }
+
+        /// <summary>
+        /// This tests should validate token expiration time.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        [TestMethod]
+        public async Task ValidateSessionWithRolesShouldFailWhenTokenIsNotValid()
+        {
+            // Arrange
+            const string AllowedRoles = "Representante,Habitante";
+
+            const string ExpectedToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmltYXJ5c2lkIjoiMiIsInVuaXF1ZV9uYW1lIjoiSmFpbWUiLCJlbWFpbCI6ImphaW1lLmNhc3RvcmVuYUBwc2kuY29uZG9taW5pby5jb20iLCJyb2xlIjoiQWRtaW5pc3RyYWRvciIsIm5iZiI6MTU5MTkwNzAwMywiZXhwIjoxNTkxOTE0MjAzLCJpYXQiOjE1OTE5MDcwMDMsImlzcyI6Ijk1Nzg4MGJlLTdkNmQtNGY4YS1hMzQ1LTdiOWViNzc4ZDVkZCIsImF1ZCI6IjNjMTYyNTVlLTJiYmQtNGE0OC04MjJmLWNmYThmZWEzMWNkOSJ9.IZhNOZ00DtyjuXifXPyeU6D2xnt0SXzcM-g_TP2OnwY";
+
+            var localData = new List<SToken> { new SToken { Id = Guid.NewGuid(), Data = ExpectedToken } };
+
+            this.mockITokenProcessor.Setup(method => method.ValidateTokenString(It.IsAny<string>())).Returns(false);
+            this.mockITokenProcessor.Setup(method => method.DecodeTokenString(ExpectedToken)).ReturnsAsync(default(Token));
+            this.mockITokenRepository.Setup(method => method.GetAllByPageAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(localData);
+
+            this.sessionProcessor = new SessionProcessor(this.mockITokenProcessor.Object, this.mockITokenRepository.Object);
+
+            // Act
+            var actual = await this.sessionProcessor.ValidateSessionWithRoles(AllowedRoles);
+
+            // Assert
+            this.mockITokenRepository.Verify(method => method.GetAllByPageAsync(It.IsAny<int>(), It.IsAny<int>()), Times.Once);
+            this.mockITokenProcessor.Verify(method => method.ValidateTokenString(It.IsAny<string>()), Times.Once);
             Assert.IsFalse(actual);
         }
         #endregion

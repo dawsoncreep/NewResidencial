@@ -9,10 +9,8 @@
 
 namespace GS.Mobile.DataLayer.Services.Authentication
 {
-    using System.Net;
     using System.Threading.Tasks;
 
-    using GS.Mobile.Types.Exceptions;
     using GS.Mobile.Types.Security;
 
     /// <summary>
@@ -47,17 +45,6 @@ namespace GS.Mobile.DataLayer.Services.Authentication
         {
             var url = $"{this.server}/api/Authentication/Login";
             var response = await this.serviceManager.ExecutePost<string>(url, request);
-            
-            if ((HttpStatusCode)response.StatusCode == HttpStatusCode.BadRequest)
-            {
-                throw new InvalidUserAccessException();
-            }
-
-            if ((HttpStatusCode)response.StatusCode == HttpStatusCode.InternalServerError)
-            {
-                throw new ServiceCallException(response.Error);
-            }
-
             return response.Result;
         }
     }

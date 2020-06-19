@@ -31,11 +31,18 @@ namespace GS.Mobile.Droid
                 Android.Manifest.Permission.ReadExternalStorage,
                 Android.Manifest.Permission.WriteExternalStorage
             };
+
+        /// <summary>
+        /// Gets the application instance.
+        /// </summary>
+        public static MainActivity ApplicationInstance { get; private set; }
         
         /// <inheritdoc />
         [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1126:PrefixCallsCorrectly", Justification = "Reviewed. Suppression is OK here.")]
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            ApplicationInstance = this;
+
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 

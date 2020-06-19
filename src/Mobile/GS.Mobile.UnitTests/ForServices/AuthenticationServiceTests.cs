@@ -76,15 +76,14 @@ namespace GS.Mobile.UnitTests.ForServices
         public async Task LoginShouldSucceed()
         {
             // Arrange
-            const string Url = "http://localhost:64406/api/Authentication/Login";
             var loginRequest = new LoginRequest
-            {
-                UserName = "jaime.castorena@psi.condominio.com",
-                Password = "Password"
-            };
+                                   {
+                                       UserName = "jaime.castorena@psi.condominio.com",
+                                       Password = "Password"
+                                   };
             var serviceResult = new ServiceCallResult<string>(200, "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmltYXJ5c2lkIjoiMiIsInVuaXF1ZV9uYW1lIjoiSmFpbWUiLCJlbWFpbCI6ImphaW1lLmNhc3RvcmVuYUBwc2kuY29uZG9taW5pby5jb20iLCJyb2xlIjoiQWRtaW5pc3RyYWRvciIsIm5iZiI6MTU5MTkwNzAwMywiZXhwIjoxNTkxOTE0MjAzLCJpYXQiOjE1OTE5MDcwMDMsImlzcyI6Ijk1Nzg4MGJlLTdkNmQtNGY4YS1hMzQ1LTdiOWViNzc4ZDVkZCIsImF1ZCI6IjNjMTYyNTVlLTJiYmQtNGE0OC04MjJmLWNmYThmZWEzMWNkOSJ9.IZhNOZ00DtyjuXifXPyeU6D2xnt0SXzcM-g_TP2OnwY");
 
-            this.mockIServiceManager.Setup(method => method.ExecutePost<string>(Url, loginRequest)).ReturnsAsync(serviceResult);
+            this.mockIServiceManager.Setup(method => method.ExecutePost<string>(It.IsAny<string>(), It.IsAny<LoginRequest>())).ReturnsAsync(serviceResult);
             this.authenticationService = new AuthenticationService(this.mockIServiceManager.Object);
 
             // Act
@@ -107,15 +106,13 @@ namespace GS.Mobile.UnitTests.ForServices
         public async Task LoginShouldFailWhenInvalidCredentials()
         {
             // Arrange
-            const string Url = "http://localhost:64406/api/Authentication/Login";
             var loginRequest = new LoginRequest
             {
                 UserName = "user.invalid@psi.condominio.com",
                 Password = "BadPassword"
             };
-            var serviceResult = new ServiceCallResult<string>(400, "Nombre de usuario y/o contraseña son incorrectos.");
-
-            this.mockIServiceManager.Setup(method => method.ExecutePost<string>(Url, loginRequest)).ReturnsAsync(serviceResult);
+            
+            this.mockIServiceManager.Setup(method => method.ExecutePost<string>(It.IsAny<string>(), It.IsAny<LoginRequest>())).ThrowsAsync(new InvalidUserAccessException());
             this.authenticationService = new AuthenticationService(this.mockIServiceManager.Object);
 
             try
@@ -143,15 +140,13 @@ namespace GS.Mobile.UnitTests.ForServices
         public async Task LoginShouldFailWhenServerException()
         {
             // Arrange
-            const string Url = "http://localhost:64406/api/Authentication/Login";
             var loginRequest = new LoginRequest
             {
                 UserName = "user.invalid@psi.condominio.com",
                 Password = "BadPassword"
             };
-            var serviceResult = new ServiceCallResult<string>(500, "Some random exception message");
 
-            this.mockIServiceManager.Setup(method => method.ExecutePost<string>(Url, loginRequest)).ReturnsAsync(serviceResult);
+            this.mockIServiceManager.Setup(method => method.ExecutePost<string>(It.IsAny<string>(), It.IsAny<LoginRequest>())).ThrowsAsync(new ServiceCallException());
             this.authenticationService = new AuthenticationService(this.mockIServiceManager.Object);
 
             try

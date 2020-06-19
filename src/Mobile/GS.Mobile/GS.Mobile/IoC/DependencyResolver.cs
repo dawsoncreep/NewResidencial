@@ -18,6 +18,7 @@ namespace GS.Mobile.IoC
     using GS.Mobile.DataLayer.Services;
     using GS.Mobile.DataLayer.Services.Authentication;
     using GS.Mobile.Share.FileSystem;
+    using GS.Mobile.Share.Messages;
     using GS.Mobile.Share.Routing;
     using GS.Mobile.ViewModels.Home;
     using GS.Mobile.ViewModels.Login;
@@ -133,6 +134,7 @@ namespace GS.Mobile.IoC
         private void RegisterTools()
         {
             this.builder.RegisterType<RoutingService>().As<IRoutingService>().SingleInstance();
+            this.builder.Register(c => DependencyService.Resolve<IMessageService>()).As<IMessageService>().SingleInstance();
         }
 
         /// <summary>

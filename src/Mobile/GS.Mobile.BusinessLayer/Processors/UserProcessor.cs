@@ -41,15 +41,8 @@ namespace GS.Mobile.BusinessLayer.Processors
         /// <inheritdoc />
         public async Task<string> Login(string userName, string password)
         {
-            try
-            {
-                var request = new LoginRequest { UserName = userName, Password = password };
-                return await this.authenticationService.Login(request);
-            }
-            catch (Exception exception)
-            {
-                throw new ServiceCallException(exception);
-            }
+            var request = new LoginRequest { UserName = userName, Password = password };
+            return await this.authenticationService.Login(request);
         }
     }
 }

@@ -65,6 +65,10 @@ namespace GS.Mobile.BusinessLayer.Processors
                     await this.tokenRepository.RemoveAll();
                     token = string.Empty;
                 }
+                else if (!this.tokenProcessor.ValidateTokenString(data.First().Data))
+                {
+                    token = string.Empty;
+                }
                 else
                 {
                     token = data.First().Data;

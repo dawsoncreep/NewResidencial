@@ -158,21 +158,21 @@ namespace GS.Mobile.UnitTests.ForProcessors
         public void ValidateTokenStringShouldSucceed()
         {
             // Arrange
-            const string Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmltYXJ5c2lkIjoiMiIsInVuaXF1ZV9uYW1lIjoiSmFpbWUiLCJlbWFpbCI6ImphaW1lLmNhc3RvcmVuYUBwc2kuY29uZG9taW5pby5jb20iLCJyb2xlIjoiQWRtaW5pc3RyYWRvciIsIm5iZiI6MTU5MTkwNzAwMywiZXhwIjoxNTkxOTE0MjAzLCJpYXQiOjE1OTE5MDcwMDMsImlzcyI6Ijk1Nzg4MGJlLTdkNmQtNGY4YS1hMzQ1LTdiOWViNzc4ZDVkZCIsImF1ZCI6IjNjMTYyNTVlLTJiYmQtNGE0OC04MjJmLWNmYThmZWEzMWNkOSJ9.IZhNOZ00DtyjuXifXPyeU6D2xnt0SXzcM-g_TP2OnwY";
+            const string Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmltYXJ5c2lkIjoiMSIsInVuaXF1ZV9uYW1lIjoiR29vZFVzZXJOYW1lIiwiZW1haWwiOiJnb29kdXNlckBlbWFpbC5jb20iLCJyb2xlIjoiQWRtaW5pc3RyYWRvciIsIm5iZiI6MTU5MjU0MTU2MywiZXhwIjoxNjY0NTQxNTYzLCJpYXQiOjE1OTI1NDE1NjMsImlzcyI6IjNiZDk2ZWZmLTlhM2UtNDBmYy05N2RmLTkyNDg0YjUxZmE4OSIsImF1ZCI6ImVhZmRhYzkzLTM0MzItNDA2Yy04OWVmLWViOGNlNjNiOWRhYSJ9.Xg52kzRAGsRpdxQrmWI8M07J6NjmUmXWZYs8mqY9gaI";
             this.tokenProcessor = new TokenProcessor();
 
             // Act
             var actual = this.tokenProcessor.ValidateTokenString(Token);
 
             // Assert
-            Assert.IsTrue(actual);
+            Assert.IsTrue(actual, "Generate a new token with expiration time bigger than 1 year.");
         }
 
         /// <summary>
         /// This tests should validate a JWT successfully.
         /// </summary>
         [TestMethod]
-        public void ValidateTokenStringShouldFail()
+        public void ValidateTokenStringShouldFailOnTokenStructure()
         {
             // Arrange
             const string Token = "eyJhbGciOiJIUzIY";
@@ -184,6 +184,24 @@ namespace GS.Mobile.UnitTests.ForProcessors
             // Assert
             Assert.IsFalse(actual);
         }
+
+        /// <summary>
+        /// This tests should validate token expiration time.
+        /// </summary>
+        [TestMethod]
+        public void ValidateTokenStringShouldFailOnExpirationTime()
+        {
+            // Arrange
+            const string Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmltYXJ5c2lkIjoiMiIsInVuaXF1ZV9uYW1lIjoiSmFpbWUiLCJlbWFpbCI6ImphaW1lLmNhc3RvcmVuYUBwc2kuY29uZG9taW5pby5jb20iLCJyb2xlIjoiQWRtaW5pc3RyYWRvciIsIm5iZiI6MTU5MTkwNzAwMywiZXhwIjoxNTkxOTE0MjAzLCJpYXQiOjE1OTE5MDcwMDMsImlzcyI6Ijk1Nzg4MGJlLTdkNmQtNGY4YS1hMzQ1LTdiOWViNzc4ZDVkZCIsImF1ZCI6IjNjMTYyNTVlLTJiYmQtNGE0OC04MjJmLWNmYThmZWEzMWNkOSJ9.IZhNOZ00DtyjuXifXPyeU6D2xnt0SXzcM-g_TP2OnwY";
+            this.tokenProcessor = new TokenProcessor();
+
+            // Act
+            var actual = this.tokenProcessor.ValidateTokenString(Token);
+
+            // Assert
+            Assert.IsFalse(actual, "Date has not expired or is not being validating.");
+        }
+
         #endregion
     }
 }

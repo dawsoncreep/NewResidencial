@@ -8,13 +8,41 @@
 
     <Application.Resources>
         <ResourceDictionary>
+            <!--Application Colors-->
+            <Color x:Key="Text">Black</Color>
+            <Color x:Key="Base">#2196F3</Color>
+
+            <Color x:Key="GuizzyRed">#C3002F</Color>
+            <Color x:Key="GuizzyWhite">#FFFFFF</Color>
+            <Color x:Key="GuizzyGray">DimGray</Color>
+            <Color x:Key="GuizzyBlue">#2c1bb6</Color>
+
+            <!--Specific Styles-->
+            <Style x:Key="LoginLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource Text}"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+
+            <Style x:Key="LoginEntry" TargetType="Entry">
+                <Setter Property="PlaceholderColor" Value="{StaticResource GuizzyGray}" />
+                <Setter Property="TextColor" Value="{StaticResource Text}"/>
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+
+
             <!--Global Styles-->
-            <Color x:Key="NavigationPrimary">#2196F3</Color>
             <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="BarBackgroundColor" Value="{StaticResource Base}" />
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource Base}" />
+                <Setter Property="TextColor" Value="{StaticResource GuizzyWhite}" />
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
-    
+
 </Application>
