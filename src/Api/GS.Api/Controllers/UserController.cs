@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AuthenticationController.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
+// <copyright file="UserController.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
 //   COPYRIGHT 2020 © Dawsoncreep. All rights reserved.
 // </copyright>
 // <summary>
@@ -14,9 +14,10 @@ namespace Authentication.Api.Controllers
 
     using GS.Api.BusinessLayer.Interfaces.Facade;
     using GS.Api.OperationalManagement.Interfaces;
-    using GS.Api.Types.Enums;
-    using GS.Api.Types.Models;
 
+    /// <summary>
+    /// The user controller.
+    /// </summary>
     [AllowAnonymous]
     public class UserController : BaseApiController
     {
@@ -39,15 +40,11 @@ namespace Authentication.Api.Controllers
             this.userFacade = userFacade;
         }
 
-
         /// <summary>
-        /// Authenticates a user, if valid returns a valid Json Web Token.
+        /// Gets all settler user.
         /// </summary>
-        /// <param name="loginRequest">
-        /// The login request.
-        /// </param>
         /// <returns>
-        /// returns a JWT asynchronously.
+        /// The <see cref="Task"/>.
         /// </returns>
         [HttpGet]
         [ActionName("GetAll")]

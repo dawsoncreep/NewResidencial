@@ -9,8 +9,6 @@
 
 namespace Authentication.UnitTests.ForBusinessLayer.Processors
 {
-    using System.Linq;
-    using System.Security.Claims;
     using System.Threading.Tasks;
 
     using Authentication.TestingTools;

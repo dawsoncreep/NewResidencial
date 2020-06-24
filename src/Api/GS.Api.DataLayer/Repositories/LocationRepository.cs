@@ -14,7 +14,6 @@ namespace GS.Api.DataLayer.Repositories
 
     using GS.Api.DataLayer.Interfaces;
     using GS.Api.OperationalManagement.Extensions;
-    using GS.Api.Types.Exceptions;
     using GS.Api.Types.Models;
     using GS.Api.Types.Models.Persistence;
 

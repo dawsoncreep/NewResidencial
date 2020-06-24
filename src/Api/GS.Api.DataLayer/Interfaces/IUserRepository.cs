@@ -9,7 +9,6 @@
 
 namespace GS.Api.DataLayer.Interfaces
 {
-    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using GS.Api.Types.Exceptions;

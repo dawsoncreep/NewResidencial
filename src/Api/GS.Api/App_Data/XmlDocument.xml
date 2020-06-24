@@ -224,6 +224,11 @@
             The <see cref="T:System.Threading.Tasks.Task"/>.
             </returns>
         </member>
+        <member name="T:Authentication.Api.Controllers.UserController">
+            <summary>
+            The user controller.
+            </summary>
+        </member>
         <member name="F:Authentication.Api.Controllers.UserController.userFacade">
             <summary>
             The user facade.
@@ -242,13 +247,10 @@
         </member>
         <member name="M:Authentication.Api.Controllers.UserController.GetAll">
             <summary>
-            Authenticates a user, if valid returns a valid Json Web Token.
+            Gets all settler user.
             </summary>
-            <param name="loginRequest">
-            The login request.
-            </param>
             <returns>
-            returns a JWT asynchronously.
+            The <see cref="T:System.Threading.Tasks.Task"/>.
             </returns>
         </member>
         <member name="T:Authentication.Api.WebApiApplication">

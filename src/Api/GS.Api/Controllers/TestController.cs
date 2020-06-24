@@ -13,8 +13,6 @@ namespace Authentication.Api.Controllers
     using System.Threading.Tasks;
     using System.Web.Http;
 
-    using GS.Api.BusinessLayer.Processors;
-
     /// <summary>
     /// The test controller.
     /// </summary>

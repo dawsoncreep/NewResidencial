@@ -16,7 +16,6 @@ namespace GS.Api.BusinessLayer.Processors
     using System.Threading.Tasks;
 
     using GS.Api.BusinessLayer.Interfaces.Processor;
-    using GS.Api.OperationalManagement.Extensions;
     using GS.Api.OperationalManagement.Interfaces;
     using GS.Api.Types.Exceptions;
     using GS.Api.Types.Models;

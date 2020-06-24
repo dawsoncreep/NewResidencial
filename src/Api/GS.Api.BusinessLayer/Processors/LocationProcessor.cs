@@ -12,7 +12,6 @@ namespace GS.Api.BusinessLayer.Processors
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using System.Transactions;
 
     using GS.Api.DataLayer.Interfaces;
     using GS.Api.Types.Exceptions;
