@@ -23,7 +23,6 @@ export class UserManagementAdminListComponent implements OnInit {
      this.userService.GetUsers().subscribe(
       result => {
         this.Users = result;
-        console.log(this.Users);
         this.dataSource = new MatTableDataSource(this.Users);
       },
       error => {
