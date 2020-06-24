@@ -24,6 +24,22 @@ namespace GS.Api.Types.Models.Persistence
         [Key]
         public int Id { get; set; }
 
+        /// <summary>
+        /// Gets or sets the location name
+        /// </summary>
+        public string Nombre { get; set; }
+
+        /// <summary>
+        /// Gets or sets the location type id
+        /// </summary>
+        public int IdTipoUbicacion { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating wheter is active
+        /// </summary>
+        public bool Activo { get; set; }
+
+
         // TODO: Add mor properties
     }
 }

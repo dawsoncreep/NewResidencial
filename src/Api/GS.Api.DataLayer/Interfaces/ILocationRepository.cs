@@ -9,12 +9,15 @@
 
 namespace GS.Api.DataLayer.Interfaces
 {
+    using GS.Api.Types.Models;
     using GS.Api.Types.Models.Persistence;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// The LocationRepository interface.
     /// </summary>
     public interface ILocationRepository : IRepository<SLocation>
     {
+        Task<Location> FindById(int id);
     }
 }

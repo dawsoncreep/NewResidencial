@@ -7,4 +7,7 @@ export class User {
     Role : Role;
     Permisions : string[];
     Token: string;
+    Apellidos: string;
+    Celular: string;
+    Alias: string;
 }

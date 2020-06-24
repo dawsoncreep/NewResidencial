@@ -9,6 +9,7 @@
 
 namespace GS.Api.BusinessLayer.Facade
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using GS.Api.BusinessLayer.Interfaces.Facade;
@@ -58,6 +59,12 @@ namespace GS.Api.BusinessLayer.Facade
             }
 
             return await this.tokenProcessor.GenerateToken(user);
+        }
+
+        public async Task<IEnumerable<User>> ListOfSettlerUser()
+        {
+            var users = await this.userProcessor.GetListOfSettlerUser();
+            return users;
         }
     }
 }

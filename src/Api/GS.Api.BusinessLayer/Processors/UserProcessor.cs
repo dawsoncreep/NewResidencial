@@ -9,11 +9,13 @@
 
 namespace GS.Api.BusinessLayer.Processors
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
     using GS.Api.BusinessLayer.Interfaces.Processor;
     using GS.Api.DataLayer.Interfaces;
+    using GS.Api.OperationalManagement.Extensions;
     using GS.Api.Types.Models;
 
     /// <summary>
@@ -44,6 +46,17 @@ namespace GS.Api.BusinessLayer.Processors
         {
             this.userRepository = userRepository;
             this.rolRepository = rolRepository;
+        }
+
+        public async Task<IEnumerable<User>> GetListOfSettlerUser()
+        {
+            List<User> result = new List<User>();
+            var users = await this.userRepository.FindAsync(x => x.Activo == true);
+            foreach (var item in users)
+            {
+                result.Add(item.MapTo<User>());
+            }
+            return result;
         }
 
         /// <inheritdoc />

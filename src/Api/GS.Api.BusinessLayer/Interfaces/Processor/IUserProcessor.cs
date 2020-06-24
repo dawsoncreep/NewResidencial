@@ -9,6 +9,8 @@
 
 namespace GS.Api.BusinessLayer.Interfaces.Processor
 {
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using GS.Api.Types.Exceptions;
@@ -32,5 +34,13 @@ namespace GS.Api.BusinessLayer.Interfaces.Processor
         /// Thrown when role/permission is empty or incomplete.
         /// </exception>
         Task<User> GetUserByUserName(string userName);
+
+        /// <summary>
+        /// Retrieves <see cref="User"/> List whit role Settler
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Task"/>
+        /// </returns>
+        Task<IEnumerable<User>> GetListOfSettlerUser();
     }
 }

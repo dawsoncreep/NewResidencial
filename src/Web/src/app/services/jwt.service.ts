@@ -22,6 +22,7 @@ export class JwtService {
       user.UserName = actual.unique_name;
       user.Email = actual.email;
       user.Role = actual.role;
+      user.Apellidos = actual.LastName;
       user.Permisions = [];
       user.Token = token;
       return user;

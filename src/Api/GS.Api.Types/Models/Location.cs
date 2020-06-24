@@ -26,6 +26,18 @@ namespace GS.Api.Types.Models
         /// Gets or sets the name.
         /// </summary>
         [Required]
-        public string Name { get; set; }
+        public string Nombre { get; set; }
+
+        /// <summary>
+        /// Gets or sets the IdTipoDeUbicación
+        /// </summary>
+        [Required]
+        public int IdTipoUbicacion { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Acitvo
+        /// </summary>
+        [Required]
+        public bool Activo { get; set; }
     }
 }

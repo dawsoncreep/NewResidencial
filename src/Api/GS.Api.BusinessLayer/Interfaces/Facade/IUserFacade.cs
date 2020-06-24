@@ -9,6 +9,7 @@
 
 namespace GS.Api.BusinessLayer.Interfaces.Facade
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using GS.Api.Types.Exceptions;
@@ -38,5 +39,7 @@ namespace GS.Api.BusinessLayer.Interfaces.Facade
         /// Thrown whe the system cannot generate a new JWT for the user.
         /// </exception>
         Task<string> Authenticate(LoginRequest request);
+
+        Task<IEnumerable<User>> ListOfSettlerUser();
     }
 }

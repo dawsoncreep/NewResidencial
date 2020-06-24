@@ -224,6 +224,33 @@
             The <see cref="T:System.Threading.Tasks.Task"/>.
             </returns>
         </member>
+        <member name="F:Authentication.Api.Controllers.UserController.userFacade">
+            <summary>
+            The user facade.
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Controllers.UserController.#ctor(GS.Api.OperationalManagement.Interfaces.IApplicationLogger,GS.Api.BusinessLayer.Interfaces.Facade.IUserFacade)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Authentication.Api.Controllers.UserController"/> class.
+            </summary>
+            <param name="logger">
+            The logger.
+            </param>
+            <param name="userFacade">
+            The user facade.
+            </param>
+        </member>
+        <member name="M:Authentication.Api.Controllers.UserController.GetAll">
+            <summary>
+            Authenticates a user, if valid returns a valid Json Web Token.
+            </summary>
+            <param name="loginRequest">
+            The login request.
+            </param>
+            <returns>
+            returns a JWT asynchronously.
+            </returns>
+        </member>
         <member name="T:Authentication.Api.WebApiApplication">
             <summary>
             The web api application main startup point.

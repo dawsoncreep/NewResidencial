@@ -17,6 +17,13 @@ import { UserManagementAdminComponent } from './componets/user-management-admin/
 import { UserManagementSettlerComponent } from './componets/user-management-settler/user-management-settler.component';
 import { NotFoundComponent } from './componets/not-found/not-found.component';
 import { VisitsManagementSettlerComponent } from './componets/visits-management-settler/visits-management-settler.component';
+import { UserManagementAdminListComponent } from './componets/user-management-admin-list/user-management-admin-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatInputModule} from '@angular/material/input';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -26,7 +33,8 @@ import { VisitsManagementSettlerComponent } from './componets/visits-management-
     UserManagementAdminComponent,
     UserManagementSettlerComponent,
     NotFoundComponent,
-    VisitsManagementSettlerComponent
+    VisitsManagementSettlerComponent,
+    UserManagementAdminListComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +42,13 @@ import { VisitsManagementSettlerComponent } from './componets/visits-management-
     AppRoutingModule,
     NgbModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatTableModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InvalidSessionInterceptor, multi: true },

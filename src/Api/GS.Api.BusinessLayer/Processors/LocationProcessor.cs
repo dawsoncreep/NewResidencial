@@ -60,12 +60,19 @@ namespace GS.Api.BusinessLayer.Processors
                 }
 
                 var x = await this.locationRepository.FindAsync(item => item.Id == userId);
-                return new List<Location> { new Location { Id = 1, Name = "Ubicacion1" } };
+                return new List<Location> { new Location { Id = 1, Nombre = "Circuito Canarias 114" } };
             }
             catch (Exception exception)
             {
                 throw new DevelopmentException(exception);
             }
+        }
+
+        public async Task<Location> GetLocationById(int locationId)
+        {
+            var location = await this.locationRepository.FindById(locationId);
+            return await Task.FromResult(location);
+
         }
     }
 }

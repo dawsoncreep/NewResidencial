@@ -69,7 +69,7 @@ namespace Authentication.UnitTests.ForBusinessLayer.Processors
             // Arrange
             const int UserId = 1;
             var expectedData = new List<SLocation> { new SLocation { Id = 1 } };
-            var expected = new List<Location> { new Location { Id = 1, Name = "Ubicacion1" } };
+            var expected = new List<Location> { new Location { Id = 1, Nombre = "Ubicacion1" } };
 
             this.mockILocationRepository.Setup(method => method.FindAsync(item => item.Id == UserId)).ReturnsAsync(expectedData);
 
@@ -80,6 +80,30 @@ namespace Authentication.UnitTests.ForBusinessLayer.Processors
 
             // Assert
             this.mockILocationRepository.Verify(method => method.FindAsync(item => item.Id == UserId), Times.Once);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        /// Este metedo prueba 
+        /// </summary>
+        /// 
+        [TestMethod]
+        public async Task GetLocationByIdShouldSucced()
+        {
+            //Arrange 
+            const int locationId = 1;
+            var expected = new Location
+            {
+                Id = 1,
+                Nombre = "Circuito Canarias 114",
+                IdTipoUbicacion = 1,
+                Activo = true
+            };
+            var proccesorUt = new LocationProcessor(this.mockILocationRepository.Object);
+            //Act
+            var actual = await proccesorUt.GetLocationById(locationId);
+
+            //Assert
             Assert.AreEqual(expected, actual);
         }
     }
