@@ -37,9 +37,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\Home\HomePage.xaml.cs">
-      <DependentUpon>HomePage.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Views\Main\ContainerPage.xaml.cs">
       <DependentUpon>ContainerPage.xaml</DependentUpon>
     </Compile>
@@ -49,9 +46,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\Home\HomePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\Main\MasterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

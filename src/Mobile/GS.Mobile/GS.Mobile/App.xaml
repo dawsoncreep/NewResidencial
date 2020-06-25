@@ -30,6 +30,13 @@
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
             </Style>
 
+            <Style x:Key="SideMenuLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="TextColor" Value="{StaticResource GuizzyGray}"/>
+            </Style>
+
 
             <!--Global Styles-->
             <Style TargetType="NavigationPage">

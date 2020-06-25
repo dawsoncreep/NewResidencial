@@ -9,6 +9,7 @@
 
 namespace GS.Mobile.Share.Routing
 {
+    using System;
     using System.Threading.Tasks;
 
     using Xamarin.Forms;
@@ -36,6 +37,17 @@ namespace GS.Mobile.Share.Routing
         /// The <see cref="Task"/>.
         /// </returns>
         Task PushAsync<TPage>() where TPage : ContentPage;
+
+        /// <summary>
+        /// The push async.
+        /// </summary>
+        /// <param name="pageType">
+        /// The page type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        Task PushAsync(Type pageType);
 
         /// <summary>
         /// The pop async.

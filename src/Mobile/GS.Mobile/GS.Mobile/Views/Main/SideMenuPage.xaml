@@ -1,12 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="GS.Mobile.Views.Main.SideMenuPage"
-             Title="Master">
-  <StackLayout>
-      <Label Text="Master Page!!!"/>
-  </StackLayout>
-</ContentPage>
+<wrappers:MenuWrapper xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:wrappers="clr-namespace:GS.Mobile.Views.Wrappers;assembly=GS.Mobile"
+                      xmlns:behaviorsPack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+                      xmlns:types="clr-namespace:GS.Mobile.Types.Menu;assembly=GS.Mobile.Types"
+                      x:Class="GS.Mobile.Views.Main.SideMenuPage"
+                      Title="Side Menu">
+
+    <StackLayout>
+        <Label Text="Guizzy Seguridad" Padding="10" Style="{StaticResource SideMenuLabel}"/>
+
+        <ListView ItemsSource="{Binding MenuItemList}" SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell> <!--Tapped="Cell_OnTapped"-->
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0"
+                                 Source="{Binding ImageSource}" x:DataType="types:MenuPageItem"
+                                 Aspect="AspectFill" HeightRequest="45" WidthRequest="45" />
+                            <Label Grid.Column="1" 
+                                 Text="{Binding PageName}" x:DataType="types:MenuPageItem"
+                                 Style="{StaticResource SideMenuLabel}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <behaviorsPack:EventToCommandBehavior EventName="ItemSelected" Command="{Binding NavigateCommand}"/>
+            </ListView.Behaviors>
+        </ListView>
+    </StackLayout>
+
+</wrappers:MenuWrapper>

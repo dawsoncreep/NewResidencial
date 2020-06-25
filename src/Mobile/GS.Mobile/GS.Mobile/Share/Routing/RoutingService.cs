@@ -42,6 +42,21 @@ namespace GS.Mobile.Share.Routing
         }
 
         /// <inheritdoc />
+        public async Task PushAsync(Type pageType)
+        {
+            if (Application.Current.MainPage is MasterDetailPage rootPage)
+            {
+                if (rootPage.Detail.Navigation.NavigationStack.Any(item => item.GetType() == pageType))
+                {
+                    return;
+                }
+
+                rootPage.IsPresented = false;
+                await rootPage.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(pageType));
+            }
+        }
+
+        /// <inheritdoc />
         public async Task PopAsync()
         {
             if (Application.Current.MainPage is MasterDetailPage rootPage)

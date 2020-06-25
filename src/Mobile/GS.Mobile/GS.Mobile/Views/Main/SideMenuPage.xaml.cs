@@ -9,6 +9,10 @@
 
 namespace GS.Mobile.Views.Main
 {
+    using System;
+
+    using GS.Mobile.Views.Wrappers;
+
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
 
@@ -16,7 +20,7 @@ namespace GS.Mobile.Views.Main
     /// The side menu page.
     /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SideMenuPage : ContentPage
+    public partial class SideMenuPage : MenuWrapper
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SideMenuPage"/> class.

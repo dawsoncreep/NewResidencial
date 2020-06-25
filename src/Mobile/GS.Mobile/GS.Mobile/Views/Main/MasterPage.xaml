@@ -4,15 +4,14 @@
              xmlns:main="clr-namespace:GS.Mobile.Views.Main;assembly=GS.Mobile"
              xmlns:wrappers="clr-namespace:GS.Mobile.Views.Wrappers;assembly=GS.Mobile"
              xmlns:behaviorsPack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
-             x:Class="GS.Mobile.Views.Main.MasterPage">
-
+             x:Class="GS.Mobile.Views.Main.MasterPage" MasterBehavior="Popover">
 
     <MasterDetailPage.Behaviors>
         <behaviorsPack:EventToCommandBehavior EventName="Appearing" Command="{Binding OnLoadCommand}"/>
     </MasterDetailPage.Behaviors>
 
     <MasterDetailPage.Master>
-        <main:SideMenuPage x:Name="SideMenuPage" />
+        <main:SideMenuPage />
     </MasterDetailPage.Master>
 
     <MasterDetailPage.Detail>

@@ -23,6 +23,8 @@ namespace GS.Mobile.IoC
     using GS.Mobile.ViewModels.Home;
     using GS.Mobile.ViewModels.Login;
     using GS.Mobile.ViewModels.Master;
+    using GS.Mobile.ViewModels.Menu;
+    using GS.Mobile.Views;
     using GS.OperationalManagement.Configurations;
 
     using Microsoft.EntityFrameworkCore;
@@ -39,6 +41,9 @@ namespace GS.Mobile.IoC
         /// </summary>
         private readonly DbContext context;
 
+        /// <summary>
+        /// The config file path.
+        /// </summary>
         private readonly string configFilePath;
 
         /// <summary>
@@ -133,8 +138,9 @@ namespace GS.Mobile.IoC
         private void RegisterViewModels()
         {
             this.builder.RegisterType<MasterViewModel>().As<IMasterViewModel>().SingleInstance();
-            this.builder.RegisterType<HomeViewModel>().As<IHomeViewModel>().SingleInstance();
             this.builder.RegisterType<LoginViewModel>().As<ILoginViewModel>().SingleInstance();
+            this.builder.RegisterType<MenuViewModel>().As<IMenuViewModel>().SingleInstance();
+            this.builder.RegisterType<HomeViewModel>().As<IHomeViewModel>().SingleInstance();
         }
 
         /// <summary>
