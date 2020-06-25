@@ -65,7 +65,8 @@ namespace GS.Mobile.ViewModels.Login
                 {
                     if (string.IsNullOrEmpty(this.UserName) || string.IsNullOrEmpty(this.Password))
                     {
-                        await this.MessageService.ShowMessageAsync(MessageType.Warning, this.ErrorMessage = new InvalidUserAccessException().Message);
+                        await this.MessageService.ShowMessageAsync(MessageType.Warning, this.ErrorMessage = new InvalidLoginException().Message);
+                        this.CleanUi();
                         return;
                     }
 
@@ -80,13 +81,24 @@ namespace GS.Mobile.ViewModels.Login
                     catch (BusinessRuleException exception)
                     {
                         await this.MessageService.ShowMessageAsync(MessageType.Warning, this.ErrorMessage = exception.Message);
-                        this.IsBusy = false;
+                        this.CleanUi();
                     }
                     catch (Exception exception)
                     {
-                        await this.MessageService.ShowMessageAsync(MessageType.Warning, this.ErrorMessage = exception.Message);
-                        this.IsBusy = false;
+                        await this.MessageService.ShowMessageAsync(MessageType.Error, this.ErrorMessage = exception.Message);
+                        this.CleanUi();
                     }
                 });
+
+        #region Public Methods
+
+        /// <inheritdoc />
+        public override void CleanUi()
+        {
+            this.IsBusy = false;
+            this.UserName = string.Empty;
+            this.Password = string.Empty;
+        }
+        #endregion
     }
 }

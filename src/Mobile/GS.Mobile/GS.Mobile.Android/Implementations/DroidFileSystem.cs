@@ -15,6 +15,8 @@ namespace GS.Mobile.Droid.Implementations
 {
     using System.IO;
 
+    using Android.App;
+
     using GS.Mobile.Share.FileSystem;
 
     /// <summary>
@@ -22,6 +24,16 @@ namespace GS.Mobile.Droid.Implementations
     /// </summary>
     public class DroidFileSystem : IFileSystem
     {
+        /// <summary>
+        /// The configuration file name.
+        /// </summary>
+        private const string ConfigurationFileName = "Settings.xml";
+
+        /// <summary>
+        /// The database file name.
+        /// </summary>
+        private const string DatabaseFileName = "GuizzySeguridad.db";
+
         /// <summary>
         /// The root.
         /// </summary>
@@ -38,6 +50,11 @@ namespace GS.Mobile.Droid.Implementations
             {
                 Directory.CreateDirectory(this.root);
             }
+            
+            if (!File.Exists(this.GetConfigFilePath()))
+            {
+                CreateSettingsFile(this.GetConfigFilePath());
+            }
         }
 
         /// <inheritdoc />
@@ -49,7 +66,38 @@ namespace GS.Mobile.Droid.Implementations
         /// <inheritdoc />
         public string GetDatabasePath()
         {
-            return Path.Combine(this.root, "GuizzySeguridad.db");
+            return Path.Combine(this.root, DatabaseFileName);
+        }
+
+        /// <inheritdoc />
+        public string GetConfigFilePath()
+        {
+            return Path.Combine(this.root, "Config.xml");
+        }
+
+        /// <summary>
+        /// Creates the settings file.
+        /// </summary>
+        /// <param name="path">
+        /// The path.
+        /// </param>
+        private static void CreateSettingsFile(string path)
+        {
+            var assetStream = Application.Context.Assets.Open(ConfigurationFileName);
+
+            using (var br = new BinaryReader(assetStream))
+            {
+                using (var bw = new BinaryWriter(new FileStream(path, FileMode.Create)))
+                {
+                    var buffer = new byte[2048];
+                    int len;
+
+                    while ((len = br.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        bw.Write(buffer, 0, len);
+                    }
+                }
+            }
         }
     }
 }

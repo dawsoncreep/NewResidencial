@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GS.Mobile.Types\GS.Mobile.Types.csproj" />
+    <ProjectReference Include="..\GS.OperationalManagement\GS.OperationalManagement.csproj" />
   </ItemGroup>
 
 </Project>

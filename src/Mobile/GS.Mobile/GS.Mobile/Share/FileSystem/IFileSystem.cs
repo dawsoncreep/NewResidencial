@@ -29,5 +29,13 @@ namespace GS.Mobile.Share.FileSystem
         /// The <see cref="string"/>.
         /// </returns>
         string GetDatabasePath();
+
+        /// <summary>
+        /// The get config file path.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        string GetConfigFilePath();
     }
 }

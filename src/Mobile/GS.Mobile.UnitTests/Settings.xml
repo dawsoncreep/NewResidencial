@@ -1,0 +1,8 @@
+﻿<?xml version="1.0"?>
+<configuration>
+  <appSettings>
+    <add key="ServerUrl" value="http://localhost:64000"/>
+    <add key="TestValue1" value="15K|A|M"/>
+    <add key="TestValue4" value=" 15K|A|M "/>
+  </appSettings>
+</configuration>

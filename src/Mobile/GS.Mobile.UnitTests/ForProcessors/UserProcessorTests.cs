@@ -105,7 +105,7 @@ namespace GS.Mobile.UnitTests.ForProcessors
             const string UserName = "jaime.castorena@psi.condominio.com";
             const string Password = "Password";
 
-            this.mockIAuthenticationService.Setup(method => method.Login(It.IsAny<LoginRequest>())).ThrowsAsync(new Exception("Network Exception."));
+            this.mockIAuthenticationService.Setup(method => method.Login(It.IsAny<LoginRequest>())).ThrowsAsync(new ServiceCallException());
             this.processorUt = new UserProcessor(this.mockIAuthenticationService.Object);
 
             try

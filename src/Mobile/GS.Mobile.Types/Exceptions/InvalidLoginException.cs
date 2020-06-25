@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="InvalidUserAccessException.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
+// <copyright file="InvalidLoginException.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
 //   COPYRIGHT 2020 © Dawsoncreep. All rights reserved.
 // </copyright>
 // <summary>
-//   The invalid user access exception.
+//   The invalid login exception.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -14,10 +14,10 @@ namespace GS.Mobile.Types.Exceptions
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// The invalid user access exception.
+    /// The invalid login exception.
     /// </summary>
     [Serializable]
-    public class InvalidUserAccessException : BusinessRuleException
+    public class InvalidLoginException : BusinessRuleException
     {
         /// <summary>
         /// The custom message exception.
@@ -25,32 +25,32 @@ namespace GS.Mobile.Types.Exceptions
         private const string CustomMessageException = "Nombre de usuario y/o contraseña son incorrectos.";
 
         /// <inheritdoc />>
-        public InvalidUserAccessException() : base(CustomMessageException)
+        public InvalidLoginException() : base(CustomMessageException)
         {
         }
 
         /// <inheritdoc />>
-        public InvalidUserAccessException(string message) : base(message)
+        public InvalidLoginException(string message) : base(message)
         {
         }
 
         /// <inheritdoc />>
-        public InvalidUserAccessException(IEnumerable<string> errors) : base(CustomMessageException, errors)
+        public InvalidLoginException(IEnumerable<string> errors) : base(CustomMessageException, errors)
         {
         }
 
         /// <inheritdoc />>
-        public InvalidUserAccessException(string message, Exception innerException) : base(message, innerException)
+        public InvalidLoginException(string message, Exception innerException) : base(message, innerException)
         {
         }
 
         /// <inheritdoc />
-        public InvalidUserAccessException(Exception innerException) : base(CustomMessageException, innerException)
+        public InvalidLoginException(Exception innerException) : base(CustomMessageException, innerException)
         {
         }
 
         /// <inheritdoc />
-        protected InvalidUserAccessException(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected InvalidLoginException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
     }

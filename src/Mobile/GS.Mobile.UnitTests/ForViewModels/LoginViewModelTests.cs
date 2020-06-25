@@ -157,7 +157,7 @@ namespace GS.Mobile.UnitTests.ForViewModels
         public void LoginCommandShouldValidateEmptyPassword()
         {
             // Arrange
-            const string ExpectedError = "El nombre de usuario y/o la contrasena son incorrectos.";
+            var expectedError = new InvalidLoginException().Message;
             const string UserName = "jaime.castorena@psi.condominio.com";
 
             this.loginViewModel = new LoginViewModel(this.mockIRoutingService.Object, this.mockIMessageService.Object, this.mockISessionProcessor.Object, this.mockIUserProcessor.Object);
@@ -168,11 +168,14 @@ namespace GS.Mobile.UnitTests.ForViewModels
             commandUt.Execute(null);
 
             // Assert
-            Assert.AreEqual(ExpectedError, this.loginViewModel.ErrorMessage);
             this.mockIUserProcessor.Verify(method => method.Login(this.loginViewModel.UserName, this.loginViewModel.Password), Times.Never);
             this.mockISessionProcessor.Verify(method => method.SaveToken(It.IsAny<string>()), Times.Never);
             this.mockIRoutingService.Verify(method => method.SetMaster<MasterPage>(), Times.Never);
             this.mockIMessageService.Verify(method => method.ShowMessageAsync(MessageType.Warning, It.IsAny<string>()), Times.Once);
+
+            Assert.AreEqual(expectedError, this.loginViewModel.ErrorMessage);
+            Assert.IsTrue(this.loginViewModel.UserName == string.Empty);
+            Assert.IsTrue(this.loginViewModel.Password == string.Empty);
         }
 
         /// <summary>
@@ -182,7 +185,7 @@ namespace GS.Mobile.UnitTests.ForViewModels
         public void LoginCommandShouldValidateEmptyUserName()
         {
             // Arrange
-            const string ExpectedError = "El nombre de usuario y/o la contrasena son incorrectos.";
+            var expectedError = new InvalidLoginException().Message;
             const string Password = "Password";
 
             this.loginViewModel = new LoginViewModel(this.mockIRoutingService.Object, this.mockIMessageService.Object, this.mockISessionProcessor.Object, this.mockIUserProcessor.Object);
@@ -193,11 +196,14 @@ namespace GS.Mobile.UnitTests.ForViewModels
             commandUt.Execute(null);
 
             // Assert
-            Assert.AreEqual(ExpectedError, this.loginViewModel.ErrorMessage);
             this.mockIUserProcessor.Verify(method => method.Login(this.loginViewModel.UserName, this.loginViewModel.Password), Times.Never);
             this.mockISessionProcessor.Verify(method => method.SaveToken(It.IsAny<string>()), Times.Never);
             this.mockIRoutingService.Verify(method => method.SetMaster<MasterPage>(), Times.Never);
             this.mockIMessageService.Verify(method => method.ShowMessageAsync(MessageType.Warning, It.IsAny<string>()), Times.Once);
+
+            Assert.AreEqual(expectedError, this.loginViewModel.ErrorMessage);
+            Assert.IsTrue(this.loginViewModel.UserName == string.Empty);
+            Assert.IsTrue(this.loginViewModel.Password == string.Empty);
         }
 
         /// <summary>
@@ -209,9 +215,9 @@ namespace GS.Mobile.UnitTests.ForViewModels
             // Arrange
             const string UserName = "jaime.castorena@psi.condominio.com";
             const string Password = "InvalidPassword";
-            var exception = new InvalidUserAccessException();
+            var exception = new InvalidLoginException();
 
-            this.mockIUserProcessor.Setup(method => method.Login(UserName, Password)).ThrowsAsync(new InvalidUserAccessException());
+            this.mockIUserProcessor.Setup(method => method.Login(UserName, Password)).ThrowsAsync(new InvalidLoginException());
 
             this.loginViewModel = new LoginViewModel(this.mockIRoutingService.Object, this.mockIMessageService.Object, this.mockISessionProcessor.Object, this.mockIUserProcessor.Object);
             this.loginViewModel.UserName = UserName;
@@ -222,9 +228,12 @@ namespace GS.Mobile.UnitTests.ForViewModels
             commandUt.Execute(null);
 
             // Assert
-            Assert.AreEqual(exception.Message, this.loginViewModel.ErrorMessage);
-            this.mockIUserProcessor.Verify(method => method.Login(this.loginViewModel.UserName, this.loginViewModel.Password), Times.Once);
+            this.mockIUserProcessor.Verify(method => method.Login(UserName, Password), Times.Once);
             this.mockIMessageService.Verify(method => method.ShowMessageAsync(MessageType.Warning, It.IsAny<string>()), Times.Once);
+
+            Assert.AreEqual(exception.Message, this.loginViewModel.ErrorMessage);
+            Assert.IsTrue(this.loginViewModel.UserName == string.Empty);
+            Assert.IsTrue(this.loginViewModel.Password == string.Empty);
         }
 
         /// <summary>
@@ -249,9 +258,12 @@ namespace GS.Mobile.UnitTests.ForViewModels
             commandUt.Execute(null);
 
             // Assert
-            Assert.AreEqual(exception.Message, this.loginViewModel.ErrorMessage);
-            this.mockIUserProcessor.Verify(method => method.Login(this.loginViewModel.UserName, this.loginViewModel.Password), Times.Once);
+            this.mockIUserProcessor.Verify(method => method.Login(UserName, Password), Times.Once);
             this.mockIMessageService.Verify(method => method.ShowMessageAsync(MessageType.Warning, It.IsAny<string>()), Times.Once);
+
+            Assert.AreEqual(exception.Message, this.loginViewModel.ErrorMessage);
+            Assert.IsTrue(this.loginViewModel.UserName == string.Empty);
+            Assert.IsTrue(this.loginViewModel.Password == string.Empty);
         }
 
         /// <summary>
@@ -276,9 +288,12 @@ namespace GS.Mobile.UnitTests.ForViewModels
             commandUt.Execute(null);
 
             // Assert
+            this.mockIUserProcessor.Verify(method => method.Login(UserName, Password), Times.Once);
+            this.mockIMessageService.Verify(method => method.ShowMessageAsync(MessageType.Error, It.IsAny<string>()), Times.Once);
+
             Assert.AreEqual(exception.Message, this.loginViewModel.ErrorMessage);
-            this.mockIUserProcessor.Verify(method => method.Login(this.loginViewModel.UserName, this.loginViewModel.Password), Times.Once);
-            this.mockIMessageService.Verify(method => method.ShowMessageAsync(MessageType.Warning, It.IsAny<string>()), Times.Once);
+            Assert.IsTrue(this.loginViewModel.UserName == string.Empty);
+            Assert.IsTrue(this.loginViewModel.Password == string.Empty);
         }
         #endregion
     }

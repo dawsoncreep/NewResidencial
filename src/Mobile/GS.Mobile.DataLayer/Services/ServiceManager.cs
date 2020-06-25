@@ -14,10 +14,10 @@ namespace GS.Mobile.DataLayer.Services
     using System.Net;
     using System.Net.Http;
     using System.Text;
-    using System.Threading;
     using System.Threading.Tasks;
 
     using GS.Mobile.Types.Exceptions;
+    using GS.Mobile.Types.Messages;
     using GS.Mobile.Types.Network;
 
     using Newtonsoft.Json;
@@ -33,54 +33,86 @@ namespace GS.Mobile.DataLayer.Services
         /// </summary>
         private const int TimeoutInSeconds = 15;
 
+        /// <summary>
+        /// The http client.
+        /// </summary>
         private HttpClient httpClient;
 
         /// <inheritdoc />
         public async Task<ServiceCallResult<TResult>> ExecuteGet<TResult>(string url)
         {
-            using (var httpClient = new HttpClient())
+            using (this.httpClient = new HttpClient { Timeout = TimeSpan.FromSeconds(TimeoutInSeconds) })
             {
-                var response = await httpClient.GetAsync(url);
-                var result = new ServiceCallResult<TResult>((int)response.StatusCode, JsonConvert.DeserializeObject<TResult>(response.Content.ReadAsStringAsync().Result));
-                return await Task.FromResult(result);
+                HttpResponseMessage response;
+                
+                try
+                {
+                    response = await this.httpClient.GetAsync(url);
+                }
+                catch (Exception exception)
+                {
+                    throw new ServiceCallException(exception);
+                }
+
+                return await ManageResponse<TResult>(response);
             }
         }
 
         /// <inheritdoc />
         public async Task<ServiceCallResult<TResult>> ExecutePost<TResult>(string url, object content)
         {
-            try
+            using (this.httpClient = new HttpClient { Timeout = TimeSpan.FromSeconds(TimeoutInSeconds) })
             {
-                this.httpClient = new HttpClient { Timeout = TimeSpan.FromSeconds(TimeoutInSeconds) };
+                HttpResponseMessage response;
 
-                var json = JsonConvert.SerializeObject(content);
-                var response = await this.httpClient.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
-
-                if (!response.IsSuccessStatusCode)
+                try
                 {
-                    if (response.StatusCode == HttpStatusCode.BadRequest)
-                    {
-                        throw new InvalidUserAccessException();
-                    }
-
-                    if (response.StatusCode == HttpStatusCode.InternalServerError)
-                    {
-                        throw new ServiceCallException();
-                    }
+                    var json = JsonConvert.SerializeObject(content);
+                    response = await this.httpClient.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
+                }
+                catch (Exception exception)
+                {
+                    throw new ServiceCallException(exception);
                 }
 
-                var result = new ServiceCallResult<TResult>((int)response.StatusCode, JsonConvert.DeserializeObject<TResult>(response.Content.ReadAsStringAsync().Result));
-                return await Task.FromResult(result);
+                return await ManageResponse<TResult>(response);
             }
-            catch (Exception exception)
+        }
+        
+        /// <summary>
+        /// The manage error code.
+        /// </summary>
+        /// <param name="response">
+        /// The response.
+        /// </param>
+        /// <typeparam name="TResult">
+        /// The operation result.
+        /// </typeparam>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        private static async Task<ServiceCallResult<TResult>> ManageResponse<TResult>(HttpResponseMessage response)
+        {
+            ServiceCallResult<TResult> result;
+
+            if (!response.IsSuccessStatusCode)
             {
-                throw new ServiceCallException(exception);
+                if (response.StatusCode == HttpStatusCode.BadRequest)
+                {
+                    var data = await response.Content.ReadAsStringAsync();
+                    var brokenRule = JsonConvert.DeserializeObject<BrokenRule>(data);
+                    result = new ServiceCallResult<TResult>((int)response.StatusCode, default, brokenRule.Message);
+                    return await Task.FromResult(result);
+                }
+
+                if (response.StatusCode == HttpStatusCode.InternalServerError)
+                {
+                    throw new ServiceCallException();
+                }
             }
-            finally
-            {
-                this.httpClient.Dispose();
-                this.httpClient = null;
-            }
+
+            result = new ServiceCallResult<TResult>((int)response.StatusCode, JsonConvert.DeserializeObject<TResult>(response.Content.ReadAsStringAsync().Result));
+            return await Task.FromResult(result);
         }
     }
 }

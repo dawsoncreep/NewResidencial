@@ -17,6 +17,7 @@ namespace GS.Mobile.UnitTests.ForServices
     using GS.Mobile.Types.Exceptions;
     using GS.Mobile.Types.Network;
     using GS.Mobile.Types.Security;
+    using GS.OperationalManagement.Configurations;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -38,6 +39,11 @@ namespace GS.Mobile.UnitTests.ForServices
         /// </summary>
         private Mock<IServiceManager> mockIServiceManager;
 
+        /// <summary>
+        /// <see cref="IConfigurationManager"/> mock object.
+        /// </summary>
+        private Mock<IConfigurationManager> mockIConfigurationManager;
+
         #region Tests Life Cycle
 
         /// <summary>
@@ -50,6 +56,7 @@ namespace GS.Mobile.UnitTests.ForServices
 
             // Mock definition
             this.mockIServiceManager = new Mock<IServiceManager>();
+            this.mockIConfigurationManager = new Mock<IConfigurationManager>();
         }
 
         /// <summary>
@@ -62,6 +69,7 @@ namespace GS.Mobile.UnitTests.ForServices
 
             // Mock cleanup
             this.mockIServiceManager = null;
+            this.mockIConfigurationManager = null;
         }
         #endregion
 
@@ -77,20 +85,21 @@ namespace GS.Mobile.UnitTests.ForServices
         {
             // Arrange
             var loginRequest = new LoginRequest
-                                   {
-                                       UserName = "jaime.castorena@psi.condominio.com",
-                                       Password = "Password"
-                                   };
+            {
+                UserName = "jaime.castorena@psi.condominio.com",
+                Password = "Password"
+            };
             var serviceResult = new ServiceCallResult<string>(200, "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmltYXJ5c2lkIjoiMiIsInVuaXF1ZV9uYW1lIjoiSmFpbWUiLCJlbWFpbCI6ImphaW1lLmNhc3RvcmVuYUBwc2kuY29uZG9taW5pby5jb20iLCJyb2xlIjoiQWRtaW5pc3RyYWRvciIsIm5iZiI6MTU5MTkwNzAwMywiZXhwIjoxNTkxOTE0MjAzLCJpYXQiOjE1OTE5MDcwMDMsImlzcyI6Ijk1Nzg4MGJlLTdkNmQtNGY4YS1hMzQ1LTdiOWViNzc4ZDVkZCIsImF1ZCI6IjNjMTYyNTVlLTJiYmQtNGE0OC04MjJmLWNmYThmZWEzMWNkOSJ9.IZhNOZ00DtyjuXifXPyeU6D2xnt0SXzcM-g_TP2OnwY");
 
             this.mockIServiceManager.Setup(method => method.ExecutePost<string>(It.IsAny<string>(), It.IsAny<LoginRequest>())).ReturnsAsync(serviceResult);
-            this.authenticationService = new AuthenticationService(this.mockIServiceManager.Object);
+            this.authenticationService = new AuthenticationService(this.mockIConfigurationManager.Object, this.mockIServiceManager.Object);
 
             // Act
             var actual = await this.authenticationService.Login(loginRequest);
 
             // Assert
             this.mockIServiceManager.Verify(method => method.ExecutePost<string>(It.IsAny<string>(), It.IsAny<object>()), Times.Once);
+            this.mockIConfigurationManager.Verify(method => method.GetAppSettingsValue<string>(It.IsAny<string>()), Times.Once);
             Assert.AreEqual(serviceResult.Result, actual);
         }
 
@@ -102,7 +111,7 @@ namespace GS.Mobile.UnitTests.ForServices
         /// The <see cref="Task"/>.
         /// </returns>
         [TestMethod]
-        [ExpectedException(typeof(InvalidUserAccessException))]
+        [ExpectedException(typeof(InvalidLoginException))]
         public async Task LoginShouldFailWhenInvalidCredentials()
         {
             // Arrange
@@ -111,9 +120,10 @@ namespace GS.Mobile.UnitTests.ForServices
                 UserName = "user.invalid@psi.condominio.com",
                 Password = "BadPassword"
             };
-            
-            this.mockIServiceManager.Setup(method => method.ExecutePost<string>(It.IsAny<string>(), It.IsAny<LoginRequest>())).ThrowsAsync(new InvalidUserAccessException());
-            this.authenticationService = new AuthenticationService(this.mockIServiceManager.Object);
+
+            var serviceResult = new ServiceCallResult<string>(400, string.Empty, " Los datos no son válidos. Revise e intente de nuevo.");
+            this.mockIServiceManager.Setup(method => method.ExecutePost<string>(It.IsAny<string>(), It.IsAny<LoginRequest>())).ReturnsAsync(serviceResult);
+            this.authenticationService = new AuthenticationService(this.mockIConfigurationManager.Object, this.mockIServiceManager.Object);
 
             try
             {
@@ -124,6 +134,7 @@ namespace GS.Mobile.UnitTests.ForServices
             {
                 // Assert
                 this.mockIServiceManager.Verify(method => method.ExecutePost<string>(It.IsAny<string>(), It.IsAny<object>()), Times.Once);
+                this.mockIConfigurationManager.Verify(method => method.GetAppSettingsValue<string>(It.IsAny<string>()), Times.Once);
                 throw;
             }
         }
@@ -147,7 +158,7 @@ namespace GS.Mobile.UnitTests.ForServices
             };
 
             this.mockIServiceManager.Setup(method => method.ExecutePost<string>(It.IsAny<string>(), It.IsAny<LoginRequest>())).ThrowsAsync(new ServiceCallException());
-            this.authenticationService = new AuthenticationService(this.mockIServiceManager.Object);
+            this.authenticationService = new AuthenticationService(this.mockIConfigurationManager.Object, this.mockIServiceManager.Object);
 
             try
             {
@@ -158,6 +169,7 @@ namespace GS.Mobile.UnitTests.ForServices
             {
                 // Assert
                 this.mockIServiceManager.Verify(method => method.ExecutePost<string>(It.IsAny<string>(), It.IsAny<object>()), Times.Once);
+                this.mockIConfigurationManager.Verify(method => method.GetAppSettingsValue<string>(It.IsAny<string>()), Times.Once);
                 throw;
             }
         }

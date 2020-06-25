@@ -23,6 +23,7 @@ namespace GS.Mobile.IoC
     using GS.Mobile.ViewModels.Home;
     using GS.Mobile.ViewModels.Login;
     using GS.Mobile.ViewModels.Master;
+    using GS.OperationalManagement.Configurations;
 
     using Microsoft.EntityFrameworkCore;
 
@@ -37,6 +38,8 @@ namespace GS.Mobile.IoC
         /// The context.
         /// </summary>
         private readonly DbContext context;
+
+        private readonly string configFilePath;
 
         /// <summary>
         /// The DI container.
@@ -58,10 +61,16 @@ namespace GS.Mobile.IoC
                 this.builder = new ContainerBuilder();
             }
 
+            var fileSystem = DependencyService.Get<IFileSystem>();
+
+            if (string.IsNullOrEmpty(this.configFilePath))
+            {
+                this.configFilePath = fileSystem.GetConfigFilePath();
+            }
+
             if (this.context == null)
             {
-                var dependency = DependencyService.Get<IFileSystem>();
-                var path = dependency.GetDatabasePath();
+                var path = fileSystem.GetDatabasePath();
                 this.context = new ApplicationContext(path);
             }
         }
@@ -135,6 +144,7 @@ namespace GS.Mobile.IoC
         {
             this.builder.RegisterType<RoutingService>().As<IRoutingService>().SingleInstance();
             this.builder.Register(c => DependencyService.Resolve<IMessageService>()).As<IMessageService>().SingleInstance();
+            this.builder.RegisterType<ApplicationDataManager>().As<IConfigurationManager>().WithParameter("configFilePath", this.configFilePath);
         }
 
         /// <summary>
@@ -163,7 +173,6 @@ namespace GS.Mobile.IoC
             this.builder.RegisterType<ServiceManager>().As<IServiceManager>();
             this.builder.RegisterType<AuthenticationService>().As<IAuthenticationService>();
         }
-
         #endregion
     }
 }

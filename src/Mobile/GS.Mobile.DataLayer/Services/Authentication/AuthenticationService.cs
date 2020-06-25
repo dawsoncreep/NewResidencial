@@ -11,40 +11,45 @@ namespace GS.Mobile.DataLayer.Services.Authentication
 {
     using System.Threading.Tasks;
 
+    using GS.Mobile.Types.Exceptions;
     using GS.Mobile.Types.Security;
+    using GS.OperationalManagement.Configurations;
 
     /// <summary>
     /// The authentication service.
     /// </summary>
-    public class AuthenticationService : IAuthenticationService
+    public class AuthenticationService : BaseService, IAuthenticationService
     {
         /// <summary>
         /// The service manager.
         /// </summary>
         private readonly IServiceManager serviceManager;
-
-        /// <summary>
-        /// The server.
-        /// </summary>
-        private readonly string server;
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationService"/> class.
         /// </summary>
+        /// <param name="configurationManager">
+        /// The configuration Manager.
+        /// </param>
         /// <param name="serviceManager">
         /// The service Manager.
         /// </param>
-        public AuthenticationService(IServiceManager serviceManager)
+        public AuthenticationService(IConfigurationManager configurationManager, IServiceManager serviceManager) : base(configurationManager)
         {
             this.serviceManager = serviceManager;
-            this.server = "http://development.blyxitsolutions.lab:63100";
         }
 
         /// <inheritdoc />
         public async Task<string> Login(LoginRequest request)
         {
-            var url = $"{this.server}/api/Authentication/Login";
+            var url = $"{this.ServerUrl}/api/Authentication/Login";
             var response = await this.serviceManager.ExecutePost<string>(url, request);
+
+            if (!string.IsNullOrEmpty(response.Error))
+            {
+                throw new InvalidLoginException(response.Error);
+            }
+
             return response.Result;
         }
     }

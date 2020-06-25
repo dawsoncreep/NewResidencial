@@ -49,5 +49,13 @@ namespace GS.Mobile.ViewModels
         /// </summary>
         ICommand OnCloseCommand { get; }
         #endregion
+
+        #region Virtual Methods
+
+        /// <summary>
+        /// Clean tha page ui.
+        /// </summary>
+        void CleanUi();
+        #endregion
     }
 }

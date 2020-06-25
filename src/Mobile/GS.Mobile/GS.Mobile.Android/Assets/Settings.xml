@@ -1,0 +1,6 @@
+﻿<?xml version="1.0"?>
+<configuration>
+  <appSettings>
+    <add key="ServerUrl" value="http://development.blyxitsolutions.lab:63100"/>
+  </appSettings>
+</configuration>
