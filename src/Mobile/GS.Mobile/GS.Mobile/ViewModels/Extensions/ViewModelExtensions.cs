@@ -48,7 +48,7 @@ namespace GS.Mobile.ViewModels.Extensions
         public static bool IsAuthorizationRequired(this IViewModel viewModel)
         {
             var attributes = viewModel.GetCustomAttributes();
-            return attributes.Any(item => item.AttributeType.Name == typeof(Authorization).Name);
+            return attributes.Any(item => item.AttributeType.Name == typeof(Authorize).Name);
         }
 
         /// <summary>
@@ -63,11 +63,11 @@ namespace GS.Mobile.ViewModels.Extensions
         public static string GetViewModelAuthorizationRoles(this IViewModel viewModel)
         {
             var attributes = viewModel.GetCustomAttributes();
-            var authorizationAttribute = attributes.FirstOrDefault(item => item.AttributeType.Name == typeof(Authorization).Name);
+            var authorizationAttribute = attributes.FirstOrDefault(item => item.AttributeType.Name == typeof(Authorize).Name);
 
             if (authorizationAttribute?.NamedArguments == null)
             {
-                throw new Exception("'Authorization' attribute is missing");
+                throw new Exception("'Authorize' attribute is missing");
             }
 
             return authorizationAttribute.ConstructorArguments.Any()
@@ -85,7 +85,7 @@ namespace GS.Mobile.ViewModels.Extensions
         /// The <see cref="List{T}"/>.
         /// </returns>
         /// <exception cref="Exception">
-        /// Thrown when the viewmodel does not have the <see cref="Authorization"/> attribute or the <see cref="AllowAnonymous"/> attribute.
+        /// Thrown when the viewmodel does not have the <see cref="Authorize"/> attribute or the <see cref="AllowAnonymous"/> attribute.
         /// </exception>
         private static IEnumerable<CustomAttributeData> GetCustomAttributes(this IViewModel viewModel)
         {
@@ -93,7 +93,7 @@ namespace GS.Mobile.ViewModels.Extensions
 
             if (attributes == null || !attributes.Any())
             {
-                throw new Exception("'AllowAnonymous' or 'Authorization' attribute is missing.");
+                throw new Exception("'AllowAnonymous' or 'Authorize' attribute is missing.");
             }
 
             return attributes;

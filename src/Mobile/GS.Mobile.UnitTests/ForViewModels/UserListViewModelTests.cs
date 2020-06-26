@@ -1,9 +1,9 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="HomeViewModelTests.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
+// <copyright file="UserListViewModelTests.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
 //   COPYRIGHT 2020 © Dawsoncreep. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines the HomeViewModelTests type.
+//   Defines the UserListViewModelTests type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -26,7 +26,7 @@ namespace GS.Mobile.UnitTests.ForViewModels
     /// The home view model tests.
     /// </summary>
     [TestClass]
-    public class HomeViewModelTests
+    public class UserListViewModelTests
     {
         /// <summary>
         /// The home view model.
@@ -77,7 +77,7 @@ namespace GS.Mobile.UnitTests.ForViewModels
         /// This tests should validate the successful creation of the <see cref="userListViewModel"/>.
         /// </summary>
         [TestMethod]
-        public void HomeViewModelShouldBeCreated()
+        public void UserListViewModelShouldBeCreated()
         {
             // Arrange
             var actual = new UserListViewModel(this.mockIRoutingService.Object, this.mockIMessageService.Object, this.mockISessionProcessor.Object);
@@ -94,7 +94,7 @@ namespace GS.Mobile.UnitTests.ForViewModels
         /// This tests should validate custom attributes.
         /// </summary>
         [TestMethod]
-        public void HomeViewModelShouldHaveAuthorizationAttributeWidthNoRoles()
+        public void UserListViewModelShouldHaveAuthorizationAttributeRoles()
         {
             // Arrange
             this.userListViewModel = new UserListViewModel(this.mockIRoutingService.Object, this.mockIMessageService.Object, this.mockISessionProcessor.Object);
@@ -104,7 +104,7 @@ namespace GS.Mobile.UnitTests.ForViewModels
 
             // Assert
             Assert.IsNotNull(attribute);
-            Assert.IsTrue(attribute.AttributeType.Name == typeof(Authorization).Name);
+            Assert.IsTrue(attribute.AttributeType.Name == typeof(Authorize).Name);
             Assert.IsTrue(attribute.ConstructorArguments.Count == 0);
         }
 
@@ -112,7 +112,7 @@ namespace GS.Mobile.UnitTests.ForViewModels
         /// This tests should redirect to login viewmodel when an invalid user token is found.
         /// </summary>
         [TestMethod]
-        public void HomeViewModelShouldNavigateToLoginViewModelWhenInvalidUserToken()
+        public void UserListViewModelShouldNavigateToLoginViewModelWhenInvalidUserToken()
         {
             // Arrange
             this.mockISessionProcessor.Setup(method => method.GetAccessToken()).ReturnsAsync(string.Empty);

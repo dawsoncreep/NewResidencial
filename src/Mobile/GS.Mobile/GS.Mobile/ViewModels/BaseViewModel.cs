@@ -121,7 +121,7 @@ namespace GS.Mobile.ViewModels
             }
             else
             {
-                throw new Exception("'AllowAnonymous' or 'Authorization' attribute is missing.");
+                throw new Exception("'AllowAnonymous' or 'Authorize' attribute is missing.");
             }
         }
 

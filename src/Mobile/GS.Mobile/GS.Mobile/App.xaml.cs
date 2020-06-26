@@ -12,6 +12,8 @@ namespace GS.Mobile
     using GS.Mobile.IoC;
     using GS.Mobile.Views.Main;
 
+    using Syncfusion.Licensing;
+
     using Xamarin.Forms;
 
     /// <summary>
@@ -24,6 +26,11 @@ namespace GS.Mobile
         /// </summary>
         public App()
         {
+            // Favor de revisar FAQ de la siguiente liga
+            // https://www.syncfusion.com/products/communitylicense
+            // Actual license key is provided by Xavier Hernandez Reyes.
+            // To upgrade or create a new license key, a Syncfusion account must be created.
+            SyncfusionLicenseProvider.RegisterLicense("Mjc2OTY2QDMxMzgyZTMxMmUzMG5jZnlwU0VWbThtT0R4emsrdWZRQ1FucDFuS0dhRlZhK3RNWXpuMmtoa3c9");
             this.InitializeComponent();
 
             if (DependencyResolver == null)

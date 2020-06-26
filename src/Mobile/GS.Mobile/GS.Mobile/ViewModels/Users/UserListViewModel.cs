@@ -22,7 +22,7 @@ namespace GS.Mobile.ViewModels.Users
     /// <summary>
     /// The home view model.
     /// </summary>
-    [Authorization]
+    [Authorize]
     public class UserListViewModel : BaseViewModel, IUserListViewModel
     {
         /// <summary>

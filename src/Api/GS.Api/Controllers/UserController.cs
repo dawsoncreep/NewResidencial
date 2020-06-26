@@ -18,7 +18,7 @@ namespace Authentication.Api.Controllers
     /// <summary>
     /// The user controller.
     /// </summary>
-    [AllowAnonymous]
+    [Authorize]
     public class UserController : BaseApiController
     {
         /// <summary>

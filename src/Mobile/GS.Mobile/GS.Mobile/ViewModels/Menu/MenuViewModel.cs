@@ -25,7 +25,7 @@ namespace GS.Mobile.ViewModels.Menu
     /// <summary>
     /// The menu view model.
     /// </summary>
-    [Authorization]
+    [Authorize]
     public class MenuViewModel : BaseViewModel, IMenuViewModel
     {
         /// <summary>

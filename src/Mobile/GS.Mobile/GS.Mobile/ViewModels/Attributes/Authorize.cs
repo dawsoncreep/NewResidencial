@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Authorization.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
+// <copyright file="Authorize.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
 //   COPYRIGHT 2020 © Dawsoncreep. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines the Authorization type.
+//   Defines the Authorize type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace GS.Mobile.ViewModels.Attributes
     /// The viewmodel(page) is private and require a valid session validation.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property, Inherited = false)]
-    public class Authorization : Attribute
+    public class Authorize : Attribute
     {
         /// <summary>
         /// The roles.
@@ -23,24 +23,23 @@ namespace GS.Mobile.ViewModels.Attributes
         private string roles;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Authorization"/> class.
+        /// Initializes a new instance of the <see cref="Authorize"/> class.
         /// The viewmodel only needs a valid user token.
         /// </summary>
-        public Authorization()
+        public Authorize()
         {
             // No role based authorization.
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Authorization"/> class.
+        /// Initializes a new instance of the <see cref="Authorize"/> class.
         /// The viewmodel only needs a valid user token and a role base authorization.
         /// </summary>
         /// <param name="roles">
         /// The roles.
         /// </param>
-        public Authorization(string roles)
+        public Authorize(string roles)
         {
-            // Role based authorization.
             this.roles = roles;
         }
     }
