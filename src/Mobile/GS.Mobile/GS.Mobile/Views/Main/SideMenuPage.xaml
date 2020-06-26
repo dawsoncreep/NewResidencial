@@ -7,6 +7,10 @@
                       x:Class="GS.Mobile.Views.Main.SideMenuPage"
                       Title="Side Menu">
 
+    <ContentPage.Behaviors>
+        <behaviorsPack:EventToCommandBehavior EventName="Appearing" Command="{Binding OnLoadCommand}"/>
+    </ContentPage.Behaviors>
+
     <StackLayout>
         <Label Text="Guizzy Seguridad" Padding="10" Style="{StaticResource SideMenuLabel}"/>
 

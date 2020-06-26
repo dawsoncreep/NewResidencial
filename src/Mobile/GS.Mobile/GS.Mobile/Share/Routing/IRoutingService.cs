@@ -56,5 +56,13 @@ namespace GS.Mobile.Share.Routing
         /// The <see cref="Task"/>.
         /// </returns>
         Task PopAsync();
+
+        /// <summary>
+        /// Pops all pages to root page.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        Task PopToRootAsync();
     }
 }

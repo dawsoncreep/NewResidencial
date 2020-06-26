@@ -25,7 +25,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.6.0.847" />  
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.968" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />  
     <PackageReference Include="Xamarin.Forms.BehaviorsPack" Version="2.1.1" />
   </ItemGroup>
@@ -37,8 +37,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\Main\ContainerPage.xaml.cs">
-      <DependentUpon>ContainerPage.xaml</DependentUpon>
+    <Compile Update="Views\Users\UserListPage.xaml.cs">
+      <DependentUpon>UserListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Main\DashboardPage.xaml.cs">
+      <DependentUpon>DashboardPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Main\SideMenuPage.xaml.cs">
       <DependentUpon>SideMenuPage.xaml</DependentUpon>
@@ -49,7 +52,7 @@
     <EmbeddedResource Update="Views\Main\MasterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Main\ContainerPage.xaml">
+    <EmbeddedResource Update="Views\Main\DashboardPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Main\SideMenuPage.xaml">

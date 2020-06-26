@@ -20,10 +20,10 @@ namespace GS.Mobile.IoC
     using GS.Mobile.Share.FileSystem;
     using GS.Mobile.Share.Messages;
     using GS.Mobile.Share.Routing;
-    using GS.Mobile.ViewModels.Home;
     using GS.Mobile.ViewModels.Login;
     using GS.Mobile.ViewModels.Master;
     using GS.Mobile.ViewModels.Menu;
+    using GS.Mobile.ViewModels.Users;
     using GS.Mobile.Views;
     using GS.OperationalManagement.Configurations;
 
@@ -140,7 +140,7 @@ namespace GS.Mobile.IoC
             this.builder.RegisterType<MasterViewModel>().As<IMasterViewModel>().SingleInstance();
             this.builder.RegisterType<LoginViewModel>().As<ILoginViewModel>().SingleInstance();
             this.builder.RegisterType<MenuViewModel>().As<IMenuViewModel>().SingleInstance();
-            this.builder.RegisterType<HomeViewModel>().As<IHomeViewModel>().SingleInstance();
+            this.builder.RegisterType<UserListViewModel>().As<IUserListViewModel>().SingleInstance();
         }
 
         /// <summary>

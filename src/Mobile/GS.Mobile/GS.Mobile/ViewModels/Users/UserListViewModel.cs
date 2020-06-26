@@ -1,13 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="HomeViewModel.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
+// <copyright file="UserListViewModel.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
 //   COPYRIGHT 2020 © Dawsoncreep. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines the HomeViewModel type.
+//   Defines the UserListViewModel type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GS.Mobile.ViewModels.Home
+namespace GS.Mobile.ViewModels.Users
 {
     using System.Threading.Tasks;
     using System.Windows.Input;
@@ -23,10 +23,10 @@ namespace GS.Mobile.ViewModels.Home
     /// The home view model.
     /// </summary>
     [Authorization]
-    public class HomeViewModel : BaseViewModel, IHomeViewModel
+    public class UserListViewModel : BaseViewModel, IUserListViewModel
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="HomeViewModel"/> class.
+        /// Initializes a new instance of the <see cref="UserListViewModel"/> class.
         /// </summary>
         /// <param name="routingService">
         /// The routing service.
@@ -37,7 +37,7 @@ namespace GS.Mobile.ViewModels.Home
         /// <param name="sessionProcessor">
         /// The session Processor.
         /// </param>
-        public HomeViewModel(IRoutingService routingService, IMessageService messageService, ISessionProcessor sessionProcessor) : base(routingService, messageService, sessionProcessor)
+        public UserListViewModel(IRoutingService routingService, IMessageService messageService, ISessionProcessor sessionProcessor) : base(routingService, messageService, sessionProcessor)
         {
         }
 

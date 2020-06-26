@@ -15,7 +15,7 @@ namespace GS.Mobile.UnitTests.ForViewModels
     using GS.Mobile.Share.Messages;
     using GS.Mobile.Share.Routing;
     using GS.Mobile.ViewModels.Attributes;
-    using GS.Mobile.ViewModels.Home;
+    using GS.Mobile.ViewModels.Users;
     using GS.Mobile.Views.Login;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -31,7 +31,7 @@ namespace GS.Mobile.UnitTests.ForViewModels
         /// <summary>
         /// The home view model.
         /// </summary>
-        private IHomeViewModel homeViewModel;
+        private IUserListViewModel userListViewModel;
 
         /// <summary>
         /// <see cref="ISessionProcessor"/> mock object.
@@ -74,20 +74,20 @@ namespace GS.Mobile.UnitTests.ForViewModels
         #endregion
 
         /// <summary>
-        /// This tests should validate the successful creation of the <see cref="homeViewModel"/>.
+        /// This tests should validate the successful creation of the <see cref="userListViewModel"/>.
         /// </summary>
         [TestMethod]
         public void HomeViewModelShouldBeCreated()
         {
             // Arrange
-            var actual = new HomeViewModel(this.mockIRoutingService.Object, this.mockIMessageService.Object, this.mockISessionProcessor.Object);
+            var actual = new UserListViewModel(this.mockIRoutingService.Object, this.mockIMessageService.Object, this.mockISessionProcessor.Object);
 
             // Act
-            this.homeViewModel = actual;
+            this.userListViewModel = actual;
 
             // Assert
-            Assert.IsNotNull(this.homeViewModel);
-            Assert.IsInstanceOfType(this.homeViewModel, typeof(IHomeViewModel));
+            Assert.IsNotNull(this.userListViewModel);
+            Assert.IsInstanceOfType(this.userListViewModel, typeof(IUserListViewModel));
         }
 
         /// <summary>
@@ -97,10 +97,10 @@ namespace GS.Mobile.UnitTests.ForViewModels
         public void HomeViewModelShouldHaveAuthorizationAttributeWidthNoRoles()
         {
             // Arrange
-            this.homeViewModel = new HomeViewModel(this.mockIRoutingService.Object, this.mockIMessageService.Object, this.mockISessionProcessor.Object);
+            this.userListViewModel = new UserListViewModel(this.mockIRoutingService.Object, this.mockIMessageService.Object, this.mockISessionProcessor.Object);
 
             // Act
-            var attribute = this.homeViewModel.GetType().CustomAttributes.FirstOrDefault();
+            var attribute = this.userListViewModel.GetType().CustomAttributes.FirstOrDefault();
 
             // Assert
             Assert.IsNotNull(attribute);
@@ -118,7 +118,7 @@ namespace GS.Mobile.UnitTests.ForViewModels
             this.mockISessionProcessor.Setup(method => method.GetAccessToken()).ReturnsAsync(string.Empty);
 
             // Act
-            this.homeViewModel = new HomeViewModel(this.mockIRoutingService.Object, this.mockIMessageService.Object, this.mockISessionProcessor.Object);
+            this.userListViewModel = new UserListViewModel(this.mockIRoutingService.Object, this.mockIMessageService.Object, this.mockISessionProcessor.Object);
 
             // Assert
             this.mockISessionProcessor.Verify(method => method.GetAccessToken(), Times.Once);

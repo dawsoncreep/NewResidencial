@@ -9,8 +9,7 @@
 
 namespace GS.Mobile.ViewModels.Menu
 {
-    using System.Collections.ObjectModel;
-    using System.Threading.Tasks;
+    using System.Collections.Generic;
     using System.Windows.Input;
 
     using GS.Mobile.BusinessLayer.Interfaces;
@@ -18,7 +17,8 @@ namespace GS.Mobile.ViewModels.Menu
     using GS.Mobile.Share.Routing;
     using GS.Mobile.Types.Menu;
     using GS.Mobile.ViewModels.Attributes;
-    using GS.Mobile.Views;
+    using GS.Mobile.Views.Main;
+    using GS.Mobile.Views.Users;
 
     using Xamarin.Forms;
 
@@ -42,31 +42,45 @@ namespace GS.Mobile.ViewModels.Menu
         /// </param>
         public MenuViewModel(IRoutingService routingService, IMessageService messageService, ISessionProcessor sessionProcessor) : base(routingService, messageService, sessionProcessor)
         {
-            this.MenuItemList = new ObservableCollection<MenuPageItem>
-                                    {
-                                        new MenuPageItem { Id = 1, PageName = "Home", ImageSource = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Cuc.Phuong.Primate.Rehab.center.jpg/320px-Cuc.Phuong.Primate.Rehab.center.jpg" },
-                                        new MenuPageItem { Id = 2, PageName = "Visitas", ImageSource = "visitas.png" },
-                                        new MenuPageItem { Id = 3, PageName = "Ajustes", ImageSource = "ajustes.png", PageType = typeof(HomePage) }
-                                    };
+            this.MenuItemList = new List<MenuPageItem>();
         }
 
         /// <inheritdoc />
-        public ObservableCollection<MenuPageItem> MenuItemList { get; set; }
+        public List<MenuPageItem> MenuItemList { get; set; }
 
         /// <inheritdoc />
         public MenuPageItem SelectedMenuItem { get; set; }
 
         /// <inheritdoc />
+        public override ICommand OnLoadCommand => new Command(() =>
+            {
+                this.MenuItemList = new List<MenuPageItem>
+                                        {
+                                            new MenuPageItem { Id = 1, PageName = "Home", ImageSource = "ic_action_home", PageType = typeof(DashboardPage) },
+                                            new MenuPageItem { Id = 2, PageName = "Usuarios", ImageSource = "ic_action_group.png", PageType = typeof(UserListPage) }
+                                        };
+            });
+
+        /// <inheritdoc />
         public ICommand NavigateCommand => new Command(
             async () =>
                 {
-                    if (this.SelectedMenuItem != null && this.SelectedMenuItem.PageType != null)
+                    if (this.SelectedMenuItem == null || this.SelectedMenuItem.PageType == null)
                     {
-                        await this.RoutingService.PushAsync(this.SelectedMenuItem.PageType);
-                        this.SelectedMenuItem = null;
+                        return;
                     }
 
-                    await Task.CompletedTask;
+                    // Home
+                    if (this.SelectedMenuItem.Id == 1)
+                    {
+                        await this.RoutingService.PopToRootAsync();
+                    }
+                    else
+                    {
+                        await this.RoutingService.PushAsync(this.SelectedMenuItem.PageType);
+                    }
+
+                    this.SelectedMenuItem = null;
                 });
     }
 }

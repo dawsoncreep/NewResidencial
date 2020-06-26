@@ -17,7 +17,7 @@
     <MasterDetailPage.Detail>
         <NavigationPage>
             <x:Arguments>
-                <main:ContainerPage/>
+                <main:DashboardPage/>
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

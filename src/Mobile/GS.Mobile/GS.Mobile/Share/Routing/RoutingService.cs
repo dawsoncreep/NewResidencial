@@ -71,5 +71,15 @@ namespace GS.Mobile.Share.Routing
                 await rootPage.Detail.Navigation.PopAsync();
             }
         }
+
+        /// <inheritdoc />
+        public async Task PopToRootAsync()
+        {
+            if (Application.Current.MainPage is MasterDetailPage rootPage)
+            {
+                rootPage.IsPresented = false;
+                await rootPage.Detail.Navigation.PopToRootAsync();
+            }
+        }
     }
 }

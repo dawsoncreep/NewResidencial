@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<local:HomeWrapper xmlns="http://xamarin.com/schemas/2014/forms"
+<local:UserListWrapper xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:GS.Mobile.Views.Wrappers;assembly=GS.Mobile"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:behaviorsPack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
              mc:Ignorable="d"
-             x:Class="GS.Mobile.Views.HomePage">
+             x:Class="GS.Mobile.Views.Users.UserListPage">
 
     <ContentPage.Behaviors>
         <behaviorsPack:EventToCommandBehavior EventName="Appearing" Command="{Binding OnLoadCommand}"/>
@@ -20,4 +20,4 @@
             <Button Text="Click!!" Command="{Binding DoSomething}"/>
         </StackLayout>
     </ContentPage.Content>
-</local:HomeWrapper>
+</local:UserListWrapper>

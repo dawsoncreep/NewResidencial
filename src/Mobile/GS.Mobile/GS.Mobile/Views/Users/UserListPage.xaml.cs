@@ -1,27 +1,28 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ContainerPage.xaml.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
+// <copyright file="UserListPage.xaml.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
 //   COPYRIGHT 2020 © Dawsoncreep. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines the MasterPageDetail type.
+//   Defines the UserListPage type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GS.Mobile.Views.Main
+namespace GS.Mobile.Views.Users
 {
-    using Xamarin.Forms;
+    using GS.Mobile.Views.Wrappers;
+
     using Xamarin.Forms.Xaml;
 
     /// <summary>
-    /// The master page detail.
+    /// The home page.
     /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ContainerPage : ContentPage
+    public partial class UserListPage : UserListWrapper
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ContainerPage"/> class.
+        /// Initializes a new instance of the <see cref="UserListPage"/> class.
         /// </summary>
-        public ContainerPage()
+        public UserListPage()
         {
             this.InitializeComponent();
         }

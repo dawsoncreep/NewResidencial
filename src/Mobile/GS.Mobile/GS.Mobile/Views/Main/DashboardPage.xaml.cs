@@ -1,28 +1,27 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="HomePage.xaml.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
+// <copyright file="DashboardPage.xaml.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
 //   COPYRIGHT 2020 © Dawsoncreep. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines the HomePage type.
+//   Defines the MasterPageDetail type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GS.Mobile.Views
+namespace GS.Mobile.Views.Main
 {
-    using GS.Mobile.Views.Wrappers;
-
+    using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
 
     /// <summary>
-    /// The home page.
+    /// The master page detail.
     /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HomePage : HomeWrapper
+    public partial class DashboardPage : ContentPage
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="HomePage"/> class.
+        /// Initializes a new instance of the <see cref="DashboardPage"/> class.
         /// </summary>
-        public HomePage()
+        public DashboardPage()
         {
             this.InitializeComponent();
         }

@@ -23,7 +23,7 @@ namespace GS.Mobile.ViewModels.Menu
         /// <summary>
         /// Gets or sets the menu item list.
         /// </summary>
-        ObservableCollection<MenuPageItem> MenuItemList { get; set; }
+        List<MenuPageItem> MenuItemList { get; set; }
 
         /// <summary>
         /// Gets or sets the selected menu item.

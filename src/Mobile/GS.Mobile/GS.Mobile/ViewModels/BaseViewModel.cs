@@ -55,10 +55,7 @@ namespace GS.Mobile.ViewModels
         /// <param name="sessionProcessor">
         /// The session Processor.
         /// </param>
-        protected BaseViewModel(
-            IRoutingService routingService,
-            IMessageService messageService,
-            ISessionProcessor sessionProcessor)
+        protected BaseViewModel(IRoutingService routingService, IMessageService messageService, ISessionProcessor sessionProcessor)
         {
             this.RoutingService = routingService;
             this.SessionProcessor = sessionProcessor;

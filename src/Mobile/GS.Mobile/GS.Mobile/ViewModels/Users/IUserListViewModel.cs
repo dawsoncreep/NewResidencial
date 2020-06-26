@@ -1,20 +1,20 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IHomeViewModel.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
+// <copyright file="IUserListViewModel.cs" company="Dawsoncreep GitHub Repository(https://github.com/dawsoncreep/).">
 //   COPYRIGHT 2020 © Dawsoncreep. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines the IHomeViewModel type.
+//   Defines the IUserListViewModel type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GS.Mobile.ViewModels.Home
+namespace GS.Mobile.ViewModels.Users
 {
     using System.Windows.Input;
 
     /// <summary>
-    /// The HomeViewModel interface.
+    /// The UserListViewModel interface.
     /// </summary>
-    public interface IHomeViewModel : IViewModel
+    public interface IUserListViewModel : IViewModel
     {
         /// <summary>
         /// Gets the do something.

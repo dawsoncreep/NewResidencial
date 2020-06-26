@@ -4,9 +4,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="GS.Mobile.Views.Main.ContainerPage"
-             Title="Detail">
+             x:Class="GS.Mobile.Views.Main.DashboardPage"
+             Title="Dashboard">
   <StackLayout Padding="10">
-    <Label Text="Detail Page!!!"/>
+    <Label Text="Here goes the main dashboard"/>
   </StackLayout>
 </ContentPage>
