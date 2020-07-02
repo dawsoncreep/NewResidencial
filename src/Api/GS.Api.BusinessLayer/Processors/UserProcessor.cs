@@ -54,7 +54,11 @@ namespace GS.Api.BusinessLayer.Processors
             var users = await this.userRepository.FindAsync(x => x.Activo == true);
             foreach (var item in users)
             {
-                result.Add(item.MapTo<User>());
+                var authorizations = await this.rolRepository.GetAuthorizationData(item.Id);
+
+                var unique = authorizations.First();
+                var user = item.MapTo<User>();
+                result.Add(user);
             }
             return result;
         }
