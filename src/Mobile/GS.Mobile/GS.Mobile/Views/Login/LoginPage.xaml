@@ -5,6 +5,7 @@
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                    xmlns:wrappers="clr-namespace:GS.Mobile.Views.Wrappers;assembly=GS.Mobile"
                    xmlns:behaviorsPack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+                   xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
                    mc:Ignorable="d"
                    x:Class="GS.Mobile.Views.Login.LoginPage"
                    BackgroundColor="White">
@@ -25,7 +26,24 @@
             <Label Text="Contraseña" Style="{StaticResource LoginLabel}" />
             <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="True" Style="{StaticResource LoginEntry}" d:Text="Password"/>
 
-            <Button Text="Ingresar" Command="{Binding LoginCommand}" Margin="0,30,0,0" />
+            <!--<Button Text="Ingresar" Command="{Binding LoginCommand}" Margin="0,30,0,0" />-->
+
+            <syncfusion:SfButton
+                Command="{Binding LoginCommand}"
+                HeightRequest="60"
+                Margin="0,30,0,0"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                CornerRadius="25"
+                HasShadow="True"
+                BorderWidth="1"
+                BorderColor="Gray"
+                BackgroundColor="#538EEC"
+                ImageSource="ic_action_security.png"
+                ShowIcon="True"
+                ImageAlignment="Start"
+                Text="Ingresar"/>
+
         </StackLayout>
     </ContentPage.Content>
 </wrappers:LoginWrapper>

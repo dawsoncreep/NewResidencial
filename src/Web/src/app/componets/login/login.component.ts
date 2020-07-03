@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   public loading = false;
   public submitted = false;
   public error: string;
+  public isDevelopment : boolean;
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
 
   public ngOnInit(): void {
     const currentUser = this.authenticationService.currentUserValue;
+    this.isDevelopment = !environment.production;
 
     if (currentUser != null) {
       this.router.navigate(['/']);

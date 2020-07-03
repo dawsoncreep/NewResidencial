@@ -323,6 +323,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\IIS-DEPLOY.pubxml" />
+    <None Include="Properties\PublishProfiles\webapi-guizzyseguridad - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GS.Api.BusinessLayer\GS.Api.BusinessLayer.csproj">

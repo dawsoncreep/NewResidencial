@@ -94,7 +94,7 @@ namespace GS.Mobile.UnitTests.ForViewModels
         /// This tests should validate custom attributes.
         /// </summary>
         [TestMethod]
-        public void UserListViewModelShouldHaveAuthorizationAttributeRoles()
+        public void UserListViewModelShouldHaveAuthorizationAttribute()
         {
             // Arrange
             this.userListViewModel = new UserListViewModel(this.mockIRoutingService.Object, this.mockIMessageService.Object, this.mockISessionProcessor.Object);

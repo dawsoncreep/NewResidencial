@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: "http://localhost:64406/api"
+  applicationName: "Guizzy Seguridad",
+  apiUrl: "https://webapi-guizzyseguridad.azurewebsites.net/api"
 };
