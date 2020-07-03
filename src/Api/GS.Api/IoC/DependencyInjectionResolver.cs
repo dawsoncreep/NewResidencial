@@ -142,7 +142,8 @@ namespace Authentication.Api.IoC
 
             if (isReleaseVersion)
             {
-                this.builder.RegisterType<WindowsEventLogger>().As<ILogger>();
+                log4net.Config.XmlConfigurator.Configure();
+                this.builder.RegisterType<Log4NetLogger>().As<ILogger>();
             }
             else
             {

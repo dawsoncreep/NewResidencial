@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AppRoutingModule } from './app.routing';
 
@@ -20,10 +21,10 @@ import { VisitsManagementSettlerComponent } from './componets/visits-management-
 import { UserManagementAdminListComponent } from './componets/user-management-admin-list/user-management-admin-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatNativeDateModule} from '@angular/material/core';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatInputModule} from '@angular/material/input';
-import {MatTableModule} from '@angular/material/table';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import {MatTableModule} from '@angular/material/table';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InvalidSessionInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

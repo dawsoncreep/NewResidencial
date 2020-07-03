@@ -146,11 +146,11 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="StyleCop.MSBuild">
-      <Version>6.1.0</Version>
+      <Version>6.2.0</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.7.0.968" />
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1080" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.10" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
   </ItemGroup>
