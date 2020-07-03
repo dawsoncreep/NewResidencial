@@ -24,21 +24,19 @@ export class UserManagementAdminListComponent implements OnInit {
       result => {
         this.Users = result;
         this.dataSource = new MatTableDataSource(this.Users);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       },
       error => {
         var errorMessage = <any>error;
         console.log(errorMessage);
       }
     );
-
-    // Assign the data to the data source for the table to render
       
    }
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-
+    
   }
 
   applyFilter(event: Event) {
