@@ -8,6 +8,7 @@ import { Role } from './Models/role';
 import { NotFoundComponent } from './componets/not-found/not-found.component';
 import { VisitsManagementSettlerComponent } from './componets/visits-management-settler/visits-management-settler.component';
 import { UserManagementAdminListComponent } from './componets/user-management-admin-list/user-management-admin-list.component';
+import { LocationComponent } from './componets/location/location.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,12 @@ const routes: Routes = [
   {
     path: 'userManagementList',
     component: UserManagementAdminListComponent,
+    canActivate: [AuthenticationGuard],
+    data: { roles: [Role.Ceo, Role.Administrator] }
+  },
+  {
+    path: 'location',
+    component: LocationComponent,
     canActivate: [AuthenticationGuard],
     data: { roles: [Role.Ceo, Role.Administrator] }
   },

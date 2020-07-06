@@ -11,7 +11,7 @@ import { AppComponent } from './componets/main/app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { InvalidSessionInterceptor } from './helpers/sessionvalidator.interceptor';
 import { TokenInterceptor } from './helpers/token.interceptor';
 import { UserManagementAdminComponent } from './componets/user-management-admin/user-management-admin.component';
@@ -21,10 +21,19 @@ import { VisitsManagementSettlerComponent } from './componets/visits-management-
 import { UserManagementAdminListComponent } from './componets/user-management-admin-list/user-management-admin-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatInputModule} from '@angular/material/input';
+import {MatTableModule} from '@angular/material/table';
+import { LocationComponent } from './componets/location/location.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCardModule} from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+
+
 
 @NgModule({
   declarations: [
@@ -35,7 +44,8 @@ import { MatTableModule } from '@angular/material/table';
     UserManagementSettlerComponent,
     NotFoundComponent,
     VisitsManagementSettlerComponent,
-    UserManagementAdminListComponent
+    UserManagementAdminListComponent,
+    LocationComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +59,10 @@ import { MatTableModule } from '@angular/material/table';
     MatNativeDateModule,
     MatPaginatorModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    FormsModule,
+    MatSelectModule,
+    MatCardModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InvalidSessionInterceptor, multi: true },
