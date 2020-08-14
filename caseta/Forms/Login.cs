@@ -33,5 +33,13 @@ namespace caseta
                 MessageBox.Show("Usuario o contraseña incorrectas","ERROR", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
+
+        private void Frm_Login_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                BtnIngresar_Click(btnIngresar, new EventArgs());
+            }
+        }
     }
 }

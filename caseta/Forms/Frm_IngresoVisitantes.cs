@@ -33,14 +33,14 @@ namespace caseta
 
         private void Frm_IngresoVisita_Load(object sender, EventArgs e)
         {
-            SPC_PLacaT.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpPlacaTrasera)));
-            SPC_PlacaDelantera.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpPlacaDelantera)));
-            SPC_Rostro.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpRostro)));
-            SPC_Credencial.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpIdentificacion)));
-            SetDataSources();
+            //SPC_PLacaT.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpPlacaTrasera)));
+            //SPC_PlacaDelantera.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpPlacaDelantera)));
+            //SPC_Rostro.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpRostro)));
+            //SPC_Credencial.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpIdentificacion)));
+            //SetDataSources();
         }
 
-        private void Btn_PAcceso_Click(object sender, EventArgs e)
+        /*private void Btn_PAcceso_Click(object sender, EventArgs e)
         {
             CausesValidationComponents(true);
             if (ValidateChildren())
@@ -186,6 +186,6 @@ namespace caseta
         {
             DGV_Busqueda.DataSource = visitaProcessor.GetDGVBusquedas(Tbx_Busqueda.Text);
             DGV_Busqueda.Refresh();
-        }
+        }*/
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessInterfaces;
+using ResidencialEnums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,43 +14,177 @@ namespace caseta.Forms
 {
     public partial class Frm_ControlEntrada : Form
     {
+        private readonly IVisitaProcessor visitaProcessor;
+        private readonly IUbicacionProcessor ubicacionProcessor;
+        private readonly IDispositivoProcessor dispositivoProcessor;
+        public int? Idvisita { get; set; }
+        
         public Frm_ControlEntrada()
         {
             InitializeComponent();
+            visitaProcessor = Factoria.Instancia.CreateVisitaProcessor();
+            ubicacionProcessor = Factoria.Instancia.CreateUbicacionProcessor();
+            dispositivoProcessor = Factoria.Instancia.CreateDispositivoProcessor();
+        }        
+
+        private void Frm_ControlEntrada_Load(object sender, EventArgs e)
+        {
+            //// Ingreso Visita
+            SPC_PLacaT.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpPlacaTrasera)));
+            SPC_PlacaDelantera.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpPlacaDelantera)));
+            SPC_Rostro.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpRostro)));
+            SPC_Credencial.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpIdentificacion)));
+            //// Ingreso Condómino
+            SPC_PlacaTrasera.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpPlacaTrasera)));
+            SPC_SalidaPlacaDelantera.StartPlay(new Uri(dispositivoProcessor.GetDispositivoString(TiposDispositivos.CamaraIpRostro)));
+            SetDataSources();
         }
 
-        private void Menu_IngresoTag_Click(object sender, EventArgs e)
+        #region Ingreso Visita               
+
+        private void Btn_PAcceso_Click(object sender, EventArgs e)
         {
-            Frm_IngresoTag frm;
-            foreach (Form item in Application.OpenForms)
+            CausesValidationComponents(true);
+            if (ValidateChildren())
             {
-                if (item.GetType() == typeof(Frm_IngresoTag))
+                try
                 {
-                    frm = (Frm_IngresoTag)item;
-                    frm.WindowState = FormWindowState.Normal;
-                    frm.BringToFront();
-                    return;
+                    Bitmap rostro = SPC_Rostro.GetCurrentFrame();
+                    Bitmap placaT = SPC_PLacaT.GetCurrentFrame();
+                    Bitmap placaD = SPC_PlacaDelantera.GetCurrentFrame();
+                    Bitmap credencial = SPC_Credencial.GetCurrentFrame();
+                    var visita = visitaProcessor.GetVisitaByID((int)Idvisita);
+                    var i = visitaProcessor.RegistrarVisita(rostro, placaT, placaD, credencial, visita.TipoVisita.ID, Tbx_Nombre.Text,
+                        Tbx_Apellidos.Text, Tbx_Desc.Text, Tbx_PLacas.Text, (int)Cbbx_Domicilio.SelectedValue, Idvisita);
+                    if (i > 0)
+                    {
+                        MessageBox.Show("Visita Ingresada", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Clean();
+                        SetDataSources();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            frm = new Frm_IngresoTag() { MdiParent = this };
-            frm.Show();
+            CausesValidationComponents(false);
+            DGV_Busqueda.Refresh();
+            DGV_VisitantesActuales.Refresh();
         }
 
-        private void Menu_IngresoVisita_Click(object sender, EventArgs e)
+        private void Tbx_PLacas_Validating(object sender, CancelEventArgs e)
         {
-            Frm_IngresoVisita frm;
-            foreach (Form item in Application.OpenForms)
+            if (Tbx_PLacas.Text.Length < 6)
             {
-                if (item.GetType() == typeof(Frm_IngresoVisita))
-                {
-                    frm = (Frm_IngresoVisita)item;
-                    frm.WindowState = FormWindowState.Normal;
-                    frm.BringToFront();
-                    return;
-                }
+                MessageBox.Show("Faltan caracteres a la Placa", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Cancel = true;
             }
-            frm = new Frm_IngresoVisita() { MdiParent = this };
-            frm.Show();
         }
+
+        private void Tbx_Nombre_Validating(object sender, CancelEventArgs e)
+        {
+            if (Tbx_Nombre.Text.Length < 2 || Tbx_Nombre.Text == string.Empty)
+            {
+                MessageBox.Show("Falta indicar un nombre", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Cancel = true;
+            }
+        }
+
+        private void Tbx_Apellidos_Validating(object sender, CancelEventArgs e)
+        {
+            if (Tbx_Apellidos.Text.Length < 2 || Tbx_Apellidos.Text == string.Empty)
+            {
+                MessageBox.Show("Falta indicar un Apellido", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Cancel = true;
+            }
+        }
+
+        private void Cbbx_Domicilio_Validating(object sender, CancelEventArgs e)
+        {
+            if (Cbbx_Domicilio.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione un Domicilio", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Cancel = true;
+            }
+        }
+
+        private void CausesValidationComponents(bool v)
+        {
+            Tbx_Apellidos.CausesValidation = v;
+            Tbx_Desc.CausesValidation = v;
+            Tbx_Nombre.CausesValidation = v;
+            Tbx_PLacas.CausesValidation = v;
+        }
+
+        private void Clean()
+        {
+            Tbx_Apellidos.Text = string.Empty;
+            Tbx_Desc.Text = string.Empty;
+            Tbx_Nombre.Text = string.Empty;
+            Tbx_PLacas.Text = string.Empty;
+            Tbx_Busqueda.Text = string.Empty;
+            Lbl_TipoRegistro.Text = string.Empty;
+            Idvisita = null;
+        }
+
+        private void DGV_VisitantesActuales_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (DGV_VisitantesActuales.Columns[e.ColumnIndex].Name == "Cmn_Foto")
+            {
+                var image = Image.FromFile(DGV_VisitantesActuales.Rows[e.RowIndex].Cells["Cmn_UrlFoto"].Value.ToString());
+                var escala = new Bitmap(90, 90);
+                Graphics.FromImage(escala).DrawImage(image, 0, 0, 90, 90);
+                DGV_VisitantesActuales.Rows[e.RowIndex].Height = 90;
+                DGV_VisitantesActuales.Columns[e.ColumnIndex].Width = 90;
+                e.Value = new Bitmap(escala);
+            }
+        }
+
+        private void DGV_Busqueda_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var visita = visitaProcessor.GetVisitaByID(Convert.ToInt32(DGV_Busqueda.Rows[e.RowIndex].Cells["CmnB_ID"].Value));
+            Idvisita = visita.ID;
+            Tbx_Apellidos.Text = visita.Apellidos;
+            Tbx_Desc.Text = string.Empty;
+            Tbx_Nombre.Text = visita.Nombre;
+            Tbx_PLacas.Text = visita.Placas;
+            Cbbx_Domicilio.SelectedValue = visita.Ubicacion.ID;
+            Lbl_TipoRegistro.Text = visita.TipoVisita.Nombre;
+        }
+
+        private void SetDataSources()
+        {
+            //Cbbx_RType.DataSource = visitaProcessor.TiposDeVisita().ToArray();
+            //Cbbx_RType.ValueMember = "ID";
+            //Cbbx_RType.DisplayMember = "Nombre";
+            DGV_VisitantesActuales.DataSource = visitaProcessor.GetVisitasActuales();
+            DGV_Busqueda.DataSource = visitaProcessor.GetDGVBusquedas(string.Empty);
+            var ubicaciones = ubicacionProcessor.UbicacionesValidas();
+            Cbbx_Domicilio.DataSource = ubicaciones.ToArray();
+            Cbbx_Domicilio.ValueMember = "ID";
+            Cbbx_Domicilio.DisplayMember = "Nombre";
+            AutoCompleteStringCollection Collection = new AutoCompleteStringCollection();
+            Collection.AddRange(ubicaciones.Select(s => s.Nombre).ToArray());
+            //Cbbx_Domicilio.AutoCompleteCustomSource = Collection;
+            //Cbbx_Domicilio.AutoCompleteMode = AutoCompleteMode.Suggest;
+            //Cbbx_Domicilio.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            //Cbbx_Domicilio.AutoCompleteCustomSource = Collection;
+            DGV_VisitantesActuales.Refresh();
+            DGV_Busqueda.Refresh();
+            Lbl_NumeroVisita.Text = (visitaProcessor.GetNumVisitas(TiposDeVisita.Preregistro) + visitaProcessor.GetNumVisitas(TiposDeVisita.Habitual)).ToString("N0");
+            Lbl_NumeroPreReg.Text = visitaProcessor.GetNumVisitas(TiposDeVisita.Preregistro).ToString("N0");
+            Lbl_NumeroPrefer.Text = visitaProcessor.GetNumVisitas(TiposDeVisita.Habitual).ToString("N0");
+        }
+
+        private void Tbx_Busqueda_TextChanged(object sender, EventArgs e)
+        {
+            DGV_Busqueda.DataSource = visitaProcessor.GetDGVBusquedas(Tbx_Busqueda.Text);
+            DGV_Busqueda.Refresh();
+        }
+
+        #endregion
+
+      
     }
 }

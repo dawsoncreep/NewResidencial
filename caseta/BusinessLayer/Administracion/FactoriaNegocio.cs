@@ -37,11 +37,11 @@ namespace BusinessLayer
             }
             else if (tipoVisita == (int)TiposDeVisita.Habitual)
             {
-                throw new NotImplementedException();
+                return new PreregistroProcessor(new VisitaRepositorio(), new IngresoSalidaVisitaRepositorio());
             }
             else
             {
-                throw new NotImplementedException();
+                return new PreregistroProcessor(new VisitaRepositorio(), new IngresoSalidaVisitaRepositorio());
             }
         }
         

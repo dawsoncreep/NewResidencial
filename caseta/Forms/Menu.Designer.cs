@@ -79,6 +79,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Frm_Menu";
             this.Text = "Menú";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Frm_Menu_FormClosed);
             this.ResumeLayout(false);
 
         }

@@ -14,5 +14,6 @@ namespace SecureGateTypes
         public DateTime FechaIngreso { get; set; }
         public string FotoRostro { get; set; }
         public string Placas { get; set; }
+        public string TipoVisita { get; set; }
     }
 }

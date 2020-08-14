@@ -112,9 +112,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(311, 266);
             this.Controls.Add(this.gbLogin);
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Frm_Login";
             this.Text = "Login";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Frm_Login_KeyPress);
             this.gbLogin.ResumeLayout(false);
             this.gbLogin.PerformLayout();
             this.ResumeLayout(false);

@@ -65,5 +65,10 @@ namespace caseta
             frm = new Frm_ControlEntrada();
             frm.Show();
         }
+
+        private void Frm_Menu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

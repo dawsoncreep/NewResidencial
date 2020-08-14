@@ -97,11 +97,11 @@
     <Compile Include="Forms\Frm_ControlSalida.Designer.cs">
       <DependentUpon>Frm_ControlSalida.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Frm_IngresoTag.cs">
+    <Compile Include="Forms\Frm_IngresoCondomino.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Frm_IngresoTag.Designer.cs">
-      <DependentUpon>Frm_IngresoTag.cs</DependentUpon>
+    <Compile Include="Forms\Frm_IngresoCondomino.Designer.cs">
+      <DependentUpon>Frm_IngresoCondomino.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Frm_Salida.cs">
       <SubType>Form</SubType>
@@ -138,8 +138,8 @@
     <EmbeddedResource Include="Forms\Frm_ControlSalida.resx">
       <DependentUpon>Frm_ControlSalida.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Frm_IngresoTag.resx">
-      <DependentUpon>Frm_IngresoTag.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Frm_IngresoCondomino.resx">
+      <DependentUpon>Frm_IngresoCondomino.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_Salida.resx">
       <DependentUpon>Frm_Salida.cs</DependentUpon>

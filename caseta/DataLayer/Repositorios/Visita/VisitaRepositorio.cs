@@ -94,7 +94,8 @@ namespace DataLayer
                     IdVisita = s.idVisita,
                     NombreCompleto = context.Visitas.Where(x => x.IdVisita == s.idVisita).Select(y => y.Nombre + " " + y.Apellidos).FirstOrDefault(),
                     Placas = context.Visitas.FirstOrDefault(x => x.IdVisita == s.idVisita).Placas,
-                    FotoRostro = s.fotoCabina
+                    FotoRostro = s.fotoCabina,
+                    TipoVisita = context.TiposVisita.FirstOrDefault(w => w.IdTipoVisita == context.Visitas.FirstOrDefault(x => x.IdVisita == s.idVisita).idTipoVisita).Nombre
                 }).Where(w => w.Domicilio.Contains(busqueda) || w.NombreCompleto.Contains(busqueda) || w.Placas.Contains(busqueda)).ToList();
             }
             return dGVVisitas;
