@@ -11,6 +11,8 @@ namespace GS.Api.DataLayer.Interfaces
 {
     using GS.Api.Types.Models;
     using GS.Api.Types.Models.Persistence;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -19,5 +21,9 @@ namespace GS.Api.DataLayer.Interfaces
     public interface ILocationRepository : IRepository<SLocation>
     {
         Task<Location> FindById(int id);
+
+        Task<IEnumerable<Location>> FindByUserId(int id);
     }
+
+
 }

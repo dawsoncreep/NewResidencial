@@ -28,10 +28,7 @@ import {MatTableModule} from '@angular/material/table';
 import { LocationComponent } from './componets/location/location.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatInputModule } from '@angular/material/input';
-import { MatTableModule } from '@angular/material/table';
+
 
 
 

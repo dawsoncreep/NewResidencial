@@ -234,7 +234,12 @@
             The user facade.
             </summary>
         </member>
-        <member name="M:Authentication.Api.Controllers.UserController.#ctor(GS.Api.OperationalManagement.Interfaces.IApplicationLogger,GS.Api.BusinessLayer.Interfaces.Facade.IUserFacade)">
+        <member name="F:Authentication.Api.Controllers.UserController.userProcessor">
+            <summary>
+            The user processor
+            </summary>
+        </member>
+        <member name="M:Authentication.Api.Controllers.UserController.#ctor(GS.Api.OperationalManagement.Interfaces.IApplicationLogger,GS.Api.BusinessLayer.Interfaces.Facade.IUserFacade,GS.Api.BusinessLayer.Interfaces.Processor.IUserProcessor)">
             <summary>
             Initializes a new instance of the <see cref="T:Authentication.Api.Controllers.UserController"/> class.
             </summary>
@@ -244,10 +249,38 @@
             <param name="userFacade">
             The user facade.
             </param>
+            <param name="userProcessor">
+            The user processor
+            </param>
         </member>
         <member name="M:Authentication.Api.Controllers.UserController.GetAll">
             <summary>
             Gets all settler user.
+            </summary>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Controllers.UserController.Insert(GS.Api.Types.Models.User)">
+            <summary>
+            Insert User
+            </summary>
+            <param name="user"></param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Controllers.UserController.GetById(System.Int32)">
+            <summary>
+            Gets user by ID.
+            </summary>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:Authentication.Api.Controllers.UserController.GetAllRols">
+            <summary>
+            Gets all rols.
             </summary>
             <returns>
             The <see cref="T:System.Threading.Tasks.Task"/>.

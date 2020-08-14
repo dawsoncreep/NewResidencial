@@ -13,7 +13,9 @@ namespace Authentication.Api.Controllers
     using System.Web.Http;
 
     using GS.Api.BusinessLayer.Interfaces.Facade;
+    using GS.Api.BusinessLayer.Interfaces.Processor;
     using GS.Api.OperationalManagement.Interfaces;
+    using GS.Api.Types.Models;
 
     /// <summary>
     /// The user controller.
@@ -27,6 +29,11 @@ namespace Authentication.Api.Controllers
         private readonly IUserFacade userFacade;
 
         /// <summary>
+        /// The user processor
+        /// </summary>
+        private readonly IUserProcessor userProcessor;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="UserController"/> class.
         /// </summary>
         /// <param name="logger">
@@ -35,9 +42,13 @@ namespace Authentication.Api.Controllers
         /// <param name="userFacade">
         /// The user facade.
         /// </param>
-        public UserController(IApplicationLogger logger, IUserFacade userFacade) : base(logger)
+        /// <param name="userProcessor">
+        /// The user processor
+        /// </param>
+        public UserController(IApplicationLogger logger, IUserFacade userFacade, IUserProcessor userProcessor) : base(logger)
         {
             this.userFacade = userFacade;
+            this.userProcessor = userProcessor;
         }
 
         /// <summary>
@@ -51,6 +62,50 @@ namespace Authentication.Api.Controllers
         public async Task<IHttpActionResult> GetAll()
         {
             var result = await this.ExecuteProcess(async () => await this.userFacade.ListOfSettlerUser());
+            return await Task.FromResult(result);
+        }
+
+        /// <summary>
+        /// Insert User
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns>
+        /// The <see cref="Task"/>
+        /// </returns>
+        [HttpPost]
+        [ActionName("Insert")]
+        public async Task<IHttpActionResult> Insert([FromBody] User user)
+        {
+            var result = await this.ExecuteProcess(async () => await this.userFacade.Insert(user));
+            return await Task.FromResult(result);
+
+        }
+
+        /// <summary>
+        /// Gets user by ID.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        [HttpGet]
+        [ActionName("GetByID")]
+        public async Task<IHttpActionResult> GetById(int id)
+        {
+            var result = await this.ExecuteProcess(async () => await this.userFacade.FindById(id));
+            return await Task.FromResult(result);
+        }
+
+        /// <summary>
+        /// Gets all rols.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        [HttpGet]
+        [ActionName("GetAllRols")]
+        public async Task<IHttpActionResult> GetAllRols()
+        {
+            var result = await this.ExecuteProcess(async () => await this.userFacade.GetAllRol());
             return await Task.FromResult(result);
         }
     }

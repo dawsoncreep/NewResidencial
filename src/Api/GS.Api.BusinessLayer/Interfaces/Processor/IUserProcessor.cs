@@ -14,6 +14,7 @@ namespace GS.Api.BusinessLayer.Interfaces.Processor
 
     using GS.Api.Types.Exceptions;
     using GS.Api.Types.Models;
+    using GS.Api.Types.Models.Persistence;
 
     /// <summary>
     /// The IUserProcessor interface.
@@ -41,5 +42,32 @@ namespace GS.Api.BusinessLayer.Interfaces.Processor
         /// The <see cref="Task"/>
         /// </returns>
         Task<IEnumerable<User>> GetListOfSettlerUser();
+
+        ///  <summary>
+        ///  Insert <see cref="User"/>
+        ///  </summary>
+        ///  <returns>
+        ///  The <see cref="Task"/>
+        ///  </returns>
+
+        Task<int> InsertUser(User user);
+
+        ///  <summary>
+        ///  Retrieves <see cref="id"/> User by id
+        ///  </summary>
+        ///  <returns>
+        ///  The <see cref="Task"/>
+        ///  </returns>
+        Task<User> FindById(int id);
+
+        ///  <summary>
+        ///  Retrieves <see cref="id"/> List of Rols
+        ///  </summary>
+        ///  <returns>
+        ///  The <see cref="Task"/>
+        ///  </returns>
+        Task<IEnumerable<SRol>> GetAllRols();
+
+
     }
 }

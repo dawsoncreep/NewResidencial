@@ -35,6 +35,18 @@ namespace GS.Api.DataLayer.Repositories
         {
         }
 
+        public async Task CreateUserRol(SUserRol userRol)
+        {
+            await this.CurrentContext.AddAsync(userRol);
+            await this.CurrentContext.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<SRol>> GetAllRols()
+        {
+            var result = await this.FindAsync(x => x.Activo == true);
+            return result;
+        }
+
         /// <inheritdoc />
         public async Task<Authorization[]> GetAuthorizationData(int userId)
         {
@@ -66,6 +78,12 @@ namespace GS.Api.DataLayer.Repositories
             }
 
             return await Task.FromResult(result.ToArray());
+        }
+
+        public async Task<SRol> GetRolByName(string name)
+        {
+            var result = await this.FindAsync(x => x.Nombre == name);
+            return result.First();
         }
     }
 }

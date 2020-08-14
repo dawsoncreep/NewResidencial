@@ -16,6 +16,7 @@ namespace GS.Api.BusinessLayer.Facade
     using GS.Api.BusinessLayer.Interfaces.Processor;
     using GS.Api.Types.Exceptions;
     using GS.Api.Types.Models;
+    using GS.Api.Types.Models.Persistence;
 
     /// <summary>
     /// The user facade.
@@ -59,6 +60,21 @@ namespace GS.Api.BusinessLayer.Facade
             }
 
             return await this.tokenProcessor.GenerateToken(user);
+        }
+
+        public async Task<User> FindById(int id)
+        {
+            return await this.userProcessor.FindById(id);
+        }
+
+        public async Task<IEnumerable<SRol>> GetAllRol()
+        {
+            return await this.userProcessor.GetAllRols();
+        }
+
+        public async Task<int> Insert(User user)
+        {
+            return await this.userProcessor.InsertUser(user);
         }
 
         public async Task<IEnumerable<User>> ListOfSettlerUser()

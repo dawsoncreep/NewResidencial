@@ -14,6 +14,7 @@ namespace GS.Api.BusinessLayer.Interfaces.Facade
 
     using GS.Api.Types.Exceptions;
     using GS.Api.Types.Models;
+    using GS.Api.Types.Models.Persistence;
 
     /// <summary>
     /// The UserFacade interface.
@@ -41,5 +42,11 @@ namespace GS.Api.BusinessLayer.Interfaces.Facade
         Task<string> Authenticate(LoginRequest request);
 
         Task<IEnumerable<User>> ListOfSettlerUser();
+
+        Task<int> Insert(User user);
+
+        Task<User> FindById(int id);
+
+        Task<IEnumerable<SRol>> GetAllRol();
     }
 }

@@ -9,9 +9,11 @@
 
 namespace GS.Api.DataLayer.Interfaces
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using GS.Api.Types.Models;
+    using GS.Api.Types.Models.Persistence;
 
     /// <summary>
     /// The RolRepository interface.
@@ -28,5 +30,11 @@ namespace GS.Api.DataLayer.Interfaces
         /// The <see cref="Task"/>.
         /// </returns>
         Task<Authorization[]> GetAuthorizationData(int userId);
+
+        Task<SRol> GetRolByName(string name);
+
+        Task CreateUserRol(SUserRol userRol);
+
+        Task<IEnumerable<SRol>> GetAllRols();
     }
 }

@@ -35,6 +35,42 @@ namespace GS.Api.DataLayer.Repositories
         {
         }
 
+        public async Task<int> CreateNewUser(User user)
+        {
+            try
+            {
+                var entity = new SUser
+                {
+                    Nombres = user.Name,
+                    Apellidos = user.LastName,
+                    Correo = user.Email,
+                    Alias = user.NickName,
+                    Contraseña = user.Password,
+                    Activo = true
+                };
+                await this.CreateAsync(entity);
+                await CurrentContext.SaveChangesAsync();
+                return 1;
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+            
+        }
+
+        public async Task<User> FindById(int id)
+        {
+            var results = await this.FindAsync(item => item.Id == id);
+
+            if(results == null)
+            {
+                throw new System.Exception();
+            }
+
+            return results.First().MapTo<User>();
+        }
+
         /// <inheritdoc />
         public async Task<User> FindByUserName(string userName)
         {

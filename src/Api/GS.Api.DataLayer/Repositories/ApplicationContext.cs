@@ -71,6 +71,13 @@ namespace GS.Api.DataLayer.Repositories
         /// </summary>
         public virtual DbSet<SRolPermission> RolPermission { get; set; }
 
+        /// <summary>
+        /// Gets or sets the User location
+        /// </summary>
+        public virtual DbSet<SUserLocation> UserLocation { get; set; }
+
+        public virtual DbSet<SLocation> Location { get; set; }
+
         /// <inheritdoc />
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -88,6 +95,7 @@ namespace GS.Api.DataLayer.Repositories
         {
             modelBuilder.Entity<SUserRol>().HasKey(e => new { e.IdUsuario, e.IdRol });
             modelBuilder.Entity<SRolPermission>().HasKey(e => new { e.IdRol, e.IdPermiso });
+            modelBuilder.Entity<SUserLocation>().HasKey(e => new { e.IdUbicacion, e.IdUsuario });
         }
     }
 }

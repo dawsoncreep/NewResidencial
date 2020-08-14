@@ -33,5 +33,9 @@ namespace GS.Api.DataLayer.Interfaces
         /// Thrown when no user has been found in data base
         /// </exception>
         Task<User> FindByUserName(string userName);
+
+        Task<int> CreateNewUser(User user);
+
+        Task<User> FindById(int id);
     }
 }

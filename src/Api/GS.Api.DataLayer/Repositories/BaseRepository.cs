@@ -57,5 +57,10 @@ namespace GS.Api.DataLayer.Repositories
         {
             return await this.currentEntity.Where(predicate).ToListAsync();
         }
+
+        public async Task CreateAsync(TEntity entity)
+        {
+            await this.currentEntity.AddAsync(entity);
+        }
     }
 }

@@ -17,6 +17,7 @@ namespace GS.Api.BusinessLayer.Processors
     using GS.Api.DataLayer.Interfaces;
     using GS.Api.OperationalManagement.Extensions;
     using GS.Api.Types.Models;
+    using GS.Api.Types.Models.Persistence;
 
     /// <summary>
     /// The user processor.
@@ -48,6 +49,19 @@ namespace GS.Api.BusinessLayer.Processors
             this.rolRepository = rolRepository;
         }
 
+        public async Task<User> FindById(int id)
+        {
+            var result = await this.userRepository.FindById(id);
+            return await Task.FromResult(result);
+
+        }
+
+        public async Task<IEnumerable<SRol>> GetAllRols()
+        {
+            var result = await this.rolRepository.GetAllRols();
+            return result;
+        }
+
         public async Task<IEnumerable<User>> GetListOfSettlerUser()
         {
             List<User> result = new List<User>();
@@ -72,5 +86,31 @@ namespace GS.Api.BusinessLayer.Processors
 
             return await Task.FromResult(user);
         }
+
+        public async Task<int> InsertUser(User user)
+        {
+            var IdRole = this.rolRepository.GetRolByName(user.Role);
+
+            await this.userRepository.CreateNewUser(user);
+
+            user = await this.userRepository.FindByUserName(user.Email);
+
+            if (user != null)
+            {
+                var RolUser = new SUserRol
+                {
+                    IdUsuario = user.Id,
+                    IdRol = IdRole.Result.IdRol
+                };
+                await this.rolRepository.CreateUserRol(RolUser);
+                return user.Id;
+            }
+            else
+            {
+                return 0;
+            }         
+            
+        }
+
     }
 }
